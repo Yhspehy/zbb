@@ -1,9 +1,6 @@
 import {
     loginByUserName
-} from '@/Api/user'
-import {
-    resolve
-} from 'upath';
+} from '@/Api/user';
 
 const user = {
     namespaced: true,
@@ -13,16 +10,14 @@ const user = {
         token: ''
     },
 
-
     mutations: {
         SET_USERNAME: (state, username) => {
-            state.username = username
+            state.username = username;
         },
         SET_TOKEN: (state, token) => {
-            state.token = token
+            state.token = token;
         }
     },
-
 
     actions: {
         LoginByUsername({
@@ -31,16 +26,16 @@ const user = {
             return new Promise((resolve, reject) => {
                 loginByUserName(userInfo.username, userInfo.password)
                     .then(res => {
-                        commit('SET_USERNAME', userInfo.username)
-                        commit('SET_TOKEN', res.token)
-                        resolve(res)
+                        commit('SET_USERNAME', userInfo.username);
+                        commit('SET_TOKEN', res.token);
+                        resolve(res);
                     })
                     .catch(error => {
-                        reject(error)
-                    })
-            })
+                        reject(error);
+                    });
+            });
         }
     }
-}
+};
 
-export default user
+export default user;
