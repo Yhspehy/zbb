@@ -10,6 +10,8 @@
     - [订阅联赛中的球队](#订阅联赛中的球队)
 - [首页-公共接口](#首页-公共接口)
     - [新闻列表](#新闻列表)
+    - [新闻详情页](#新闻详情页)
+    - [评论](#评论)
 - [首页-推荐](#首页-推荐)
     - [获取头部图片swiper](#获取头部图片swiper)
     - [获取比赛卡片swiper](#获取比赛卡片swiper)
@@ -18,9 +20,11 @@
 - [集锦](#集锦)
     - [获取集锦视频列表](#获取集锦视频列表)
     - [获取集锦视频评论列表](#获取集锦视频评论列表)
-    - [评论](#评论)
 - [首页-二级标题](#首页-二级标题)
     - [header swiper图片展示栏](#header-swiper图片展示栏)
+- [赛程](#赛程)
+    - [热门赛程](#热门赛程)
+    - [获取一个月的赛程](#获取一个月的赛程)
 
 <!-- /TOC -->
 
@@ -37,6 +41,7 @@
     
     若某属性的值不存在且没有默认值时，返回null，不要返回'', 0, [], {};比如，新闻时间戳没有，不要返回0,应该返回null，因为0代表1970年1月1号。
     如果值不存在，但有默认值，则返回默认值，比如: "", [], {}, 0;
+    区别就是要注意返回默认值的时候是否在判断会出现错误；
     返回时间的时候，一律返回时间戳，以s为单位的;
 
     接口注释中，<代表接口可能的参数>
@@ -192,6 +197,47 @@
         ]
     }
 ```   
+
+
+### 新闻详情页
+
+```js
+    /**
+     * @api {get}  home/news
+     * @params {Number} news_id   新闻的id
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "news_id": 11,
+            "title": "萌神",
+            "source": "Mavis",
+            "create_time": 121212,
+            "img_list": ["url"],
+            "content": "北京时间"
+        }
+    }
+```   
+
+### 评论
+
+```js
+    /**
+     * @api {post}  home/comment
+     * @params {String} news_id  新闻或视频id
+     * @params {String} type  类别  <news highlights>
+     * @params {Boolean}  is_answer  是否是回复别人的消息，是否@  没有传""
+     * @params {String} answer_user_name  回复的用户名字   没有传""
+     * 
+     */
+
+    return {
+        "status": true,
+        "msg": "..."
+    }
+```
 
 ---
 
@@ -376,22 +422,6 @@
     }
 ```   
 
-### 评论
-
-```js
-    /**
-     * @api {post}  home/highLights/comment
-     * @params {String} id  视频id
-     * @params {Boolean}  is_answer
-     * @params {String} answer_user_name
-     * 
-     */
-
-    return {
-        "status": true,
-        "msg": "..."
-    }
-```
 
 
 ## 首页-二级标题
@@ -402,7 +432,6 @@
     /**
      * @api {get}  home/otherType/header
      * @params {Number}  type_id  类目的id
-     * 
      */
 
     return {
@@ -420,6 +449,80 @@
         ]
     }
 ```
+
+
+## 赛程
+
+### 热门赛程
+
+```js
+    /**
+     * 沟通，预计返回一周的数据,倒序排列
+     * @api {get}  schedule/popular
+     * 
+     * @return details_url   如果比赛结束了，返回集锦或者回放的url，不然返回''
+     * @return score  如果比赛结束了，则返回比赛比分,不然返回''
+     * @return media  直播平台
+     * @return live_type  直播类型 <文字直播  视频直播>
+     * @return end_description_word  比赛结束后链接描述词  <集锦 详情 回看>
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            "2018-07-23": [
+                {
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "hometeam_img": "url",
+                    "awayteam_img": "url",
+                    "start_time": 1211212,
+                    "source": "NBA夏季联赛",
+                    "status": "已结束",
+                    "details_url": "url"，
+                    "score": "100:99",
+                    "live_type": "文字直播",
+                    "end_description_word": "集锦"
+                }
+            ]
+        ]
+    }
+```
+
+### 获取一个月的赛程
+
+```js
+    /**
+     * @api {get}  schedule/monthList
+     * @params {Number}  year  选取的年 
+     * @params {Number}  month  选取的月
+     * 
+     * @return match_count   当日所有的比赛
+     * @return match_list/status   比赛状态
+     * @return details_url   如果比赛结束了，返回集锦或者回放的url
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "date": "2018-7-23",
+                "match_count": 4,
+                "match_list": [
+                    "match_name": "美国 VS 克罗地亚",
+                    "start_time": 1211212,
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url"
+                ]
+            }
+        ]
+    }
+```
+
+
 
 
 
