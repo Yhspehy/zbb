@@ -8,6 +8,19 @@
     - [获取某联赛所有球队列表](#获取某联赛所有球队列表)
     - [获取订阅的球队](#获取订阅的球队)
     - [订阅联赛中的球队](#订阅联赛中的球队)
+- [首页-公共接口](#首页-公共接口)
+    - [新闻列表](#新闻列表)
+- [首页-推荐](#首页-推荐)
+    - [获取头部图片swiper](#获取头部图片swiper)
+    - [获取比赛卡片swiper](#获取比赛卡片swiper)
+    - [获取今日热门比赛场数](#获取今日热门比赛场数)
+    - [直播预告区](#直播预告区)
+- [集锦](#集锦)
+    - [获取集锦视频列表](#获取集锦视频列表)
+    - [获取集锦视频评论列表](#获取集锦视频评论列表)
+    - [评论](#评论)
+- [首页-二级标题](#首页-二级标题)
+    - [header swiper图片展示栏](#header-swiper图片展示栏)
 
 <!-- /TOC -->
 
@@ -15,11 +28,22 @@
 ## 所有api的格式要求
 
 ```js
+    每个接口必须要传的参数：
+    token（带时间戳和特定算法算出来的code拿，token有失效时间，调api若token失效报"msg":"expired token"）
+
+    每个接口必须带的两个参数：
     状态：status {Boolean} <true or false>
     信息：msg {String}
+    
+    若某属性的值不存在且没有默认值时，返回null，不要返回'', 0, [], {};比如，新闻时间戳没有，不要返回0,应该返回null，因为0代表1970年1月1号。
+    如果值不存在，但有默认值，则返回默认值，比如: "", [], {}, 0;
+    返回时间的时候，一律返回时间戳，以s为单位的;
+
+    接口注释中，<代表接口可能的参数>
 ```
 
---------
+---
+
 ## 启动页
 
 ### 获取所有的联赛列表
@@ -30,9 +54,14 @@
      */
 
     return {
-      "status": true,
-      "msg": "获取联赛列表成功!",
-      "data": ["NBA", "CBA", ...]
+        "status": true,
+        "msg": "获取联赛列表成功!",
+        "data": [
+            {
+                "league_id": 11,
+                "league_name": "NBA"
+            }
+        ]
     }
 ```
 
@@ -45,9 +74,14 @@
      */
 
     return {
-      "status": true,
-      "msg": "获取订阅联赛列表成功!",
-      "data": ["NBA", "CBA"]
+        "status": true,
+        "msg": "获取订阅联赛列表成功!",
+        "data": [
+            {
+                "league_id": 11,
+                "league_name": "NBA"
+            }
+        ]
     }
 ```
 
@@ -74,9 +108,14 @@
      */
 
     return {
-      "status": true,
-      "msg": "获取球队列表成功!",
-      "data": ["勇士", "骑士", ...]
+        "status": true,
+        "msg": "获取球队列表成功!",
+        "data": [
+            {
+                "team_id": 11,
+                "team_name": "勇士"
+            }
+        ]
     }
 ```
 
@@ -89,9 +128,14 @@
      */
 
     return {
-      "status": true,
-      "msg": "获取订阅球队列表成功!",
-      "data": ["勇士", "骑士"]
+        "status": true,
+        "msg": "获取订阅球队列表成功!",
+        "data": [
+            {
+                "league_id": 11,
+                "league_name": "NBA"
+            }
+        ]
     }
 
 ```
@@ -107,8 +151,277 @@
      */
 
     return {
-      "status": true,
-      "msg": "订阅球队成功!"
+        "status": true,
+        "msg": "订阅球队成功!"
     }
 ```
+
+---
+
+## 首页-公共接口
+
+### 新闻列表
+
+```js
+    /**
+     * @api {get}  home/newsList
+     * @params {Number} type_id   类目的id
+     * @params {Number} page_index	 
+     *
+     * @return title  新闻标题
+     * @return create_time  新闻发布时间
+     * @return source   新闻来源
+     * @return type   新闻所属类别(指的是我们应用的类别)
+     * @return update_count  更新条数
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "news_id": 11,
+                "title": "五大关键词解读",
+                "img_list": ["url", "url"],
+                "img_count": 4,
+                "create_time": 1122122,
+                "source": "腾讯",
+                "type": "推荐",
+                "update_count": 8
+            }
+        ]
+    }
+```   
+
+---
+
+## 首页-推荐
+
+### 获取头部图片swiper
+
+```js
+    /**
+     * @api {get}  home/recommend/header
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "imgUrl": "url",
+                "title": "玫瑰将再次绽放....."
+            }
+        ]
+    }
+```   
+
+### 获取比赛卡片swiper
+
+```js
+    /**
+     * @api {get}  home/recommend/gameCard
+     * 
+	 * @return hometean  主场队名
+	 * @return awayteam 客场队名
+     * @return score 默认为主场:客场
+     */
+
+    return {
+      "status": true,
+      "msg": "...",
+      "data": [
+          {
+            "game_card_id": 1,
+            "type": "NBA夏季联赛",
+            "hometeam": "勇士",
+            "awayteam": "骑士",
+            "hometeam_img": "url",
+            "awayteam_img": "url",
+            "score": "99:101",
+          }
+      ]
+    }
+```   
+
+### 获取今日热门比赛场数
+
+```js
+    /**
+     * @api {get}  home/recommend/hotGameCount
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": 1
+    }
+```   
+
+### 直播预告区
+
+```js
+    /**
+     * @api {get}  home/recommend/liveTrail
+     * 
+     * @params {String} date  日期  <2018-7-23>
+     * 
+     * @return type   直播类型  <game program>  如有别的类型再进行添加
+     *         type为game的时候主客场名字和img要返回值，多余的字段传""
+     *         type为program的时候programName要返回值，多余的字段传""
+     * @return sourse   直播的来源
+     * @return program_name   节目名字
+     * @return is_trail   是否预约
+     * @return status    比赛状态  <已开始  未开始  已结束>
+     * @return start_time  比赛开始时间
+     * @return highlights_url   集锦链接
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "trail_id": 111,
+                "type": "game",
+                "sourse": "NBA夏季联赛",
+                "hometeam": "勇士",
+                "awayteam": "骑士",
+                "hometeam_img": "url",
+                "awayteam_img": "url",
+                "program_name": "天下足球",
+                "is_trail": true,
+                "status": "已结束",
+                "start_time": 11221122,
+                "highlights_url": "url",
+                "score": "99:101"  
+            }
+        ]
+    }
+```  
+
+## 集锦
+
+
+### 获取集锦视频列表
+
+```js
+    /**
+     * 接口待定，优酷视频接口和UI出入较大
+     * 
+     * @api {get}  home/highLights/list
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "highlights_id": 11,
+                "url": "url"
+            }
+        ]
+    }
+```   
+
+### 获取集锦视频评论列表
+
+```js
+    /**
+     * @api {get}  home/highLights/comment
+     * 
+     * @params {string} id    视频id
+     * 
+     * @return create_time  评论创建时间
+     * @return vote_count    赞同数
+     * @return author/user_type    用户类别，等级
+     * @return author/gender   用户性别  <male female>
+     * @return commentlist/thread_id    该条评论的父级评论id
+     *         commentlist/thread_id等于comment_id
+     * @return commentlist/is_answer  是否是回复别人的消息，是否@
+     * @return commentlist/answer_user_name   回复的用户名字
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "comment_id": 1212,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 12,
+                "commentlist": [
+                    {
+                        "comment_id": 1212,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    }
+                ],
+                "create_time": 121212,
+                "vote_count": 222
+            }
+        ]
+    }
+```   
+
+### 评论
+
+```js
+    /**
+     * @api {post}  home/highLights/comment
+     * @params {String} id  视频id
+     * @params {Boolean}  is_answer
+     * @params {String} answer_user_name
+     * 
+     */
+
+    return {
+        "status": true,
+        "msg": "..."
+    }
+```
+
+
+## 首页-二级标题
+
+### header swiper图片展示栏
+
+```js
+    /**
+     * @api {get}  home/otherType/header
+     * @params {Number}  type_id  类目的id
+     * 
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "news_id": 11,
+                "title": "五大关键词解读",
+                "img_list": "url",
+                "create_time": 1122122,
+                "source": "腾讯",
+                "type": "NBA"
+            }
+        ]
+    }
+```
+
+
+
+
 

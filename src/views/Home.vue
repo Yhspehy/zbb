@@ -1,8 +1,10 @@
 <template>
-	<div class="home">
-		<img src="../assets/logo.png">
-		<HelloWorld msg="Welcome to Your Vue.js App" />
-	</div>
+    <div class="home">
+        <img src="../assets/logo.png">
+        <HelloWorld msg="Welcome to Your Vue.js App" />
+        <div class="red">111</div>
+
+    </div>
 </template>
 
 <script>
@@ -16,3 +18,9 @@ export default {
     }
 };
 </script>
+
+<style scoped lang="scss">
+.red {
+    color: red;
+}
+</style>
