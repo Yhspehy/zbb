@@ -1,39 +1,57 @@
-<!-- TOC -->
+---
+html:
+  embed_local_images: false
+  embed_svg: true
+  offline: false
+  toc: true
 
-- [所有api的格式要求](#所有api的格式要求)
-- [启动页](#启动页)
-    - [获取所有的联赛和相关球队](#获取所有的联赛和相关球队)
-    - [获取已经订阅的联赛](#获取已经订阅的联赛)
-    - [订阅联赛](#订阅联赛)
-    - [获取某联赛所有球队列表](#获取某联赛所有球队列表)
-    - [获取订阅的球队](#获取订阅的球队)
-    - [订阅联赛中的球队](#订阅联赛中的球队)
-- [首页-公共接口](#首页-公共接口)
-    - [新闻列表](#新闻列表)
-    - [新闻详情页](#新闻详情页)
-    - [评论](#评论)
-- [首页-推荐](#首页-推荐)
-    - [获取头部图片swiper](#获取头部图片swiper)
-    - [获取比赛卡片swiper](#获取比赛卡片swiper)
-    - [获取今日热门比赛场数](#获取今日热门比赛场数)
-    - [直播预告区](#直播预告区)
-- [集锦](#集锦)
-    - [获取集锦视频列表](#获取集锦视频列表)
-    - [获取集锦视频评论列表](#获取集锦视频评论列表)
-- [首页-二级标题](#首页-二级标题)
-    - [header swiper图片展示栏](#header-swiper图片展示栏)
-- [赛程](#赛程)
-    - [热门赛程](#热门赛程)
-    - [获取一个月的赛程](#获取一个月的赛程)
-    - [获取某一联赛的比赛赛程](#获取某一联赛的比赛赛程)
-    - [获取NBA季后赛对阵](#获取nba季后赛对阵)
-    - [获得NBA队伍排行榜](#获得nba队伍排行榜)
-    - [获取NBA球员排行榜](#获取nba球员排行榜)
-- [我的](#我的)
-    - [个人信息](#个人信息)
-    - [修改个人信息](#修改个人信息)
+print_background: false
+---
 
-<!-- /TOC -->
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+* [所有api的格式要求](#所有api的格式要求)
+* [启动页](#启动页)
+	* [获取所有的联赛和相关球队](#获取所有的联赛和相关球队)
+	* [获取已经订阅的联赛](#获取已经订阅的联赛)
+	* [订阅联赛](#订阅联赛)
+	* [获取某联赛所有球队列表](#获取某联赛所有球队列表)
+	* [获取订阅的球队](#获取订阅的球队)
+	* [订阅联赛中的球队](#订阅联赛中的球队)
+* [首页-公共接口](#首页-公共接口)
+	* [新闻列表](#新闻列表)
+	* [新闻详情页](#新闻详情页)
+	* [评论](#评论)
+* [首页-推荐](#首页-推荐)
+	* [获取头部图片swiper](#获取头部图片swiper)
+	* [获取比赛卡片swiper](#获取比赛卡片swiper)
+	* [获取今日热门比赛场数](#获取今日热门比赛场数)
+	* [直播预告区](#直播预告区)
+* [集锦](#集锦)
+	* [获取集锦视频列表](#获取集锦视频列表)
+	* [获取集锦视频评论列表](#获取集锦视频评论列表)
+* [首页-二级标题](#首页-二级标题)
+	* [header swiper图片展示栏](#header-swiper图片展示栏)
+* [赛程](#赛程)
+	* [热门赛程](#热门赛程)
+	* [获取一个月的赛程](#获取一个月的赛程)
+	* [获取某一联赛的比赛赛程](#获取某一联赛的比赛赛程)
+	* [获取NBA季后赛对阵](#获取nba季后赛对阵)
+	* [获得NBA队伍排行榜](#获得nba队伍排行榜)
+	* [获取NBA球员排行榜](#获取nba球员排行榜)
+* [我的](#我的)
+	* [登出](#登出)
+	* [个人信息](#个人信息)
+	* [修改个人信息](#修改个人信息)
+	* [获取最新版本](#获取最新版本)
+	* [获取缓存大小](#获取缓存大小)
+	* [删除缓存](#删除缓存)
+	* [建议优化](#建议优化)
+
+<!-- /code_chunk_output -->
+
 
 
 ## 所有api的格式要求
@@ -197,7 +215,7 @@
 ```js
     /**
      * @api {get}  home/newsList
-     * @params {Number} type_id   类目的id
+     * @params {Number or String} type_id   类目的id
      * @params {Number} page_index	 
      *
      * @return title  新闻标题
@@ -231,7 +249,7 @@
 ```js
     /**
      * @api {get}  home/news
-     * @params {Number} news_id   新闻的id
+     * @params {Number or String} news_id   新闻的id
      */
 
     return {
@@ -403,7 +421,7 @@
     /**
      * @api {get}  home/highLights/comment
      * 
-     * @params {string} id    视频id
+     * @params {Number or String} id    视频id
      * 
      * @return create_time  评论创建时间
      * @return vote_count    赞同数
@@ -458,7 +476,7 @@
 ```js
     /**
      * @api {get}  home/otherType/header
-     * @params {Number}  type_id  类目的id
+     * @params {Number or String}  type_id  类目的id
      */
 
     return {
@@ -804,8 +822,25 @@
     }
 ```
 
+---
 
 ## 我的
+
+
+### 登出
+
+```js
+    /**
+     * @api {post}  myself/logout
+     * 
+     * @params {Number or String}  user_id
+     */
+
+    return {
+        "status": true,
+        "msg": "..."
+    }
+```
 
 ### 个人信息
 
@@ -819,6 +854,14 @@
      * @return g_money   G币
      * @return gender    性别  <male female secret>
      * @return avatar_img    头像链接
+     * @return no_img  无图模式
+     * @return auto_play_with_wifi  WIFI下自动播放
+     * @return push_important_news  要闻通知
+     * @return push_follow_team_games   关注球队比赛开始结束通知
+     * @return push_follow_team_news   关注球队的重要新闻
+     * @return push_mention    艾特@我的
+     * @return push_reply    回复我的
+     * @return push_no_border_in_night    夜间免打扰
      */
 
     return {
@@ -832,7 +875,15 @@
             "birth": "1999-09-01",
             "gender": "male",
             "avatar_img": "url",
-            "mobile": 121212
+            "mobile": 121212,
+            "no_img": true,
+            "auto_play_with_wifi": true,
+            "push_important_news": true,
+            "push_follow_team_games": true,
+            "push_follow_team_news": true,
+            "push_mention": true,
+            "push_reply": true,
+            "push_no_border_in_night": true
         }
     }
 ```
@@ -851,6 +902,7 @@
      * @params g_money   G币
      * @params gender    性别  <male female secret>
      * @params avatar_img    头像链接
+     * ....同上
      */
 
     return {
@@ -860,7 +912,101 @@
 ```
 
 
+### 获取最新版本
 
+```js
+    /**
+     * @api {get}  myself/version
+     * 
+     * @return version  版本号
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "version": "1.0.0"
+        }
+    }
+```
+
+### 获取缓存大小
+
+```js
+    /**
+     * 使用cordova相关api
+     * @api {get}  myself/cache
+     * 
+     * @return cache  缓存大小
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "cache": "39.9MB"
+        }
+    }
+```
+
+
+### 删除缓存
+
+```js
+    /**
+     * 使用cordova相关api
+     * @api {delete}  myself/cache
+     * 
+     * @return cache  缓存大小
+     */
+```
+
+
+<!-- ### 推送功能
+
+```js
+    /**
+     * @api {get}  myself/push
+     * 
+     * @return important_news  要闻通知
+     * @return follow_team_games   关注球队比赛开始结束通知
+     * @return follow_team_news   关注球队的重要新闻
+     * @return mention    艾特@我的
+     * @return reply    回复我的
+     * @return no_border_in_night    夜间免打扰
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "important_news": true,
+            "follow_team_games": true,
+            "follow_team_news": true,
+            "mention": true,
+            "reply": true,
+            "no_border_in_night": true
+        }
+    }
+``` -->
+
+
+
+### 建议优化
+
+```js
+    /**
+     * @api {post}  myself/optimization
+     * 
+     * @params {String}  type  优化栏目
+     * @params {String}  content  内容
+     */
+
+    return {
+        "status": true,
+        "msg": "...."
+    }
+```
 
 
 
