@@ -1,12 +1,12 @@
 import { request } from './request';
 
 export function loginByUserName(username, password) {
-    const params = {
+    const data = {
         username: username,
         password: password
     };
 
     return request('/mock/login', {
-        params
+        data: data
     });
 }

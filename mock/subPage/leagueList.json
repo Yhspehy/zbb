@@ -1,0 +1,14 @@
+{
+    "status": true,
+    "msg": "获取联赛列表成功!",
+    "data": [{
+        "league_id": 11,
+        "league_name": "NBA"
+    }, {
+        "league_id": 12,
+        "league_name": "CBA"
+    }, {
+        "league_id": 13,
+        "league_name": "英超"
+    }]
+}

@@ -10,15 +10,18 @@ export function setVm(Vm) {
 /*----------  封装axios函数  ----------*/
 export function request(url, options) {
     let baseUrl = '/';
-
+    const token = Date.parse(new Date());
     // mock数据更改路径
     if (url.match(/^\/mock.*/)) {
         baseUrl = '.';
     }
 
     const defaultOptions = {
+        url: `${baseUrl}${url}`,
         method: 'get',
-        url: `${baseUrl}${url}`
+        params: {
+            token: token
+        }
     };
 
     const mergeOptions = {
