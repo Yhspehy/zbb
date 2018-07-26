@@ -6,9 +6,9 @@ import store from './store/index';
 import {
     request,
     setVm
-} from './Api/request.js'
+} from './Api/request.js';
 
-Vue.prototype.$axios = request
+Vue.prototype.$axios = request;
 Vue.config.productionTip = false;
 
 let vm = new Vue({

@@ -32,6 +32,7 @@ module.exports = {
                 changeOrigin: true // needed for virtual hosted sites
             }
         },
+        hot: true,
         before: function (app) {
             Object.keys(getApi).forEach(function (url) {
                 app.get(url, function (req, res) {

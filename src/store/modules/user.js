@@ -1,6 +1,4 @@
-import {
-    loginByUserName
-} from '@/Api/user';
+import { loginByUserName } from '@/Api/user';
 
 const user = {
     namespaced: true,
@@ -20,9 +18,7 @@ const user = {
     },
 
     actions: {
-        LoginByUsername({
-            commit
-        }, userInfo) {
+        LoginByUsername({ commit }, userInfo) {
             return new Promise((resolve, reject) => {
                 loginByUserName(userInfo.username, userInfo.password)
                     .then(res => {
