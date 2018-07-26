@@ -4,9 +4,8 @@ let vm = null;
 /*----------  设置vm，便于后面获取  ----------*/
 export function setVm(Vm) {
     vm = Vm;
+    console.log(vm);
 }
-
-
 
 /*----------  封装axios函数  ----------*/
 export function request(url, options) {
@@ -14,7 +13,7 @@ export function request(url, options) {
 
     // mock数据更改路径
     if (url.match(/^\/mock.*/)) {
-        baseUrl = '.'
+        baseUrl = '.';
     }
 
     const defaultOptions = {

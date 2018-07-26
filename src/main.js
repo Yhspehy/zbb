@@ -3,10 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store/index';
 
-import {
-    request,
-    setVm
-} from './Api/request.js';
+import { request, setVm } from './Api/request.js';
 
 Vue.prototype.$axios = request;
 Vue.config.productionTip = false;

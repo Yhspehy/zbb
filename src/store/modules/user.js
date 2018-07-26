@@ -5,7 +5,8 @@ const user = {
 
     state: {
         username: '',
-        token: ''
+        token: '',
+        pp: ''
     },
 
     mutations: {
