@@ -8,7 +8,7 @@
                 <li>
                     <router-link :to="{name:'highLights'}">集锦</router-link>
                 </li>
-                        <li v-for="item in subLeagueList" :key="item.league_id">
+                <li v-for="item in subLeagueList" :key="item.league_id">
                     <router-link :to="{name: 'league', params:{league_id:item.league_id}}">{{item.league_name}}</router-link>
                 </li>
             </ul>
@@ -27,17 +27,20 @@
 
 <script>
 import TheFooter from '@/components/TheFooter';
+<<<<<<< Updated upstream
+=======
+import { saveToLocal, loadFromLocal } from '@/assets/js/localstore';
+>>>>>>> Stashed changes
 export default {
     data() {
         return {};
     },
     created() {
-        this.$store.dispatch('league/GetSubLeagueList');
+        this.$store.dispatch('league/GetSubLeagueList')
     },
     computed: {
         subLeagueList() {
-            console.log(this);
-            return this.$store.getters.subLeagueList;
+            return this.$store.state.league.subLeagueList;
         }
     },
     methods: {
