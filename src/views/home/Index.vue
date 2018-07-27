@@ -27,16 +27,21 @@
 
 <script>
 import TheFooter from '@/components/TheFooter';
-<<<<<<< Updated upstream
-=======
-import { saveToLocal, loadFromLocal } from '@/assets/js/localstore';
->>>>>>> Stashed changes
+// import { saveToLocal, loadFromLocal } from '@/assets/js/localstore';
 export default {
+    name: 'home',
+    components: {
+        'v-footer': TheFooter
+    },
     data() {
         return {};
     },
     created() {
-        this.$store.dispatch('league/GetSubLeagueList')
+        console.log(11);
+        this.$store.dispatch('league/GetSubLeagueList');
+    },
+    activated() {
+        console.log(22);
     },
     computed: {
         subLeagueList() {
@@ -63,9 +68,6 @@ export default {
             ];
             this.$store.dispatch('league/EditSubLeagueList', { subList: subList, unSubList: unSubList });
         }
-    },
-    components: {
-        'v-footer': TheFooter
     }
 };
 </script>

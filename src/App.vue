@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+	<div id="app">
+		<keep-alive include="home,news,schedule,community,profile">
+			<router-view></router-view>
+		</keep-alive>
+	</div>
 </template>
 <script>
 export default {};
@@ -9,5 +11,3 @@ export default {};
 
 <style lang="scss">
 </style>
-
-

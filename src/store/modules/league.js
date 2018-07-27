@@ -1,12 +1,7 @@
 import { getLeagueList } from '@/Api/subPage';
 import { UPDATE_LEAGUELIST, UPDATE_SUBLEAGUELIST, UPDATE_UNSUBLEAGUELIST } from '@/store/mutation-types';
 import { saveToLocal } from '@/assets/js/localstore';
-<<<<<<< Updated upstream
-import store from '..';
-import { loadFromLocal } from '../../assets/js/localstore';
-=======
 import { loadFromLocal } from '@/assets/js/localstore';
->>>>>>> Stashed changes
 const league = {
     namespaced: true,
     state: {
@@ -29,23 +24,6 @@ const league = {
         }
     },
     actions: {
-<<<<<<< Updated upstream
-        async GetLeagueList({ commit, rootGetters }) {
-            return new Promise((resolve, reject) => {
-                getLeagueList()
-                    .then(res => {
-                        if (res.data.status) {
-                            commit('UPDATE_LEAGUELIST', res.data.data);
-                            resolve(rootGetters.leagueList);
-                        }
-                    })
-                    .catch(error => {
-                        reject(error);
-                    });
-            });
-        },
-        async GetSubLeagueList({ commit, dispatch, rootGetters }) {
-=======
         async GetLeagueList({ commit }) {
             let res = await getLeagueList().catch(err => {
                 console.log(err);
@@ -55,7 +33,6 @@ const league = {
             }
         },
         async GetSubLeagueList({ commit, dispatch, state }) {
->>>>>>> Stashed changes
             if (window.localStorage.hasOwnProperty('subLeagueList')) {
                 commit('UPDATE_SUBLEAGUELIST', loadFromLocal('subLeagueList'));
             } else {
@@ -66,19 +43,9 @@ const league = {
             }
         },
 
-<<<<<<< Updated upstream
-        EditSubLeagueList({ commit, rootGetters }, payload) {
-            console.log(payload);
-            return new Promise((resolve, reject) => {
-                commit('UPDATE_SUBLEAGUELIST', payload.subList);
-                commit('UPDATE_UNSUBLEAGUELIST', payload.unSubList);
-                resolve(rootGetters.subLeagueList);
-            });
-=======
         EditSubLeagueList({ commit }, payload) {
             commit('UPDATE_SUBLEAGUELIST', payload.subList);
             commit('UPDATE_UNSUBLEAGUELIST', payload.unSubList);
->>>>>>> Stashed changes
         }
     }
 };

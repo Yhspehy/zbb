@@ -6,7 +6,10 @@
 
 <script>
 export default {
-    name: 'highlights'
+    name: 'highlights',
+    data() {
+        return {};
+    }
 };
 </script>
 
