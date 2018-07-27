@@ -1,18 +1,8 @@
-import {
-    getLeagueList
-} from '@/Api/subPage';
-import {
-    UPDATE_LEAGUELIST,
-    UPDATE_SUBLEAGUELIST,
-    UPDATE_UNSUBLEAGUELIST
-} from '@/store/mutation-types';
-import {
-    saveToLocal,
-} from '@/assets/js/localstore'
+import { getLeagueList } from '@/Api/subPage';
+import { UPDATE_LEAGUELIST, UPDATE_SUBLEAGUELIST, UPDATE_UNSUBLEAGUELIST } from '@/store/mutation-types';
+import { saveToLocal } from '@/assets/js/localstore';
 import store from '..';
-import {
-    loadFromLocal
-} from '../../assets/js/localstore';
+import { loadFromLocal } from '../../assets/js/localstore';
 const league = {
     namespaced: true,
     state: {
@@ -35,10 +25,7 @@ const league = {
         }
     },
     actions: {
-        async GetLeagueList({
-            commit,
-            rootGetters
-        }) {
+        async GetLeagueList({ commit, rootGetters }) {
             return new Promise((resolve, reject) => {
                 getLeagueList()
                     .then(res => {
@@ -50,13 +37,9 @@ const league = {
                     .catch(error => {
                         reject(error);
                     });
-            })
+            });
         },
-        async GetSubLeagueList({
-            commit,
-            dispatch,
-            rootGetters
-        }) {
+        async GetSubLeagueList({ commit, dispatch, rootGetters }) {
             if (window.localStorage.hasOwnProperty('subLeagueList')) {
                 commit('UPDATE_SUBLEAGUELIST', loadFromLocal('subLeagueList'));
             } else {
@@ -66,17 +49,14 @@ const league = {
             }
         },
 
-        EditSubLeagueList({
-            commit,
-            rootGetters
-        }, payload) {
-            console.log(payload)
+        EditSubLeagueList({ commit, rootGetters }, payload) {
+            console.log(payload);
             return new Promise((resolve, reject) => {
-                commit('UPDATE_SUBLEAGUELIST', payload.subList)
-                commit('UPDATE_UNSUBLEAGUELIST', payload.unSubList)
+                commit('UPDATE_SUBLEAGUELIST', payload.subList);
+                commit('UPDATE_UNSUBLEAGUELIST', payload.unSubList);
                 resolve(rootGetters.subLeagueList);
-            })
+            });
         }
     }
-}
-export default league
+};
+export default league;

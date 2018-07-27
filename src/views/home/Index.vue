@@ -27,10 +27,10 @@
 
 <script>
 import TheFooter from '@/components/TheFooter';
-import { saveToLocal, loadFromLocal } from '@/assets/js/localstore';
-import _ from 'lodash';
 export default {
-    //data() {},
+    data() {
+        return {};
+    },
     created() {
         this.$store.dispatch('league/GetSubLeagueList');
     },

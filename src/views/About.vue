@@ -1,16 +1,12 @@
 <template>
     <div class="about">
-<<<<<<< Updated upstream
         <h1 @click="aa">This is an about page</h1>
         <div data-v-fae5bece class="red">33</div>
         <!-- <embed class="ww" src='http://player.youku.com/player.php/sid/XMzc0MTE4MDY2NA==/v.swf' allowFullScreen='true' quality='high' width='480' height='400' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash' flashvars="isAutoPlay=true"></embed> -->
         <!-- <div class="aa" @click="aa" :style="{'display': isHide?'none':'block'}"></div> -->
 
         <!-- <iframe src="http://kbs.sports.qq.com/kbsweb/game.htm?mid=100002:20187255" frameborder="0"></iframe> -->
-=======
-        <h1>This is an about page</h1>
-        <div data-v-fae5bece class="red">222</div>
->>>>>>> Stashed changes
+        <div>{{pp}}</div>
     </div>
 </template>
 
@@ -20,7 +16,8 @@ export default {
     name: 'about',
     data() {
         return {
-            isHide: false
+            isHide: false,
+            a: 11
         };
     },
     created() {
@@ -35,14 +32,17 @@ export default {
     },
     computed: {
         pp() {
-            return cookie.get('pp');
+            return this.$store.getters.pp;
         }
     },
     methods: {
         aa() {
             this.isHide = true;
+            this.$store.commit('user/SET_USERNAME', this.a);
+            this.a += 11;
             console.log(this.$store.getters.pp);
             console.log(cookie.get('pp'));
+            // this.$store.dispatch('league/EditSubLeagueList', {{{sublist:} league_id: 13, league_name: '英超' }});
         }
     }
 };
