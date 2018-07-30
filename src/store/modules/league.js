@@ -1,5 +1,4 @@
 import { getLeagueList } from '@/Api/subPage';
-import { UPDATE_LEAGUELIST, UPDATE_SUBLEAGUELIST, UPDATE_UNSUBLEAGUELIST } from '@/store/mutation-types';
 import { saveToLocal } from '@/assets/js/localstore';
 import { loadFromLocal } from '@/assets/js/localstore';
 const league = {
@@ -10,15 +9,15 @@ const league = {
         unSubLeagueList: undefined
     },
     mutations: {
-        [UPDATE_LEAGUELIST](state, payload) {
+        UPDATE_LEAGUELIST(state, payload) {
             state.leagueList = [...payload];
             saveToLocal('leagueList', [...payload]);
         },
-        [UPDATE_SUBLEAGUELIST](state, payload) {
+        UPDATE_SUBLEAGUELIST(state, payload) {
             state.subLeagueList = [...payload];
             saveToLocal('subLeagueList', [...payload]);
         },
-        [UPDATE_UNSUBLEAGUELIST](state, payload) {
+        UPDATE_UNSUBLEAGUELIST(state, payload) {
             state.unSubLeagueList = [...payload];
             saveToLocal('unSubLeagueList', [...payload]);
         }

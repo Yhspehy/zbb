@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="header">
-            <ul class="nav">
+            <ul class="nav demo">
                 <li>
                     <router-link :to="{name:'recommend'}">推荐</router-link>
                 </li>
@@ -27,21 +27,20 @@
 
 <script>
 import TheFooter from '@/components/TheFooter';
-// import { saveToLocal, loadFromLocal } from '@/assets/js/localstore';
 export default {
     name: 'home',
     components: {
         'v-footer': TheFooter
     },
     data() {
-        return {};
+        return {
+            test: 1
+        };
     },
     created() {
-        console.log(11);
+        console.log(this.test);
+        this.$toast({ duration: 5000, message: '复制成功' });
         this.$store.dispatch('league/GetSubLeagueList');
-    },
-    activated() {
-        console.log(22);
     },
     computed: {
         subLeagueList() {
@@ -73,4 +72,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.demo {
+    width: 75%;
+    height: rem(60px);
+    padding: rem(10px);
+    @include font-size(30px);
+    background: red;
+}
 </style>
