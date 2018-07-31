@@ -5,7 +5,8 @@
                 <!-- 时间条 -->
                 <div class="timeBar">
                     <i></i>
-                    <span>今天 {{$moment(key).format('MM月DD号')}} {{$moment(key).format('dddd')}}</span>
+                    <span v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">今天 </span>
+                    <span>{{$moment(key).format('MM月DD号')}} {{$moment(key).format('dddd')}}</span>
                 </div>
 
                 <!-- 比赛列表 -->
@@ -30,11 +31,19 @@
 
                     <!-- 比分预约 -->
                     <div class="score team border-right-1px">
-                        <div class="hometeam">72</div>
-                        <div class="awayteam">108</div>
+                        <div class="hometeam">{{item.home_score}}</div>
+                        <div class="awayteam">{{item.away_score}}</div>
                     </div>
 
                     <!-- 直播平台 -->
+                    <div class="media">
+                        <div>{{item.media}}</div>
+                        <div class="linkBtn"
+                             :class="{'live': item.end_description_word !== '直播'}"
+                             v-if="item.end_description_word">{{item.end_description_word}}</div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -99,7 +108,7 @@ export default {
             }
         }
         .team {
-            width: 190px;
+            width: 230px;
             font-size: 28px;
             color: $font-color-deep-grey;
             .hometeam {
@@ -108,7 +117,32 @@ export default {
         }
         .score {
             width: 100px;
+            padding-right: 20px;
             @include border-right-1px;
+        }
+        .media {
+            width: 120px;
+            margin: 0 20px;
+            font-size: 22px;
+            color: $font-color-grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column nowrap;
+            .linkBtn {
+                margin-top: 14px;
+                width: 120px;
+                height: 36px;
+                color: #fff;
+                border-radius: 18px;
+                background: #fb413b;
+                text-align: center;
+                line-height: 36px;
+                font-weight: lighter;
+            }
+            .live {
+                background: #0091ff;
+            }
         }
     }
 }

@@ -315,7 +315,8 @@ print_background: false
      * 
 	 * @return hometean  主场队名                         
 	 * @return awayteam 客场队名
-     * @return score 默认为主场:客场
+     * @return home_score  主场得分
+     * @return away_score  客场得分
      */
 
     return {
@@ -328,7 +329,8 @@ print_background: false
             "hometeam": "勇士",
             "awayteam": "骑士",
             "league": "NBA",
-            "score": "99:101",
+            "home_score": 99,
+            "away_score": 101
           }
       ]
     }
@@ -384,7 +386,8 @@ print_background: false
                 "status": "已结束",
                 "start_time": 11221122,
                 "highlights_url": "url",
-                "score": "99:101"  
+                "home_score": 99,
+                "away_score": 101 
             }
         ]
     }
@@ -506,7 +509,7 @@ print_background: false
      * @api {get}  schedule/popular
      * 
      * @return details_url   如果比赛结束了，返回集锦或者回放的url，不然返回''
-     * @return score  如果比赛结束了，则返回比赛比分,不然返回''
+     * @return home_score away_score  如果比赛结束了，则返回比赛比分,不然返回''
      * @return media  直播平台
      * @return live_type  直播类型 <文字直播  视频直播>
      * @return end_description_word  比赛结束后链接描述词  <集锦 详情 回看>
@@ -526,8 +529,9 @@ print_background: false
                     "source": "NBA夏季联赛",
                     "media": "CCTV5",
                     "status": "已结束",
-                    "details_url": "url"，
-                    "score": "100:99",
+                    "details_url": "url",
+                    "home_score": 99,
+                    "away_score": 101, 
                     "live_type": "文字直播",
                     "end_description_word": "集锦",
                     "league": "NBA",
@@ -564,7 +568,8 @@ print_background: false
                     "hometeam": "热火",
                     "awayteam": "老鹰",
                     "start_time": 1211212,
-                    "score": "100:99",
+                    "home_score": 99,
+                    "away_score": 101, 
                     "source": "篮球公园第88期",
                     "status": "已结束",
                     "details_url": "url",
@@ -605,7 +610,8 @@ print_background: false
                     "hometeam": "热火",
                     "awayteam": "老鹰",
                     "start_time": 1211212,
-                    "score": "100:99",
+                    "home_score": 99,
+                    "away_score": 101, 
                     "source": "NBA季后赛",
                     "status": "已结束",
                     "details_url": "url",
@@ -647,7 +653,8 @@ print_background: false
                                 "status": "已结束",
                                 "hometeam": "勇士",
                                 "awayteam": "骑士",
-                                "score": "100:99"
+                                "home_score": 99,
+                                "away_score": 101
                             }
                         ],
                         "team_one": "勇士",
@@ -666,7 +673,8 @@ print_background: false
                                 "status": "已结束",
                                 "hometeam": "勇士",
                                 "awayteam": "骑士",
-                                "score": "100:99"
+                                "home_score": 99,
+                                "away_score": 101
                             }
                         ],
                         "team_one": "勇士",
