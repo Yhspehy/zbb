@@ -27,8 +27,8 @@ export default {
 
 <style scoped lang="scss">
 .schedule {
-    font-size: 100px;
-    width: 1000px;
+    font-size: 20px;
+    width: 750px;
     background: pink;
     color: $red;
 }

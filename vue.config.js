@@ -36,6 +36,18 @@ module.exports = {
             sass: {
                 data: `@import "@/assets/sass/mixins.scss";`
                 // options here will be passed to css-loader
+            },
+            postcss: {
+                plugins: () => [
+                    require('postcss-px-to-viewport')({
+                        viewportWidth: 750,
+                        unitPrecision: 3,
+                        viewportUnit: 'vw',
+                        selectorBlackList: ['.ignore'],
+                        minPixelValue: 1,
+                        mediaQuery: false
+                    })
+                ]
             }
         }
     },

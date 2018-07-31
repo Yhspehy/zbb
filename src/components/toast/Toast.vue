@@ -17,6 +17,7 @@ export default {
     },
     methods: {
         afterLeave: function(el) {
+            console.log(el);
             this.$el.parentNode.removeChild(this.$el);
         }
     }
@@ -57,4 +58,3 @@ export default {
     opacity: 0;
 }
 </style>
-
