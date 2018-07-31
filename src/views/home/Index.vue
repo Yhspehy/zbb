@@ -72,11 +72,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/sass/mixins.scss';
 .demo {
-    width: 75%;
-    height: rem(60px);
-    padding: rem(10px);
-    @include font-size(30px);
+    width: 75vw;
+    padding: 10vw;
+    font-size: 30px;
     background: red;
 }
 </style>

@@ -3,17 +3,14 @@ const fs = require('fs');
 const getApi = require('./mock/getApi');
 const postApi = require('./mock/postApi');
 
-
-console.log('getApi:');
-console.log(getApi);
-console.log();
-console.log('postApi:');
-console.log(postApi);
-console.log();
-
+// console.log('getApi:');
+// console.log(getApi);
+// console.log();
+// console.log('postApi:');
+// console.log(postApi);
+// console.log();
 
 module.exports = {
-
     // pages: {
     //     index: {
     //         title: '直播吧'
@@ -25,21 +22,22 @@ module.exports = {
      * https://cli.vuejs.org/config/#devserver
      *
      */
-    configureWebpack: config => {
-        if (process.env.NODE_ENV === 'production') {
-            // 为生产环境修改配置...
-        } else {
-            // 为开发环境修改配置...
-            devtool: 'source-map'
-        }
-    },
+    // cli已经配置了，source-map用于生产环境中
+    // configureWebpack: config => {
+    //     if (process.env.NODE_ENV === 'production') {
+    //         // 为生产环境修改配置...
+    //     } else {
+    //         // 为开发环境修改配置...
+    //         'source-map';
+    //     }
+    // },
     css: {
         loaderOptions: {
             sass: {
                 data: `@import "@/assets/sass/variables.scss";
                 @import "@/assets/sass/mixins.scss";`
                 // options here will be passed to css-loader
-            },
+            }
         }
     },
 
@@ -53,25 +51,25 @@ module.exports = {
             }
         },
         hot: true,
-        before: function (app) {
-            Object.keys(getApi).forEach(function (url) {
-                app.get(url, function (req, res) {
+        before: function(app) {
+            Object.keys(getApi).forEach(function(url) {
+                app.get(url, function(req, res) {
                     fs.readFile(getApi[url], 'utf-8', (err, data) => {
-                        if (err) return console.log(err)
+                        if (err) return console.log(err);
                         let json = JSON.parse(data);
-                        res.json(json)
-                    })
-                })
-            })
-            Object.keys(postApi).forEach(function (url) {
-                app.post(url, function (req, res) {
+                        res.json(json);
+                    });
+                });
+            });
+            Object.keys(postApi).forEach(function(url) {
+                app.post(url, function(req, res) {
                     fs.readFile(postApi[url], 'utf-8', (err, data) => {
-                        if (err) return console.log(err)
+                        if (err) return console.log(err);
                         let json = JSON.parse(data);
-                        res.json(json)
-                    })
-                })
-            })
+                        res.json(json);
+                    });
+                });
+            });
         }
     }
-}
+};

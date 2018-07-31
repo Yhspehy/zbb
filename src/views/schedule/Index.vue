@@ -1,7 +1,9 @@
 <template>
     <div class="schedule">
-        赛程
-        <div>{{a}}</div>
+        赛程112
+        <div class="aa">{{a}}</div>
+
+        <button class="bb">bb</button>
     </div>
 </template>
 
@@ -24,4 +26,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.schedule {
+    font-size: 100px;
+    width: 1000px;
+    background: pink;
+    color: $red;
+}
 </style>
