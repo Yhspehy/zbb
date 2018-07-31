@@ -98,16 +98,55 @@
 //   @include animation('slide-down 5s 3');
 // }
 // =====================
-@mixin border-1px($color: rgba(7, 17, 27, 0.1)) {
+@mixin border-top-1px($color: #f2f2f2) {
     position: relative;
     &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        border-top: 1px solid $color;
+    }
+}
+
+@mixin border-right-1px($color: #f2f2f2) {
+    position: relative;
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        height: 100%;
+        right: 0;
+        top: 0;
+        border-right: 1px solid $color;
+    }
+}
+
+@mixin border-bottom-1px($color: #f2f2f2) {
+    position: relative;
+    &:after {
+        content: '';
         display: block;
         position: absolute;
         width: 100%;
         left: 0;
         bottom: 0;
-        border-top: 1px solid $color;
+        border-bottom: 1px solid $color;
+    }
+}
+
+@mixin border-left-1px($color: #f2f2f2) {
+    position: relative;
+    &:after {
         content: '';
+        display: block;
+        position: absolute;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-left: 1px solid $color;
     }
 }
 

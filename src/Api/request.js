@@ -11,14 +11,15 @@ export function setVm(Vm) {
 export function request(url, options) {
     let baseUrl = '/';
     const token = Date.parse(new Date());
-    // mock数据更改路径
+    // // mock数据更改路径
     if (url.match(/^\/mock.*/)) {
-        baseUrl = '.';
+        baseUrl = '';
     }
 
     const defaultOptions = {
         url: `${baseUrl}${url}`,
         method: 'get',
+        timeout: 5000,
         params: {
             token: token
         }

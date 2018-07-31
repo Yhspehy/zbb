@@ -54,7 +54,6 @@ print_background: false
 <!-- /code_chunk_output -->
 
 
-
 ## 所有api的格式要求
 
 ```js
@@ -517,13 +516,15 @@ print_background: false
     return {
         "status": true,
         "msg": "...",
-        "data": [
+        "data": {
             "2018-07-23": [
-                {
+                {   
+                    "match_id": 11,
                     "hometeam": "热火",
                     "awayteam": "老鹰",
                     "start_time": 1211212,
                     "source": "NBA夏季联赛",
+                    "media": "CCTV5",
                     "status": "已结束",
                     "details_url": "url"，
                     "score": "100:99",
@@ -533,7 +534,7 @@ print_background: false
                     "is_trail": true
                 }
             ]
-        ]
+        }
     }
 ```
 

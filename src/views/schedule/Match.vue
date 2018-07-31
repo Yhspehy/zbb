@@ -1,6 +1,6 @@
 <template>
     <div class="schedule">
-        赛程
+        赛程2121
         <div>{{a}}</div>
     </div>
 </template>

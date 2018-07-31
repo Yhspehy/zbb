@@ -2,34 +2,41 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <title>zbb</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
-    crossorigin="anonymous">
-  <link href="<%= BASE_URL %>style/normalize.css" rel="stylesheet">
-  <link href="<%= BASE_URL %>style/common.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<link rel="icon" href="<%= BASE_URL %>favicon.ico">
+	<title>zbb</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+	    crossorigin="anonymous">
+	<link href="<%= BASE_URL %>style/normalize.css" rel="stylesheet">
+	<link href="<%= BASE_URL %>style/common.css" rel="stylesheet">
 </head>
 
 <body>
-  <noscript>
-    <strong>We're sorry but zbb doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-  </noscript>
-  <div id="app"></div>
-  <!-- built files will be auto injected -->
-  <script>
-    function plusReady() {
-      alert("uuid: " + plus.device.uuid);
-    }
-    if (window.plus) {
-      plusReady();
-    } else {
-      document.addEventListener("plusready", plusReady, false);
-    }
-  </script>
+	<noscript>
+		<strong>We're sorry but zbb doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+	</noscript>
+	<div id="app"></div>
+	<!-- built files will be auto injected -->
+	<script>
+		function plusReady() {
+			alert("uuid: " + plus.device.uuid);
+		}
+		if (window.plus) {
+			plusReady();
+		} else {
+			document.addEventListener("plusready", plusReady, false);
+		}
+
+		function setHtmlFontSize() {
+			var docEl = window.document.documentElement
+			docEl.style.fontSize = docEl.getBoundingClientRect().width / 10 + 'px'
+		}
+
+		setHtmlFontSize()
+	</script>
 </body>
 
 </html>

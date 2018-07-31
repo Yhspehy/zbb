@@ -5,8 +5,10 @@ import store from './store';
 import Toast from './components/toast/toast';
 
 import { request, setVm } from './Api/request';
+import moment from 'moment';
 
 Vue.prototype.$axios = request;
+Vue.prototype.$moment = moment;
 Vue.config.productionTip = false;
 Vue.use(Toast);
 let vm = new Vue({
