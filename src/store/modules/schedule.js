@@ -31,9 +31,10 @@ const user = {
                     });
             });
         },
-        GetMonthList() {
+        GetMonthList({ commit }, params) {
             return new Promise((resolve, reject) => {
-                getMonthList()
+                console.log(commit);
+                getMonthList(params)
                     .then(res => {
                         resolve(res);
                     })

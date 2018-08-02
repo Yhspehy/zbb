@@ -1,4 +1,5 @@
 import axios from 'axios';
+import merge from 'lodash/merge';
 let vm = null;
 
 /*----------  设置vm，便于后面获取  ----------*/
@@ -25,10 +26,7 @@ export function request(url, options) {
         }
     };
 
-    const mergeOptions = {
-        ...defaultOptions,
-        ...options
-    };
+    const mergeOptions = merge(defaultOptions, options);
 
     return axios(mergeOptions).then(res => {
         if (!res.data.status) {

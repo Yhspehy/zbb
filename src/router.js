@@ -137,17 +137,17 @@ const router = new Router({
             children: [
                 {
                     path: 'recommend',
-                    name: 'recommend',
+                    name: 'home_recommend',
                     component: HomeRecommend
                 },
                 {
                     path: 'highlights',
-                    name: 'highLights',
+                    name: 'home_highLights',
                     component: HomeHighLights
                 },
                 {
                     path: 'league/:league_id',
-                    name: 'league',
+                    name: 'home_league',
                     component: HomeLeague
                 }
             ]

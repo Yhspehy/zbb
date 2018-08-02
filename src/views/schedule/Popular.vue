@@ -8,19 +8,23 @@
                     <router-link 
                         :to="{'name': 'schedule_calendar'}"
                         v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">
-                        日历 今天 
+                        <i class="far fa-calendar-alt"></i>
+                        <span class="today-text"> 今天 </span>
                     </router-link >
                     <span>{{$moment(key).format('MM月DD号')}} {{$moment(key).format('dddd')}}</span>
                 </div>
 
-                <match-item v-for="item in popularObj[key]" :key="item.id" :matchData="item"></match-item>
-
+                <match-item
+                    v-for="item in popularObj[key]"
+                    :key="item.id"
+                    :matchData="item">
+                </match-item>
             </div>
         </div>
 
         <go-top word="今日赛事"></go-top>
     </div>
-</template>
+</template> 
 
 <script>
 import matchItem from './_components/MatchItem';
@@ -64,6 +68,13 @@ export default {
         font-size: 24px;
         color: $font-color-deep-grey;
         @include flex-center;
+        .fa-calendar-alt {
+            font-size: 30px;
+            color: #4c4c4c;
+        }
+        .today-text {
+            margin: 0 10px;
+        }
     }
 }
 </style>

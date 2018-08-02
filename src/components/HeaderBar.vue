@@ -1,6 +1,6 @@
 <template>
     <div class="headerBar">
-        <i @click="$router.back()"><</i>
+        <i @click="$router.back()" class="fas fa-chevron-left"></i>
         <span class="text">{{text}}</span>
         <router-link v-if="rightText" class="rightText" :to="{'name': rightTextRouteName}">{{rightText}}</router-link>
     </div>

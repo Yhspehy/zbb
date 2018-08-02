@@ -2,7 +2,13 @@
     <div class="scheduleCalendar">
         <header-bar text="赛程日历" rightText="今日赛程" rightTextRouteName="schedule_popular"></header-bar>
 
-        <calendar :header2="true" :itemList="monthList" @chooseDay="chooseDay"></calendar>
+        <calendar  
+            :header2="true"
+            :itemList="monthList"
+            @chooseDay="chooseDay"
+            @chooseMonth="chooseMonth"
+            :cacheData="true">
+        </calendar>
 
         <div v-if="monthList[chooseDayData.rowDate]" class="matchList border-top-1px">
             <div class="matchItem" v-for="item in monthList[chooseDayData.rowDate].match_list" :key="item.match_id">
@@ -36,13 +42,22 @@ export default {
             chooseDayData: {}
         };
     },
-    async created() {
-        let res = await this.$store.dispatch('schedule/GetMonthList');
-        this.monthList = res.data.data;
+    created() {
+        this.getMonthList('2018', '8');
     },
     methods: {
+        async getMonthList(year, month) {
+            let res = await this.$store.dispatch('schedule/GetMonthList', {
+                year: year,
+                month: month
+            });
+            this.monthList = res.data.data;
+        },
         chooseDay(obj) {
             this.chooseDayData = obj;
+        },
+        chooseMonth(obj) {
+            this.getMonthList(obj.year, obj.month.match(/(.*)月$/)[1]);
         }
     }
 };

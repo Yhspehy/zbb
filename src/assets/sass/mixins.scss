@@ -172,3 +172,31 @@
     justify-content: center;
     align-items: center;
 }
+@mixin text-image() {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(
+        -45deg,
+        #1d75f2 0%,
+        #0f6ef9 0%,
+        #0066ff 0%,
+        #0073ff 0%,
+        #0080ff 0%,
+        #009aff 50%,
+        #04a7ff 73%,
+        #07b5ff 100%
+    );
+}
+@mixin background-image() {
+    background-image: linear-gradient(
+        -45deg,
+        #1d75f2 0%,
+        #0f6ef9 0%,
+        #0066ff 0%,
+        #0073ff 0%,
+        #0080ff 0%,
+        #009aff 50%,
+        #04a7ff 73%,
+        #07b5ff 100%
+    );
+}

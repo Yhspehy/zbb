@@ -1,11 +1,11 @@
 <template>
     <div class="calendar">
+        <!-- 样式一 -->
         <div class="header1" v-if="header1">
             <!-- 选择年份 -->
             <div class="year">
                 <div class="year-header" @click.stop="showDropDown('year')">
                     <div class="rendered">{{choose.year}}</div>
-                    <!-- <Icon class="arrow" type="ios-arrow-down" :class="{rotate: visable.year}"></Icon> -->
                 </div>
                 <transition name="dropdown">
                     <div class="dropdown" v-if="visable.year">
@@ -19,7 +19,6 @@
             <div class="month">
                 <div class="month-header" @click.stop="showDropDown('month')">
                     <div class="rendered">{{choose.month}}</div>
-                    <!-- <Icon class="arrow" type="ios-arrow-down" :class="{rotate: visable.month}"></Icon> -->
                 </div>
                 <transition name="dropdown">
                     <div class="dropdown" v-if="visable.month">
@@ -38,11 +37,12 @@
             </div>
 
         </div>
-
+        
+        <!-- 样式二 -->
         <div class="header2" v-if="header2">
-            <i @click="prevMonth"><</i>
+            <i @click="prevMonth" class="fas fa-chevron-left"></i>
             <span class="time">{{choose.year}}年{{choose.month}}</span>
-            <i @click="nextMonth">></i>
+            <i @click="nextMonth" class="fas fa-chevron-right"></i>
         </div>
 
         <div class="full">
@@ -59,7 +59,7 @@
                                      'not-this-month-data': date.month != choose.month,
                                      'chooseDate': date.day === choose.day && date.month == choose.month}" @click="chooseDay(date)">
                                 <div>{{date.day}}</div>
-                                <div class="matchCount">{{itemList[date.rowDate] ? itemList[date.rowDate].match_count : 0}}场</div>
+                                <div class="matchCount">{{cloneItemList[date.rowDate] ? cloneItemList[date.rowDate].match_count : 0}}场</div>
                             </div>
                         </td>
                     </tr>
@@ -70,6 +70,21 @@
 </template>
 
 <script>
+/**
+ *
+ * 日历组件
+ *
+ * 可供选项：
+ * 1.header1  日历头部样式一，可自行使用查看样式
+ * 2.header2  日历头部样式二
+ * 3.isShowYear  样式一头部是否显示年份选择
+ * 4.itemList  数据对象传入{'2018-09-01': {}, .....}
+ * 5.setDate  设置默认显示的日期
+ * 6.cacheData   是否缓存数据
+ *
+ */
+
+import deepClone from 'lodash/cloneDeep';
 export default {
     name: 'schedule_calendar',
     props: {
@@ -94,6 +109,10 @@ export default {
         setDate: {
             type: String,
             default: ''
+        },
+        cacheData: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -110,6 +129,9 @@ export default {
                     .locale('zh-cn')
                     .format('MMM'),
                 day: ''
+            },
+            cloneItemList: {
+                a: 1
             },
             radioGroup: 'month',
             dayHeaderList: ['日', '一', '二', '三', '四', '五', '六']
@@ -226,7 +248,7 @@ export default {
             this.visable[type] = false;
         },
         chooseDay(date) {
-            if (this.itemList[date.rowDate] && this.itemList[date.rowDate].length === 0) {
+            if (this.cloneItemList[date.rowDate] && this.cloneItemList[date.rowDate].length === 0) {
                 return false;
             }
             if (date.month === this.choose.month) {
@@ -240,11 +262,11 @@ export default {
         },
         chooseYear(year) {
             this.choose.year = year;
-            this.$emit('chooseYear', year);
+            this.$emit('chooseYear', this.choose);
         },
         chooseMonth(month) {
             this.choose.month = month;
-            this.$emit('chooseMonth', month);
+            this.$emit('chooseMonth', this.choose);
         },
         prevMonth() {
             let month = this.choose.month.match(/(.*)月$/)[1];
@@ -254,6 +276,7 @@ export default {
             } else {
                 this.choose.month = Number(month) - 1 + '月';
             }
+            this.$emit('chooseMonth', this.choose);
         },
         nextMonth() {
             let month = this.choose.month.match(/(.*)月$/)[1];
@@ -263,9 +286,21 @@ export default {
             } else {
                 this.choose.month = Number(month) + 1 + '月';
             }
+            this.$emit('chooseMonth', this.choose);
         }
     },
-    watch: {}
+    watch: {
+        itemList: {
+            immediate: true,
+            handler: function(val) {
+                if (this.cacheData) {
+                    this.cloneItemList = Object.assign(this.cloneItemList, deepClone(val));
+                } else {
+                    this.cloneItemList = val;
+                }
+            }
+        }
+    }
 };
 </script>
 
