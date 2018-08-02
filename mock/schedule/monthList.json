@@ -1,0 +1,150 @@
+{
+    "status": true,
+    "msg": "...",
+    "data": {
+        "2018-08-01": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "match_id": 1,
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "program": "篮球公园",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "详情",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        },
+        "2018-08-02": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "match_id": 2,
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "回看",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        },
+        "2018-08-03": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "match_id": 1,
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "预约",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        },
+        "2018-08-04": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "match_id": 1,
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "已预约",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        },
+        "2018-08-05": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "match_id": 1,
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "集锦",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        },
+        "2018-08-06": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "match_id": 1,
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "集锦",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        },
+        "2018-08-07": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "集锦",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        },
+        "2018-08-08": {
+            "match_count": 4,
+            "match_list": [
+                {
+                    "match_id": 1,
+                    "hometeam": "热火",
+                    "awayteam": "老鹰",
+                    "start_time": 1211212,
+                    "score": "100:99",
+                    "source": "篮球公园第88期",
+                    "status": "已结束",
+                    "details_url": "url",
+                    "end_description_word": "集锦",
+                    "league": "NBA",
+                    "is_trail": true
+                }
+            ]
+        }
+    }
+}

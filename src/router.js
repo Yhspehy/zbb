@@ -18,6 +18,7 @@ const News = () => import('@/views/news/News');
 const Schedule = () => import('@/views/schedule/Index');
 const ScheduleMatch = () => import('@/views/schedule/Match');
 const SchedulePopular = () => import('@/views/schedule/Popular');
+const ScheduleCalendar = () => import('@/views/schedule/Calendar');
 const ScheduleFollow = () => import('@/views/schedule/Follow');
 const ScheduleLeague = () => import('@/views/schedule/League/Index');
 const ScheduleLeagueMatch = () => import('@/views/schedule/League/Match');
@@ -178,6 +179,11 @@ const router = new Router({
                     component: ScheduleFollow
                 }
             ]
+        },
+        {
+            path: '/schedule/calendar',
+            name: 'schedule_calendar',
+            component: ScheduleCalendar
         },
         {
             path: '/schedule/league/:league_id',

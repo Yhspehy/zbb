@@ -15,10 +15,6 @@ export default {
     },
     created() {
         console.log('created');
-    },
-    activated() {
-        console.log('activated');
-        this.a += 1;
     }
 };
 </script>

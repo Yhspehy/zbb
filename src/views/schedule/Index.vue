@@ -2,9 +2,9 @@
     <div class="schedule">
         <div class="topNav">
             <router-link class="navItem"
-                 :class="{'navActive': chosenItem === item.name}"
-                 @click.native="() => chosenItem = item.name"
-                 :to="{'name': item.routerName}"
+                 :class="{'navActive': chosenNav === item.name}"
+                 @click.native="clickNav(item.name)"
+                 :to="{'name': item.routeName}"
                  v-for="item in navList" :key="item.name">
                 {{ item.name }}
             </router-link>
@@ -14,34 +14,46 @@
 </template>
 
 <script>
+import find from 'lodash/find';
 export default {
     name: 'schedule',
     data() {
         return {
-            chosenItem: '',
+            chosenNav: '',
             navList: [
                 {
                     name: '赛事',
-                    routerName: 'schedule_match'
+                    routeName: 'schedule_match'
                 },
                 {
                     name: '热门',
-                    routerName: 'schedule_popular'
+                    routeName: 'schedule_popular'
                 },
                 {
                     name: '关注',
-                    routerName: 'schedule_follow'
+                    routeName: 'schedule_follow'
                 }
             ]
         };
     },
     created() {
         console.log('created');
+        let routeName = this.$route.name;
+        let fit = find(this.navList, function(e) {
+            return routeName === e.routeName;
+        });
+        this.clickNav(fit.name);
     },
     activated() {
         console.log('activated');
+        this.chosenNav = this.$store.state.schedule.chosenNav;
     },
-    methods: {}
+    methods: {
+        clickNav(name) {
+            this.chosenNav = name;
+            this.$store.commit('schedule/SET_CHOSENNAV', name);
+        }
+    }
 };
 </script>
 

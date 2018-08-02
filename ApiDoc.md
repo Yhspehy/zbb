@@ -552,6 +552,7 @@ print_background: false
      * 
      * @return match_count   当日所有的比赛
      * @return match_list/status   比赛状态
+     * @return program  节目名称
      * @return details_url   如果比赛结束了，返回集锦或者回放的url
      * @return end_description_word  比赛结束后链接描述词  <集锦 详情 回看>
      * @return is_trail  是否预约
@@ -560,25 +561,28 @@ print_background: false
     return {
         "status": true,
         "msg": "...",
-        "data": [
-            {
-                "date": "2018-7-23",
+        "data": {
+            "2018-08-01": {
                 "match_count": 4,
+                
                 "match_list": [
-                    "hometeam": "热火",
-                    "awayteam": "老鹰",
-                    "start_time": 1211212,
-                    "home_score": 99,
-                    "away_score": 101, 
-                    "source": "篮球公园第88期",
-                    "status": "已结束",
-                    "details_url": "url",
-                    "end_description_word": "集锦",
-                    "league": "NBA",
-                    "is_trail": true
+                    {
+                        "match_id": 1,
+                        "hometeam": "热火",
+                        "awayteam": "老鹰",
+                        "start_time": 1211212,
+                        "score": "100:99",
+                        "program": "篮球公园",
+                        "source": "篮球公园第88期",
+                        "status": "已结束",
+                        "details_url": "url",
+                        "end_description_word": "集锦",
+                        "league": "NBA",
+                        "is_trail": true
+                    }
                 ]
             }
-        ]
+        }
     }
 ```
 

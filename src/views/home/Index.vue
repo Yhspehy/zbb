@@ -39,7 +39,7 @@ export default {
     },
     created() {
         console.log(this.test);
-        this.$toast({ duration: 5000, message: '复制成功' });
+        this.$toast({ duration: 500, message: '复制成功' });
         this.$store.dispatch('league/GetSubLeagueList');
     },
     computed: {
