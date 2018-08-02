@@ -38,11 +38,8 @@
                     <!-- 直播平台 -->
                     <div class="media">
                         <div>{{item.media}}</div>
-                        <div class="linkBtn"
-                             :class="{'live': item.end_description_word !== '直播'}"
-                             v-if="item.end_description_word">{{item.end_description_word}}</div>
+                        <div class="linkBtn" :class="{'live': item.end_description_word !== '直播'}" v-if="item.end_description_word">{{item.end_description_word}}</div>
                     </div>
-
 
                 </div>
             </div>
