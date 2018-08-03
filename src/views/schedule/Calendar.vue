@@ -7,7 +7,7 @@
             :itemList="monthList"
             @chooseDay="chooseDay"
             @chooseMonth="chooseMonth"
-            :cacheData="true">
+            :cacheData="false">
         </calendar>
 
         <div v-if="monthList[chooseDayData.rowDate]" class="matchList border-top-1px">
@@ -43,7 +43,10 @@ export default {
         };
     },
     created() {
-        this.getMonthList('2018', '8');
+        this.chooseMonth({
+            year: this.$moment().format('YYYY'),
+            month: this.$moment().format('M')
+        });
     },
     methods: {
         async getMonthList(year, month) {
@@ -55,9 +58,17 @@ export default {
         },
         chooseDay(obj) {
             this.chooseDayData = obj;
+            this.$C_Alert.open('aaa');
         },
         chooseMonth(obj) {
-            this.getMonthList(obj.year, obj.month.match(/(.*)月$/)[1]);
+            const year = obj.year;
+            const month = obj.month.match(/(.*?)月?$/)[1];
+            const str = `${year}-${month}`;
+            if (!this.$store.state.schedule.monthList[str]) {
+                this.getMonthList(year, month);
+            } else {
+                this.monthList = this.$store.state.schedule.monthList[str];
+            }
         }
     }
 };

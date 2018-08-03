@@ -1,25 +1,22 @@
 <template>
     <div class="schedule">
-        赛程2121
-        <div>{{a}}</div>
+        <div v-for="item in leagueList" :key="item.id">
+            {{ item }}
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'schedule',
+    name: 'schedule_match',
     data() {
         return {
-            a: 1
+            basketballList: [],
+            footballList: []
         };
     },
-    created() {
-        console.log('created');
-    },
-    activated() {
-        console.log('activated');
-        this.a += 1;
-    }
+    created() {},
+    methods: {}
 };
 </script>
 

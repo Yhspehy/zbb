@@ -48,6 +48,17 @@ export default {
         console.log('activated');
         this.chosenNav = this.$store.state.schedule.chosenNav;
     },
+    mounted() {
+        const year = this.$moment().format('YYYY');
+        const month = this.$moment().format('M');
+        const str = `${year}-${month}`;
+        if (!this.$store.state.schedule.monthList[str]) {
+            this.$store.dispatch('schedule/GetMonthList', {
+                year: year,
+                month: month
+            });
+        }
+    },
     methods: {
         clickNav(name) {
             this.chosenNav = name;

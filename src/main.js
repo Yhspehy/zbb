@@ -5,10 +5,12 @@ import store from './store';
 import Toast from './components/toast/toast';
 
 import { request, setVm } from './Api/request';
+import C_Alert from './Utils/Alert';
 import moment from 'moment';
 
 Vue.prototype.$axios = request;
 Vue.prototype.$moment = moment;
+Vue.prototype.$C_Alert = C_Alert;
 Vue.config.productionTip = false;
 Vue.use(Toast);
 let vm = new Vue({

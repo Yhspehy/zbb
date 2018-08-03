@@ -4,7 +4,6 @@
             <div v-for="(val, key) in popularObj" :key="key">
                 <!-- 时间条 -->
                 <div class="timeBar">
-                    <i></i>
                     <router-link 
                         :to="{'name': 'schedule_calendar'}"
                         v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">
@@ -30,7 +29,7 @@
 import matchItem from './_components/MatchItem';
 import goTop from './_components/GoTop';
 export default {
-    name: 'schedule',
+    name: 'schedule_popular',
     components: { matchItem, goTop },
     data() {
         return {

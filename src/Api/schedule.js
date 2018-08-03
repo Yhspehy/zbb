@@ -4,6 +4,10 @@ export function getPopularList() {
     return request('/mock/schedule/popularList');
 }
 
+export function getFollowList() {
+    return request('/mock/schedule/followList');
+}
+
 export function getMonthList(params) {
     return request('/mock/schedule/monthList', {
         params: {

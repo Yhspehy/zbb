@@ -1,4 +1,5 @@
-import { getPopularList, getMonthList } from '@/Api/schedule';
+import { getPopularList, getMonthList, getFollowList } from '@/Api/schedule';
+import cloneDeep from 'lodash/cloneDeep';
 
 const user = {
     namespaced: true,
@@ -6,15 +7,25 @@ const user = {
     state: {
         chosenNav: '热门',
         popularList: {},
-        calendarList: []
+        followList: {},
+        calendarList: [],
+        monthList: {}
     },
 
     mutations: {
+        SET_CHOSENNAV: (state, name) => {
+            state.chosenNav = name;
+        },
         SET_POPULARLIST: (state, list) => {
             state.popularList = list;
         },
-        SET_CHOSENNAV: (state, name) => {
-            state.chosenNav = name;
+        SET_FOLLOWLIST: (state, list) => {
+            state.followList = list;
+        },
+        SET_MONTHLIST: (state, data) => {
+            let str = `${data.params.year}-${data.params.month}`;
+            if (state.monthList[str]) return;
+            state.monthList[str] = cloneDeep(data.list);
         }
     },
 
@@ -31,11 +42,26 @@ const user = {
                     });
             });
         },
+        GetFollowList({ commit }) {
+            return new Promise((resolve, reject) => {
+                getFollowList()
+                    .then(res => {
+                        commit('SET_FOLLOWLIST', res.data.data);
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            });
+        },
         GetMonthList({ commit }, params) {
             return new Promise((resolve, reject) => {
-                console.log(commit);
                 getMonthList(params)
                     .then(res => {
+                        commit('SET_MONTHLIST', {
+                            params: params,
+                            list: res.data.data
+                        });
                         resolve(res);
                     })
                     .catch(error => {

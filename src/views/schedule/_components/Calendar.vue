@@ -57,7 +57,7 @@
                         <td v-for="date in week" :key="date.rowDate">
                             <div class="dateCell" :class="{
                                      'not-this-month-data': date.month != choose.month,
-                                     'chooseDate': date.day === choose.day && date.month == choose.month}" @click="chooseDay(date)">
+                                     'chooseDate': date.day == choose.day && date.month == choose.month}" @click="chooseDay(date)">
                                 <div>{{date.day}}</div>
                                 <div class="matchCount">{{cloneItemList[date.rowDate] ? cloneItemList[date.rowDate].match_count : 0}}场</div>
                             </div>
@@ -84,7 +84,6 @@
  *
  */
 
-import deepClone from 'lodash/cloneDeep';
 export default {
     name: 'schedule_calendar',
     props: {
@@ -130,9 +129,7 @@ export default {
                     .format('MMM'),
                 day: ''
             },
-            cloneItemList: {
-                a: 1
-            },
+            cloneItemList: {},
             radioGroup: 'month',
             dayHeaderList: ['日', '一', '二', '三', '四', '五', '六']
         };
@@ -294,7 +291,9 @@ export default {
             immediate: true,
             handler: function(val) {
                 if (this.cacheData) {
-                    this.cloneItemList = Object.assign(this.cloneItemList, deepClone(val));
+                    for (let key in val) {
+                        this.$set(this.cloneItemList, key, val[key]);
+                    }
                 } else {
                     this.cloneItemList = val;
                 }
