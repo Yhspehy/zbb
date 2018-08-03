@@ -68,7 +68,7 @@ export default {
         color: $font-color-deep-grey;
         @include flex-center;
         .fa-calendar-alt {
-            font-size: 30px;
+            font-size: 24px;
             color: #4c4c4c;
         }
         .today-text {

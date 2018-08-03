@@ -2,6 +2,11 @@ a {
     text-decoration: none;
 }
 
+a:visited { 
+    color: #4d4d4d; 
+} 
+
+
 img {
     max-width: 100%;
 }
@@ -150,6 +155,14 @@ body {
 
 .clearfix {
     zoom: 1;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
 }
 
 /*----------  省略号  ----------*/
