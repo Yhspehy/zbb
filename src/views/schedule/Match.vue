@@ -2,7 +2,7 @@
     <div class="schedule_match">
         <div v-for="item in typeList" :key="item.id">
             <div class="typeName">{{item.name}}</div>
-            <div v-for="el in item.list" :key="el" class="leagueItem border-bottom-1px">
+            <div v-for="el in item.list" :key="el" class="leagueItem border-bottom-1px" @click="goLeagueMatch(el)">
                 <span class="leagueName">{{el}}</span>
                 <span class="count" :style="{'color': matchCountObj[el]? '#0088ff': ''}">
                     <span v-if="matchCountObj[el]">今日共有{{matchCountObj[el]}}场比赛</span>
@@ -46,17 +46,31 @@ export default {
                 if (!self.matchCountObj[e]) self.$set(self.matchCountObj, e, 0);
             });
         },
-        getLeagueTodaMatchCount() {
+        async getLeagueTodaMatchCount() {
             const self = this;
             const yearMonth = this.$moment().format('YYYY-M');
             const date = this.$moment().format('YYYY-MM-DD');
-            if (!this.$store.state.schedule.monthList[yearMonth]) return;
-            const todayMatchList = this.$store.state.schedule.monthList[yearMonth][date];
+            let todayMatchList = {};
+            if (!this.$store.state.schedule.monthList[yearMonth]) {
+                let res = await this.$store.dispatch('schedule/GetMonthList', {
+                    year: this.$moment().format('YYYY'),
+                    month: this.$moment().format('M')
+                });
+                todayMatchList = res.data.data[date];
+            } else {
+                todayMatchList = this.$store.state.schedule.monthList[yearMonth][date];
+            }
             todayMatchList.match_list.forEach(e => {
                 let l = find(self.allLeagueList, t => {
                     return t === e.league;
                 });
                 self.matchCountObj[l] += 1;
+            });
+        },
+        goLeagueMatch(item) {
+            this.$store.commit('schedule/SET_MATCHLEAGUENAME', item);
+            this.$router.push({
+                path: `/schedule/league/1/match`
             });
         }
     }

@@ -26,7 +26,6 @@
     <!-- </transition> -->
 </template>
 <script>
-
 export default {
     data() {
         return {
@@ -45,8 +44,7 @@ export default {
         onOk() {
             this.option.visiable = false;
         },
-        onCancel() {
-        }
+        onCancel() {}
     }
 };
 </script>
@@ -59,7 +57,7 @@ export default {
     bottom: 0;
     left: 0;
 }
-.mask{
+.mask {
     position: fixed;
     top: 0;
     right: 0;
@@ -67,7 +65,7 @@ export default {
     left: 0;
     background: #000;
     opacity: 0.5;
-    z-index: 999
+    z-index: 999;
 }
 .dialog-body {
     position: fixed;
@@ -79,7 +77,7 @@ export default {
     transform: translate(-50%, -50%);
     color: #4d4d4d;
     background-color: #fff;
-    .content{
+    .content {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -107,8 +105,8 @@ export default {
             flex: 1 0 50%;
             color: #0088ff;
             &.alert {
-                @include rounded(bottom,left);
-                @include rounded(bottom,right);
+                @include rounded(bottom, left);
+                @include rounded(bottom, right);
                 color: #fff;
                 @include background-image;
             }

@@ -41,16 +41,24 @@ export default {
 .headerBar {
     height: 85px;
     font-size: 30px;
-    padding: 20px 35px;
+    padding: 26px 35px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 100;
     .text {
-        box-sizing: content-box;
         display: inline-block;
-        width: 300px;
-        padding-left: 265px;
+        width: calc(100% - 30px);
+        text-align: center;
     }
     .rightText {
+        position: absolute;
         font-size: 24px;
         color: #f63146;
+        bottom: 26px;
+        right: 35px;
     }
 }
 </style>

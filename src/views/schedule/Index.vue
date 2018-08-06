@@ -1,22 +1,19 @@
 <template>
     <div class="schedule">
-        <div class="topNav">
-            <router-link class="navItem"
-                 :class="{'navActive': chosenNav === item.name}"
-                 @click.native="clickNav(item.name)"
-                 :to="{'name': item.routeName}"
-                 v-for="item in navList" :key="item.name">
-                {{ item.name }}
-            </router-link>
+        <top-nav :navList="navList" :chosenNav.sync="chosenNav"></top-nav>
+
+        <div class="scheduleContent">
+            <router-view></router-view>
         </div>
-        <router-view></router-view>
     </div>
 </template>
 
 <script>
 import find from 'lodash/find';
+import topNav from '@/components/TopNav.vue';
 export default {
     name: 'schedule',
+    components: { topNav },
     data() {
         return {
             chosenNav: '',
@@ -38,60 +35,32 @@ export default {
     },
     created() {
         console.log('created');
-        let routeName = this.$route.name;
-        let fit = find(this.navList, function(e) {
-            return routeName === e.routeName;
-        });
-        this.clickNav(fit.name);
     },
     activated() {
         console.log('activated');
         this.chosenNav = this.$store.state.schedule.chosenNav;
     },
-    mounted() {
-        const year = this.$moment().format('YYYY');
-        const month = this.$moment().format('M');
-        const str = `${year}-${month}`;
-        if (!this.$store.state.schedule.monthList[str]) {
-            this.$store.dispatch('schedule/GetMonthList', {
-                year: year,
-                month: month
-            });
-        }
-    },
-    methods: {
-        clickNav(name) {
-            this.chosenNav = name;
-            this.$store.commit('schedule/SET_CHOSENNAV', name);
+    mounted() {},
+    methods: {},
+    watch: {
+        '$route.name': {
+            immediate: true,
+            handler: function(val) {
+                let fit = find(this.navList, function(e) {
+                    return val === e.routeName;
+                });
+                if (fit && fit.name) {
+                    this.chosenNav = fit.name;
+                    this.$store.commit('schedule/SET_CHOSENNAV', fit.name);
+                }
+            }
         }
     }
 };
 </script>
 
 <style scoped lang="scss">
-.schedule {
-    .topNav {
-        display: flex;
-        padding: 32px 204px 20px;
-        justify-content: space-around;
-        .navItem {
-            font-size: 30px;
-            color: $font-color-grey;
-        }
-        .navActive {
-            font-size: 36px;
-            color: #0099ff;
-            position: relative;
-            &:after {
-                content: '';
-                position: absolute;
-                height: 4px;
-                width: 30px;
-                background: #0099ff;
-                bottom: -10px;
-                left: 21px;
-            }
-        }
-    }
+.scheduleContent {
+    margin-top: 92px;
 }
 </style>

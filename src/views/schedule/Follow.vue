@@ -34,7 +34,6 @@ export default {
         };
     },
     created() {
-        console.log('created');
         this.$moment.locale('zh-cn');
         if (Object.keys(this.$store.state.schedule.followList).length) {
             this.followObj = this.$store.state.schedule.followList;
@@ -66,10 +65,6 @@ export default {
         display: flex;
         align-items: center;
         padding-left: 35px;
-        .fa-calendar-alt {
-            font-size: 30px;
-            color: #4c4c4c;
-        }
         .today-text {
             margin: 0 10px;
         }

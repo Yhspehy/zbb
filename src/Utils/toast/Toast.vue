@@ -16,7 +16,7 @@ export default {
         };
     },
     methods: {
-        afterLeave: function(el) {
+        afterLeave: function() {
             this.$el.parentNode.removeChild(this.$el);
         }
     }

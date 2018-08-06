@@ -37,12 +37,22 @@ export default {
         };
     },
     created() {
-        console.log('created');
         this.$moment.locale('zh-cn');
         if (Object.keys(this.$store.state.schedule.popularList).length) {
             this.popularObj = this.$store.state.schedule.popularList;
         } else {
             this.getPopularList();
+        }
+    },
+    mounted() {
+        const year = this.$moment().format('YYYY');
+        const month = this.$moment().format('M');
+        const str = `${year}-${month}`;
+        if (!this.$store.state.schedule.monthList[str]) {
+            this.$store.dispatch('schedule/GetMonthList', {
+                year: year,
+                month: month
+            });
         }
     },
     methods: {

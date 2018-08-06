@@ -28,21 +28,28 @@ export default {
             this.$toast('message');
         },
         alert() {
-            this.$dialog.alert('alert').then(()=>{ // This will be triggered when user clicks on ok
-                console.log("ok");
+            this.$dialog.alert('alert').then(() => {
+                // This will be triggered when user clicks on ok
+                console.log('ok');
             });
         },
         alertWithHtml() {
-            this.$dialog.alert(`<p>当前版本:1.0.0</p></br><p>是否更新至最新版本:2.2.2</p>`,{html:true}).then(()=>{ // This will be triggered when user clicks on ok
-                console.log("ok");
+            this.$dialog.alert(`<p>当前版本:1.0.0</p></br><p>是否更新至最新版本:2.2.2</p>`, { html: true }).then(() => {
+                // This will be triggered when user clicks on ok
+                console.log('ok');
             });
         },
         confirm() {
-            this.$dialog.confirm('confirm').then(()=>{ // This will be triggered when user clicks on ok
-                console.log("ok"); 
-            },() => { // This will be triggered when user clicks on cancel
-                console.log('cancel')
-            });
+            this.$dialog.confirm('confirm').then(
+                () => {
+                    // This will be triggered when user clicks on ok
+                    console.log('ok');
+                },
+                () => {
+                    // This will be triggered when user clicks on cancel
+                    console.log('cancel');
+                }
+            );
         }
     }
 };
@@ -50,9 +57,9 @@ export default {
 
 <style scoped lang="scss">
 .demo {
-  button {
-      border: 1px solid #e2e2e2;
-      padding: 4px 8px;
-  }
+    button {
+        border: 1px solid #e2e2e2;
+        padding: 4px 8px;
+    }
 }
 </style>

@@ -8,8 +8,8 @@ const user = {
         chosenNav: '热门',
         popularList: {},
         followList: {},
-        calendarList: [],
-        monthList: {}
+        monthList: {},
+        matchLeagueName: ''
     },
 
     mutations: {
@@ -26,6 +26,9 @@ const user = {
             let str = `${data.params.year}-${data.params.month}`;
             if (state.monthList[str]) return;
             state.monthList[str] = cloneDeep(data.list);
+        },
+        SET_MATCHLEAGUENAME: (state, name) => {
+            state.matchLeagueName = name;
         }
     },
 
