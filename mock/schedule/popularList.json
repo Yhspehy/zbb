@@ -5,8 +5,8 @@
         "2018-08-06": [
             {
             "match_id": 8,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
+            "hometeam": "湖人",
+            "awayteam": "勇士",
             "start_time": 1533025880,
             "source": "NBA夏季联赛",
             "media": "CCTV5",
@@ -20,8 +20,8 @@
             "is_trail": true
             }, {
                 "match_id": 1,
-                "hometeam": "热火",
-                "awayteam": "老鹰",
+                "hometeam": "步行者",
+                "awayteam": "独行侠",
                 "start_time": 1533025880,
                 "source": "NBA夏季联赛",
                 "media": "CCTV5",
@@ -35,8 +35,8 @@
                 "is_trail": true
             }, {
                 "match_id": 2,
-                "hometeam": "热火",
-                "awayteam": "老鹰",
+                "hometeam": "灰熊",
+                "awayteam": "步行者",
                 "start_time": 1533025880,
                 "source": "NBA夏季联赛",
                 "media": "CCTV5",
@@ -50,8 +50,8 @@
                 "is_trail": true
             }, {
                 "match_id": 3,
-                "hometeam": "热火",
-                "awayteam": "老鹰",
+                "hometeam": "黄蜂",
+                "awayteam": "快船",
                 "start_time": 1533025880,
                 "source": "NBA夏季联赛",
                 "media": "CCTV5",
@@ -80,8 +80,8 @@
                 "is_trail": true
             }, {
                 "match_id": 5,
-                "hometeam": "热火",
-                "awayteam": "老鹰",
+                "hometeam": "奇才",
+                "awayteam": "篮网",
                 "start_time": 1533025880,
                 "source": "NBA夏季联赛",
                 "media": "CCTV5",

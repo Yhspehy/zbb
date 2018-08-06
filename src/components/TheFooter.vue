@@ -2,7 +2,7 @@
     <footer class="footer">
         <ul class="main-nav d-flex justify-content-between align-items-center">
             <li class="item-li">
-                <router-link to="/">
+                <router-link to="/home">
                     <i class="fa fa-home"></i>首页
                 </router-link>
             </li>

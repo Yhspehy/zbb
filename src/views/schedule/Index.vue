@@ -5,15 +5,22 @@
         <div class="scheduleContent">
             <router-view></router-view>
         </div>
+        
+        <v-footer></v-footer>
     </div>
 </template>
 
 <script>
 import find from 'lodash/find';
 import topNav from '@/components/TopNav.vue';
+import vFooter from '@/components/TheFooter';
+
 export default {
     name: 'schedule',
-    components: { topNav },
+    components: {
+        topNav,
+        vFooter
+    },
     data() {
         return {
             chosenNav: '',
