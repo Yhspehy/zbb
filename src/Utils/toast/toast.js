@@ -1,3 +1,8 @@
+/**
+ *
+ * 具体用法参照 http://localhost:8080/demo
+ *
+ */
 import Toast from './Toast.vue';
 var plugin = {};
 

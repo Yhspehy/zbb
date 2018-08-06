@@ -40,6 +40,7 @@ const ProfileSettingProblem = () => import('@/views/profile/Myself');
 const ProfileSettingAbout = () => import('@/views/profile/About');
 
 const About = () => import('@/views/About');
+const Demo = () => import('@/views/Demo');
 
 // const list = [
 //     {
@@ -264,6 +265,12 @@ const router = new Router({
             path: '/about',
             name: 'about',
             component: About
+        },
+        //demo for dialog toast ...
+        {
+            path: '/demo',
+            name: 'demo',
+            component: Demo
         },
         {
             path: '/',

@@ -3,13 +3,13 @@
         <div class="header">
             <ul class="nav d-flex justify-content-between align-items-center">
                 <li>
-                    <router-link :to="{'name':'recommend'}">推荐</router-link>
+                    <router-link :to="{'name':'home_recommend'}">推荐</router-link>
                 </li>
                 <li>
-                    <router-link :to="{'name':'highLights'}">集锦</router-link>
+                    <router-link :to="{'name':'home_highLights'}">集锦</router-link>
                 </li>
                 <li v-for="item in subLeagueList" :key="item.league_id">
-                    <router-link :to="{'name': 'league', 'params':{'league_id':item.league_id}}">{{item.league_name}}</router-link>
+                    <router-link :to="{'name': 'home_league', 'params':{'league_id':item.league_id}}">{{item.league_name}}</router-link>
                 </li>
             </ul>
             <div class="subscribe d-flex justify-content-between align-items-center">

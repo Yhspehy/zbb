@@ -36,6 +36,7 @@ export default {
         },
         open(content) {
             this.show = true;
+            console.log(this);
             this.content = content;
         }
     }

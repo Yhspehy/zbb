@@ -17,7 +17,6 @@ export default {
     },
     methods: {
         afterLeave: function(el) {
-            console.log(el);
             this.$el.parentNode.removeChild(this.$el);
         }
     }
@@ -38,10 +37,10 @@ export default {
 .toast {
     z-index: 9999;
     border-radius: 10px;
-    padding: 1rem 0;
-    min-width: 15rem;
-    max-width: 61%;
-    font-size: 1rem;
+    height: 100px;
+    width: 460px;
+    font-size: 28px;
+    line-height: 100px;
     text-align: center;
     color: #fff;
     word-wrap: break-word;
