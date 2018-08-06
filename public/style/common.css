@@ -36,6 +36,10 @@ body {
     box-sizing: inherit;
 }
 
+.d-none {
+    display: none;
+}
+
 /*----------  flex config  ----------*/
 
 .d-flex {
