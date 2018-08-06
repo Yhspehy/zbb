@@ -2,13 +2,13 @@
     <div class="recommend">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide d-flex justify-content-center align-items-center">
                     <img src="../../../public/image/lunbo1.jpeg">
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide d-flex justify-content-center align-items-center">
                     <img src="../../../public/image/lunbo1.jpeg">
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide d-flex justify-content-center align-items-center">
                     <img src="../../../public/image/lunbo1.jpeg">
                 </div>
             </div>
@@ -17,15 +17,34 @@
         </div>
         <div class="match-avi">
             <div class="avi-detail">
-                <div class="avi-item"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide avi-item d-flex flex-column justify-content-center align-items-center" v-for="(val, key) in todayObj" :key="key">
+                        <div class="title">{{val.source}}</div>
+                        <div class="result d-flex justify-content-between align-items-center">
+                            <img src="../../../public/image/pics/球队&球员/湖人.png" alt="">
+                            <div>
+                                <span v-bind:class="{ 'win': val.home_score > val.away_score }">{{val.home_score}}</span> :
+                                <span v-bind:class="{ 'win': val.home_score < val.away_score }">{{val.away_score}}</span>
+                            </div>
+                            <img src="../../../public/image/pics/球队&球员/勇士.png" alt="">
+                        </div>
+                        <div class="name d-flex justify-content-between align-items-center">
+                            <span class="team">{{val.hometeam}}
+                                <span>(主)</span>
+                            </span>
+                            <div class="state">{{val.end_description_word}}</div>
+                            <span class="team">{{val.awayteam}}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="avi-tips">
-                <span class="tip-time">07月04号</span>
+                <span class="tip-time">{{this.$moment().format('MM月DD号')}}</span>
                 <span class="line">|</span>
                 <span class="user-name">Mavis</span>&nbsp;
-                <span class="tip-slot">中午好，</span>
+                <span class="tip-slot" id="local-time"></span>
                 <span class="tip-content">今天还有
-                    <span class="match-count">5</span>场赛事直播</span>
+                    <span class="match-count">{{todayObj.length}}</span>场赛事直播</span>
             </div>
         </div>
         <div class="report">
@@ -79,9 +98,40 @@
 import Swiper from 'swiper';
 
 export default {
-    name: 'home_recommend',
+    name: 'recommend',
+    data() {
+        return {
+            todayObj: {}
+        };
+    },
+    created() {
+        console.log('created');
+        this.$moment.locale('zh-cn');
+        this.getPopularList();
+    },
+    activated() {
+        console.log('activated');
+    },
+    methods: {
+        async getPopularList() {
+            let res = await this.$store.dispatch('schedule/GetPopularList');
+            for (let key in res.data.data) {
+                if (this.$moment(key).format('MM月DD号') === this.$moment().format('MM月DD号')) {
+                    console.log('today');
+                    this.todayObj = res.data.data[key];
+                    console.log(this.todayObj);
+                }
+            }
+            this.popularObj = res.data.data;
+        }
+    },
     mounted() {
         new Swiper('.swiper-container', {
+            autoplay: {
+                delay: 3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: false
+            },
             slidesPerView: 1,
             loop: true,
             pagination: {
@@ -99,30 +149,39 @@ export default {
                 }
             }
         });
+        setTimeout(function() {
+            new Swiper('.avi-detail', {
+                centeredSlides: true,
+                spaceBetween: 10,
+                slidesPerView: 2,
+                initialSlide: 2,
+                watchActiveIndex: true
+            });
+        }, 50);
+        var now = new Date();
+        var hour = now.getHours();
+        if (hour < 6) {
+            document.getElementById('local-time').innerHTML = '凌晨好, ';
+        } else if (hour < 9) {
+            document.getElementById('local-time').innerHTML = '早上好, ';
+        } else if (hour < 12) {
+            document.getElementById('local-time').innerHTML = '上午好, ';
+        } else if (hour < 14) {
+            document.getElementById('local-time').innerHTML = '中午好, ';
+        } else if (hour < 17) {
+            document.getElementById('local-time').innerHTML = '下午好, ';
+        } else if (hour < 19) {
+            document.getElementById('local-time').innerHTML = '傍晚好, ';
+        } else if (hour < 22) {
+            document.getElementById('local-time').innerHTML = '晚上好, ';
+        } else {
+            document.getElementById('local-time').innerHTML = '夜里好, ';
+        }
     }
 };
 </script>
 
 <style scoped lang="scss">
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-}
 .recommend {
     .swiper-container {
         width: 100%;
@@ -157,10 +216,53 @@ export default {
                 margin: 0 auto;
                 width: 460px;
                 height: 192px;
+                font-size: 24px;
                 background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#f2f2f2, #f2f2f2);
                 background-blend-mode: normal, normal;
                 box-shadow: 0px 0px 11px 0px rgba(0, 51, 109, 0.25);
                 border-radius: 6px;
+                color: #808080;
+                .time {
+                }
+                .result {
+                    width: 100%;
+                    text-align: center;
+                    img {
+                        width: 109px;
+                        height: 68px;
+                        flex: 0 1 33%;
+                    }
+                    .win {
+                        color: #f3091a;
+                    }
+                }
+                .name {
+                    width: 100%;
+                    color: #4d4d4d;
+                    .team {
+                        flex: 0 1 33%;
+                        text-align: center;
+                    }
+                    .state {
+                        width: 120px;
+                        height: 36px;
+                        text-align: center;
+                        color: #fff;
+                        background-image: linear-gradient(
+                                -90deg,
+                                #0080ff 0%,
+                                #0077ff 0%,
+                                #006eff 0%,
+                                #0073ff 0%,
+                                #0077ff 0%,
+                                #0089ff 50%,
+                                #0091ff 79%,
+                                #0099ff 100%
+                            ),
+                            linear-gradient(#808080, #808080);
+                        border-radius: 18px;
+                    }
+                }
             }
         }
         .avi-tips {

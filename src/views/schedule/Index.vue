@@ -10,13 +10,18 @@
             </router-link>
         </div>
         <router-view></router-view>
+        <v-footer></v-footer>
     </div>
 </template>
 
 <script>
+import TheFooter from '@/components/TheFooter';
 import find from 'lodash/find';
 export default {
     name: 'schedule',
+    components: {
+        'v-footer': TheFooter
+    },
     data() {
         return {
             chosenNav: '',
