@@ -17,6 +17,10 @@
  * 由于行内样式不会自动计算vw
  * 所以要自行计算
  *
+ * navList: [{name: 'xx', routeName: 'ww'}]
+ *
+ * 使用chooseNav来接收传播事件
+ *
  */
 export default {
     name: 'c_TopNav',
@@ -25,6 +29,7 @@ export default {
             type: Array,
             require: true
         },
+        // 默认选中的nav name
         chosenNav: {
             type: String,
             require: true
@@ -33,10 +38,12 @@ export default {
             type: String,
             default: '4.267vw 27.2vw 2.667vw'
         },
+        // position的top数值
         top: {
             type: String,
             default: '0'
         },
+        // 是否replace历史揭露
         replace: {
             type: Boolean,
             default: false
@@ -50,11 +57,11 @@ export default {
     methods: {
         clickNav(name) {
             this.ChosenNav = name;
-            this.$store.commit('schedule/SET_CHOSENNAV', name);
-            this.$emit('update:chosenNav', name);
+            this.$emit('chooseNav', name);
         }
     },
     watch: {
+        // 兼容浏览器popstate，防止父组件数据改变而子组件未改变
         chosenNav(val) {
             this.ChosenNav = val;
         }

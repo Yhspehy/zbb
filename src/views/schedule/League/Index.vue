@@ -4,7 +4,8 @@
 
         <top-nav
             :navList="navList"
-            :chosenNav.sync="chosenNav"
+            :chosenNav="chosenNav"
+            @chooseNav="chooseNav"
             :replace="true"
             top="10vw"
             padding="4.267vw 4.8vw 2.667vw">
@@ -49,9 +50,13 @@ export default {
         };
     },
     created() {
-        this.type = this.$store.state.schedule.matchLeagueName;
+        this.type = this.$store.state.schedule.matchLeagueName || 'NBA';
     },
-    methods: {}
+    methods: {
+        chooseNav(name) {
+            this.chosenNav = name;
+        }
+    }
 };
 </script>
 

@@ -1,34 +1,51 @@
 <template>
     <footer class="footer">
-        <ul class="main-nav d-flex justify-content-between align-items-center">
-            <li class="item-li">
-                <router-link to="/home">
-                    <i class="fa fa-home"></i>首页
-                </router-link>
-            </li>
-            <li class="item-li">
-                <router-link to="/news">
-                    <i class="fa fa-file"></i>新闻</router-link>
-            </li>
-            <li class="item-li">
-                <router-link to="/schedule">
-                    <i class="fa fa-calendar"></i>赛程</router-link>
-            </li>
-            <li class="item-li">
-                <router-link to="/community">
-                    <i class="fa fa-comments"></i>社区</router-link>
-            </li>
-            <li class="item-li">
-                <router-link to="/profile">
-                    <i class="fa fa-user-circle"></i>我的</router-link>
-            </li>
-        </ul>
+        <router-link
+            v-for="el in navList"
+            :key="el.name"
+            :to="el.routePath"
+            @click.native="$store.commit('home/SET_HOMEFOOTER', el.routePath)"
+            :class="{'active': el.routePath === $store.state.home.homeFooter}">
+            <i class="fa" :class="el.icon"></i>
+            <span>{{el.name}}</span>
+        </router-link>
     </footer>
 </template>
 
 <script>
 export default {
-    name: 'Footer'
+    name: 'Footer',
+    data() {
+        return {
+            navList: [
+                {
+                    name: '首页',
+                    routePath: '/home',
+                    icon: 'fa-home'
+                },
+                {
+                    name: '新闻',
+                    routePath: '/news',
+                    icon: 'fa-file'
+                },
+                {
+                    name: '赛程',
+                    routePath: '/schedule',
+                    icon: 'fa-calendar'
+                },
+                {
+                    name: '社区',
+                    routePath: '/community',
+                    icon: 'fa-comments'
+                },
+                {
+                    name: '我的',
+                    routePath: '/profile',
+                    icon: 'fa-user-circle'
+                }
+            ]
+        };
+    }
 };
 </script>
 
@@ -43,28 +60,22 @@ export default {
     font-size: 20px;
     background: #fff;
     box-shadow: 0px 0px 1px 0px #bfbfbf;
-    ul {
-        width: 100%;
-        height: 100%;
-        padding: 0 80px;
-        .item-li {
-            a {
-                color: #4d4d4d;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                i {
-                    font-size: 40px;
-                }
-            }
-
-            .router-link-active {
-                color: #0088ff;
-                i {
-                    @include text-image;
-                }
-            }
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    a {
+        color: #4d4d4d;
+        @include flex-center;
+        flex-direction: column;
+        i {
+            font-size: 40px;
+        }
+    }
+    .active {
+        color: #688cac;
+        i {
+            @include text-image;
         }
     }
 }

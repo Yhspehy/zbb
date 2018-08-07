@@ -1,11 +1,11 @@
 <template>
     <div class="schedule">
-        <top-nav :navList="navList" :chosenNav.sync="chosenNav"></top-nav>
+        <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
         <div class="scheduleContent">
             <router-view></router-view>
         </div>
-        
+
         <v-footer></v-footer>
     </div>
 </template>
@@ -48,7 +48,12 @@ export default {
         this.chosenNav = this.$store.state.schedule.chosenNav;
     },
     mounted() {},
-    methods: {},
+    methods: {
+        chooseNav(name) {
+            this.chosenNav = name;
+            this.$store.commit('schedule/SET_CHOSENNAV', name);
+        }
+    },
     watch: {
         '$route.name': {
             immediate: true,

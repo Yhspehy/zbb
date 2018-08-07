@@ -2,7 +2,6 @@
     <div class="scheduleLeagueMatch">
         <div>
             <div v-for="(val, key) in matchObj" :key="key">
-                <!-- 时间条 -->
                 <div class="timeBar">
                     <router-link 
                         :to="{'name': 'schedule_calendar'}"
@@ -38,10 +37,10 @@ export default {
     },
     created() {
         this.$moment.locale('zh-cn');
-        this.getPopularList();
+        this.getMatchObj();
     },
     methods: {
-        async getPopularList() {
+        async getMatchObj() {
             let res = await this.$store.dispatch('schedule/GetPopularList');
             for (let key in res.data.data) {
                 if (this.$moment(key).format('MM月DD号') === this.$moment().format('MM月DD号')) {

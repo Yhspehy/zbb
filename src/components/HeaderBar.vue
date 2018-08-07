@@ -1,12 +1,20 @@
 <template>
-    <div class="headerBar">
-        <i @click="$router.back()" class="fas fa-chevron-left"></i>
+    <div class="headerBar" :style="{'padding': padding}">
+        <i @click="goBack" class="fas fa-chevron-left"></i>
         <span class="text">{{text}}</span>
         <router-link v-if="rightText" class="rightText" :to="{'name': rightTextRouteName}">{{rightText}}</router-link>
     </div>
 </template>
 
 <script>
+/**
+ *
+ * header组件
+ *
+ * goback的Icon默认是go.back(),如果需要跳转到固定链接则使用goBackRouteName参数
+ *
+ */
+
 export default {
     name: 'c_HeaderBar',
     props: {
@@ -14,12 +22,19 @@ export default {
             type: String,
             require: true
         },
+        goBackRouteName: {
+            type: String
+        },
         rightText: {
             type: String
         },
         rightTextRouteName: {
             type: String,
             default: 'home'
+        },
+        padding: {
+            type: String,
+            default: '3.467vw 4.667vw'
         }
     },
     data() {
@@ -33,6 +48,12 @@ export default {
                 );
             }
         }
+    },
+    methods: {
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
+        }
     }
 };
 </script>
@@ -41,7 +62,6 @@ export default {
 .headerBar {
     height: 85px;
     font-size: 30px;
-    padding: 26px 35px;
     position: fixed;
     top: 0;
     left: 0;
