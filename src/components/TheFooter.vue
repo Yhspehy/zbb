@@ -45,6 +45,9 @@ export default {
                 }
             ]
         };
+    },
+    created() {
+        if (!this.$store.state.home.homeFooter) this.$store.commit('home/SET_HOMEFOOTER', this.$route.matched[0].path);
     }
 };
 </script>
