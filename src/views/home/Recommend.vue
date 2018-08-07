@@ -50,10 +50,14 @@
         <div class="report">
             <div class="avi-report d-flex justify-content-between">
                 <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                <div class="content">
+                <div class="content d-flex flex-column justify-content-between">
                     <p class="title">五大关键词解读自由市场72小时 谁说冠军已经定了？</p>
-                    <div>
+                    <div class="d-flex justify-content-between align-items-center">
                         <span class="report-time">07/04 18:00</span>
+                        <span class="report-time">
+                            <img src="http://temp.im/23x10" alt="">
+                            <span>Mavis</span>报道
+                        </span>
                     </div>
                 </div>
             </div>
@@ -64,8 +68,12 @@
                     <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
                     <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
                 </div>
-                <p class="time">
+                <p class="time d-flex justify-content-between align-items-center">
                     <span class="report-time">07/04 18:00</span>
+                    <span class="report-time">
+                        <img src="http://temp.im/23x10" alt="">
+                        <span>Mavis</span>报道
+                    </span>
                 </p>
             </div>
             <div class="img-report d-flex flex-column justify-content-between">
@@ -75,8 +83,12 @@
                     <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
                     <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
                 </div>
-                <p class="time">
+                <p class="time d-flex justify-content-between align-items-center">
                     <span class="report-time">07/04 18:00</span>
+                    <span class="report-time">
+                        <img src="http://temp.im/23x10" alt="">
+                        <span>Mavis</span>报道
+                    </span>
                 </p>
             </div>
             <div class="img-report d-flex flex-column justify-content-between">
@@ -86,8 +98,12 @@
                     <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
                     <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
                 </div>
-                <p class="time">
+                <p class="time d-flex justify-content-between align-items-center">
                     <span class="report-time">07/04 18:00</span>
+                    <span class="report-time">
+                        <img src="http://temp.im/23x10" alt="">
+                        <span>Mavis</span>报道
+                    </span>
                 </p>
             </div>
         </div>
@@ -116,7 +132,7 @@ export default {
         async getPopularList() {
             let res = await this.$store.dispatch('schedule/GetPopularList');
             for (let key in res.data.data) {
-                if (this.$moment(key).format('MM月DD号') === this.$moment().format('MM月DD号')) {
+                if (this.$moment(key).format('MM月DD号') === this.$moment('08-06').format('MM月DD号')) {
                     console.log('today');
                     this.todayObj = res.data.data[key];
                     console.log(this.todayObj);
@@ -183,6 +199,7 @@ export default {
 
 <style scoped lang="scss">
 .recommend {
+    background: #f3f7f9;
     .swiper-container {
         width: 100%;
         height: 360px;
@@ -286,7 +303,6 @@ export default {
         background: #fff;
         .avi-report {
             width: 100%;
-            height: 170px;
             padding: 6px 10px 20px 10px;
             @include border-bottom-1px;
             .avi-img {
