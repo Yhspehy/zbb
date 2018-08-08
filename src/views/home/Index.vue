@@ -137,7 +137,6 @@ export default {
     bottom: 90px;
     left: 0;
     right: 0;
-    background: #f3f7f9;
     overflow-y: auto;
 }
 </style>
