@@ -8,6 +8,8 @@
             @chooseNav="chooseNav"
             :replace="true"
             top="10vw"
+            normalFontSize="3.73vw"
+            activeFontSize="4vw"
             padding="4.267vw 4.8vw 2.667vw">
         </top-nav>
 
@@ -15,16 +17,20 @@
             <router-view></router-view>
         </div>
 
+        <v-footer></v-footer>
+
     </div>
 </template>
 
 <script>
+import vFooter from '@/components/TheFooter';
 import HeaderBar from '@/components/HeaderBar';
 import TopNav from '@/components/TopNav';
+import find from 'lodash/find';
 
 export default {
     name: 'schedule_league',
-    components: { HeaderBar, TopNav },
+    components: { vFooter, HeaderBar, TopNav },
     data() {
         return {
             type: '',
@@ -50,7 +56,11 @@ export default {
         };
     },
     created() {
+        const self = this;
         this.type = this.$store.state.schedule.matchLeagueName || 'NBA';
+        this.chosenNav = find(this.navList, function(e) {
+            return e.routeName === self.$route.matched[1].name;
+        }).name;
     },
     methods: {
         chooseNav(name) {
@@ -62,6 +72,6 @@ export default {
 
 <style scoped lang="scss">
 .scheduleLeagueContent {
-    margin-top: 167px;
+    margin-top: 165px;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
     <div class="topNav" :style="{'padding': padding, 'top': top}">
         <router-link class="navItem"
+            :style="{'font-size': ChosenNav === item.name ? activeFontSize : normalFontSize}"
             :class="{'navActive': ChosenNav === item.name}"
             @click.native="clickNav(item.name)"
             :to="{'name': item.routeName}"
@@ -43,6 +44,14 @@ export default {
             type: String,
             default: '0'
         },
+        normalFontSize: {
+            type: String,
+            default: '4vw'
+        },
+        activeFontSize: {
+            type: String,
+            default: '4.8vw'
+        },
         // 是否replace历史揭露
         replace: {
             type: Boolean,
@@ -82,11 +91,11 @@ export default {
     z-index: 99;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
     .navItem {
-        font-size: 30px;
+        // font-size: 30px;
         color: $font-color-grey;
     }
     .navActive {
-        font-size: 36px;
+        // font-size: 36px;
         color: #0099ff;
         position: relative;
         &:after {

@@ -646,7 +646,7 @@ print_background: false
     return {
         "status": true,
         "msg": "...",
-        "data": [
+        "data": {
             "Round_1": {
                 "description": "季后赛首轮",
                 "east": [
@@ -702,7 +702,7 @@ print_background: false
                 "description": "总决赛",
                 ...
             }
-        ]
+        }
     }
 ```
 
@@ -726,28 +726,152 @@ print_background: false
     return {
         "status": true,
         "msg": "...",
-        "data": [
+        "data": {
+        "Round_1": {
+            "description": "季后赛首轮",
             "east": [
                 {
-                    "team_name": "骑士",
-                    "rank": 1,
-                    "wins": 50,
-                    "losses": 22,
-                    "win_percent": 72,
-                    "game_back": 10
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
                 }
             ],
             "west": [
                 {
-                    "team_name": "勇士",
-                    "rank": 1,
-                    "wins": 50,
-                    "losses": 22,
-                    "win_percent": 72,
-                    "game_back": 10
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
                 }
             ]
-        ]
+        },
+        "Round_2": {
+            "description": "季后赛次轮",
+            "east": [
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                }
+            ],
+            "west": [
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                }
+            ]
+        },
+        "Semi_final": {
+            "description": "半决赛",
+            "east": {
+                "matches": [
+                    {
+                        "match_id": 11,
+                        "status": "已结束",
+                        "hometeam": "勇士",
+                        "awayteam": "骑士",
+                        "home_score": 99,
+                        "away_score": 101
+                    }
+                ],
+                "team_one": "勇士",
+                "team_two": "骑士",
+                "team_one_rank": "W1",
+                "team_two_rank": "E1",
+                "team_one_score": 4,
+                "team_two_score": 2
+            },
+            "west": {
+                "matches": [
+                    {
+                        "match_id": 11,
+                        "status": "已结束",
+                        "hometeam": "勇士",
+                        "awayteam": "骑士",
+                        "home_score": 99,
+                        "away_score": 101
+                    }
+                ],
+                "team_one": "勇士",
+                "team_two": "骑士",
+                "team_one_rank": "W1",
+                "team_two_rank": "E1",
+                "team_one_score": 4,
+                "team_two_score": 2
+            }
+        },
+        "Final": {
+            "description": "总决赛",
+            "matches": [
+                {
+                    "match_id": 11,
+                    "status": "已结束",
+                    "hometeam": "勇士",
+                    "awayteam": "骑士",
+                    "home_score": 99,
+                    "away_score": 101
+                }
+            ],
+            "team_one": "勇士",
+            "team_two": "骑士",
+            "team_one_rank": "W1",
+            "team_two_rank": "E1",
+            "team_one_score": 4,
+            "team_two_score": 2
+        }
+    }
     }
 ```
 
@@ -771,7 +895,7 @@ print_background: false
     return {
         "status": true,
         "msg": "...",
-        "data": [
+        "data": {
             "assists_rank": [
                 {
                     "name": "拉简-朗多",
@@ -831,8 +955,8 @@ print_background: false
                     "team": "湖人",
                     "rank": 1
                 }
-            ],
-        ]
+            ]
+        }
     }
 ```
 

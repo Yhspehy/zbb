@@ -1,7 +1,7 @@
-import { getPopularList, getMonthList, getFollowList } from '@/Api/schedule';
+import { getPopularList, getMonthList, getFollowList, getTeamRank, getPlayerRank, getPlayoff } from '@/Api/schedule';
 import cloneDeep from 'lodash/cloneDeep';
 
-const user = {
+const schedule = {
     namespaced: true,
 
     state: {
@@ -9,7 +9,9 @@ const user = {
         popularList: {},
         followList: {},
         monthList: {},
-        matchLeagueName: ''
+        matchLeagueName: '',
+        teamRank: {},
+        playerRank: {}
     },
 
     mutations: {
@@ -29,6 +31,12 @@ const user = {
         },
         SET_MATCHLEAGUENAME: (state, name) => {
             state.matchLeagueName = name;
+        },
+        SET_TEAMRANK: (state, data) => {
+            state.teamRank = data;
+        },
+        SET_PLAYERRANK: (state, data) => {
+            state.playreRank = data;
         }
     },
 
@@ -71,8 +79,43 @@ const user = {
                         reject(error);
                     });
             });
+        },
+        GetTeamRank({ commit }, id) {
+            return new Promise((resolve, reject) => {
+                getTeamRank(id)
+                    .then(res => {
+                        commit('SET_TEAMRANK', res.data.data);
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            });
+        },
+        GetPlayerRank({ commit }, id) {
+            return new Promise((resolve, reject) => {
+                getPlayerRank(id)
+                    .then(res => {
+                        commit('SET_PLAYERRANK', res.data.data);
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            });
+        },
+        GetPlayoff({ commit }, id) {
+            return new Promise((resolve, reject) => {
+                getPlayoff(id)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            });
         }
     }
 };
 
-export default user;
+export default schedule;

@@ -1,0 +1,256 @@
+{
+    "status": true,
+    "msg": "...",
+    "data": {
+        "east": {
+            "name": "东部联盟",
+            "list": [
+                {
+                    "team_name": "猛龙",
+                    "rank": 1,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "凯尔特人",
+                    "rank": 2,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "76人",
+                    "rank": 3,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "骑士",
+                    "rank": 4,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "步行者",
+                    "rank": 5,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "热火",
+                    "rank": 6,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "雄鹿",
+                    "rank": 7,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "奇才",
+                    "rank": 8,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "活塞",
+                    "rank": 9,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "黄蜂",
+                    "rank": 10,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "尼克斯",
+                    "rank": 11,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "篮网",
+                    "rank": 12,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "公牛",
+                    "rank": 13,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "魔术",
+                    "rank": 14,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "老鹰",
+                    "rank": 15,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                } 
+            ]
+        },
+        "west": {
+            "name": "西部联盟",
+            "list": [
+                {
+                    "team_name": "火箭",
+                    "rank": 1,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "勇士",
+                    "rank": 2,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "开拓者",
+                    "rank": 3,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "雷霆",
+                    "rank": 4,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "爵士",
+                    "rank": 5,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "鹈鹕",
+                    "rank": 6,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "马刺",
+                    "rank": 7,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "森林狼",
+                    "rank": 8,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "掘金",
+                    "rank": 9,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "快船",
+                    "rank": 10,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "湖人",
+                    "rank": 11,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "国王",
+                    "rank": 12,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "独行侠",
+                    "rank": 13,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "灰熊",
+                    "rank": 14,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                },
+                {
+                    "team_name": "太阳",
+                    "rank": 15,
+                    "wins": 50,
+                    "losses": 22,
+                    "win_percent": 72,
+                    "game_back": 10
+                }   
+            ]
+        }
+    }
+}

@@ -16,3 +16,15 @@ export function getMonthList(params) {
         }
     });
 }
+
+export function getTeamRank(id) {
+    return request(`/mock/schedule/${id}/rank/team`);
+}
+
+export function getPlayerRank(id) {
+    return request(`/mock/schedule/${id}/rank/player`);
+}
+
+export function getPlayoff(id) {
+    return request(`/mock/schedule/${id}/playoff`);
+}
