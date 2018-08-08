@@ -171,10 +171,11 @@ export default {
             @include flex-center-between;
         }
     }
-    .SemiFinalItem {
+    .eastFinal,
+    .westFinal {
         height: 120px;
         padding: 0 228px;
-        .eastFinalItem {
+        .SemiFinalItem {
             width: 240px;
             height: 60px;
             @include white-bg;
