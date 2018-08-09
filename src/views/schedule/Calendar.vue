@@ -54,7 +54,7 @@ export default {
                 year: year,
                 month: month
             });
-            this.monthList = res.data.data;
+            this.monthList = res;
         },
         chooseDay(obj) {
             this.chooseDayData = obj;
@@ -63,12 +63,7 @@ export default {
         chooseMonth(obj) {
             const year = obj.year;
             const month = obj.month.match(/(.*?)月?$/)[1];
-            const str = `${year}-${month}`;
-            if (!this.$store.state.schedule.monthList[str]) {
-                this.getMonthList(year, month);
-            } else {
-                this.monthList = this.$store.state.schedule.monthList[str];
-            }
+            this.getMonthList(year, month);
         }
     }
 };
@@ -76,6 +71,9 @@ export default {
 
 <style scoped lang="scss">
 .scheduleCalendar {
+    .calendar {
+        margin-top: 85px;
+    }
     .matchList {
         background: #f3f7f9;
         @include border-top-1px;

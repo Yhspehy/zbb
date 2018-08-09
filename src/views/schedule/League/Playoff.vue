@@ -99,16 +99,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@mixin white-bg {
+@mixin white-bg($border-radius: 30px, $padding-left: 10px) {
     background: #fff;
-    border-radius: 30px;
-    padding: 10px;
+    border-radius: $border-radius;
+    padding: 0 $padding-left;
 }
+
 @mixin flex-center-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .schedulePlayoff {
     width: 750px;
     height: 1054px;
@@ -188,8 +190,7 @@ export default {
         .finalItem {
             width: 460px;
             height: 80px;
-            padding: 0 128px !important;
-            @include white-bg;
+            @include white-bg(40px, 128px);
             @include flex-center-between;
         }
     }

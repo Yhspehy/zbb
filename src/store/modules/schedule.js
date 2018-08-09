@@ -65,19 +65,23 @@ const schedule = {
                     });
             });
         },
-        GetMonthList({ commit }, params) {
+        GetMonthList({ commit, state }, params) {
             return new Promise((resolve, reject) => {
-                getMonthList(params)
-                    .then(res => {
-                        commit('SET_MONTHLIST', {
-                            params: params,
-                            list: res.data.data
+                if (state.monthList[`${params.year}-${params.month}`]) {
+                    resolve(state.monthList[`${params.year}-${params.month}`]);
+                } else {
+                    getMonthList(params)
+                        .then(res => {
+                            commit('SET_MONTHLIST', {
+                                params: params,
+                                list: res.data.data
+                            });
+                            resolve(res.data.data);
+                        })
+                        .catch(error => {
+                            reject(error);
                         });
-                        resolve(res);
-                    })
-                    .catch(error => {
-                        reject(error);
-                    });
+                }
             });
         },
         GetTeamRank({ commit }, id) {
@@ -111,6 +115,7 @@ const schedule = {
                         resolve(res);
                     })
                     .catch(error => {
+                        console.log(commit);
                         reject(error);
                     });
             });
