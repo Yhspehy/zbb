@@ -34,10 +34,11 @@ const Profile = () => import('@/views/profile/Index');
 const ProfileSetting = () => import('@/views/profile/Setting');
 const ProfileSettingIndex = () => import('@/views/profile/SettingIndex');
 const ProfileSettingMyself = () => import('@/views/profile/Myself');
-const ProfileSettingPush = () => import('@/views/profile/Myself');
-const ProfileSettingSuggestion = () => import('@/views/profile/Myself');
-const ProfileSettingProblem = () => import('@/views/profile/Myself');
+const ProfileSettingPush = () => import('@/views/profile/Push');
+const ProfileSettingSuggestion = () => import('@/views/profile/Suggestion');
+const ProfileSettingProblem = () => import('@/views/profile/Problem');
 const ProfileSettingAbout = () => import('@/views/profile/About');
+const ProfileSettingJoin = () => import('@/views/profile/Join');
 
 const About = () => import('@/views/About');
 const Demo = () => import('@/views/Demo');
@@ -258,6 +259,11 @@ const router = new Router({
                     path: 'about',
                     name: 'profile_setting_about',
                     component: ProfileSettingAbout
+                },
+                {
+                    path: 'join',
+                    name: 'profile_setting_join',
+                    component: ProfileSettingJoin
                 }
             ]
         },
