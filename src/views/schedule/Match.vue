@@ -48,18 +48,13 @@ export default {
         },
         async getLeagueTodaMatchCount() {
             const self = this;
-            const yearMonth = this.$moment().format('YYYY-M');
             const date = this.$moment().format('YYYY-MM-DD');
             let todayMatchList = {};
-            if (!this.$store.state.schedule.monthList[yearMonth]) {
-                let res = await this.$store.dispatch('schedule/GetMonthList', {
-                    year: this.$moment().format('YYYY'),
-                    month: this.$moment().format('M')
-                });
-                todayMatchList = res.data.data[date];
-            } else {
-                todayMatchList = this.$store.state.schedule.monthList[yearMonth][date];
-            }
+            let res = await this.$store.dispatch('schedule/GetMonthList', {
+                year: this.$moment().format('YYYY'),
+                month: this.$moment().format('M')
+            });
+            todayMatchList = res[date];
             todayMatchList.match_list.forEach(e => {
                 let l = find(self.allLeagueList, t => {
                     return t === e.league;

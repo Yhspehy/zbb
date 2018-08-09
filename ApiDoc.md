@@ -647,86 +647,6 @@ print_background: false
         "status": true,
         "msg": "...",
         "data": {
-            "Round_1": {
-                "description": "季后赛首轮",
-                "east": [
-                    {
-                        "matches": [
-                            {
-                                "match_id": 11,
-                                "status": "已结束",
-                                "hometeam": "勇士",
-                                "awayteam": "骑士",
-                                "home_score": 99,
-                                "away_score": 101
-                            }
-                        ],
-                        "team_one": "勇士",
-                        "team_two": "骑士",
-                        "team_one_rank": 'W1',
-                        "team_two_rank": 'E1',
-                        "team_one_score": 4,
-                        "team_two_score": 2
-                    }
-                ],
-                "west": [
-                    {
-                        "matches": [
-                            {
-                                "match_id": 11,
-                                "status": "已结束",
-                                "hometeam": "勇士",
-                                "awayteam": "骑士",
-                                "home_score": 99,
-                                "away_score": 101
-                            }
-                        ],
-                        "team_one": "勇士",
-                        "team_two": "骑士",
-                        "team_one_rank": 'W1',
-                        "team_two_rank": 'E1',
-                        "team_one_score": 4,
-                        "team_two_score": 2
-                    }
-                ]
-            },
-            "Round_2": {
-                "description": "季后赛次轮",
-                同上...
-            },
-            "Semi_final": {
-                "description": "半决赛",
-                ...
-            },
-            "Final": {
-                "description": "总决赛",
-                ...
-            }
-        }
-    }
-```
-
-### 获得NBA队伍排行榜
-
-```js
-    /**
-     * @api {get}  schedule/NBA_id/rank/team
-     * 
-     * @params {Number} year 年份
-     * 
-     * @return east 东部
-     * @return west 西部
-     * @return rank 球队战绩排行
-     * @return wins 胜场数
-     * @return losses 败场数
-     * @return win_percent 胜率
-     * @return game_back 胜差
-     */
-
-    return {
-        "status": true,
-        "msg": "...",
-        "data": {
         "Round_1": {
             "description": "季后赛首轮",
             "east": [
@@ -747,6 +667,60 @@ print_background: false
                     "team_two_rank": "E1",
                     "team_one_score": 4,
                     "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "朦胧",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "猛龙",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "马刺",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
                 }
             ],
             "west": [
@@ -762,6 +736,60 @@ print_background: false
                         }
                     ],
                     "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "哈哈",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "嘻嘻",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "啦拉",
                     "team_two": "骑士",
                     "team_one_rank": "W1",
                     "team_two_rank": "E1",
@@ -790,6 +818,24 @@ print_background: false
                     "team_two_rank": "E1",
                     "team_one_score": 4,
                     "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "哼嗯",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
                 }
             ],
             "west": [
@@ -805,6 +851,24 @@ print_background: false
                         }
                     ],
                     "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                },
+                {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "嗯哼",
                     "team_two": "骑士",
                     "team_one_rank": "W1",
                     "team_two_rank": "E1",
@@ -844,7 +908,7 @@ print_background: false
                         "away_score": 101
                     }
                 ],
-                "team_one": "勇士",
+                "team_one": "rua",
                 "team_two": "骑士",
                 "team_one_rank": "W1",
                 "team_two_rank": "E1",
@@ -872,6 +936,174 @@ print_background: false
             "team_two_score": 2
         }
     }
+```
+
+### 获得NBA队伍排行榜
+
+```js
+    /**
+     * @api {get}  schedule/NBA_id/rank/team
+     * 
+     * @params {Number} year 年份
+     * 
+     * @return east 东部
+     * @return west 西部
+     * @return rank 球队战绩排行
+     * @return wins 胜场数
+     * @return losses 败场数
+     * @return win_percent 胜率
+     * @return game_back 胜差
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "Round_1": {
+                "description": "季后赛首轮",
+                "east": [
+                    {
+                        "matches": [
+                            {
+                                "match_id": 11,
+                                "status": "已结束",
+                                "hometeam": "勇士",
+                                "awayteam": "骑士",
+                                "home_score": 99,
+                                "away_score": 101
+                            }
+                        ],
+                        "team_one": "勇士",
+                        "team_two": "骑士",
+                        "team_one_rank": "W1",
+                        "team_two_rank": "E1",
+                        "team_one_score": 4,
+                        "team_two_score": 2
+                    }
+                ],
+                "west": [
+                    {
+                        "matches": [
+                            {
+                                "match_id": 11,
+                                "status": "已结束",
+                                "hometeam": "勇士",
+                                "awayteam": "骑士",
+                                "home_score": 99,
+                                "away_score": 101
+                            }
+                        ],
+                        "team_one": "勇士",
+                        "team_two": "骑士",
+                        "team_one_rank": "W1",
+                        "team_two_rank": "E1",
+                        "team_one_score": 4,
+                        "team_two_score": 2
+                    }
+                ]
+            },
+            "Round_2": {
+                "description": "季后赛次轮",
+                "east": [
+                    {
+                        "matches": [
+                            {
+                                "match_id": 11,
+                                "status": "已结束",
+                                "hometeam": "勇士",
+                                "awayteam": "骑士",
+                                "home_score": 99,
+                                "away_score": 101
+                            }
+                        ],
+                        "team_one": "勇士",
+                        "team_two": "骑士",
+                        "team_one_rank": "W1",
+                        "team_two_rank": "E1",
+                        "team_one_score": 4,
+                        "team_two_score": 2
+                    }
+                ],
+                "west": [
+                    {
+                        "matches": [
+                            {
+                                "match_id": 11,
+                                "status": "已结束",
+                                "hometeam": "勇士",
+                                "awayteam": "骑士",
+                                "home_score": 99,
+                                "away_score": 101
+                            }
+                        ],
+                        "team_one": "勇士",
+                        "team_two": "骑士",
+                        "team_one_rank": "W1",
+                        "team_two_rank": "E1",
+                        "team_one_score": 4,
+                        "team_two_score": 2
+                    }
+                ]
+            },
+            "Semi_final": {
+                "description": "半决赛",
+                "east": {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                },
+                "west": {
+                    "matches": [
+                        {
+                            "match_id": 11,
+                            "status": "已结束",
+                            "hometeam": "勇士",
+                            "awayteam": "骑士",
+                            "home_score": 99,
+                            "away_score": 101
+                        }
+                    ],
+                    "team_one": "勇士",
+                    "team_two": "骑士",
+                    "team_one_rank": "W1",
+                    "team_two_rank": "E1",
+                    "team_one_score": 4,
+                    "team_two_score": 2
+                }
+            },
+            "Final": {
+                "description": "总决赛",
+                "matches": [
+                    {
+                        "match_id": 11,
+                        "status": "已结束",
+                        "hometeam": "勇士",
+                        "awayteam": "骑士",
+                        "home_score": 99,
+                        "away_score": 101
+                    }
+                ],
+                "team_one": "勇士",
+                "team_two": "骑士",
+                "team_one_rank": "W1",
+                "team_two_rank": "E1",
+                "team_one_score": 4,
+                "team_two_score": 2
+            }
+        }           
     }
 ```
 
