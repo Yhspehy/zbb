@@ -89,6 +89,9 @@ export default {
         &.confirm {
             min-height: 198px;
         }
+        p {
+            line-height: 48px;
+        }
     }
     .footer {
         display: flex;

@@ -74,6 +74,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 99;
     a {
         color: #4d4d4d;
         @include flex-center;
