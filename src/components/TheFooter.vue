@@ -48,6 +48,15 @@ export default {
     },
     created() {
         if (!this.$store.state.home.homeFooter) {
+            this.setHomeFooter();
+        }
+    },
+    activated() {
+        console.log('footer active');
+        this.setHomeFooter();
+    },
+    methods: {
+        setHomeFooter() {
             this.$store.commit(
                 'home/SET_HOMEFOOTER',
                 this.$route.matched[0].path === '/schedule/league/:league_id'

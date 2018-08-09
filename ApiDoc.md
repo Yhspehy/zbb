@@ -42,6 +42,13 @@ print_background: false
 	* [获取NBA季后赛对阵](#获取nba季后赛对阵)
 	* [获得NBA队伍排行榜](#获得nba队伍排行榜)
 	* [获取NBA球员排行榜](#获取nba球员排行榜)
+* [直播](#直播)
+	* [获取直播比赛的信息](#获取直播比赛的信息)
+	* [直播室(websocket)](#直播室websocket)
+	* [聊天室(websocket)](#聊天室websocket)
+	* [资讯](#资讯)
+	* [数据](#数据)
+	* [竞猜](#竞猜)
 * [我的](#我的)
 	* [登出](#登出)
 	* [个人信息](#个人信息)
@@ -1194,11 +1201,276 @@ print_background: false
 
 ---
 
+## 直播
+
+### 获取直播比赛的信息
+
+```js
+    /**
+     * @api {get}  live/info/:match_id
+     * 
+     * @params {Number or String}  match_id
+     * 
+     * @return status <0:未开始 1:进行中 2:已结束>  比赛进行状态
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "status": 0,
+            "hometeam": "勇士",
+            "awayteam": "骑士",
+            "home_score": 99,
+            "away_score": 100,
+            "source": "NBA总决赛第四场",
+            "home_support": 70,
+            "away_support": 30
+        }
+    }
+```
+
+### 直播室(websocket)
+
+```js
+    /**
+     * websocket
+     * @api {get}  live/liveRoom/:match_id
+     * 
+     * @params {Number or String}  match_id
+     * 
+     */
+```
+
+### 聊天室(websocket)
+
+```js
+    /**
+     * websocket
+     * @api {get}  live/chatRoom/:match_id
+     * 
+     * @params {Number or String}  match_id
+     * 
+     */
+```
+
+### 资讯
+
+```js
+    /**
+     * @api {get}  live/news/:match_id
+     * 
+     * @params {Number or String}  match_id
+     * 
+     */
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "news_id": 11,
+                "title": "五大关键词解读",
+                "img_list": ["url", "url"],
+                "img_count": 4,
+                "create_time": 1122122,
+                "source": "腾讯",
+                "type": "推荐"
+            }
+        ]
+    }
+```
+
+### 数据
+
+```js
+    /**
+     * @api {get}  live//:match_id
+     * 
+     * @params {Number or String}  match_id
+     * 
+     * @return score                     总得分             
+     * @return assists                   助攻数
+     * @return blocks                    盖帽数
+     * @return rebounds                  总篮板
+     * @return defensive_rebounds        后场板
+     * @return offensive_rebounds        前场板
+     * @return field_goals               投篮进球数
+     * @return field_goals_attempted     投篮总出手数
+     * @return fast_break_points         快攻得分
+     * @return free_throws               罚球进球数
+     * @return free_throws_attempted     罚球总出手数
+     * @return personal_fouls            个人犯规总和
+     * @return second_chance_points      二次进攻得分
+     * @return steals                    抢断
+     * @return three_points_goals        三分进球数
+     * @return three_points_attempted    三分总出手数
+     * @return turnovers                 失误
+     * 
+     * @return player_stats 球员表现列表
+     *         严格按照参数排列，数组中的第一项默认给headbar的内容，第2-6项为5个首发球员的数据，数据都传字符串格式。 (match_history相同)
+     */
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "hometeam": "湖人",
+            "awayteam": "勇士",
+            "period_score": {
+                "home": ['11', '22', '-', '-'],
+                "away": ['22', '33', '-', '-']
+            },
+            "home_score": 100,
+            "away_score": 90,
+            "team_total": {
+                "home": {
+                    "score": 100,
+                    "assists": 15,
+                    "blocks": 4,
+                    "rebounds": 40,
+                    "defensive_rebounds": 40,
+                    "offensive_rebounds": 20,
+                    "field_goals": 30,
+                    "field_goals_attempted": 50,
+                    "fast_break_points": 20,
+                    "free_throws": 20,
+                    "free_throws_attempted": 40,
+                    "personal_fouls": 20,
+                    "second_chance_points": 30,
+                    "steals": 4,
+                    "three_point_goals": 9,
+                    "three_point_attempted": 20,
+                    "turnovers" : 17
+                },
+                "away": {
+                    "score": 100,
+                    "assists": 15,
+                    "blocks": 4,
+                    "rebounds": 40,
+                    "defensive_rebounds": 40,
+                    "offensive_rebounds": 20,
+                    "field_goals": 30,
+                    "field_goals_attempted": 50,
+                    "fast_break_points": 20,
+                    "free_throws": 20,
+                    "free_throws_attempted": 40,
+                    "personal_fouls": 20,
+                    "second_chance_points": 30,
+                    "steals": 4,
+                    "three_point_goals": 9,
+                    "three_point_attempted": 20,
+                    "turnovers" : 17
+                }
+            },
+            "player_stats": {
+                "home": [
+                    {
+                        "row": ["球员", "首发", "时间", "得分", "篮板", "助攻", "投篮", "三分", "罚球", "前场板", "后场板", "抢断", "盖帽", "失误", "犯规"]
+                    },
+                    {
+                        "player_id": '111',
+                        "row": ["多西", "是", "28", "18", "7", "4", "4/13", "2/6", "8/10", "3", "4", "0", "0", "2", "0"]
+                    },
+                    ....
+                ],
+                "away": [
+                    {
+                        "row": ["球员", "首发", "时间", "得分", "篮板", "助攻", "投篮", "三分", "罚球", "前场板", "后场板", "抢断", "盖帽", "失误", "犯规"]
+                    },
+                    {
+                        "player_id": '111',
+                        "row": ["多西", "是", "28", "18", "7", "4", "4/13", "2/6", "8/10", "3", "4", "0", "0", "2", "0"]
+                    },
+                    ....
+                ]
+            },
+            "max_players": [
+                {
+                    "home_player": "哈哈",
+                    "home_val": 4,
+                    "home_player_avatar": "url",
+                    "away_player_avatar": "url",
+                    "away_player": "啦啦",
+                    "away_val": 4,
+                    "text": "得分",
+                },
+                {
+                    "home_player": "哈哈",
+                    "home_val": 4,
+                    "home_player_avatar": "url",
+                    "away_player_avatar": "url",
+                    "away_player": "啦啦",
+                    "away_val": 4,
+                    "text": "助攻",
+                },
+                {
+                    "home_player": "哈哈",
+                    "home_val": 4,
+                    "home_player_avatar": "url",
+                    "away_player_avatar": "url",
+                    "away_player": "啦啦",
+                    "away_val": 4,
+                    "text": "篮板",
+                }
+            ],
+            "match_history": [
+                {
+                    row: ['日期', '赛事', '主队', '比分', '客队']
+                },
+                {
+                    row: ['2018/06/09', 'NBA季后赛', '湖人队', '99:101', '勇士队']
+                },
+                ....
+            ]
+        }
+    }
+```
+
+### 竞猜
+  
+```js
+    /**
+     * @api {post}  live/quiz/:match_id
+     * 
+     * @params {Number or String}  user_id
+     * 
+     * @return status        竞猜状态
+     * @return title         竞猜题目
+     * @return quiz_total    竞猜投注总额
+     * @return rest_time     剩余时间 <剩余时间  待开奖  已结算>
+     * @return options       竞猜选项
+     * @return options/text  竞猜内容   
+     * @return options/quiz_percent   竞猜投注率
+     * @return options/quiz_odds    竞猜赔率
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "status": "已开盘",
+                "title": "全场第一个三分苦力能不能投进",
+                "quiz_total": 8320,
+                "rest_time": '10:59:20',
+                "options": [
+                    {
+                        "text": "能投进",
+                        "quiz_percent": 48,
+                        "quiz_odds": 2.5
+                    }
+                ]
+            }
+        ]
+    }
+```
+
+
+---
+
 ## 我的
 
-
 ### 登出
-
+  
 ```js
     /**
      * @api {post}  myself/logout
