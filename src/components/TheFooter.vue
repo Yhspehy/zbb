@@ -5,7 +5,7 @@
             :key="el.name"
             :to="el.routePath"
             @click.native="$store.commit('home/SET_HOMEFOOTER', el.routePath)"
-            :class="{'active': el.routePath === $store.state.home.homeFooter}">
+            :class="{'active': el.routePath === $route.matched[0].path}"><!-- 解决popstate不触发click事件active样式bug -->
             <i class="fa" :class="el.icon"></i>
             <span>{{el.name}}</span>
         </router-link>
