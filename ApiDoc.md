@@ -47,8 +47,11 @@ print_background: false
 	* [直播室(websocket)](#直播室websocket)
 	* [聊天室(websocket)](#聊天室websocket)
 	* [资讯](#资讯)
+	* [赛况](#赛况)
 	* [数据](#数据)
-	* [竞猜](#竞猜)
+	* [竞猜项列表](#竞猜项列表)
+	* [竞猜投注](#竞猜投注)
+	* [热议](#热议)
 * [我的](#我的)
 	* [登出](#登出)
 	* [个人信息](#个人信息)
@@ -70,6 +73,8 @@ print_background: false
     每个接口必须带的两个参数：
     状态：status {Boolean} <true or false>
     信息：msg {String}
+
+    最好每个接口中的每项数据都带上id，如果我部分接口中没有写上但是数据库中存在的，也请带上。默认key为id。id默认返回String，不返回Number。
     
     若某属性的值不存在且没有默认值时，返回null，不要返回'', 0, [], {};比如，新闻时间戳没有，不要返回0,应该返回null，因为0代表1970年1月1号。
     如果值不存在，但有默认值，则返回默认值，比如: "", [], {}, 0;
@@ -222,7 +227,7 @@ print_background: false
 ```js
     /**
      * @api {get}  home/newsList
-     * @params {Number or String} type_id   类目的id
+     * @params {String} type_id   类目的id
      * @params {Number} page_index	 
      *
      * @return title  新闻标题
@@ -256,7 +261,7 @@ print_background: false
 ```js
     /**
      * @api {get}  home/news
-     * @params {Number or String} news_id   新闻的id
+     * @params {String} news_id   新闻的id
      */
 
     return {
@@ -429,10 +434,13 @@ print_background: false
 
 ```js
     /**
+     * 默认每次返回20条
      * @api {get}  home/highLights/comment
      * 
-     * @params {Number or String} id    视频id
+     * @params {String} id    视频id
+     * @params {Number}  page_index  页码
      * 
+     * @return total_page  总页数
      * @return create_time  评论创建时间
      * @return vote_count    赞同数
      * @return author/user_type    用户类别，等级
@@ -446,8 +454,9 @@ print_background: false
     return {
         "status": true,
         "msg": "...",
-        "data": [
-            {
+        "data": {
+            "total_page": 10,
+            "list": {
                 "comment_id": 1212,
                 "author": {
                     "user_id": 1212,
@@ -473,7 +482,7 @@ print_background: false
                 "create_time": 121212,
                 "vote_count": 222
             }
-        ]
+        }
     }
 ```  
 
@@ -486,7 +495,7 @@ print_background: false
 ```js
     /**
      * @api {get}  home/otherType/header
-     * @params {Number or String}  type_id  类目的id
+     * @params {String}  type_id  类目的id
      */
 
     return {
@@ -1209,7 +1218,7 @@ print_background: false
     /**
      * @api {get}  live/info/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      * @return status <0:未开始 1:进行中 2:已结束>  比赛进行状态
      */
@@ -1237,9 +1246,20 @@ print_background: false
      * websocket
      * @api {get}  live/liveRoom/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      */
+
+    return {
+        "online_person": 999999,
+        "data": [
+            {
+                "user": "Mavis(直播员)",
+                "content": "ssdsdsds",
+                "imgList": []
+            }
+        ]
+    }
 ```
 
 ### 聊天室(websocket)
@@ -1249,9 +1269,18 @@ print_background: false
      * websocket
      * @api {get}  live/chatRoom/:match_id
      * 
-     * @params {Number or String}  match_id
-     * 
+     * @params {String}  match_id
      */
+
+    return {
+        "data": [
+            {
+                "user": "MAvis",
+                "content": "wowowowow",
+                "user_id": '111'
+            }
+        ]
+    }
 ```
 
 ### 资讯
@@ -1260,7 +1289,7 @@ print_background: false
     /**
      * @api {get}  live/news/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      */
     return {
@@ -1280,13 +1309,33 @@ print_background: false
     }
 ```
 
+### 赛况
+
+```js
+    /**
+     * websocket
+     * @api {get}  live/matchInfo/:match_id
+     * 
+     * @params {String}  match_id
+     */
+
+    return {
+        "data": [
+            {
+                "user": "来提珠(直播员)",
+                "content": "本场比赛的直播就到这里，感谢您的关注！"
+            }
+        ]
+    }
+```
+
 ### 数据
 
 ```js
     /**
-     * @api {get}  live//:match_id
+     * @api {get}  live/stats/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      * @return score                     总得分             
      * @return assists                   助攻数
@@ -1425,13 +1474,13 @@ print_background: false
     }
 ```
 
-### 竞猜
+### 竞猜项列表
   
 ```js
     /**
-     * @api {post}  live/quiz/:match_id
+     * @api {get}  live/quizList/:match_id
      * 
-     * @params {Number or String}  user_id
+     * @params {String}  user_id
      * 
      * @return status        竞猜状态
      * @return title         竞猜题目
@@ -1448,12 +1497,14 @@ print_background: false
         "msg": "...",
         "data": [
             {
+                "quiz_id": '1',
                 "status": "已开盘",
                 "title": "全场第一个三分苦力能不能投进",
                 "quiz_total": 8320,
                 "rest_time": '10:59:20',
                 "options": [
                     {
+                        "text_id": '1',
                         "text": "能投进",
                         "quiz_percent": 48,
                         "quiz_odds": 2.5
@@ -1464,6 +1515,111 @@ print_background: false
     }
 ```
 
+### 竞猜投注
+
+```js
+    /**
+     * @api {post}  live/quiz/:match_id
+     * 
+     * @params {String}  quiz_id   投注项的id
+     * @params {Number}  quiz_val  投注数量
+     * @params {String}  quiz_text_id  选择的投注项的具体内容的id
+     */
+```
+
+### 热议
+
+```js
+    /**
+     * @api {get}  home/comments/:match_id
+     * 
+     * 默认每次返回20条
+     * @params {String} match_id    比赛id
+     * @params {Number} page_index  页码
+     * 
+     * @return total_page  总页数
+     * @return create_time  评论创建时间
+     * @return vote_count    赞同数
+     * @return author/user_type    用户类别，等级
+     * @return author/gender   用户性别  <male female>
+     * @return commentlist/thread_id    该条评论的父级评论id
+     *         commentlist/thread_id等于comment_id
+     * @return commentlist/is_answer  是否是回复别人的消息，是否@
+     * @return commentlist/answer_user_name   回复的用户名字
+     * @return isHot  是否为热评
+     * @return index  楼层
+     * 
+     * @return hot 只有page_index为1的时候返回
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "total_page": 10,
+            "hot": [
+                 {
+                    "comment_id": 1212,
+                    "author": {
+                        "user_id": 1212,
+                        "user_type": "normal",
+                        "user_name": "Mavis",
+                        "avatar_url": "url",
+                        "gender": "male"
+                    },
+                    "content": "快快乐乐",
+                    "commentlist_count": 12,
+                    "commentlist": [
+                        {
+                            "comment_id": 1212,
+                            "user_id": 111,
+                            "thread_id": 1212,
+                            "user_name": "MAVIS",
+                            "content": "你好",
+                            "create_time": 121212,
+                            "is_answer": true,
+                            "answer_user_name": "HIHI"
+                        }
+                    ],
+                    "create_time": 121212,
+                    "vote_count": 222,
+                    "isHot": true,
+                    "index": 1
+                }
+            ],
+            "list": [
+                {
+                    "comment_id": 1212,
+                    "author": {
+                        "user_id": 1212,
+                        "user_type": "normal",
+                        "user_name": "Mavis",
+                        "avatar_url": "url",
+                        "gender": "male"
+                    },
+                    "content": "快快乐乐",
+                    "commentlist_count": 12,
+                    "commentlist": [
+                        {
+                            "comment_id": 1212,
+                            "user_id": 111,
+                            "thread_id": 1212,
+                            "user_name": "MAVIS",
+                            "content": "你好",
+                            "create_time": 121212,
+                            "is_answer": true,
+                            "answer_user_name": "HIHI"
+                        }
+                    ],
+                    "create_time": 121212,
+                    "vote_count": 222,
+                    "isHot": true,
+                    "index": 1
+                }
+            ]
+        }
+    }
+```
 
 ---
 
@@ -1475,7 +1631,7 @@ print_background: false
     /**
      * @api {post}  myself/logout
      * 
-     * @params {Number or String}  user_id
+     * @params {String}  user_id
      */
 
     return {

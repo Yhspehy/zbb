@@ -268,8 +268,11 @@ code.language-yaml {
 <li><a href="#%E7%9B%B4%E6%92%AD%E5%AE%A4websocket">直播室(websocket)</a></li>
 <li><a href="#%E8%81%8A%E5%A4%A9%E5%AE%A4websocket">聊天室(websocket)</a></li>
 <li><a href="#%E8%B5%84%E8%AE%AF">资讯</a></li>
+<li><a href="#%E8%B5%9B%E5%86%B5">赛况</a></li>
 <li><a href="#%E6%95%B0%E6%8D%AE">数据</a></li>
-<li><a href="#%E7%AB%9E%E7%8C%9C">竞猜</a></li>
+<li><a href="#%E7%AB%9E%E7%8C%9C%E9%A1%B9%E5%88%97%E8%A1%A8">竞猜项列表</a></li>
+<li><a href="#%E7%AB%9E%E7%8C%9C%E6%8A%95%E6%B3%A8">竞猜投注</a></li>
+<li><a href="#%E7%83%AD%E8%AE%AE">热议</a></li>
 </ul>
 </li>
 <li><a href="#%E6%88%91%E7%9A%84">我的</a>
@@ -292,6 +295,8 @@ code.language-yaml {
     每个接口必须带的两个参数：
     状态：status <span class="token punctuation">{</span>Boolean<span class="token punctuation">}</span> <span class="token operator">&lt;</span><span class="token boolean">true</span> or <span class="token boolean">false</span><span class="token operator">></span>
     信息：msg <span class="token punctuation">{</span>String<span class="token punctuation">}</span>
+
+    最好每个接口中的每项数据都带上id，如果我部分接口中没有写上但是数据库中存在的，也请带上。默认key为id。id默认返回String，不返回Number。
     
     若某属性的值不存在且没有默认值时，返回<span class="token keyword">null</span>，不要返回<span class="token string">''</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>比如，新闻时间戳没有，不要返回<span class="token number">0</span><span class="token punctuation">,</span>应该返回<span class="token keyword">null</span>，因为<span class="token number">0</span>代表<span class="token number">1970</span>年<span class="token number">1</span>月<span class="token number">1</span>号。
     如果值不存在，但有默认值，则返回默认值，比如<span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -419,7 +424,7 @@ code.language-yaml {
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
      * @api {get}  home/newsList
-     * @params {Number or String} type_id   类目的id
+     * @params {String} type_id   类目的id
      * @params {Number} page_index	 
      *
      * @return title  新闻标题
@@ -449,7 +454,7 @@ code.language-yaml {
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
      * @api {get}  home/news
-     * @params {Number or String} news_id   新闻的id
+     * @params {String} news_id   新闻的id
      */</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
@@ -599,10 +604,13 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%8F%96%E9%9B%86%E9%94%A6%E8%A7%86%E9%A2%91%E8%AF%84%E8%AE%BA%E5%88%97%E8%A1%A8">获取集锦视频评论列表</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
+     * 默认每次返回20条
      * @api {get}  home/highLights/comment
      * 
-     * @params {Number or String} id    视频id
+     * @params {String} id    视频id
+     * @params {Number}  page_index  页码
      * 
+     * @return total_page  总页数
      * @return create_time  评论创建时间
      * @return vote_count    赞同数
      * @return author/user_type    用户类别，等级
@@ -616,8 +624,9 @@ code.language-yaml {
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
         <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
         <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
-        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-            <span class="token punctuation">{</span>
+        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"total_page"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+            <span class="token string">"list"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                 <span class="token string">"comment_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
                 <span class="token string">"author"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
                     <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
@@ -643,7 +652,7 @@ code.language-yaml {
                 <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">121212</span><span class="token punctuation">,</span>
                 <span class="token string">"vote_count"</span><span class="token punctuation">:</span> <span class="token number">222</span>
             <span class="token punctuation">}</span>
-        <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 </pre><hr>
 <h2 class="mume-header" id="%E9%A6%96%E9%A1%B5-%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98">首页-二级标题</h2>
@@ -652,7 +661,7 @@ code.language-yaml {
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
      * @api {get}  home/otherType/header
-     * @params {Number or String}  type_id  类目的id
+     * @params {String}  type_id  类目的id
      */</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
@@ -1353,7 +1362,7 @@ code.language-yaml {
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
      * @api {get}  live/info/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      * @return status &lt;0:未开始 1:进行中 2:已结束>  比赛进行状态
      */</span>
@@ -1378,24 +1387,44 @@ code.language-yaml {
      * websocket
      * @api {get}  live/liveRoom/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      */</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">"online_person"</span><span class="token punctuation">:</span> <span class="token number">999999</span><span class="token punctuation">,</span>
+        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">"user"</span><span class="token punctuation">:</span> <span class="token string">"Mavis(直播员)"</span><span class="token punctuation">,</span>
+                <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"ssdsdsds"</span><span class="token punctuation">,</span>
+                <span class="token string">"imgList"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
 </pre><h3 class="mume-header" id="%E8%81%8A%E5%A4%A9%E5%AE%A4websocket">聊天室(websocket)</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
      * websocket
      * @api {get}  live/chatRoom/:match_id
      * 
-     * @params {Number or String}  match_id
-     * 
+     * @params {String}  match_id
      */</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">"user"</span><span class="token punctuation">:</span> <span class="token string">"MAvis"</span><span class="token punctuation">,</span>
+                <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"wowowowow"</span><span class="token punctuation">,</span>
+                <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token string">'111'</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
 </pre><h3 class="mume-header" id="%E8%B5%84%E8%AE%AF">资讯</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
      * @api {get}  live/news/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      */</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
@@ -1413,12 +1442,29 @@ code.language-yaml {
             <span class="token punctuation">}</span>
         <span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E8%B5%9B%E5%86%B5">赛况</h3>
+
+<pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
+     * websocket
+     * @api {get}  live/matchInfo/:match_id
+     * 
+     * @params {String}  match_id
+     */</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token string">"user"</span><span class="token punctuation">:</span> <span class="token string">"来提珠(直播员)"</span><span class="token punctuation">,</span>
+                <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"本场比赛的直播就到这里，感谢您的关注！"</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
 </pre><h3 class="mume-header" id="%E6%95%B0%E6%8D%AE">数据</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  live//:match_id
+     * @api {get}  live/stats/:match_id
      * 
-     * @params {Number or String}  match_id
+     * @params {String}  match_id
      * 
      * @return score                     总得分             
      * @return assists                   助攻数
@@ -1555,12 +1601,12 @@ code.language-yaml {
             <span class="token punctuation">]</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-</pre><h3 class="mume-header" id="%E7%AB%9E%E7%8C%9C">竞猜</h3>
+</pre><h3 class="mume-header" id="%E7%AB%9E%E7%8C%9C%E9%A1%B9%E5%88%97%E8%A1%A8">竞猜项列表</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {post}  live/quiz/:match_id
+     * @api {get}  live/quizList/:match_id
      * 
-     * @params {Number or String}  user_id
+     * @params {String}  user_id
      * 
      * @return status        竞猜状态
      * @return title         竞猜题目
@@ -1577,12 +1623,14 @@ code.language-yaml {
         <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
         <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
             <span class="token punctuation">{</span>
+                <span class="token string">"quiz_id"</span><span class="token punctuation">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
                 <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"已开盘"</span><span class="token punctuation">,</span>
                 <span class="token string">"title"</span><span class="token punctuation">:</span> <span class="token string">"全场第一个三分苦力能不能投进"</span><span class="token punctuation">,</span>
                 <span class="token string">"quiz_total"</span><span class="token punctuation">:</span> <span class="token number">8320</span><span class="token punctuation">,</span>
                 <span class="token string">"rest_time"</span><span class="token punctuation">:</span> <span class="token string">'10:59:20'</span><span class="token punctuation">,</span>
                 <span class="token string">"options"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
                     <span class="token punctuation">{</span>
+                        <span class="token string">"text_id"</span><span class="token punctuation">:</span> <span class="token string">'1'</span><span class="token punctuation">,</span>
                         <span class="token string">"text"</span><span class="token punctuation">:</span> <span class="token string">"能投进"</span><span class="token punctuation">,</span>
                         <span class="token string">"quiz_percent"</span><span class="token punctuation">:</span> <span class="token number">48</span><span class="token punctuation">,</span>
                         <span class="token string">"quiz_odds"</span><span class="token punctuation">:</span> <span class="token number">2.5</span>
@@ -1590,6 +1638,106 @@ code.language-yaml {
                 <span class="token punctuation">]</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="%E7%AB%9E%E7%8C%9C%E6%8A%95%E6%B3%A8">竞猜投注</h3>
+
+<pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
+     * @api {post}  live/quiz/:match_id
+     * 
+     * @params {String}  quiz_id   投注项的id
+     * @params {Number}  quiz_val  投注数量
+     * @params {String}  quiz_text_id  选择的投注项的具体内容的id
+     */</span>
+</pre><h3 class="mume-header" id="%E7%83%AD%E8%AE%AE">热议</h3>
+
+<pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
+     * @api {get}  home/comments/:match_id
+     * 
+     * 默认每次返回20条
+     * @params {String} match_id    比赛id
+     * @params {Number} page_index  页码
+     * 
+     * @return total_page  总页数
+     * @return create_time  评论创建时间
+     * @return vote_count    赞同数
+     * @return author/user_type    用户类别，等级
+     * @return author/gender   用户性别  &lt;male female>
+     * @return commentlist/thread_id    该条评论的父级评论id
+     *         commentlist/thread_id等于comment_id
+     * @return commentlist/is_answer  是否是回复别人的消息，是否@
+     * @return commentlist/answer_user_name   回复的用户名字
+     * @return isHot  是否为热评
+     * @return index  楼层
+     * 
+     * @return hot 只有page_index为1的时候返回
+     */</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"total_page"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+            <span class="token string">"hot"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                 <span class="token punctuation">{</span>
+                    <span class="token string">"comment_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                    <span class="token string">"author"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                        <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                        <span class="token string">"user_type"</span><span class="token punctuation">:</span> <span class="token string">"normal"</span><span class="token punctuation">,</span>
+                        <span class="token string">"user_name"</span><span class="token punctuation">:</span> <span class="token string">"Mavis"</span><span class="token punctuation">,</span>
+                        <span class="token string">"avatar_url"</span><span class="token punctuation">:</span> <span class="token string">"url"</span><span class="token punctuation">,</span>
+                        <span class="token string">"gender"</span><span class="token punctuation">:</span> <span class="token string">"male"</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"快快乐乐"</span><span class="token punctuation">,</span>
+                    <span class="token string">"commentlist_count"</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+                    <span class="token string">"commentlist"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token string">"comment_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token number">111</span><span class="token punctuation">,</span>
+                            <span class="token string">"thread_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                            <span class="token string">"user_name"</span><span class="token punctuation">:</span> <span class="token string">"MAVIS"</span><span class="token punctuation">,</span>
+                            <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"你好"</span><span class="token punctuation">,</span>
+                            <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">121212</span><span class="token punctuation">,</span>
+                            <span class="token string">"is_answer"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                            <span class="token string">"answer_user_name"</span><span class="token punctuation">:</span> <span class="token string">"HIHI"</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">121212</span><span class="token punctuation">,</span>
+                    <span class="token string">"vote_count"</span><span class="token punctuation">:</span> <span class="token number">222</span><span class="token punctuation">,</span>
+                    <span class="token string">"isHot"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                    <span class="token string">"index"</span><span class="token punctuation">:</span> <span class="token number">1</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">"list"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token string">"comment_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                    <span class="token string">"author"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+                        <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                        <span class="token string">"user_type"</span><span class="token punctuation">:</span> <span class="token string">"normal"</span><span class="token punctuation">,</span>
+                        <span class="token string">"user_name"</span><span class="token punctuation">:</span> <span class="token string">"Mavis"</span><span class="token punctuation">,</span>
+                        <span class="token string">"avatar_url"</span><span class="token punctuation">:</span> <span class="token string">"url"</span><span class="token punctuation">,</span>
+                        <span class="token string">"gender"</span><span class="token punctuation">:</span> <span class="token string">"male"</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"快快乐乐"</span><span class="token punctuation">,</span>
+                    <span class="token string">"commentlist_count"</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+                    <span class="token string">"commentlist"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                            <span class="token string">"comment_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                            <span class="token string">"user_id"</span><span class="token punctuation">:</span> <span class="token number">111</span><span class="token punctuation">,</span>
+                            <span class="token string">"thread_id"</span><span class="token punctuation">:</span> <span class="token number">1212</span><span class="token punctuation">,</span>
+                            <span class="token string">"user_name"</span><span class="token punctuation">:</span> <span class="token string">"MAVIS"</span><span class="token punctuation">,</span>
+                            <span class="token string">"content"</span><span class="token punctuation">:</span> <span class="token string">"你好"</span><span class="token punctuation">,</span>
+                            <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">121212</span><span class="token punctuation">,</span>
+                            <span class="token string">"is_answer"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                            <span class="token string">"answer_user_name"</span><span class="token punctuation">:</span> <span class="token string">"HIHI"</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">121212</span><span class="token punctuation">,</span>
+                    <span class="token string">"vote_count"</span><span class="token punctuation">:</span> <span class="token number">222</span><span class="token punctuation">,</span>
+                    <span class="token string">"isHot"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                    <span class="token string">"index"</span><span class="token punctuation">:</span> <span class="token number">1</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 </pre><hr>
 <h2 class="mume-header" id="%E6%88%91%E7%9A%84">我的</h2>
@@ -1599,7 +1747,7 @@ code.language-yaml {
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
      * @api {post}  myself/logout
      * 
-     * @params {Number or String}  user_id
+     * @params {String}  user_id
      */</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
