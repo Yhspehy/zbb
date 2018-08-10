@@ -24,7 +24,7 @@
                     <div class="gameBack">{{team.game_back}}</div>
                 </div>
 
-                <div class="cutOffLine"></div>
+                <div v-if="area.name === '东部联盟'" class="cutOffLine"></div>
             </div>
         </div>
     </div>

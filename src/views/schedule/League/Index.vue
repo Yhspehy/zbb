@@ -13,7 +13,7 @@
             padding="4.267vw 4.8vw 2.667vw">
         </top-nav>
 
-        <div class="scheduleLeagueContent">
+        <div class="scheduleLeagueContent theFooterPaddingBottom">
             <router-view></router-view>
         </div>
 
@@ -72,6 +72,6 @@ export default {
 
 <style scoped lang="scss">
 .scheduleLeagueContent {
-    margin-top: 165px;
+    margin-top: 162px;
 }
 </style>

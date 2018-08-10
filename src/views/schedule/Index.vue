@@ -2,7 +2,7 @@
     <div class="schedule">
         <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
-        <div class="scheduleContent">
+        <div class="scheduleContent theFooterPaddingBottom">
             <router-view></router-view>
         </div>
 

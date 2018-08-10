@@ -23,8 +23,6 @@ li {
 
 html,
 body {
-    position: relative;
-    height: 100%;
     box-sizing: border-box;
     font-family: 'PingFang SC', 'STHeitiSC-Light', 'Helvetica-Light', arial, sans-serif;
     font-size: 14px;
@@ -34,6 +32,10 @@ body {
 *:before,
 *:after {
     box-sizing: inherit;
+}
+
+.theFooterPaddingBottom {
+    padding-bottom: 12vw;
 }
 
 .d-none {
