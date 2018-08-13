@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="avi-tips">
-                <span class="tip-time">{{this.$moment().format('MM月DD号')}}</span>
+                <span class="tip-time">{{$moment().format('MM月DD号')}}</span>
                 <span class="line">|</span>
                 <span class="user-name">Mavis</span>&nbsp;
                 <span class="tip-slot" id="local-time"></span>
@@ -132,7 +132,7 @@ export default {
         async getPopularList() {
             let res = await this.$store.dispatch('schedule/GetPopularList');
             for (let key in res.data.data) {
-                if (this.$moment(key).format('MM月DD号') === this.$moment('08-06').format('MM月DD号')) {
+                if (this.$moment(key).format('MM月DD号') === this.$moment('2018-08-06').format('MM月DD号')) {
                     console.log('today');
                     this.todayObj = res.data.data[key];
                     console.log(this.todayObj);

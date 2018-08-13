@@ -3,7 +3,7 @@
         <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
         <div class="scheduleContent theFooterPaddingBottom">
-            <router-view></router-view>
+            <router-view ></router-view>
         </div>
 
         <v-footer></v-footer>
@@ -67,6 +67,16 @@ export default {
                 }
             }
         }
+    },
+    beforeRouteUpdate(to, from, next) {
+        let height = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        from.meta.scrollHeight = height;
+        next();
+    },
+    beforeRouteLeave(to, from, next) {
+        let height = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        from.meta.scrollHeight = height;
+        next();
     }
 };
 </script>

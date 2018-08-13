@@ -45,8 +45,10 @@ export default {
         }
     },
     created() {
-        console.log(this.test);
         this.$store.dispatch('league/GetSubLeagueList');
+    },
+    activated() {
+        console.log('home activated');
     },
     methods: {
         editSubLeagueList() {

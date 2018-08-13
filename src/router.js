@@ -25,6 +25,15 @@ const ScheduleLeaguePlayoff = () => import('@/views/schedule/League/Playoff');
 const ScheduleLeagueTeamRank = () => import('@/views/schedule/League/TeamRank');
 const ScheduleLeaguePlayerRank = () => import('@/views/schedule/League/PlayerRank');
 
+/*----------  直播  ----------*/
+const Live = () => import('@/views/live/Index');
+const LiveRoom = () => import('@/views/live/LiveRoom');
+const ChatRoom = () => import('@/views/live/ChatRoom');
+const LiveQuiz = () => import('@/views/live/Quiz');
+const LiveStats = () => import('@/views/live/Stats');
+const LiveNews = () => import('@/views/live/News');
+const LiveHotComment = () => import('@/views/live/HotComments');
+
 /*----------  社区  ----------*/
 const Community = () => import('@/views/community/Index');
 
@@ -42,48 +51,7 @@ const ProfileSettingJoin = () => import('@/views/profile/Join');
 const About = () => import('@/views/About');
 const Demo = () => import('@/views/Demo');
 
-// let routeslist = [];
-
-// function importComponent(arr, parentPath) {
-// arr.forEach(item => {
-//     const result = {
-//         path: `${parentPath}${item.path}`,
-//         name: item.name
-//         // component: resolve => require([`@/views${item.file}`, resolve])
-//         // component: () => import(`@/views${item.file}`)
-//     };
-//     if (item.children) {
-//         result.children = importComponent(item.children, `${result.path}/`);
-//     }
-//     routeslist.push(result);
-// });
-// console.log(parentPath);
-// let ww = '@/views/sub/Add.vue';
-// routeslist.push({
-//     path: '/subadd',
-//     name: 'subAdd',
-//     component: () => import(ww)
-// });
-// }
-
-// importComponent(list, '');
-
-// console.log(routeslist);
-
-// let arr = [
-//     {
-//         path: '/subadd',
-//         name: 'subAdd',
-//         component: import('@/views/sub/Add')
-//     }
-// ];
-
 Vue.use(Router);
-
-// const router = new Router({
-//     mode: 'history',
-//     routes: routeslist
-// });
 
 const router = new Router({
     // base: __dirname,
@@ -136,17 +104,29 @@ const router = new Router({
                 {
                     path: 'match',
                     name: 'schedule_match',
-                    component: ScheduleMatch
+                    component: ScheduleMatch,
+                    meta: {
+                        isScroll: true,
+                        scrollHeight: 0
+                    }
                 },
                 {
                     path: 'popular',
                     name: 'schedule_popular',
-                    component: SchedulePopular
+                    component: SchedulePopular,
+                    meta: {
+                        isScroll: true,
+                        scrollHeight: 0
+                    }
                 },
                 {
                     path: 'follow',
                     name: 'schedule_follow',
-                    component: ScheduleFollow
+                    component: ScheduleFollow,
+                    meta: {
+                        isScroll: true,
+                        scrollHeight: 0
+                    }
                 }
             ]
         },
@@ -159,6 +139,7 @@ const router = new Router({
             path: '/schedule/league/:league_id',
             name: 'schedule_league',
             component: ScheduleLeague,
+            redirect: '/schedule/league/:league_id/match',
             children: [
                 {
                     path: 'match',
@@ -179,6 +160,43 @@ const router = new Router({
                     path: 'playerRank',
                     name: 'schedule_league_playerRank',
                     component: ScheduleLeaguePlayerRank
+                }
+            ]
+        },
+        {
+            path: '/live',
+            name: 'live',
+            component: Live,
+            children: [
+                {
+                    path: 'liveRoom',
+                    name: 'live_liveRoom',
+                    component: LiveRoom
+                },
+                {
+                    path: 'chatRoom',
+                    name: 'live_chatRoom',
+                    component: ChatRoom
+                },
+                {
+                    path: 'news',
+                    name: 'live_news',
+                    component: LiveNews
+                },
+                {
+                    path: 'stats',
+                    name: 'live_stats',
+                    component: LiveStats
+                },
+                {
+                    path: 'quiz',
+                    name: 'live_quiz',
+                    component: LiveQuiz
+                },
+                {
+                    path: 'hotComment',
+                    name: 'live_hotComment',
+                    component: LiveHotComment
                 }
             ]
         },
@@ -250,7 +268,20 @@ const router = new Router({
             path: '/',
             redirect: '/home'
         }
-    ]
+    ],
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            if (to.meta.isScroll) {
+                return {
+                    x: 0,
+                    y: to.meta.scrollHeight
+                };
+            }
+            return { x: 0, y: 0 };
+        }
+    }
 });
 
 router.beforeEach((to, from, next) => {
