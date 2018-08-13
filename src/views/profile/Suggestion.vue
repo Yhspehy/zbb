@@ -1,16 +1,16 @@
 <template>
     <div class="setting-join">
         <div class="header">
-            <i class="fa fa-angle-left"></i>
+            <i @click="goBack" class="fa fa-angle-left"></i>
             <span>意见反馈</span>
             <router-link :to="{'name':'profile_setting_problem'}"><span class="problem">常见问题</span></router-link>
         </div>
         <div class="mar-top item-90">
-            <div class="item padding-36">
-                <span @click="showSelect()">优化建议</span>
+            <div class="item padding-36" @click="select_state = !select_state">
+                <span>优化建议</span>
                 <i class="fa fa-angle-down"></i>
             </div>
-            <ul class="select padding-36" id="select_ul">
+            <ul class="select padding-36" id="select_ul" v-if="select_state">
                 <li class="option">直播</li>
                 <li class="option">等级</li>
                 <li class="option">社区</li>
@@ -29,6 +29,11 @@
 <script>
 export default {
     name: 'setting_join',
+    data() {
+        return {
+            select_state: false
+        };
+    },
     created() {
         console.log('created');
     },
@@ -36,9 +41,6 @@ export default {
         console.log('activated');
     },
     methods: {
-        showSelect() {
-            document.getElementById('select_ul').classList.add('show-select');
-        },
         checkLen() {
             let obj = document.getElementById('content');
             var maxChars = 200; //最多字符数
@@ -54,6 +56,10 @@ export default {
             url.select(); // 选择对象
             document.execCommand('Copy');
             this.$toast({ duration: 500, message: '复制成功' });
+        },
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
         }
     }
 };
@@ -124,7 +130,7 @@ export default {
         position: absolute !important;
         top: 90px;
         width: 100%;
-        height: 0;
+        height: auto;
         overflow: hidden;
         background: #ffffff;
         transition: height 1.4s;
@@ -139,9 +145,6 @@ export default {
                 @include border-bottom-1px;
             }
         }
-    }
-    .show-select {
-        height: auto;
     }
     .suggestion-content {
         width: 100%;

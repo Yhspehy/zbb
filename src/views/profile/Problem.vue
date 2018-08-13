@@ -1,68 +1,97 @@
 <template>
     <div class="setting-push">
         <div class="header">
-            <i class="fa fa-angle-left"></i>
+            <i @click="goBack" class="fa fa-angle-left"></i>
             <span>常见问题</span>
         </div>
-        <div class="mar-top item-fixed">
-            <div>
-                <div class="item border-bottom">
+        <ul class="mar-top item-fixed">
+            <li>
+                <div class="item border-bottom" @click="play_state = !play_state">
                     <span>播放问题</span>
-                    <i class="fa fa-angle-down"></i>
+                    <transition name="rotate">
+                        <i class="fa fa-angle-down"></i>
+                    </transition>
                 </div>
-                <div class="content">
-                    用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                    如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
+                <div class="fn-collapse" v-if="play_state">
+                    <div class="content">
+                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
+                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="item border-bottom">
+            </li>
+            <li>
+                <div class="item border-bottom" @click="online_state = !online_state">
                     <span>直播问题</span>
                     <i class="fa fa-angle-down"></i>
                 </div>
-            </div>
-            <div>
-                <div class="item border-bottom">
+                <div class="fn-collapse" v-if="online_state">
+                    <div class="content">
+                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
+                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item border-bottom" @click="rank_state = !rank_state">
                     <span>关于等级</span>
                     <i class="fa fa-angle-down"></i>
                 </div>
-            </div>
-            <div>
+                <div class="fn-collapse" v-if="rank_state">
+                    <div class="content">
+                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
+                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
+                    </div>
+                </div>
+            </li>
+            <li>
                 <div class="item border-bottom">
                     <span>第三方登录以及绑定</span>
                     <i class="fa fa-angle-down"></i>
                 </div>
-            </div>
-            <div>
+            </li>
+            <li>
                 <div class="item border-bottom">
                     <span>密码找回</span>
                     <i class="fa fa-angle-down"></i>
                 </div>
-            </div>
-            <div>
+            </li>
+            <li>
                 <div class="item border-bottom">
                     <span>出现闪退</span>
                     <i class="fa fa-angle-down"></i>
                 </div>
-            </div>
-            <div>
+            </li>
+            <li>
                 <div class="item border-bottom">
                     <span>如何联系我们</span>
                     <i class="fa fa-angle-down"></i>
                 </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
     name: 'setting_push',
+    data() {
+        return {
+            play_state: false,
+            online_state: false,
+            rank_state: false
+        };
+    },
     created() {
         console.log('created');
     },
     activated() {
         console.log('activated');
+    },
+    methods: {
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
+        }
     }
 };
 </script>

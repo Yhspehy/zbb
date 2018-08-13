@@ -47,6 +47,7 @@ const ProfileSettingSuggestion = () => import('@/views/profile/Suggestion');
 const ProfileSettingProblem = () => import('@/views/profile/Problem');
 const ProfileSettingAbout = () => import('@/views/profile/About');
 const ProfileSettingJoin = () => import('@/views/profile/Join');
+const ProfileSettingMessage = () => import('@/views/profile/Message');
 
 const About = () => import('@/views/About');
 const Demo = () => import('@/views/Demo');
@@ -250,6 +251,11 @@ const router = new Router({
                     path: 'join',
                     name: 'profile_setting_join',
                     component: ProfileSettingJoin
+                },
+                {
+                    path: 'message',
+                    name: 'profile_setting_message',
+                    component: ProfileSettingMessage
                 }
             ]
         },
