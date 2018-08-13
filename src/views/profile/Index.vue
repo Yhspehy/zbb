@@ -4,7 +4,7 @@
             <div class="operation d-flex justify-content-between">
                 <div class="return"><i class="fa fa-angle-left"></i></div>
                 <div class="operate">
-                    <i class="fa fa-cog"></i>
+                    <router-link :to="{'name':'profile_setting'}"><i class="fa fa-cog"></i></router-link>
                     <i class="fa fa-envelope"></i>
                     <span class="infos-count">3</span>
                 </div>
@@ -144,6 +144,7 @@ export default {
             .operate {
                 .fa-cog {
                     padding-right: 36px;
+                    color: #ffffff;
                 }
                 .infos-count {
                     position: absolute;

@@ -20,7 +20,7 @@
             <div class="eastRound2 Round2" v-if="data.Round_2">
                 <div class="Round2Item" v-if="data.Round_2.east" v-for="item in data.Round_2.east" :key="item.team_one">
                     <span>img1</span>
-                    <span>{{item.team_one_score}}: {{item.team_two_score}}</span>
+                    <span>{{item.team_one_score}}:{{item.team_two_score}}</span>
                     <span>img2</span>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div class="eastFinal" v-if="data.Semi_final">
                 <div class="SemiFinalItem">
                     <span>img1</span>
-                    <span>{{data.Semi_final.east.team_one_score}}: {{data.Semi_final.east.team_two_score}}</span>
+                    <span>{{data.Semi_final.east.team_one_score}}:{{data.Semi_final.east.team_two_score}}</span>
                     <span>img2</span>
                 </div>
             </div>
@@ -38,7 +38,7 @@
         <div class="final" v-if="data.Final">
             <div class="finalItem">
                 <span>img1</span>
-                <span>{{data.Final.team_one_score}}: {{data.Final.team_two_score}}</span>
+                <span>{{data.Final.team_one_score}}:{{data.Final.team_two_score}}</span>
                 <span>img2</span>
             </div>
         </div>
@@ -48,7 +48,7 @@
              <div class="westFinal" v-if="data.Semi_final">
                 <div class="SemiFinalItem">
                     <span>img1</span>
-                    <span>{{data.Semi_final.west.team_one_score}}: {{data.Semi_final.west.team_two_score}}</span>
+                    <span>{{data.Semi_final.west.team_one_score}}:{{data.Semi_final.west.team_two_score}}</span>
                     <span>img2</span>
                 </div>
             </div>
@@ -56,7 +56,7 @@
             <div class="westRound2 Round2" v-if="data.Round_2">
                 <div class="Round2Item" v-if="data.Round_2.west" v-for="item in data.Round_2.west" :key="item.team_one">
                     <span>img1</span>
-                    <span>{{item.team_one_score}}: {{item.team_two_score}}</span>
+                    <span>{{item.team_one_score}}:{{item.team_two_score}}</span>
                     <span>img2</span>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <div class="westRound1Item" v-if="data.Round_1.west" v-for="item in data.Round_1.west" :key="item.team_one">
                     <div class="westRound1ItemScore">
                         <span>1</span>
-                        <span>{{item.team_one_score}}: {{item.team_two_score}}</span>
+                        <span>{{item.team_one_score}}:{{item.team_two_score}}</span>
                         <span>2</span>
                     </div>
                     <div class="westRound1ItemTeam">
@@ -186,11 +186,11 @@ export default {
     }
     .final {
         height: 140px;
-        padding: 0 128px;
+        padding: 0 118px;
         .finalItem {
             width: 460px;
             height: 80px;
-            @include white-bg(40px, 128px);
+            @include white-bg(40px, 122px);
             @include flex-center-between;
         }
     }

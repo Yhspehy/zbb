@@ -1,68 +1,23 @@
 <template>
-    <div class="setting-myself">
+    <div class="setting-join">
         <div class="header">
             <i class="fa fa-angle-left"></i>
-            <span>个人信息</span>
-        </div>
-        <div class="mar-top padding-36 head d-flex justify-content-between align-items-center">
-            <span>
-                <i class="fa fa-user-circle wid-50"></i>头像
-            </span>
-            <div class="header-img">
-                <img src="http://temp.im/50x50" class="user-header">
-                <span class="album"></span>
-            </div>
-        </div>
-        <div class="mar-top padding-36 information">
-            <div class="item border-bottom">
-                <span>
-                    <i class="fa fa-user wid-50"></i>昵称
-                </span>
-                <span>
-                    用户10086&nbsp;
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </div>
-            <div class="item border-bottom">
-                <span>
-                    <i class="fa fa-male wid-50"></i>性别
-                </span>
-                <span>
-                    请选择&nbsp;
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </div>
-            <div class="item border-bottom">
-                <span>
-                    <i class="fa fa-birthday-cake wid-50"></i>生日
-                </span>
-                <span>
-                    请选择&nbsp;
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </div>
-            <div class="item">
-                <span>
-                    <i class="fa fa-map-marker wid-50"></i>位置
-                </span>
-                <span>
-                    请选择&nbsp;
-                    <i class="fa fa-angle-right"></i>
-                </span>
-            </div>
+            <span>设置</span>
         </div>
         <div class="mar-top padding-36 id">
             <div class="item border-bottom">
                 <span>
-                    <i class="fa fa-mobile wid-50"></i>手机号码
+                    <i class="fa fa-qq wid-50"></i>QQ群：
+                    <input type="text" class="value" id="qq_group" value="123456789" readonly>
                 </span>
-                <span>187****0590</span>
+                <span style="color: #0088ff;" @click="onCopy('qq_group')">复制</span>
             </div>
             <div class="item">
                 <span>
-                    <i class="fa fa-id-card wid-50"></i>账号ID
+                    <i class="fa fa-weixin wid-50"></i>微信公众号：
+                    <input type="text" class="value" id="weixin_num" value="43256676" readonly>
                 </span>
-                <span>ID:10086</span>
+                <span style="color: #0088ff;" @click="onCopy('weixin_num')">复制</span>
             </div>
         </div>
     </div>
@@ -70,18 +25,26 @@
 
 <script>
 export default {
-    name: 'setting_myself',
+    name: 'setting_join',
     created() {
         console.log('created');
     },
     activated() {
         console.log('activated');
+    },
+    methods: {
+        onCopy(id) {
+            let url = document.getElementById(id);
+            url.select(); // 选择对象
+            document.execCommand('Copy');
+            this.$toast({ duration: 500, message: '复制成功' });
+        }
     }
 };
 </script>
 
 <style scoped lang="scss">
-.setting-myself {
+.setting-join {
     position: relative;
     .mar-top {
         margin-top: 20px;
@@ -95,6 +58,11 @@ export default {
     .wid-50 {
         display: inline-block;
         width: 50px;
+    }
+    .value {
+        color: #808080;
+        border: 0;
+        outline: none;
     }
     .item {
         height: 90px;

@@ -5,7 +5,7 @@
             :key="el.name"
             :to="el.routePath"
             @click.native="$store.commit('home/SET_HOMEFOOTER', el.routePath)"
-            :class="{'active': el.routePath === $route.matched[0].path}"><!-- 解决popstate不触发click事件active样式bug -->
+            :class="{'active': el.routePath === $store.state.home.homeFooter}">
             <i class="fa" :class="el.icon"></i>
             <span>{{el.name}}</span>
         </router-link>
@@ -48,6 +48,15 @@ export default {
     },
     created() {
         if (!this.$store.state.home.homeFooter) {
+            this.setHomeFooter();
+        }
+    },
+    activated() {
+        console.log('footer active');
+        this.setHomeFooter();
+    },
+    methods: {
+        setHomeFooter() {
             this.$store.commit(
                 'home/SET_HOMEFOOTER',
                 this.$route.matched[0].path === '/schedule/league/:league_id'
@@ -74,6 +83,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 99;
     a {
         color: #4d4d4d;
         @include flex-center;

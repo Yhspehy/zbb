@@ -1,13 +1,12 @@
 <template>
-    <div class="schedule">
-        赛程
-        <div>{{a}}</div>
+    <div class="setting">
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'schedule',
+    name: 'setting',
     data() {
         return {
             a: 1
@@ -24,4 +23,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.setting {
+    background-color: #f3f7f9;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 </style>

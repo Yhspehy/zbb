@@ -24,8 +24,11 @@ export default {
         },
         time: {
             type: Number,
-            require: false,
             default: 500
+        },
+        interval: {
+            type: Number,
+            default: 20
         }
     },
     data() {
@@ -36,7 +39,7 @@ export default {
             let x = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
             if (x) {
                 console.log('scroll start');
-                let n = Math.ceil(this.time / 30);
+                let n = Math.ceil(this.time / this.interval);
                 let speed = x / 3;
                 let animation = setInterval(function() {
                     if (n === 1) {
@@ -59,7 +62,7 @@ export default {
                         document.body.scrollTop -= speed;
                         speed = document.body.scrollTop / ((3 * (n + 1)) / n);
                     }
-                }, 30);
+                }, this.interval);
             }
         }
     }
