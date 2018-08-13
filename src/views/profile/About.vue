@@ -1,7 +1,7 @@
 <template>
     <div class="setting-index">
         <div class="header">
-            <i class="fa fa-angle-left"></i>
+            <i @click="goBack" class="fa fa-angle-left"></i>
             <span>关于我们</span>
         </div>
         <div class="mar-top padding-36 content">
@@ -26,6 +26,12 @@ export default {
     },
     activated() {
         console.log('activated');
+    },
+    methods: {
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
+        }
     }
 };
 </script>

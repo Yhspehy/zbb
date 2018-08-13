@@ -1,7 +1,7 @@
 <template>
     <div class="setting-myself">
         <div class="header">
-            <i class="fa fa-angle-left"></i>
+            <i @click="goBack" class="fa fa-angle-left"></i>
             <span>个人信息</span>
         </div>
         <div class="mar-top padding-36 head d-flex justify-content-between align-items-center">
@@ -76,6 +76,12 @@ export default {
     },
     activated() {
         console.log('activated');
+    },
+    methods: {
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
+        }
     }
 };
 </script>

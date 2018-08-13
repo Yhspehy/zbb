@@ -1,7 +1,7 @@
 <template>
     <div class="setting-push">
         <div class="header">
-            <i class="fa fa-angle-left"></i>
+            <i @click="goBack" class="fa fa-angle-left"></i>
             <span>设置</span>
         </div>
         <div class="mar-top padding-36 item-127 d-flex justify-content-between align-items-center">
@@ -49,6 +49,12 @@ export default {
     },
     activated() {
         console.log('activated');
+    },
+    methods: {
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
+        }
     }
 };
 </script>

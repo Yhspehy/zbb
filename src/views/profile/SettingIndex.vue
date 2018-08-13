@@ -1,7 +1,7 @@
 <template>
     <div class="setting-index">
         <div class="header">
-            <i class="fa fa-angle-left"></i>
+            <i @click="goBack" class="fa fa-angle-left"></i>
             <span>设置</span>
         </div>
         <router-link :to="{'name':'profile_setting_myself'}" class="mar-top padding-36 myself item">
@@ -76,6 +76,10 @@ export default {
         console.log('activated');
     },
     methods: {
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
+        },
         toast() {
             this.$toast('message');
         },

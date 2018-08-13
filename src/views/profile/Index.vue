@@ -2,11 +2,14 @@
     <div class="profile">
         <div class="task">
             <div class="operation d-flex justify-content-between">
-                <div class="return"><i class="fa fa-angle-left"></i></div>
+                <div class="return"><i @click="goBack" class="fa fa-angle-left"></i></div>
                 <div class="operate">
                     <router-link :to="{'name':'profile_setting'}"><i class="fa fa-cog"></i></router-link>
-                    <i class="fa fa-envelope"></i>
-                    <span class="infos-count">3</span>
+                    <router-link :to="{'name':'profile_setting_message'}">
+                        <i class="fa fa-envelope"></i>
+                        <span class="infos-count">3</span>
+                    </router-link>
+                    
                 </div>
             </div> 
             <div class="user-info d-flex justify-content-start align-items-center">
@@ -117,6 +120,12 @@ export default {
     name: 'profile',
     components: {
         vFooter
+    },
+    methods: {
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
+        }
     }
 };
 </script>
@@ -146,6 +155,9 @@ export default {
                     padding-right: 36px;
                     color: #ffffff;
                 }
+                .fa-envelope {
+                    color: #ffffff;
+                }
                 .infos-count {
                     position: absolute;
                     background: red;
@@ -158,6 +170,7 @@ export default {
                     line-height: 24px;
                     right: 26px;
                     top: 26px;
+                    color: #ffffff;
                 }
             }
         }

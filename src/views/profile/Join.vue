@@ -1,7 +1,7 @@
 <template>
     <div class="setting-join">
         <div class="header">
-            <i class="fa fa-angle-left"></i>
+            <i @click="goBack" class="fa fa-angle-left"></i>
             <span>设置</span>
         </div>
         <div class="mar-top padding-36 id">
@@ -38,6 +38,10 @@ export default {
             url.select(); // 选择对象
             document.execCommand('Copy');
             this.$toast({ duration: 500, message: '复制成功' });
+        },
+        goBack() {
+            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            this.$router.back();
         }
     }
 };
