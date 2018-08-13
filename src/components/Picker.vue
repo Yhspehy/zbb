@@ -62,6 +62,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 999;
 }
 .picker-panel {
     display: flex;
@@ -111,6 +112,8 @@ export default {
             justify-content: space-around;
             height: 368px;
             .picker-wheel {
+                flex: 1;
+                text-align: center;
                 overflow: hidden;
             }
             .picker-wheel-scroll {

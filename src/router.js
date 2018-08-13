@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-
 /*----------  启动页  ----------*/
 const SubAdd = () => import('@/views/sub/Add');
 const SubEdit = () => import('@/views/sub/Edit');
@@ -42,37 +41,6 @@ const ProfileSettingJoin = () => import('@/views/profile/Join');
 
 const About = () => import('@/views/About');
 const Demo = () => import('@/views/Demo');
-
-// const list = [
-//     {
-//         path: '/subadd',
-//         name: 'subAdd',
-//         file: '/sub/Add'
-//     },
-//     {
-//         path: '/home',
-//         name: 'home',
-//         file: '/home/Index',
-//         redirect: '/home/recommend',
-//         children: [
-//             {
-//                 path: 'recommend',
-//                 name: 'recommend',
-//                 file: '/home/Recommend'
-//             },
-//             {
-//                 path: 'highlights',
-//                 name: 'highLights',
-//                 file: '/home/Highlights'
-//             },
-//             {
-//                 path: 'league/:league_id',
-//                 name: 'league',
-//                 file: '/home/League'
-//             }
-//         ]
-//     }
-// ];
 
 // let routeslist = [];
 
@@ -282,14 +250,7 @@ const router = new Router({
             path: '/',
             redirect: '/home'
         }
-    ],
-    scrollBehavior(to, from, savedPosition) {
-        if (savedPosition) {
-            return savedPosition;
-        } else {
-            return { x: 0, y: 0 };
-        }
-    }
+    ]
 });
 
 router.beforeEach((to, from, next) => {

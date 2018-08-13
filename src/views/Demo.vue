@@ -8,15 +8,19 @@
                 <!-- <router-link :to="{name:'subEdit'}">+</router-link> -->
             </div>
         <v-footer></v-footer>
+        <v-picker></v-picker>
     </div>
+     
 </template>
 
 <script>
 import TheFooter from '@/components/TheFooter';
+import Picker from '@/components/Picker';
 export default {
     name: 'demo',
     components: {
-        'v-footer': TheFooter
+        'v-footer': TheFooter,
+        'v-picker': Picker
     },
     data() {
         return {
