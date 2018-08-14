@@ -11,6 +11,7 @@
                     <transition name="rotate">
                         <i class="fa fa-angle-down"></i>
                     </transition>
+<<<<<<< Updated upstream
                 </div>
                 <div class="fn-collapse" v-if="play_state">
                     <div class="content">
@@ -18,6 +19,17 @@
                         如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
                     </div>
                 </div>
+=======
+                </div>
+                <transition name="bounce">
+                    <div class="fn-collapse" v-if="play_state">
+                        <div class="content">
+                            用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
+                            如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
+                        </div>
+                    </div>
+                </transition>
+>>>>>>> Stashed changes
             </li>
             <li>
                 <div class="item border-bottom" @click="online_state = !online_state">
@@ -88,6 +100,12 @@ export default {
         console.log('activated');
     },
     methods: {
+<<<<<<< Updated upstream
+=======
+        isShow(state) {
+            console.log(state);
+        },
+>>>>>>> Stashed changes
         goBack() {
             if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
             this.$router.back();
@@ -147,6 +165,46 @@ export default {
         top: 90px;
         background: #ffffff;
         overflow-y: scroll;
+    }
+    /*----------  fn-collapse  ----------*/
+    // .fn-collapse
+    //     height: auto;
+    //     overflow: hidden;
+    //     transition-duration: 0.5s;
+    //     transition-property: height, visibility;
+    //
+
+    .fn-collapse-hide {
+        height: 0;
+        display: none;
+    }
+
+    .fn-collapse-prev-show {
+        i {
+            transform: rotate(180deg);
+        }
+    }
+    .bounce-enter-active {
+        transition: all 0.5s;
+    }
+    .bounce-leave-active {
+        transition: all 0.5s;
+    }
+    .bounce-enter,
+    .bounce-leave-to {
+        height: 0;
+        opacity: 0;
+    }
+    @keyframes bounce-in {
+        0% {
+            transform: scale(0);
+        }
+        50% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
 }
 </style>

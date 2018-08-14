@@ -32,7 +32,8 @@ const ChatRoom = () => import('@/views/live/ChatRoom');
 const LiveQuiz = () => import('@/views/live/Quiz');
 const LiveStats = () => import('@/views/live/Stats');
 const LiveNews = () => import('@/views/live/News');
-const LiveHotComment = () => import('@/views/live/HotComments');
+const LiveReview = () => import('@/views/live/Review');
+const LiveHotComments = () => import('@/views/live/HotComments');
 
 /*----------  社区  ----------*/
 const Community = () => import('@/views/community/Index');
@@ -195,9 +196,14 @@ const router = new Router({
                     component: LiveQuiz
                 },
                 {
-                    path: 'hotComment',
-                    name: 'live_hotComment',
-                    component: LiveHotComment
+                    path: 'review',
+                    name: 'live_review',
+                    component: LiveReview
+                },
+                {
+                    path: 'hotComments',
+                    name: 'live_hotComments',
+                    component: LiveHotComments
                 }
             ]
         },

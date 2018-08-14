@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 //const path = require('path')
 const getApi = require('./mock/getApi');
 const postApi = require('./mock/postApi');
@@ -55,6 +56,7 @@ module.exports = {
     },
 
     devServer: {
+        contentBase: path.join(__dirname, 'public'),
         // https://github.com/chimurai/http-proxy-middleware#proxycontext-config
         proxy: {
             '/api': {

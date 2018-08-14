@@ -1,5 +1,11 @@
 <template>
-    <div class="topNav" :style="{'padding': padding, 'top': top}">
+    <div
+        class="topNav"
+        :class="{'fixed': positionFixed}"
+        :style="{
+            'padding': padding,
+            'top': top
+            }">
         <router-link class="navItem"
             :style="{'font-size': ChosenNav === item.name ? activeFontSize : normalFontSize}"
             :class="{'navActive': ChosenNav === item.name}"
@@ -9,7 +15,7 @@
             v-for="item in navList" :key="item.name">
              {{ item.name }}
         </router-link>
-        </div>
+    </div>
 </template>
 
 <script>
@@ -39,7 +45,10 @@ export default {
             type: String,
             default: '4.267vw 27.2vw 2.667vw'
         },
-        // position的top数值
+        positionFixed: {
+            type: Boolean,
+            default: true
+        },
         top: {
             type: String,
             default: '0'
@@ -81,32 +90,33 @@ export default {
 <style scoped lang="scss">
 .topNav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0 auto;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
     background: #fff;
-    z-index: 99;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
     .navItem {
-        // font-size: 30px;
         color: $font-color-grey;
     }
     .navActive {
-        // font-size: 36px;
         color: #0099ff;
         position: relative;
         &:after {
             content: '';
             position: absolute;
             height: 4px;
-            width: 30px;
+            width: 60%;
             background: #0099ff;
             bottom: -10px;
-            left: calc(50% - 15px);
+            left: 20%;
         }
     }
+}
+
+.fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 99;
 }
 </style>

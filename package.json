@@ -11,7 +11,10 @@
   "dependencies": {
     "@videojs/http-streaming": "^1.2.3",
     "axios": "^0.18.0",
+<<<<<<< Updated upstream
     "better-scroll": "^1.12.6",
+=======
+>>>>>>> Stashed changes
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
     "lodash": "^4.17.10",
