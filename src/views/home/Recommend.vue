@@ -61,69 +61,32 @@
                     </div>
                 </div>
             </div>
-            <div class="img-report d-flex flex-column justify-content-between">
-                <p class="title">组图：圆桌会议詹皇&考神决定的“湖”蝶效应</p>
-                <div class="imgs d-flex justify-content-between">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                </div>
-                <p class="time d-flex justify-content-between align-items-center">
-                    <span class="report-time">07/04 18:00</span>
-                    <span class="report-time">
-                        <img src="http://temp.im/23x10" alt="">
-                        <span>Mavis</span>报道
-                    </span>
-                </p>
-            </div>
-            <div class="img-report d-flex flex-column justify-content-between">
-                <p class="title">组图：圆桌会议詹皇&考神决定的“湖”蝶效应</p>
-                <div class="imgs d-flex justify-content-between">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                </div>
-                <p class="time d-flex justify-content-between align-items-center">
-                    <span class="report-time">07/04 18:00</span>
-                    <span class="report-time">
-                        <img src="http://temp.im/23x10" alt="">
-                        <span>Mavis</span>报道
-                    </span>
-                </p>
-            </div>
-            <div class="img-report d-flex flex-column justify-content-between">
-                <p class="title">组图：圆桌会议詹皇&考神决定的“湖”蝶效应</p>
-                <div class="imgs d-flex justify-content-between">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                    <img class="avi-img" src="../../../public/image/avi-re1.jpeg">
-                </div>
-                <p class="time d-flex justify-content-between align-items-center">
-                    <span class="report-time">07/04 18:00</span>
-                    <span class="report-time">
-                        <img src="http://temp.im/23x10" alt="">
-                        <span>Mavis</span>报道
-                    </span>
-                </p>
-            </div>
+            <group-pic
+                v-for="(val, key) in imgObj"
+                :key="key"
+                :picData="val">
+            </group-pic>
         </div>
     </div>
 </template>
 
 <script>
 import Swiper from 'swiper';
-
+import groupPic from './_components/GroupPic';
 export default {
     name: 'recommend',
+    components: { groupPic },
     data() {
         return {
-            todayObj: {}
+            todayObj: {},
+            imgObj: {}
         };
     },
     created() {
         console.log('created');
         this.$moment.locale('zh-cn');
         this.getPopularList();
+        this.getGroupPic();
     },
     activated() {
         console.log('activated');
@@ -139,6 +102,17 @@ export default {
                 }
             }
             this.popularObj = res.data.data;
+            console.log(this.popularObj);
+        },
+        async getGroupPic() {
+            let res = await this.$store.dispatch('schedule/GetGroupPic');
+            // for (let key in res.data.data) {
+            //     if (this.$moment(key).format('MM月DD号') === this.$moment().format('MM月DD号')) {
+            //         console.log('today');
+            //     }
+            // }
+            this.imgObj = res.data.data;
+            console.log(this.imgObj);
         }
     },
     mounted() {
@@ -317,29 +291,6 @@ export default {
                 }
                 .report-time {
                     font-size: 24px;
-                    color: #808080;
-                }
-            }
-        }
-        .img-report {
-            width: 100%;
-            height: 255px;
-            padding: 20px 10px 20px 10px;
-            .title {
-                font-size: 28px;
-                color: #4d4d4d;
-            }
-            .imgs {
-                width: 100%;
-                height: 144px;
-                img {
-                    width: 212px;
-                    height: 144px;
-                }
-            }
-            .time {
-                font-size: 24px;
-                .report-time {
                     color: #808080;
                 }
             }

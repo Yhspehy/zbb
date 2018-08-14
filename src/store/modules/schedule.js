@@ -1,4 +1,12 @@
-import { getPopularList, getMonthList, getFollowList, getTeamRank, getPlayerRank, getPlayoff } from '@/Api/schedule';
+import {
+    getPopularList,
+    getGroupPic,
+    getMonthList,
+    getFollowList,
+    getTeamRank,
+    getPlayerRank,
+    getPlayoff
+} from '@/Api/schedule';
 import cloneDeep from 'lodash/cloneDeep';
 
 const schedule = {
@@ -7,6 +15,7 @@ const schedule = {
     state: {
         chosenNav: '热门',
         popularList: {},
+        groupPic: {},
         followList: {},
         monthList: {},
         matchLeagueName: '',
@@ -20,6 +29,9 @@ const schedule = {
         },
         SET_POPULARLIST: (state, list) => {
             state.popularList = list;
+        },
+        SET_GROUPPIC: (state, list) => {
+            state.groupPic = list;
         },
         SET_FOLLOWLIST: (state, list) => {
             state.followList = list;
@@ -46,6 +58,18 @@ const schedule = {
                 getPopularList()
                     .then(res => {
                         commit('SET_POPULARLIST', res.data.data);
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            });
+        },
+        GetGroupPic({ commit }) {
+            return new Promise((resolve, reject) => {
+                getGroupPic()
+                    .then(res => {
+                        commit('SET_GROUPPIC', res.data.data);
                         resolve(res);
                     })
                     .catch(error => {

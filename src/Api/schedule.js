@@ -4,6 +4,10 @@ export function getPopularList() {
     return request('/mock/schedule/popularList');
 }
 
+export function getGroupPic() {
+    return request('/mock/schedule/groupPic');
+}
+
 export function getFollowList() {
     return request('/mock/schedule/followList');
 }
