@@ -51,6 +51,7 @@ print_background: false
 	* [数据](#数据)
 	* [竞猜项列表](#竞猜项列表)
 	* [竞猜投注](#竞猜投注)
+	* [回顾](#回顾)
 	* [热议](#热议)
 * [我的](#我的)
 	* [登出](#登出)
@@ -1525,6 +1526,52 @@ print_background: false
      * @params {Number}  quiz_val  投注数量
      * @params {String}  quiz_text_id  选择的投注项的具体内容的id
      */
+```
+
+### 回顾
+
+```js
+    /**
+     * @api {post}  live/review/:match_id
+        */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "hometeam": "湖人',
+            "awayteam": "勇士",
+            "home_score": 100,
+            "away_score": 99,
+            "finish_time": 1212121212,
+            "source": "NBA总冠军第四轮",
+            "imgList": [
+                {
+                    "img": "/image/live/img00025.jpg",
+                    "name": "欧文霸气绝杀!"
+                },
+                {
+                    "img": "/image/live/img00031.jpg",
+                    "name": "欧文霸气绝杀!"
+                },
+                {
+                    "img": "/image/live/img00038.jpg",
+                    "name": "欧文霸气绝杀!"
+                }
+            ],
+            "newList": [
+                {
+                    "news_id": 11,
+                    "title": "五大关键词解读",
+                    "img_list": ["url", "url"],
+                    "img_count": 4,
+                    "create_time": 1122122,
+                    "source": "腾讯",
+                    "type": "推荐"
+                }
+            ]
+        }
+    }
 ```
 
 ### 热议

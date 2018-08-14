@@ -272,6 +272,7 @@ code.language-yaml {
 <li><a href="#%E6%95%B0%E6%8D%AE">数据</a></li>
 <li><a href="#%E7%AB%9E%E7%8C%9C%E9%A1%B9%E5%88%97%E8%A1%A8">竞猜项列表</a></li>
 <li><a href="#%E7%AB%9E%E7%8C%9C%E6%8A%95%E6%B3%A8">竞猜投注</a></li>
+<li><a href="#%E5%9B%9E%E9%A1%BE">回顾</a></li>
 <li><a href="#%E7%83%AD%E8%AE%AE">热议</a></li>
 </ul>
 </li>
@@ -1648,6 +1649,49 @@ code.language-yaml {
      * @params {Number}  quiz_val  投注数量
      * @params {String}  quiz_text_id  选择的投注项的具体内容的id
      */</span>
+</pre><h3 class="mume-header" id="%E5%9B%9E%E9%A1%BE">回顾</h3>
+
+<pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
+     * @api {post}  live/review/:match_id
+        */</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"hometeam"</span><span class="token punctuation">:</span> "湖人'<span class="token punctuation">,</span>
+            <span class="token string">"awayteam"</span><span class="token punctuation">:</span> <span class="token string">"勇士"</span><span class="token punctuation">,</span>
+            <span class="token string">"home_score"</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+            <span class="token string">"away_score"</span><span class="token punctuation">:</span> <span class="token number">99</span><span class="token punctuation">,</span>
+            <span class="token string">"finish_time"</span><span class="token punctuation">:</span> <span class="token number">1212121212</span><span class="token punctuation">,</span>
+            <span class="token string">"source"</span><span class="token punctuation">:</span> <span class="token string">"NBA总冠军第四轮"</span><span class="token punctuation">,</span>
+            <span class="token string">"imgList"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token string">"img"</span><span class="token punctuation">:</span> <span class="token string">"/image/live/img00025.jpg"</span><span class="token punctuation">,</span>
+                    <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"欧文霸气绝杀!"</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    <span class="token string">"img"</span><span class="token punctuation">:</span> <span class="token string">"/image/live/img00031.jpg"</span><span class="token punctuation">,</span>
+                    <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"欧文霸气绝杀!"</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    <span class="token string">"img"</span><span class="token punctuation">:</span> <span class="token string">"/image/live/img00038.jpg"</span><span class="token punctuation">,</span>
+                    <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"欧文霸气绝杀!"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">"newList"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token string">"news_id"</span><span class="token punctuation">:</span> <span class="token number">11</span><span class="token punctuation">,</span>
+                    <span class="token string">"title"</span><span class="token punctuation">:</span> <span class="token string">"五大关键词解读"</span><span class="token punctuation">,</span>
+                    <span class="token string">"img_list"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"url"</span><span class="token punctuation">,</span> <span class="token string">"url"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"img_count"</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+                    <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">1122122</span><span class="token punctuation">,</span>
+                    <span class="token string">"source"</span><span class="token punctuation">:</span> <span class="token string">"腾讯"</span><span class="token punctuation">,</span>
+                    <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"推荐"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </pre><h3 class="mume-header" id="%E7%83%AD%E8%AE%AE">热议</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**

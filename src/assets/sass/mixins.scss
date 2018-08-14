@@ -172,6 +172,12 @@
     justify-content: center;
     align-items: center;
 }
+
+@mixin flex-center-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 @mixin text-image() {
     color: transparent;
     -webkit-background-clip: text;
