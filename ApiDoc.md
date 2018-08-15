@@ -450,6 +450,8 @@ print_background: false
      *         commentlist/thread_id等于comment_id
      * @return commentlist/is_answer  是否是回复别人的消息，是否@
      * @return commentlist/answer_user_name   回复的用户名字
+     * @return isExpand  评论是否展开，默认都传false
+     * @return isVote 是否点赞了
      */
 
     return {
@@ -480,8 +482,10 @@ print_background: false
                         "answer_user_name": "HIHI"
                     }
                 ],
+                "isExpand": false,
                 "create_time": 121212,
-                "vote_count": 222
+                "vote_count": 222,
+                "isVote": true
             }
         }
     }
@@ -1595,6 +1599,8 @@ print_background: false
      * @return commentlist/answer_user_name   回复的用户名字
      * @return isHot  是否为热评
      * @return index  楼层
+     * @return isExpand  评论是否展开，默认都传false
+     * @return isVote  是否点赞了
      * 
      * @return hot 只有page_index为1的时候返回
      */
@@ -1631,7 +1637,9 @@ print_background: false
                     "create_time": 121212,
                     "vote_count": 222,
                     "isHot": true,
-                    "index": 1
+                    "index": 1,
+                    "isExpand": false,
+                    "isVote": true
                 }
             ],
             "list": [
