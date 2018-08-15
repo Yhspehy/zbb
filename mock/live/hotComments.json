@@ -1,0 +1,340 @@
+{
+    "status": true,
+    "msg": "...",
+    "data": {
+        "total_page": 10,
+        "hot": [
+            {
+                "comment_id": 1,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 5,
+                "isExpand": false,
+                "commentlist": [
+                    {
+                        "comment_id": 1212,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 1,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 2,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 3,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 4,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 5,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 12,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    }
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1,
+                "isVote": true
+            },
+            {
+                "comment_id": 2,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 0,
+                "isExpand": false,
+                "commentlist": [
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1,
+                "isVote": true
+            },
+            {
+                "comment_id": 3,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 12,
+                "isExpand": false,
+                "commentlist": [
+                    {
+                        "comment_id": 1212,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 1,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 2,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 3,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 4,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 5,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 12,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    }
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1,
+                "isVote": true
+            },
+            {
+                "comment_id": 4,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 0,
+                "isExpand": false,
+                "commentlist": [
+                    
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1,
+                "isVote": true
+            },
+            {
+                "comment_id": 5,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 12,
+                "isExpand": false,
+                "commentlist": [
+                    {
+                        "comment_id": 1212,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 1,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 2,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 3,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 4,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 5,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 12,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    }
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1,
+                "isVote": true
+            }
+        ],
+        "list": [
+            {
+                "comment_id": 1212,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 0,
+                "commentlist": [
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1
+            }
+        ]
+    }
+}

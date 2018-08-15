@@ -126,7 +126,4 @@ export default {
 
 <style scoped lang="scss">
 @import '../../../public/style/video.css';
-
-.liveNavContent {
-}
 </style>
