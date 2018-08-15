@@ -4,9 +4,9 @@ import { loadFromLocal } from '@/assets/js/localstore';
 const league = {
     namespaced: true,
     state: {
-        leagueList: undefined,
-        subLeagueList: undefined,
-        unSubLeagueList: undefined
+        leagueList: [],
+        subLeagueList: [],
+        unSubLeagueList: []
     },
     mutations: {
         UPDATE_LEAGUELIST(state, payload) {
@@ -42,9 +42,9 @@ const league = {
             }
         },
 
-        EditSubLeagueList({ commit }, payload) {
-            commit('UPDATE_SUBLEAGUELIST', payload.subList);
-            commit('UPDATE_UNSUBLEAGUELIST', payload.unSubList);
+        EditSubLeagueList({ commit }, { subList, unSubList }) {
+            commit('UPDATE_SUBLEAGUELIST', subList);
+            commit('UPDATE_UNSUBLEAGUELIST', unSubList);
         }
     }
 };

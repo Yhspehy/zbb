@@ -301,11 +301,11 @@ print_background: false
 
 ## 首页-推荐
 
-### 获取头部图片swiper
+### 获取头部焦点图片list
 
 ```js
     /**
-     * @api {get}  home/recommend/header
+     * @api {get}  home/recommend/focusList
      */
 
     return {
@@ -341,6 +341,8 @@ print_background: false
             "type": "NBA夏季联赛",
             "hometeam": "勇士",
             "awayteam": "骑士",
+            "hometeam_img": "url",
+            "awayteam_img": "url",
             "league": "NBA",
             "home_score": 99,
             "away_score": 101
@@ -369,10 +371,10 @@ print_background: false
     /**
      * @api {get}  home/recommend/liveTrail
      * 
-     * @params {String} date  日期  <2018-7-23>
+     * @params {String} date  日期  <2018-7-23> *获取当天直播数据不需要传date
      * 
      * @return league   直播类型  <NBA ...  program>  如有别的类型再进行添加
-     *         league不为grogram的时候主客场名字和img要返回值，多余的字段传""
+     *         league不为program的时候主客场名字和img要返回值，多余的字段传""
      *         league为program的时候programName要返回值，多余的字段传""
      * @return sourse   直播的来源
      * @return program_name   节目名字
@@ -380,6 +382,7 @@ print_background: false
      * @return status    比赛状态  <已开始  未开始  已结束>
      * @return start_time  比赛开始时间
      * @return highlights_url   集锦链接
+     * @return end_description_word  比赛结束后链接描述词  <集锦 详情 回放>
      */
 
     return {
@@ -400,7 +403,8 @@ print_background: false
                 "start_time": 11221122,
                 "highlights_url": "url",
                 "home_score": 99,
-                "away_score": 101 
+                "away_score": 101,
+                "end_description_word": "集锦", 
             }
         ]
     }
@@ -417,6 +421,26 @@ print_background: false
      * 接口待定，优酷视频接口和UI出入较大
      * 
      * @api {get}  home/highLights/list
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "highlights_id": 11,
+                "url": "url"
+            }
+        ]
+    }
+```   
+### 获取集锦视频详情
+
+```js
+    /**
+     * @api {get}  home/highLights/list/:id
+     * 
+     * 
      */
 
     return {
