@@ -611,7 +611,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/:league_id/list
+     * @api {get}  schedule/list/:league_id
      * 
      * @params start_time  {String}  开始时间 
      * @params end_time  {String}  结束时间
@@ -652,7 +652,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/NBA_id/playoff
+     * @api {get}  schedule/playoff/:league_id
      * 
      * @params  {Number}  year  年份
      * 
@@ -963,7 +963,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/NBA_id/rank/team
+     * @api {get}  schedule/rank/team/:league_id
      * 
      * @params {Number} year 年份
      * 
@@ -1132,7 +1132,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/NBA_id/rank/player
+     * @api {get}  schedule/rank/player/:league_id
      * 
      * @params {Number} year 年份
      * 

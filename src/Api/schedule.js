@@ -22,13 +22,13 @@ export function getMonthList(params) {
 }
 
 export function getTeamRank(id) {
-    return request(`/mock/schedule/${id}/rank/team`);
+    return request(`/mock/schedule/rank/team/${id}`);
 }
 
 export function getPlayerRank(id) {
-    return request(`/mock/schedule/${id}/rank/player`);
+    return request(`/mock/schedule/rank/player/${id}`);
 }
 
 export function getPlayoff(id) {
-    return request(`/mock/schedule/${id}/playoff`);
+    return request(`/mock/schedule/playoff/${id}`);
 }

@@ -768,7 +768,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%80%E8%81%94%E8%B5%9B%E7%9A%84%E6%AF%94%E8%B5%9B%E8%B5%9B%E7%A8%8B">获取某一联赛的比赛赛程</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/:league_id/list
+     * @api {get}  schedule/list/:league_id
      * 
      * @params start_time  {String}  开始时间 
      * @params end_time  {String}  结束时间
@@ -806,7 +806,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%8F%96nba%E5%AD%A3%E5%90%8E%E8%B5%9B%E5%AF%B9%E9%98%B5">获取NBA季后赛对阵</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/NBA_id/playoff
+     * @api {get}  schedule/playoff/:league_id
      * 
      * @params  {Number}  year  年份
      * 
@@ -1114,7 +1114,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%BE%97nba%E9%98%9F%E4%BC%8D%E6%8E%92%E8%A1%8C%E6%A6%9C">获得NBA队伍排行榜</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/NBA_id/rank/team
+     * @api {get}  schedule/rank/team/:league_id
      * 
      * @params {Number} year 年份
      * 
@@ -1280,7 +1280,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%8F%96nba%E7%90%83%E5%91%98%E6%8E%92%E8%A1%8C%E6%A6%9C">获取NBA球员排行榜</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/NBA_id/rank/player
+     * @api {get}  schedule/rank/player/:league_id
      * 
      * @params {Number} year 年份
      * 
