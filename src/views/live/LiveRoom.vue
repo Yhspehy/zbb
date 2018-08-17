@@ -5,7 +5,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+    name: 'live_liveRoom',
+    data() {
+        return {};
+    },
+    created() {},
+    methods: {}
+};
 </script>
 
 <style scoped>

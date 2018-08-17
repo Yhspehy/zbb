@@ -7,3 +7,7 @@ export function getReview(id) {
 export function getHotComments(id) {
     return request(`/mock/live/${id}/hotComments`);
 }
+
+export function getStats(id) {
+    return request(`/mock/live/${id}/stats`);
+}

@@ -11,7 +11,8 @@ const getApi = {
     '/mock/schedule/:id/rank/player': path.resolve(__dirname, 'schedule/playerRank.json'),
     '/mock/schedule/:id/playoff': path.resolve(__dirname, 'schedule/playoff.json'),
     '/mock/live/:id/review': path.resolve(__dirname, 'live/review.json'),
-    '/mock/live/:id/hotComments': path.resolve(__dirname, 'live/hotComments.json')
+    '/mock/live/:id/hotComments': path.resolve(__dirname, 'live/hotComments.json'),
+    '/mock/live/:id/stats': path.resolve(__dirname, 'live/stats.json')
 };
 
 module.exports = getApi;

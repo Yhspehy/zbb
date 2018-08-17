@@ -213,8 +213,6 @@ export default {
                 box-shadow: 0px 0px 11px 0px rgba(0, 51, 109, 0.25);
                 border-radius: 6px;
                 color: #808080;
-                .time {
-                }
                 .result {
                     width: 100%;
                     text-align: center;
@@ -238,7 +236,7 @@ export default {
                         width: 120px;
                         height: 36px;
                         text-align: center;
-                        color: #fff;
+                        color: #ffffff;
                         background-image: linear-gradient(
                                 -90deg,
                                 #0080ff 0%,
