@@ -187,10 +187,10 @@ export default {
         },
         async onPullingUp() {
             if (pageIndex < 5) {
-               await this.getNewsList();
-               this.$refs.scroll.forceUpdate(true);
+                await this.getNewsList();
+                this.$refs.scroll.forceUpdate(true);
             } else {
-               this.$refs.scroll.forceUpdate(false);
+                this.$refs.scroll.forceUpdate(false);
             }
         },
         async onPullingDown() {
@@ -339,78 +339,51 @@ export default {
     .news {
         margin-top: 20px;
         width: 750px;
-    }
-    .news-wrapper {
-        padding: 0 26px;
-        background: #fff;
-    }
-    .news-first {
-        padding: 20px 0;
-        @include border-bottom-1px;
-        img {
-            margin-left: 10px;
-            width: 212px;
-            height: 144px;
-        }
-        .content {
-            padding-left: 20px;
-            .title {
-                font-size: 28px;
-                line-height: 36px;
-                color: #4d4d4d;
-            }
-            .date,
-            .source {
-                font-size: 24px;
-                color: #808080;
-            }
-        }
-    }
-    .news-list {
-        .news-item {
-            padding: 16px 10px;
-            @include border-bottom-1px;
-            overflow: hidden;
-            .title {
-                font-size: 28px;
-                color: #4d4d4d;
-            }
-            .img-group {
-                margin: 20px 0;
+        .news-wrapper {
+            padding: 0 26px;
+            background: #fff;
+            .news-first {
+                padding: 20px 0;
+                @include border-bottom-1px;
                 img {
+                    margin-left: 10px;
                     width: 212px;
                     height: 144px;
                 }
-            }
-            .date,
-            .source {
-                font-size: 24px;
-                color: #808080;
-            }
-        }
-    }
-    .report {
-        width: 100%;
-        margin-top: 20px;
-        padding: 14px 26px 0 26px;
-        background: #fff;
-        .avi-report {
-            width: 100%;
-            padding: 6px 10px 20px 10px;
-            @include border-bottom-1px;
-            .avi-img {
-                width: 212px;
-                height: 144px;
-            }
-            .content {
-                padding-left: 20px;
-                .title {
-                    font-size: 28px;
-                    color: #4d4d4d;
+                .content {
+                    margin-left: 20px;
+                    .title {
+                        font-size: 28px;
+                        line-height: 36px;
+                        color: #4d4d4d;
+                    }
+                    .date {
+                        font-size: 24px;
+                        color: #808080;
+                    }
                 }
-                .report-time {
-                    font-size: 24px;
-                    color: #808080;
+            }
+            .news-list {
+                .news-item {
+                    padding: 16px 10px;
+                    @include border-bottom-1px;
+                    overflow: hidden;
+                    .title {
+                        font-size: 28px;
+                        color: #4d4d4d;
+                    }
+                    .img-group {
+                        margin: 20px 0;
+                        img {
+                            width: 212px;
+                            height: 144px;
+                        }
+                    }
+                    .date,
+                    .source {
+                        font-size: 24px;
+                        color: #808080;
+                    }
                 }
             }
         }

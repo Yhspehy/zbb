@@ -4,6 +4,7 @@ const getApi = {
     '/mock/login': path.resolve(__dirname, 'login/login.json'),
     '/mock/subPage/leagueList': path.resolve(__dirname, 'subPage/leagueList.json'),
     '/mock/home/recommend/liveTrail': path.resolve(__dirname, 'home/recommend/liveTrail.json'),
+    '/mock/home/recommend/pointNews': path.resolve(__dirname, 'home/recommend/pointNews.json'),
     '/mock/home/recommend/focusList': path.resolve(__dirname, 'home/recommend/focusList.json'),
     '/mock/home/recommend/newsList': path.resolve(__dirname, 'home/recommend/newsList.json'),
     '/mock/home/recommend/hotGameCount': path.resolve(__dirname, 'home/recommend/hotGameCount.json'),
