@@ -234,26 +234,39 @@ print_background: false
      * @return title  新闻标题
      * @return create_time  新闻发布时间
      * @return source   新闻来源
+     * @return league   联赛类别
      * @return type   新闻所属类别(指的是我们应用的类别)
      * @return update_count  更新条数
      */
 
     return {
-        "status": true,
-        "msg": "...",
-        "data": [
-            {
+    "status": true,
+    "msg": "...",
+    "data": {
+        "news_list": [{
                 "news_id": 11,
                 "title": "五大关键词解读",
                 "img_list": ["url", "url"],
                 "img_count": 4,
                 "create_time": 1122122,
                 "source": "腾讯",
-                "type": "推荐",
-                "update_count": 8
+                "league": "NBA",
+                "type": "推荐"
+            },
+            {
+                "news_id": 12,
+                "title": "五大关键词解读",
+                "img_list": ["url", "url"],
+                "img_count": 5,
+                "create_time": 1122122,
+                "source": "腾讯",
+                "league": "西甲",
+                "type": "推荐"
             }
-        ]
+        ],
+        "update_count": 8
     }
+}
 ```   
 
 
@@ -301,11 +314,11 @@ print_background: false
 
 ## 首页-推荐
 
-### 获取头部图片swiper
+### 获取头部焦点图片list
 
 ```js
     /**
-     * @api {get}  home/recommend/header
+     * @api {get}  home/recommend/focusList
      */
 
     return {
@@ -341,6 +354,8 @@ print_background: false
             "type": "NBA夏季联赛",
             "hometeam": "勇士",
             "awayteam": "骑士",
+            "hometeam_img": "url",
+            "awayteam_img": "url",
             "league": "NBA",
             "home_score": 99,
             "away_score": 101
@@ -369,10 +384,10 @@ print_background: false
     /**
      * @api {get}  home/recommend/liveTrail
      * 
-     * @params {String} date  日期  <2018-7-23>
+     * @params {String} date  日期  <2018-7-23> *获取当天直播数据不需要传date
      * 
      * @return league   直播类型  <NBA ...  program>  如有别的类型再进行添加
-     *         league不为grogram的时候主客场名字和img要返回值，多余的字段传""
+     *         league不为program的时候主客场名字和img要返回值，多余的字段传""
      *         league为program的时候programName要返回值，多余的字段传""
      * @return sourse   直播的来源
      * @return program_name   节目名字
@@ -380,6 +395,7 @@ print_background: false
      * @return status    比赛状态  <已开始  未开始  已结束>
      * @return start_time  比赛开始时间
      * @return highlights_url   集锦链接
+     * @return end_description_word  比赛结束后链接描述词  <集锦 详情 回放>
      */
 
     return {
@@ -400,7 +416,8 @@ print_background: false
                 "start_time": 11221122,
                 "highlights_url": "url",
                 "home_score": 99,
-                "away_score": 101 
+                "away_score": 101,
+                "end_description_word": "集锦", 
             }
         ]
     }
@@ -417,6 +434,26 @@ print_background: false
      * 接口待定，优酷视频接口和UI出入较大
      * 
      * @api {get}  home/highLights/list
+     */
+
+    return {
+        "status": true,
+        "msg": "...",
+        "data": [
+            {
+                "highlights_id": 11,
+                "url": "url"
+            }
+        ]
+    }
+```   
+### 获取集锦视频详情
+
+```js
+    /**
+     * @api {get}  home/highLights/list/:id
+     * 
+     * 
      */
 
     return {

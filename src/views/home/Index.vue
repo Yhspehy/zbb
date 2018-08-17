@@ -14,12 +14,11 @@
             </ul>
             <div class="subscribe d-flex justify-content-between align-items-center">
                 <div class="dialog"></div>
-                <div class="add" @click="editSubLeagueList">+</div>
+                <div class="add">+</div>
                 <!-- <router-link :to="{name:'subEdit'}">+</router-link> -->
             </div>
         </div>
         <div class="content">
-            <!-- <button class="click" v-on:click="addSub">click</button> -->
             <router-view></router-view>
         </div>
         <v-footer></v-footer>
@@ -28,7 +27,6 @@
 
 <script>
 import vFooter from '@/components/TheFooter';
-// import { saveToLocal, loadFromLocal } from '@/assets/js/localstore';
 export default {
     name: 'home',
     components: {
