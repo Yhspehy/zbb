@@ -1,34 +1,36 @@
 {
+    "status": true,
+    "msg": "...",
     "online_person": 999999,
     "data": [
         {
-            "user": "Mavis(直播员)",
-            "content": "ssdsdsds",
+            "user": "赖铁柱(直播员)",
+            "content": "本场比赛的直播就到这里，感谢您的关注！",
             "imgList": []
         },
         {
-            "user": "Mavis(直播员)",
-            "content": "ssdsdsds",
+            "user": "赖铁柱(直播员)",
+            "content": "全场比赛，最终勇士队已108-88战胜了骑士队！",
             "imgList": []
         },
         {
-            "user": "Mavis(直播员)",
-            "content": "ssdsdsds",
+            "user": "赖铁柱(直播员)",
+            "content": "詹姆斯左翼空位三分不中",
             "imgList": []
         },
         {
-            "user": "Mavis(直播员)",
-            "content": "ssdsdsds",
+            "user": "赖铁柱(直播员)",
+            "content": "库里弧顶三分命中，面朝大海，春暖花开",
             "imgList": []
         },
         {
-            "user": "Mavis(直播员)",
-            "content": "ssdsdsds",
+            "user": "赖铁柱(直播员)",
+            "content": "詹姆斯左翼空位三分不中",
             "imgList": []
         },
         {
-            "user": "Mavis(直播员)",
-            "content": "ssdsdsds",
+            "user": "赖铁柱(直播员)",
+            "content": "库里弧顶三分命中，面朝大海，春暖花开",
             "imgList": []
         }
     ]

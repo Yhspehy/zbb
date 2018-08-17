@@ -13,7 +13,7 @@ const getApi = {
     '/mock/live/review/:id': path.resolve(__dirname, 'live/review.json'),
     '/mock/live/hotComments/:id': path.resolve(__dirname, 'live/hotComments.json'),
     '/mock/live/stats/:id': path.resolve(__dirname, 'live/stats.json'),
-    '/mock/live/liveRoom/:id': path.resolve(__dirname, 'live/stats.json')
+    '/mock/live/liveRoom/:id': path.resolve(__dirname, 'live/liveRoom.json')
 };
 
 module.exports = getApi;
