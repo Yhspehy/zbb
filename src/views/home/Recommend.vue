@@ -1,104 +1,155 @@
 <template>
-    <div class="recommend" ref="pageWrapper">
-        <div class="recommend-wrapper">
-            <div class="focus-slide">
-                <slide>
-                    <div v-for="(item, index) in focusList" :key="index">
-                        <a class="item-link">
-                            <img :src=item.imgUrl>
-                            <div class="tip">
-                                <span class="title">{{item.title}}</span>
-                                <span class="page">{{index+1}} / {{focusListLength}}</span>
-                            </div>
-                        </a>
+    <div class="recommend">
+        <!-- <div class="remommend-wrapper"> -->
+            <scroll ref="scroll" :scrollbar="scrollbarObj" :pullDownRefresh="pullDownRefreshObj" :pullUpLoad="pullUpLoadObj" :startY="parseInt(startY)" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
+                <div class="focus-slide">
+                    <slide>
+                        <div v-for="(item, index) in focusList" :key="index">
+                            <a href="#" class="item-link">
+                                <img :src=item.imgUrl>
+                                <div class="tip">
+                                    <span class="title">{{item.title}}</span>
+                                    <span class="page">{{index+1}} / {{focusListLength}}</span>
+                                </div>
+                            </a>
+                        </div>
+                    </slide>
+                </div>
+                <div class="schedule">
+                    <div class="schedule-wrapper">
+                        <h-scroll>
+                            <li class="schedule-item d-flex flex-column justify-content-between align-items-center" v-for="(item, index) in liveTrailList" :key="index">
+                                <div class="title">{{item.source}}</div>
+                                <div class="result d-flex justify-content-around align-items-center">
+                                    <img :src=item.hometeam_img alt="">
+                                    <div v-if="item.status !== '未开始'">
+                                        <span v-bind:class="{ 'win': item.home_score > item.away_score }">{{item.home_score}}</span> :
+                                        <span v-bind:class="{ 'win': item.home_score < item.away_score }">{{item.away_score}}</span>
+                                    </div>
+                                    <div v-else>
+                                        <i class="far fa-clock" :class="{is_trail: item.is_trail}"></i>
+                                        <span>{{item.start_time | moment('HH:mm')}}</span>
+                                    </div>
+                                    <img :src=item.awayteam_img alt="">
+                                </div>
+                                <div class="name d-flex justify-content-between align-items-center">
+                                    <span class="team">{{item.hometeam}}(主)</span>
+                                    <span class="state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</span>
+                                    <span class="team">{{item.awayteam}}</span>
+                                </div>
+                            </li>
+                        </h-scroll>
                     </div>
-                </slide>
-            </div>
-            <div class="schedule">
-                <div class="schedule-wrapper">
-                    <h-scroll>
-                        <li class="schedule-item d-flex flex-column justify-content-between align-items-center" v-for="(item, index) in liveTrailList" :key="index">
-                            <div class="title">{{item.source}}</div>
-                            <div class="result d-flex justify-content-around align-items-center">
-                                <img :src=item.hometeam_img alt="">
-                                <div v-if="item.status !== '未开始'">
-                                    <span v-bind:class="{ 'win': item.home_score > item.away_score }">{{item.home_score}}</span> :
-                                    <span v-bind:class="{ 'win': item.home_score < item.away_score }">{{item.away_score}}</span>
-                                </div>
-                                <div v-else>
-                                    <i class="far fa-clock" :class="{is_trail: item.is_trail}"></i>
-                                    <span>{{$moment(item.start_time).format('HH:mm')}}</span>
-                                </div>
-                                <img :src=item.awayteam_img alt="">
-                            </div>
-                            <div class="name d-flex justify-content-between align-items-center">
-                                <span class="team">{{item.hometeam}}(主)</span>
-                                <span class="state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</span>
-                                <span class="team">{{item.awayteam}}</span>
-                            </div>
-                        </li>
-                    </h-scroll>
+                    <div class="notice">
+                        <span class="tip-time">{{$moment().format('MM月DD号')}}</span>
+                        <span class="line">|</span>
+                        <span>Mavis {{hello}} 今天有 {{hotGameCount}}场赛事直播</span>
+                    </div>
                 </div>
-                <div class="notice">
-                    <span class="tip-time">{{$moment().format('MM月DD号')}}</span>
-                    <span class="line">|</span>
-                    <span>Mavis {{hello}}, 今天有 {{hotGameCount}}场赛事直播</span>
-                </div>
-            </div>
-            <div class="news">
-                <div class="news-wrapper">
-                    <div class="news-top d-flex justify-content-between">
-                        <img src="http://temp.im/750x360/">
-                        <div class="content d-flex flex-column justify-content-between">
-                            <div class="title">五大关键词解读自由市场72小时 谁说冠军已经定了？</div>
-                            <div class="d-flex justify-content-between">
-                                <div class="date">07/04 18:00</div>
-                                <div class="source"><i class="far"></i>Mavis报道</div>
-                            </div>                
+                <div class="news">
+                    <div class="news-wrapper">
+                        <div class="news-first d-flex justify-content-between">
+                            <img :src=newsGroup.first.img_list[0]>
+                            <div class="content d-flex flex-column justify-content-between">
+                                <div class="title">{{newsGroup.first.title}}</div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="date">{{newsGroup.first.create_time | moment('MM/DD HH:mm')}}</div>
+                                    <div class="source">
+                                        <i class="far"></i>Mavis报道
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="news-list">
+                            <div class="news-item d-flex flex-column justify-content-between" v-for="(item, index) in newsGroup.rest" :key="index">
+                                <div class="title">{{item.title}}</div>
+                                <div class="img-group d-flex justify-content-between">
+                                    <img :src=item.img_list[0]>
+                                    <img :src=item.img_list[1]>
+                                    <img :src=item.img_list[2]>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="date">{{newsGroup.first.create_time | moment('MM/DD HH:mm')}}</div>
+                                    <div class="source">
+                                        <i class="far"></i>Mavis报道
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="news-list"></div>
                 </div>
-            </div>
-        </div>
+                <template slot="pullup"></template>
+            </scroll>
+        <!-- </div> -->
     </div>
 </template>
 
 <script>
 import Slide from '@/components/Slide';
 import HScroll from '@/components/HScroll';
+import Scroll from '@/components/Scroll';
 import { hello } from '@/assets/js/utils';
 import BScroll from 'better-scroll';
+let pageIndex = 1;
 export default {
     name: 'recommend',
-    components: { Slide, HScroll},
+    components: { Slide, HScroll, Scroll },
     data() {
         return {
             hello: '',
             focusList: [],
             liveTrailList: [],
             focusListLength: 0,
-            hotGameCount: 0
+            hotGameCount: 0,
+            newsList: [],
+            newsGroup: {
+                first: {
+                    news_id: 0,
+                    title: '',
+                    img_list: [],
+                    img_count: 0,
+                    create_time: 0,
+                    source: '',
+                    league: '',
+                    type: ''
+                }
+            },
+            updateCount: 0,
+            // 这个配置可以开启滚动条，默认为 false。当设置为 true 或者是一个 Object 的时候，都会开启滚动条，默认是会 fade 的
+            scrollbarObj: {
+                fade: true
+            },
+            // 这个配置用于做下拉刷新功能，默认为 false。当设置为 true 或者是一个 Object 的时候，可以开启下拉刷新，可以配置顶部下拉的距离（threshold） 来决定刷新时机以及回弹停留的距离（stop）
+            pullDownRefreshObj: {
+                threshold: 90,
+                stop: 40
+            },
+            // 这个配置用于做上拉加载功能，默认为 false。当设置为 true 或者是一个 Object 的时候，可以开启上拉加载，可以配置离底部距离阈值（threshold）来决定开始加载的时机
+            pullUpLoadObj: {
+                threshold: 0,
+                txt: {
+                    more: '加载更多',
+                    noMore: '没有更多数据了'
+                }
+            },
+            startY: 0, // 纵轴方向初始化位置
+            scrollToX: 0,
+            scrollToY: 0,
+            scrollToTime: 700
         };
     },
-    filters: {
-        getTime: function(value) {
-            let vm = this;
-            if (!value) return '';
-            return vm.$moment(value).format('hh:mm:ss');
-        }
-    },
+
     created() {
         this.$moment.locale('zh-cn');
         this.getLiveTrail();
         this.getFocus();
+        this.getNewsList();
         this.getHotGameCount();
     },
     activated() {
         console.log('activated');
     },
     methods: {
-
         /* 获取当日直播比赛 */
         getLiveTrail() {
             this.$store.dispatch('home/GetLiveTrail').then(res => {
@@ -119,24 +170,43 @@ export default {
             this.$store.dispatch('home/GetHotGameCount').then(res => {
                 this.hotGameCount = res;
             });
+        },
+
+        /* 获取新闻列表 */
+        getNewsList() {
+            this.$store.dispatch('home/GetNewsList', { type_id: 1, page_index: pageIndex++ }).then(res => {
+                this.newsList = res.newsList;
+                this.updateCount = res.updateCount;
+                const [first, ...rest] = this.newsList;
+                this.newsGroup = { first, rest };
+            });
+        },
+        // 滚动到页面顶部
+        scrollTo() {
+            this.$refs.scroll.scrollTo(this.scrollToX, this.scrollToY, this.scrollToTime);
+        },
+        async onPullingUp() {
+            if (pageIndex < 5) {
+               await this.getNewsList();
+               this.$refs.scroll.forceUpdate(true);
+            } else {
+               this.$refs.scroll.forceUpdate(false);
+            }
+        },
+        async onPullingDown() {
+            pageIndex = 1;
+            let [liveTrail, focus, newsList, hotGameCount] = await Promise.all([
+                this.getLiveTrail(),
+                this.getFocus(),
+                this.getNewsList(),
+                this.getHotGameCount()
+            ]);
+            this.$refs.scroll.forceUpdate(true);
         }
     },
     mounted() {
         this.hello = hello();
-        // this.$nextTick(() => {
-        //     this.pageScroll = new BScroll(this.$refs.pageWrapper, {
-        //         pullDownRefresh: {
-        //             threshold: 50, // 当下拉到超过顶部 50px 时，触发 pullingDown 事件
-        //             stop: 20 // 刷新数据的过程中，回弹停留在距离顶部还有 20px 的位置});
-        //         }
-        //     });
-        //     this.pageScroll.on('pullingDown', () => {
-        //         // 刷新数据的过程中，回弹停留在距离顶部还有20px的位置
-        //         console.log('refresh');
-        //         // 在刷新数据完成之后，调用 finishPullDown 方法，回弹到顶部
-        //         this.pageScroll.finishPullDown();
-        //     });
-        // });
+        this.onPullingDown();
     }
 };
 </script>
@@ -266,31 +336,53 @@ export default {
             }
         }
     }
-    .news{
+    .news {
+        margin-top: 20px;
         width: 750px;
     }
-    .news-wrapper{
+    .news-wrapper {
         padding: 0 26px;
+        background: #fff;
     }
-    .news-top {
+    .news-first {
         padding: 20px 0;
         @include border-bottom-1px;
         img {
-            padding-left: 10px;
+            margin-left: 10px;
             width: 212px;
             height: 144px;
         }
         .content {
-            margin-left: 20px;
-            .title{
+            padding-left: 20px;
+            .title {
                 font-size: 28px;
                 line-height: 36px;
                 color: #4d4d4d;
             }
-            .date{
+            .date,
+            .source {
                 font-size: 24px;
                 color: #808080;
             }
+        }
+    }
+    .news-list {
+        .news-item {
+            padding: 16px 10px;
+            @include border-bottom-1px;
+            overflow: hidden;
+            .title {
+                font-size: 28px;
+                color: #4d4d4d;
+            }
+            .img-group {
+                margin: 20px 0;
+                img {
+                    width: 212px;
+                    height: 144px;
+                }
+            }
+            .date,
             .source {
                 font-size: 24px;
                 color: #808080;

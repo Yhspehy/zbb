@@ -234,26 +234,39 @@ print_background: false
      * @return title  新闻标题
      * @return create_time  新闻发布时间
      * @return source   新闻来源
+     * @return league   联赛类别
      * @return type   新闻所属类别(指的是我们应用的类别)
      * @return update_count  更新条数
      */
 
     return {
-        "status": true,
-        "msg": "...",
-        "data": [
-            {
+    "status": true,
+    "msg": "...",
+    "data": {
+        "news_list": [{
                 "news_id": 11,
                 "title": "五大关键词解读",
                 "img_list": ["url", "url"],
                 "img_count": 4,
                 "create_time": 1122122,
                 "source": "腾讯",
-                "type": "推荐",
-                "update_count": 8
+                "league": "NBA",
+                "type": "推荐"
+            },
+            {
+                "news_id": 12,
+                "title": "五大关键词解读",
+                "img_list": ["url", "url"],
+                "img_count": 5,
+                "create_time": 1122122,
+                "source": "腾讯",
+                "league": "西甲",
+                "type": "推荐"
             }
-        ]
+        ],
+        "update_count": 8
     }
+}
 ```   
 
 

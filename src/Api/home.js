@@ -6,6 +6,9 @@ export function getLiveTrail() {
 export function getFocusList() {
     return request('/mock/home/recommend/focusList');
 }
+export function getNewsList() {
+    return request('/mock/home/recommend/newsList');
+}
 export function getHotGameCount() {
     return request('/mock/home/recommend/hotGameCount');
 }

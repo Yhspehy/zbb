@@ -125,7 +125,6 @@ export default {
             this.$refs.slideGroup.style.width = width + 'vw';
         },
         _initSlide() {
-            console.log(this.threshold);
             this.slide = new BScroll(this.$refs.slide, {
                 scrollX: true,
                 scrollY: false,
@@ -136,7 +135,7 @@ export default {
                     speed: this.speed
                 },
                 bounce: false,
-                stopPropagation: true,
+                // stopPropagation: true,
                 click: this.click
             });
 

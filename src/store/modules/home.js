@@ -1,4 +1,4 @@
-import { getLiveTrail, getFocusList, getHotGameCount } from '@/Api/home';
+import { getLiveTrail, getFocusList, getHotGameCount, getNewsList } from '@/Api/home';
 const home = {
     namespaced: true,
 
@@ -6,6 +6,10 @@ const home = {
         homeFooter: '',
         liveTrailList: [],
         focusList: [],
+        newsListData: {
+            newsList: [],
+            updateCount: 0
+        },
         hotGameCount: 0
     },
 
@@ -21,6 +25,15 @@ const home = {
         },
         GET_HOTGAMECOUNT: (state, payload) => {
             state.hotGameCount = payload;
+        },
+        GET_NEWSLIST: (state, payload) => {
+            // 下拉刷新默认只获取第一页新闻数据
+            if (payload.page_index === 1) {
+                state.newsListData.newsList = [...payload.data.news_list];
+            } else {
+                state.newsListData.newsList = [...state.newsListData.newsList, ...payload.data.news_list];
+            }
+            state.newsListData.updateCount = payload.data.update_count;
         }
     },
 
@@ -45,6 +58,18 @@ const home = {
             });
             commit('GET_HOTGAMECOUNT', res.data.data);
             return state.hotGameCount;
+        },
+        async GetNewsList({ commit, state }, { type_id, page_index }) {
+            let res = await getNewsList({
+                params: {
+                    type_id,
+                    page_index
+                }
+            }).catch(err => {
+                console.log(err);
+            });
+            commit('GET_NEWSLIST', { data: res.data.data, page_index });
+            return state.newsListData;
         }
     }
 };

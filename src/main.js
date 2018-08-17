@@ -13,6 +13,12 @@ Vue.prototype.$axios = request;
 Vue.prototype.$moment = moment;
 Vue.prototype.$C_Alert = C_Alert;
 Vue.config.productionTip = false;
+
+Vue.filter('moment', function(value, formatString = 'YYYY-MM-DD HH:mm:ss') {
+    if (!value) return;
+    return moment(value).format(formatString);
+});
+
 Vue.use(Toast);
 Vue.use(Dialog);
 let vm = new Vue({
