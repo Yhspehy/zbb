@@ -65,11 +65,7 @@ export default {
     .scroll-group {
         position: relative;
         display: flex;
-        overflow: hidden;
         white-space: nowrap;
-        .scroll-item {
-            overflow: hidden;
-        }
     }
 }
 </style>

@@ -7,6 +7,8 @@
                 <button @click="alertWithHtml">alertWithHtml</button>
                 <!-- <router-link :to="{name:'subEdit'}">+</router-link> -->
             </div>
+            <video src='https://youtu.be/7Oby2KujLqA' width-='400'>
+            </video>
         <v-footer></v-footer>
         <v-picker></v-picker>
     </div>
