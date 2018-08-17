@@ -4,6 +4,7 @@ const getApi = {
     '/mock/login': path.resolve(__dirname, 'login/login.json'),
     '/mock/subPage/leagueList': path.resolve(__dirname, 'subPage/leagueList.json'),
     '/mock/home/recommend/liveTrail': path.resolve(__dirname, 'home/recommend/liveTrail.json'),
+    '/mock/home/recommend/pointNews': path.resolve(__dirname, 'home/recommend/pointNews.json'),
     '/mock/home/recommend/focusList': path.resolve(__dirname, 'home/recommend/focusList.json'),
     '/mock/home/recommend/newsList': path.resolve(__dirname, 'home/recommend/newsList.json'),
     '/mock/home/recommend/hotGameCount': path.resolve(__dirname, 'home/recommend/hotGameCount.json'),
@@ -14,8 +15,10 @@ const getApi = {
     '/mock/schedule/:id/rank/team': path.resolve(__dirname, 'schedule/teamRank.json'),
     '/mock/schedule/:id/rank/player': path.resolve(__dirname, 'schedule/playerRank.json'),
     '/mock/schedule/:id/playoff': path.resolve(__dirname, 'schedule/playoff.json'),
-    '/mock/live/:id/review': path.resolve(__dirname, 'live/review.json'),
-    '/mock/live/:id/hotComments': path.resolve(__dirname, 'live/hotComments.json')
+    '/mock/live/review/:id': path.resolve(__dirname, 'live/review.json'),
+    '/mock/live/hotComments/:id': path.resolve(__dirname, 'live/hotComments.json'),
+    '/mock/live/stats/:id': path.resolve(__dirname, 'live/stats.json'),
+    '/mock/live/liveRoom/:id': path.resolve(__dirname, 'live/liveRoom.json')
 };
 
 module.exports = getApi;

@@ -620,6 +620,8 @@ code.language-yaml {
      *         commentlist/thread_id等于comment_id
      * @return commentlist/is_answer  是否是回复别人的消息，是否@
      * @return commentlist/answer_user_name   回复的用户名字
+     * @return isExpand  评论是否展开，默认都传false
+     * @return isVote 是否点赞了
      */</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
@@ -650,8 +652,10 @@ code.language-yaml {
                         <span class="token string">"answer_user_name"</span><span class="token punctuation">:</span> <span class="token string">"HIHI"</span>
                     <span class="token punctuation">}</span>
                 <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                <span class="token string">"isExpand"</span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
                 <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">121212</span><span class="token punctuation">,</span>
-                <span class="token string">"vote_count"</span><span class="token punctuation">:</span> <span class="token number">222</span>
+                <span class="token string">"vote_count"</span><span class="token punctuation">:</span> <span class="token number">222</span><span class="token punctuation">,</span>
+                <span class="token string">"isVote"</span><span class="token punctuation">:</span> <span class="token boolean">true</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
@@ -764,7 +768,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%80%E8%81%94%E8%B5%9B%E7%9A%84%E6%AF%94%E8%B5%9B%E8%B5%9B%E7%A8%8B">获取某一联赛的比赛赛程</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/:league_id/list
+     * @api {get}  schedule/list/:league_id
      * 
      * @params start_time  {String}  开始时间 
      * @params end_time  {String}  结束时间
@@ -802,7 +806,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%8F%96nba%E5%AD%A3%E5%90%8E%E8%B5%9B%E5%AF%B9%E9%98%B5">获取NBA季后赛对阵</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/NBA_id/playoff
+     * @api {get}  schedule/playoff/:league_id
      * 
      * @params  {Number}  year  年份
      * 
@@ -1110,7 +1114,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%BE%97nba%E9%98%9F%E4%BC%8D%E6%8E%92%E8%A1%8C%E6%A6%9C">获得NBA队伍排行榜</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/NBA_id/rank/team
+     * @api {get}  schedule/rank/team/:league_id
      * 
      * @params {Number} year 年份
      * 
@@ -1276,7 +1280,7 @@ code.language-yaml {
 </pre><h3 class="mume-header" id="%E8%8E%B7%E5%8F%96nba%E7%90%83%E5%91%98%E6%8E%92%E8%A1%8C%E6%A6%9C">获取NBA球员排行榜</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * @api {get}  schedule/NBA_id/rank/player
+     * @api {get}  schedule/rank/player/:league_id
      * 
      * @params {Number} year 年份
      * 
@@ -1393,6 +1397,9 @@ code.language-yaml {
      */</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+        <span class="token string">"match_status"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
         <span class="token string">"online_person"</span><span class="token punctuation">:</span> <span class="token number">999999</span><span class="token punctuation">,</span>
         <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
             <span class="token punctuation">{</span>
@@ -1467,12 +1474,15 @@ code.language-yaml {
      * 
      * @params {String}  match_id
      * 
+     * @return status                    比赛状态&lt;0:未开始  1:进行中  2:已结束>
      * @return score                     总得分             
      * @return assists                   助攻数
      * @return blocks                    盖帽数
      * @return rebounds                  总篮板
      * @return defensive_rebounds        后场板
      * @return offensive_rebounds        前场板
+     * @return two_point_goals           两分球进球数
+     * @return two_point_attempted       两分球总出手数
      * @return field_goals               投篮进球数
      * @return field_goals_attempted     投篮总出手数
      * @return fast_break_points         快攻得分
@@ -1492,6 +1502,8 @@ code.language-yaml {
         <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
         <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
         <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            <span class="token string">"source"</span><span class="token punctuation">:</span> <span class="token string">"NBA总冠军第四轮"</span><span class="token punctuation">,</span>
             <span class="token string">"hometeam"</span><span class="token punctuation">:</span> <span class="token string">"湖人"</span><span class="token punctuation">,</span>
             <span class="token string">"awayteam"</span><span class="token punctuation">:</span> <span class="token string">"勇士"</span><span class="token punctuation">,</span>
             <span class="token string">"period_score"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -1508,6 +1520,8 @@ code.language-yaml {
                     <span class="token string">"rebounds"</span><span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
                     <span class="token string">"defensive_rebounds"</span><span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
                     <span class="token string">"offensive_rebounds"</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+                    <span class="token string">"two_point_goals"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+                    <span class="token string">"two_point_attempted"</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
                     <span class="token string">"field_goals"</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
                     <span class="token string">"field_goals_attempted"</span><span class="token punctuation">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
                     <span class="token string">"fast_break_points"</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
@@ -1527,6 +1541,8 @@ code.language-yaml {
                     <span class="token string">"rebounds"</span><span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
                     <span class="token string">"defensive_rebounds"</span><span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
                     <span class="token string">"offensive_rebounds"</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+                    <span class="token string">"two_point_goals"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+                    <span class="token string">"two_point_attempted"</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
                     <span class="token string">"field_goals"</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
                     <span class="token string">"field_goals_attempted"</span><span class="token punctuation">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
                     <span class="token string">"fast_break_points"</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
@@ -1593,10 +1609,11 @@ code.language-yaml {
             <span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token string">"match_history"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
                 <span class="token punctuation">{</span>
-                    row<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'日期'</span><span class="token punctuation">,</span> <span class="token string">'赛事'</span><span class="token punctuation">,</span> <span class="token string">'主队'</span><span class="token punctuation">,</span> <span class="token string">'比分'</span><span class="token punctuation">,</span> <span class="token string">'客队'</span><span class="token punctuation">]</span>
+                    <span class="token string">"row"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'日期'</span><span class="token punctuation">,</span> <span class="token string">'赛事'</span><span class="token punctuation">,</span> <span class="token string">'主队'</span><span class="token punctuation">,</span> <span class="token string">'比分'</span><span class="token punctuation">,</span> <span class="token string">'客队'</span><span class="token punctuation">]</span>
                 <span class="token punctuation">}</span><span class="token punctuation">,</span>
                 <span class="token punctuation">{</span>
-                    row<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'2018/06/09'</span><span class="token punctuation">,</span> <span class="token string">'NBA季后赛'</span><span class="token punctuation">,</span> <span class="token string">'湖人队'</span><span class="token punctuation">,</span> <span class="token string">'99:101'</span><span class="token punctuation">,</span> <span class="token string">'勇士队'</span><span class="token punctuation">]</span>
+                    <span class="token string">"match_id"</span><span class="token punctuation">:</span> <span class="token string">"111"</span><span class="token punctuation">,</span>
+                    <span class="token string">"row"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'2018/06/09'</span><span class="token punctuation">,</span> <span class="token string">'NBA季后赛'</span><span class="token punctuation">,</span> <span class="token string">'湖人队'</span><span class="token punctuation">,</span> <span class="token string">'99:101'</span><span class="token punctuation">,</span> <span class="token string">'勇士队'</span><span class="token punctuation">]</span>
                 <span class="token punctuation">}</span><span class="token punctuation">,</span>
                 <span class="token operator">...</span><span class="token punctuation">.</span>
             <span class="token punctuation">]</span>
@@ -1659,6 +1676,7 @@ code.language-yaml {
         <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
         <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
         <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
             <span class="token string">"hometeam"</span><span class="token punctuation">:</span> "湖人'<span class="token punctuation">,</span>
             <span class="token string">"awayteam"</span><span class="token punctuation">:</span> <span class="token string">"勇士"</span><span class="token punctuation">,</span>
             <span class="token string">"home_score"</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
@@ -1712,6 +1730,8 @@ code.language-yaml {
      * @return commentlist/answer_user_name   回复的用户名字
      * @return isHot  是否为热评
      * @return index  楼层
+     * @return isExpand  评论是否展开，默认都传false
+     * @return isVote  是否点赞了
      * 
      * @return hot 只有page_index为1的时候返回
      */</span>
@@ -1748,7 +1768,9 @@ code.language-yaml {
                     <span class="token string">"create_time"</span><span class="token punctuation">:</span> <span class="token number">121212</span><span class="token punctuation">,</span>
                     <span class="token string">"vote_count"</span><span class="token punctuation">:</span> <span class="token number">222</span><span class="token punctuation">,</span>
                     <span class="token string">"isHot"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-                    <span class="token string">"index"</span><span class="token punctuation">:</span> <span class="token number">1</span>
+                    <span class="token string">"index"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                    <span class="token string">"isExpand"</span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+                    <span class="token string">"isVote"</span><span class="token punctuation">:</span> <span class="token boolean">true</span>
                 <span class="token punctuation">}</span>
             <span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token string">"list"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>

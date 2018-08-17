@@ -54,26 +54,26 @@ export default {
         this.update();
     },
     activated() {
-      if (!this.slide) {
-        return
-      }
-      this.slide.enable()
-      let pageIndex = this.slide.getCurrentPage().pageX
-      this.slide.goToPage(pageIndex, 0, 0)
-      this.currentPageIndex = pageIndex
-      if (this.autoPlay) {
-        this._play()
-      }
+        if (!this.slide) {
+            return;
+        }
+        this.slide.enable();
+        let pageIndex = this.slide.getCurrentPage().pageX;
+        this.slide.goToPage(pageIndex, 0, 0);
+        this.currentPageIndex = pageIndex;
+        if (this.autoPlay) {
+            this._play();
+        }
     },
     deactivated() {
-      this.slide.disable();
-      clearTimeout(this.timer);
-      clearTimeout(this.initTimer);
+        this.slide.disable();
+        clearTimeout(this.timer);
+        clearTimeout(this.initTimer);
     },
     beforeDestroy() {
-      this.slide.disable();
-      clearTimeout(this.timer);
-      clearTimeout(this.initTimer);
+        this.slide.disable();
+        clearTimeout(this.timer);
+        clearTimeout(this.initTimer);
     },
     methods: {
         update() {
@@ -84,7 +84,7 @@ export default {
                 this.$nextTick(() => {
                     this.init();
                 });
-            },100);
+            }, 100);
         },
         refresh() {
             this._setSlideWidth(true);
@@ -112,7 +112,7 @@ export default {
         _setSlideWidth(isResize) {
             this.children = this.$refs.slideGroup.children;
             let width = 0;
-            let slideWidth = this.$refs.slide.clientWidth * 4 / 15;
+            let slideWidth = (this.$refs.slide.clientWidth * 4) / 15;
             for (let i = 0; i < this.children.length; i++) {
                 let child = this.children[i];
                 addClass(child, 'slide-item');

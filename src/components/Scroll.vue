@@ -125,17 +125,15 @@ export default {
     },
     computed: {
         pullUpTxt() {
-            const moreTxt =
-                (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.more) || "加载数据";
+            const moreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.more) || '加载数据';
 
             const noMoreTxt =
-                (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.noMore) || "没有更多数据了";
+                (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.noMore) || '没有更多数据了';
 
             return this.pullUpDirty ? moreTxt : noMoreTxt;
         },
         refreshTxt() {
-            return (
-                (this.pullDownRefresh && this.pullDownRefresh.txt) || "数据已更新");
+            return (this.pullDownRefresh && this.pullDownRefresh.txt) || '数据已更新';
         }
     },
     created() {

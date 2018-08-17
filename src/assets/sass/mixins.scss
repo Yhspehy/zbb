@@ -1,14 +1,6 @@
 @import "./variables.scss";
 // ==============
-// @function rem($size) {
-//     $remSize: $size / 10px;
-//     @return $remSize * 1rem;
-// }
 
-// @mixin font-size($size) {
-//     font-size: $size;
-//     font-size: rem($size);
-// }
 
 
 
@@ -98,17 +90,19 @@
 //   @include animation('slide-down 5s 3');
 // }
 // =====================
+
 @mixin border-1px($color: #f2f2f2) {
     border: 1px solid $color;
 }
-@mixin border-top-1px($color: #f2f2f2) {
+
+@mixin border-top-1px($color: #f2f2f2, $width: 100%) {
     position: relative;
     &:after {
         content: '';
         display: block;
         position: absolute;
-        width: 100%;
-        left: 0;
+        width: $width;
+        left: (100% - $width)/2;
         top: 0;
         border-top: 1px solid $color;
     }
@@ -127,14 +121,14 @@
     }
 }
 
-@mixin border-bottom-1px($color: #f2f2f2) {
+@mixin border-bottom-1px($color: #f2f2f2, $width: 100%) {
     position: relative;
     &:after {
         content: '';
         display: block;
         position: absolute;
-        width: 100%;
-        left: 0;
+        width: $width;
+        left: (100% - $width)/2;
         bottom: 0;
         border-bottom: 1px solid $color;
     }

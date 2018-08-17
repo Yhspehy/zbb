@@ -120,6 +120,20 @@ export default {
         chooseNav(name) {
             this.chosenNav = name;
         }
+    },
+    watch: {
+        '$route.name': {
+            immediate: true,
+            handler: function(val) {
+                let fit = find(this.navList[this.status], function(e) {
+                    return val === e.routeName;
+                });
+                if (fit && fit.name) {
+                    this.chosenNav = fit.name;
+                    this.$store.commit('schedule/SET_CHOSENNAV', fit.name);
+                }
+            }
+        }
     }
 };
 </script>

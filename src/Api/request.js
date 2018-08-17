@@ -30,6 +30,7 @@ export function request(url, options) {
 
     return axios(mergeOptions).then(res => {
         if (!res.data.status) {
+            console.warn('status is not true');
             // 500提示页
             if (res.data.message === 500) {
                 // vm.$route.push({

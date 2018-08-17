@@ -1,10 +1,11 @@
-import { getLiveTrail, getFocusList, getHotGameCount, getNewsList } from '@/Api/home';
+import { getLiveTrail, getPointNews, getFocusList, getHotGameCount, getNewsList } from '@/Api/home';
 const home = {
     namespaced: true,
 
     state: {
         homeFooter: '',
         liveTrailList: [],
+        pointNewsList: [],
         focusList: [],
         newsListData: {
             newsList: [],
@@ -19,6 +20,9 @@ const home = {
         },
         GET_LIVETRAIL: (state, payload) => {
             state.liveTrailList = [...payload];
+        },
+        GET_POINTNEWS: (state, payload) => {
+            state.pointNewsList = [...payload];
         },
         GET_FOCUS: (state, payload) => {
             state.focusList = [...payload];
@@ -44,6 +48,13 @@ const home = {
             });
             commit('GET_LIVETRAIL', res.data.data);
             return state.liveTrailList;
+        },
+        async GetPointNews({ commit, state }) {
+            let res = await getPointNews().catch(err => {
+                console.log(err);
+            });
+            commit('GET_POINTNEWS', res.data.data);
+            return state.pointNewsList;
         },
         async GetFocusList({ commit, state }) {
             let res = await getFocusList().catch(err => {

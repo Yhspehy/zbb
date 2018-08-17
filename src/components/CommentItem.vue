@@ -40,10 +40,6 @@ export default {
         item: {
             type: Object,
             require: true
-        },
-        isTranTime: {
-            type: Boolean,
-            default: true
         }
     },
     computed: {},

@@ -2,6 +2,7 @@
     "status": true,
     "msg": "...",
     "data": {
+        "status": 2,
         "hometeam": "湖人",
         "awayteam": "勇士",
         "home_score": 100,

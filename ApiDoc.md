@@ -648,7 +648,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/:league_id/list
+     * @api {get}  schedule/list/:league_id
      * 
      * @params start_time  {String}  开始时间 
      * @params end_time  {String}  结束时间
@@ -689,7 +689,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/NBA_id/playoff
+     * @api {get}  schedule/playoff/:league_id
      * 
      * @params  {Number}  year  年份
      * 
@@ -1000,7 +1000,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/NBA_id/rank/team
+     * @api {get}  schedule/rank/team/:league_id
      * 
      * @params {Number} year 年份
      * 
@@ -1169,7 +1169,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  schedule/NBA_id/rank/player
+     * @api {get}  schedule/rank/player/:league_id
      * 
      * @params {Number} year 年份
      * 
@@ -1293,6 +1293,9 @@ print_background: false
      */
 
     return {
+        "status": true,
+        "msg": "...",
+        "match_status": 0,
         "online_person": 999999,
         "data": [
             {
@@ -1379,12 +1382,15 @@ print_background: false
      * 
      * @params {String}  match_id
      * 
+     * @return status                    比赛状态<0:未开始  1:进行中  2:已结束>
      * @return score                     总得分             
      * @return assists                   助攻数
      * @return blocks                    盖帽数
      * @return rebounds                  总篮板
      * @return defensive_rebounds        后场板
      * @return offensive_rebounds        前场板
+     * @return two_point_goals           两分球进球数
+     * @return two_point_attempted       两分球总出手数
      * @return field_goals               投篮进球数
      * @return field_goals_attempted     投篮总出手数
      * @return fast_break_points         快攻得分
@@ -1404,6 +1410,8 @@ print_background: false
         "status": true,
         "msg": "...",
         "data": {
+            "status": 0,
+            "source": "NBA总冠军第四轮",
             "hometeam": "湖人",
             "awayteam": "勇士",
             "period_score": {
@@ -1420,6 +1428,8 @@ print_background: false
                     "rebounds": 40,
                     "defensive_rebounds": 40,
                     "offensive_rebounds": 20,
+                    "two_point_goals": 10,
+                    "two_point_attempted": 20,
                     "field_goals": 30,
                     "field_goals_attempted": 50,
                     "fast_break_points": 20,
@@ -1439,6 +1449,8 @@ print_background: false
                     "rebounds": 40,
                     "defensive_rebounds": 40,
                     "offensive_rebounds": 20,
+                    "two_point_goals": 10,
+                    "two_point_attempted": 20,
                     "field_goals": 30,
                     "field_goals_attempted": 50,
                     "fast_break_points": 20,
@@ -1505,10 +1517,11 @@ print_background: false
             ],
             "match_history": [
                 {
-                    row: ['日期', '赛事', '主队', '比分', '客队']
+                    "row": ['日期', '赛事', '主队', '比分', '客队']
                 },
                 {
-                    row: ['2018/06/09', 'NBA季后赛', '湖人队', '99:101', '勇士队']
+                    "match_id": "111",
+                    "row": ['2018/06/09', 'NBA季后赛', '湖人队', '99:101', '勇士队']
                 },
                 ....
             ]
@@ -1580,6 +1593,7 @@ print_background: false
         "status": true,
         "msg": "...",
         "data": {
+            "status": 2,
             "hometeam": "湖人',
             "awayteam": "勇士",
             "home_score": 100,
