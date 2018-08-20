@@ -1,0 +1,90 @@
+{
+    "status": true,
+    "msg": "...",
+    "data": [
+        {
+            "quiz_id": "1",
+            "status": "已开盘",
+            "title": "全场第一个三分苦力能不能投进",
+            "quiz_total": 8320,
+            "rest_time": "10:59:20",
+            "options": [
+                {
+                    "text_id": "1",
+                    "text": "能投进",
+                    "quiz_percent": 48,
+                    "quiz_odds": 2.5
+                },
+                {
+                    "text_id": "2",
+                    "text": "不能投进",
+                    "quiz_percent": 52,
+                    "quiz_odds": 1.5
+                }
+            ]
+        },
+        {
+            "quiz_id": "2",
+            "status": "已开盘",
+            "title": "全场第一个三分苦力能不能投进",
+            "quiz_total": 8320,
+            "rest_time": "10:59:20",
+            "options": [
+                {
+                    "text_id": "1",
+                    "text": "能投进",
+                    "quiz_percent": 48,
+                    "quiz_odds": 2.5
+                },
+                {
+                    "text_id": "2",
+                    "text": "不能投进",
+                    "quiz_percent": 52,
+                    "quiz_odds": 1.5
+                }
+            ]
+        },
+        {
+            "quiz_id": "3",
+            "status": "已封盘",
+            "title": "全场第一个三分苦力能不能投进",
+            "quiz_total": 8320,
+            "rest_time": "10:59:20",
+            "options": [
+                {
+                    "text_id": "1",
+                    "text": "能投进",
+                    "quiz_percent": 48,
+                    "quiz_odds": 2.5
+                },
+                {
+                    "text_id": "2",
+                    "text": "不能投进",
+                    "quiz_percent": 52,
+                    "quiz_odds": 1.5
+                }
+            ]
+        },
+        {
+            "quiz_id": "4",
+            "status": "已封盘",
+            "title": "全场第一个三分苦力能不能投进",
+            "quiz_total": 8320,
+            "rest_time": "10:59:20",
+            "options": [
+                {
+                    "text_id": "1",
+                    "text": "能投进",
+                    "quiz_percent": 48,
+                    "quiz_odds": 2.5
+                },
+                {
+                    "text_id": "2",
+                    "text": "不能投进",
+                    "quiz_percent": 52,
+                    "quiz_odds": 1.5
+                }
+            ]
+        }
+    ]
+}

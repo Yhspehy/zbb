@@ -15,3 +15,7 @@ export function getStats(id) {
 export function getLiveRoom(id) {
     return request(`/mock/live/liveRoom/${id}`);
 }
+
+export function getQuizList(id) {
+    return request(`/mock/live/quizList/${id}`);
+}

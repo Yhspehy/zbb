@@ -1559,7 +1559,7 @@ print_background: false
                 "rest_time": '10:59:20',
                 "options": [
                     {
-                        "text_id": '1',
+                        "option_id": '1',
                         "text": "能投进",
                         "quiz_percent": 48,
                         "quiz_odds": 2.5
@@ -1578,7 +1578,7 @@ print_background: false
      * 
      * @params {String}  quiz_id   投注项的id
      * @params {Number}  quiz_val  投注数量
-     * @params {String}  quiz_text_id  选择的投注项的具体内容的id
+     * @params {String}  quiz_option_id  选择的投注项的具体内容的id
      */
 ```
 

@@ -92,7 +92,15 @@
 // =====================
 
 @mixin border-1px($color: #f2f2f2) {
-    border: 1px solid $color;
+    position: relative;
+    border: none;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid $color;
+    }
 }
 
 @mixin border-top-1px($color: #f2f2f2, $width: 100%) {
