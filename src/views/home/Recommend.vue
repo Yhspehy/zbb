@@ -1,6 +1,6 @@
 <template>
     <div class="recommend">
-        <div class="remommend-wrapper">
+        <div class="recommend-wrapper">
             <scroll ref="scroll" :scrollbar="scrollbarObj" :pullDownRefresh="pullDownRefreshObj" :pullUpLoad="pullUpLoadObj" :startY="parseInt(startY)" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
                 <div class="focus-slide">
                     <slide>

@@ -18,26 +18,26 @@ const home = {
         SET_HOMEFOOTER: (state, name) => {
             state.homeFooter = name;
         },
-        GET_LIVETRAIL: (state, payload) => {
-            state.liveTrailList = [...payload];
+        GET_LIVETRAIL: (state, list) => {
+            state.liveTrailList = [...list];
         },
-        GET_POINTNEWS: (state, payload) => {
-            state.pointNewsList = [...payload];
+        GET_POINTNEWS: (state, list) => {
+            state.pointNewsList = [...list];
         },
-        GET_FOCUS: (state, payload) => {
-            state.focusList = [...payload];
+        GET_FOCUS: (state, list) => {
+            state.focusList = [...list];
         },
-        GET_HOTGAMECOUNT: (state, payload) => {
-            state.hotGameCount = payload;
+        GET_HOTGAMECOUNT: (state, data) => {
+            state.hotGameCount = data;
         },
-        GET_NEWSLIST: (state, payload) => {
+        GET_NEWSLIST: (state, { data, page_index }) => {
             // 下拉刷新默认只获取第一页新闻数据
-            if (payload.page_index === 1) {
-                state.newsListData.newsList = [...payload.data.news_list];
+            if (page_index === 1) {
+                state.newsListData.newsList = [...data.news_list];
             } else {
-                state.newsListData.newsList = [...state.newsListData.newsList, ...payload.data.news_list];
+                state.newsListData.newsList = [...state.newsListData.newsList, ...data.news_list];
             }
-            state.newsListData.updateCount = payload.data.update_count;
+            state.newsListData.updateCount = data.update_count;
         }
     },
 
