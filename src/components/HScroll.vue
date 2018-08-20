@@ -7,7 +7,6 @@
     </div>
 </template>
 <script type="text/ecmascript-6">
-import { addClass } from '@/assets/js/dom';
 import BScroll from 'better-scroll';
 export default {
     name: 'h-scroll',
@@ -29,7 +28,7 @@ export default {
                 this.$nextTick(() => {
                     this.init();
                 });
-            },60);
+            }, 60);
         },
         refresh() {
             this._setScrollWidth();
@@ -45,9 +44,9 @@ export default {
             for (let i = 0; i < this.children.length; i++) {
                 let child = this.children[i];
                 // addClass(child, 'scroll-item');
-                width += child.clientWidth + 10; 
+                width += child.clientWidth;
             }
-            this.$refs.scrollGroup.style.width = width * 4 / 15 + 'vw';
+            this.$refs.scrollGroup.style.width = (width * 4) / 15 + 'vw';
         },
         _initScroll() {
             this.scroll = new BScroll(this.$refs.scroll, {
@@ -55,7 +54,7 @@ export default {
                 scrollY: false,
                 click: this.click
             });
-        },
+        }
     }
 };
 </script>

@@ -1,21 +1,21 @@
 <template>
     <div class="home">
-        <div class="header">
-            <ul class="nav d-flex justify-content-between align-items-center">
-                <li>
-                    <router-link :to="{'name':'home_recommend'}">推荐</router-link>
-                </li>
-                <li>
-                    <router-link :to="{'name':'home_highLights'}">集锦</router-link>
-                </li>
-                <li v-for="item in subLeagueList" :key="item.league_id">
-                    <router-link :to="{'name': 'home_league', 'params':{'league_id':item.league_id}}">{{item.league_name}}</router-link>
-                </li>
-            </ul>
+        <div class="nav">
+            <div class="nav-wrapper">
+                <h-scroll>
+                    <li class="nav-item">
+                        <router-link :to="{'name':'home_recommend'}">推荐</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link :to="{'name':'home_highLights'}">集锦</router-link>
+                    </li>
+                    <li class="nav-item" v-for="item in subLeagueList" :key="item.league_id">
+                        <router-link :to="{'name': 'home_league', 'params':{'league_id':item.league_id}}">{{item.league_name}}</router-link>
+                    </li>
+                </h-scroll>
+            </div>
             <div class="subscribe d-flex justify-content-between align-items-center">
-                <div class="dialog"></div>
                 <div class="add">+</div>
-                <!-- <router-link :to="{name:'subEdit'}">+</router-link> -->
             </div>
         </div>
         <div class="content">
@@ -26,11 +26,14 @@
 </template>
 
 <script>
+import HScroll from '@/components/HScroll';
 import vFooter from '@/components/TheFooter';
+import BScroll from 'better-scroll';
 export default {
     name: 'home',
     components: {
-        vFooter
+        vFooter,
+        HScroll
     },
     data() {
         return {
@@ -73,60 +76,62 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.header {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
+.nav {
+    position: relative;
+    display: block;
+    width: 100%;
     height: 96px;
-    .nav {
-        position: fixed;
-        width: 100%;
-        height: 96px;
-        padding: 0 36px;
-        font-size: 30px;
-        background: #fff;
-        z-index: 1;
-        a {
-            color: #808080;
-        }
-        .router-link-active {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            font-size: 36px;
-            font-weight: bold;
-            @include text-image;
-        }
-        .router-link-active::after {
-            content: '';
-            position: absolute;
-            display: block;
-            top: 56px;
-            width: 36px;
-            height: 4px;
-            @include background-image;
+    .nav-wrapper {
+        width: 640px;
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(to right, #fff 0%, #fff 80%, transparent 100%);
+        .nav-item {
+            width: 130px;
+            height: 96px;
+            flex: 0 0 130px;
+            line-height: 96px;
+            text-align: center;
+            a {
+                color: #808080;
+                font-size: 30px;
+            }
+            .router-link-active {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                font-size: 36px;
+                font-weight: bold;
+                color: #0099ff;
+            }
+            .router-link-active::after {
+                content: '';
+                position: absolute;
+                display: block;
+                bottom: 10px;
+                width: 36px;
+                height: 4px;
+                right: 48px;
+                @include background-image;
+            }
         }
     }
     .subscribe {
         position: fixed;
         height: 96px;
+        width: 108px;
+        top: 0;
         right: 0;
         z-index: 2;
-        .dialog {
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), #ffffff);
-            width: 116px;
-            height: 40px;
-            @include border-right-1px(#b3b3b3);
-        }
+        text-align: center;
         .add {
-            height: 96px;
+            width: 100%;
+            height: 42px;
             color: #b3b3b3;
             font-size: 64px;
-            padding-left: 30px;
-            padding-right: 36px;
-            line-height: 90px;
+            line-height: 42px;
             background: #fff;
+            @include border-left-1px;
         }
     }
 }

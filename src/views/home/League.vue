@@ -5,9 +5,11 @@
                 <div class="point">
                     <div class="point-wrapper">
                         <h-scroll>
-                            <li class="point-item d-flex flex-column justify-content-between align-items-center" v-for="(item, index) in pointNewsList" :key="index">
-                                <img :src=item.imgUrl alt="">
-                                <div class="pagination">{{item.title}}</div>
+                            <li v-for="(item, index) in pointNewsList" :key="index">
+                                <div class="point-item d-flex flex-column justify-content-between align-items-center">
+                                    <img :src=item.imgUrl alt="">
+                                    <div class="pagination">{{item.title}}</div>
+                                </div>
                             </li>
                         </h-scroll>
                     </div>
@@ -200,7 +202,7 @@ export default {
                     padding-left: 10px;
                     color: #ffffff;
                     line-height: 60px;
-                    font-size: 12px;
+                    font-size: 24px;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
