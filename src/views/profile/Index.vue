@@ -78,35 +78,75 @@
         <div class="active">
             <div class="title">热门活动</div>
             <div class="actives">
-                <ul class="active-item">
-                    <li class="item"><img src="http://temp.im/125x70" alt=""></li>
-                    <li class="item"><img src="http://temp.im/125x70" alt=""></li>
-                    <li class="item"><img src="http://temp.im/125x70" alt=""></li>
-                    <li class="item"><img src="http://temp.im/125x70" alt=""></li>
-                </ul>
+                <div class="actives-wrapper">
+                    <h-scroll>
+                        <li>
+                            <div class="item d-flex">
+                                <img src="http://temp.im/125x70" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item d-flex">
+                                <img src="http://temp.im/125x70" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item d-flex">
+                                <img src="http://temp.im/125x70" alt="">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item d-flex">
+                                <img src="http://temp.im/125x70" alt="">
+                            </div>
+                        </li>
+                    </h-scroll>
+                </div>
             </div>
         </div>
         <div class="game">
             <div class="title">热门游戏</div>
             <div class="actives">
-                <ul class="active-item">
-                    <li class="item">
-                        <img src="http://temp.im/30x30" alt="">
-                        <p>血战到底</p>
-                    </li>
-                    <li class="item">
-                        <img src="http://temp.im/30x30" alt="">
-                        <p>吉吉游戏</p>
-                    </li>
-                    <li class="item">
-                        <img src="http://temp.im/30x30" alt="">
-                        <p>休闲游戏</p>
-                    </li>
-                    <li class="item">
-                        <img src="http://temp.im/30x30" alt="">
-                        <p>足球游戏</p>
-                    </li>
-                </ul>
+                <div class="actives-wrapper">
+                    <h-scroll>
+                        <li>
+                            <div class="game-item d-flex flex-column justify-content-around align-items-center">
+                                <img src="http://temp.im/30x30" alt="">
+                                <p>血战到底</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-item d-flex flex-column justify-content-around align-items-center">
+                                <img src="http://temp.im/30x30" alt="">
+                                <p>吉吉游戏</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-item d-flex flex-column justify-content-around align-items-center">
+                                <img src="http://temp.im/30x30" alt="">
+                                <p>休闲游戏</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-item d-flex flex-column justify-content-around align-items-center">
+                                <img src="http://temp.im/30x30" alt="">
+                                <p>足球游戏</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-item d-flex flex-column justify-content-around align-items-center">
+                                <img src="http://temp.im/30x30" alt="">
+                                <p>足球游戏</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="game-item d-flex flex-column justify-content-around align-items-center">
+                                <img src="http://temp.im/30x30" alt="">
+                                <p>足球游戏</p>
+                            </div>
+                        </li>
+                    </h-scroll>
+                </div>
             </div>
         </div>
         <v-footer></v-footer>
@@ -115,10 +155,13 @@
 
 <script>
 import vFooter from '@/components/TheFooter';
+import HScroll from '@/components/HScroll';
+import BScroll from 'better-scroll';
 // import { saveToLocal, loadFromLocal } from '@/assets/js/localstore';
 export default {
     name: 'profile',
     components: {
+        HScroll,
         vFooter
     },
     methods: {
@@ -252,18 +295,19 @@ export default {
             @include border-bottom-1px;
         }
         .actives {
-            padding: 20px 0 20px 36px;
             position: relative;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            .active-item {
-                width: 100%;
-                height: 140px;
-                white-space: nowrap;
+            width: 100%;
+            height: 180px;
+            display: block;
+            .actives-wrapper {
+                padding: 20px 0 20px 36px;
+                box-sizing: border-box;
+                overflow: hidden;
                 .item {
-                    display: inline-block;
                     margin-right: 20px;
+                    width: 250px;
+                    height: 140px;
+                    flex: 0 0 250px;
                 }
             }
         }
@@ -282,19 +326,25 @@ export default {
             @include border-bottom-1px;
         }
         .actives {
-            padding: 20px 36px;
             position: relative;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            .active-item {
-                width: 100%;
-                height: 104px;
-                white-space: nowrap;
-                .item {
-                    width: 25%;
+            width: 100%;
+            height: 144px;
+            display: block;
+            .actives-wrapper {
+                padding: 0 36px 0 36px;
+                box-sizing: border-box;
+                overflow: hidden;
+                .game-item {
+                    width: 172px;
+                    height: 140px;
+                    flex: 0 0 172px;
                     text-align: center;
-                    display: inline-block;
+                    font-size: 24px;
+                    color: #808080;
+                    img {
+                        width: 60px;
+                        height: 60px;
+                    }
                 }
             }
         }

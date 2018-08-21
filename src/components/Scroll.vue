@@ -312,7 +312,6 @@ export default {
     /*right: 0*/
     /*bottom: 0*/
     overflow: hidden;
-    background: #fff;
     .scroll-content {
         position: relative;
         z-index: 1;

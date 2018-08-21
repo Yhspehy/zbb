@@ -196,16 +196,18 @@ export default {
         .slide-item {
             float: left;
             overflow: hidden;
+            width: 100%;
+            height: 100%;
             a {
                 display: block;
                 position: relative;
-                width: 100%;
                 overflow: hidden;
                 text-decoration: none;
             }
             img {
                 display: block;
                 width: 100%;
+                height: 100%;
             }
         }
         .dots {
