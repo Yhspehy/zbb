@@ -76,7 +76,7 @@
 import statsTeamItem from './StatsTeamItem';
 
 export default {
-    name: 'live_statsTeam',
+    name: 'live_statsTeamNBA',
     components: { statsTeamItem },
     props: {
         data: {

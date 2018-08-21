@@ -19,13 +19,27 @@
                     <span class="quizTotal">当前投注总额：{{item.quiz_total}} </span>
                     <span class="quizRestTime">剩余时间：{{item.rest_time}}</span>
                 </div>
-                <div class="quizOption border-1px" v-for="o in item.options" :key="o.option_id">
+                <div
+                    class="quizOption border-1px"
+                    @click="quizClick(item.quiz_id, o)"
+                    v-for="o in item.options"
+                    :key="o.option_id">
                     <div class="fl">{{o.text}}</div>
                     <div class="fr quizOdds">{{o.quiz_odds}}倍</div>
                     <div class="fr quizPercent">{{o.quiz_percent}}%投注</div>
                 </div>
             </div>
         </section>
+        
+        <transition name="translateY-20">
+            <quiz-dialog
+                v-show="chosen.quiz_id"
+                @close="close"
+                :quiz_id="chosen.quiz_id"
+                :option="chosen.option">
+            </quiz-dialog>
+        </transition>
+        
     </div>
 </template>
 
@@ -33,13 +47,18 @@
 import { getQuizList } from '@/Api/live';
 
 import cutOffLine from '@/components/CutOffLine';
+import quizDialog from './_components/QuizDialog';
 export default {
     name: 'live_quiz',
-    components: { cutOffLine },
+    components: { cutOffLine, quizDialog },
     data() {
         return {
             headerList: ['我的竞猜', 'G币抽奖', 'G币兑换', '获取G币'],
-            list: []
+            list: [],
+            chosen: {
+                quiz_id: '',
+                option: {}
+            }
         };
     },
     created() {
@@ -49,6 +68,13 @@ export default {
         async getData() {
             let res = await getQuizList(1);
             this.list = res.data.data;
+        },
+        quizClick(id, option) {
+            this.chosen.quiz_id = id;
+            this.chosen.option = option;
+        },
+        close() {
+            this.chosen.quiz_id = '';
         }
     }
 };
@@ -97,8 +123,9 @@ export default {
                 @include border-1px(#e6e6e6);
                 .quizOdds {
                     width: 200px;
-                    height: 40px;
+                    height: 39px;
                     position: relative;
+                    z-index: 10;
                     text-align: right;
                     color: #fff;
                     font-weight: bold;
@@ -114,7 +141,7 @@ export default {
                         z-index: 10;
                         top: 0;
                         left: -30px;
-                        border-width: 0 0 40px 30px;
+                        border-width: 0 0 39px 30px;
                         border-bottom-color: rgba(0, 153, 255, 0.8);
                     }
                 }
@@ -123,6 +150,16 @@ export default {
                 }
             }
         }
+    }
+
+    .translateY-20-enter-active,
+    .translateY-20-leave-active {
+        transition: all 0.5s;
+    }
+    .translateY-20-enter,
+    .translateY-20-leave-to {
+        transform: translateY(-20px);
+        opacity: 0;
     }
 }
 </style>

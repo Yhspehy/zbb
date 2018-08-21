@@ -1,0 +1,156 @@
+{
+    "status": true,
+    "msg": "...",
+    "data": {
+        "status": 0,
+        "type": 1,
+        "source": "世界杯小组赛第四轮",
+        "hometeam": "瑞典",
+        "awayteam": "巴西",
+        "home_score": 1,
+        "away_score": 2,
+        "match_history": [
+            {
+                "row": ["日期", "赛事", "主队", "比分", "客队"]
+            },
+            {
+                "match_id": "1",
+                "row": ["2018/06/09", "世界杯小组赛第四轮", "瑞典", "1:2", "巴西"]
+            },
+            {
+                "match_id": "2",
+                "row": ["2018/06/09", "世界杯小组赛第四轮", "瑞典", "1:2", "巴西"]
+            },
+            {
+                "match_id": "3",
+                "row": ["2018/06/09", "世界杯小组赛第四轮", "瑞典", "1:2", "巴西"]
+            },
+            {
+                "match_id": "4",
+                "row": ["2018/06/09", "世界杯小组赛第四轮", "瑞典", "1:2", "巴西"]
+            },
+            {
+                "match_id": "5",
+                "row": ["2018/06/09", "世界杯小组赛第四轮", "瑞典", "1:2", "巴西"]
+            },
+            {
+                "match_id": "6",
+                "row": ["2018/06/09", "世界杯小组赛第四轮", "瑞典", "1:2", "巴西"]
+            }
+        ],
+        "football_events": [
+            {
+                "time": "25",
+                "player_name": "内马尔",
+                "player_id": "122",
+                "score": "1:0",
+                "side": "home",
+                "type": "进球",
+                "team_id": "1212"
+            },
+            {
+                "time": "25",
+                "player_name": "内马尔",
+                "player_id": "122",
+                "score": "1:0",
+                "side": "home",
+                "type": "进球",
+                "team_id": "1212"
+            },
+            {
+                "time": "30",
+                "player_name": "内马尔",
+                "player_id": "122",
+                "score": "1:0",
+                "side": "away",
+                "type": "进球",
+                "team_id": "1212"
+            },
+            {
+                "time": "50",
+                "player_name": "内马尔",
+                "player_id": "122",
+                "score": "1:0",
+                "side": "home",
+                "type": "黄牌",
+                "team_id": "1212"
+            },
+            {
+                "time": "80",
+                "player_name": "内马尔",
+                "player_id": "122",
+                "score": "1:0",
+                "side": "away",
+                "type": "进球",
+                "team_id": "1212"
+            }
+        ],
+        "team_stats": [
+            {
+                "home": 6,
+                "away": 1,
+                "text": "进球"
+            },
+            {
+                "home": "77.1%",
+                "away": "22.9%",
+                "text": "控球率"
+            },
+            {
+                "home": 2,
+                "away": 1,
+                "text": "助攻"
+            },
+            {
+                "home": 14,
+                "away": 1,
+                "text": "射正"
+            },
+            {
+                "home": 32,
+                "away": 5,
+                "text": "射门"
+            },
+            {
+                "home": 759,
+                "away": 222,
+                "text": "传球"
+            },
+            {
+                "home": 5,
+                "away": 16,
+                "text": "抢断"
+            },
+            {
+                "home": 10,
+                "away": 3,
+                "text": "角球"
+            },
+            {
+                "home": 4,
+                "away": 8,
+                "text": "任意球"
+            },
+            {
+                "home": 1,
+                "away": 1,
+                "text": "越位"
+            },
+            {
+                "home": 9,
+                "away": 4,
+                "text": "犯规"
+            },
+            {
+                "home": 0,
+                "away": 1,
+                "text": "黄牌"
+            },
+            {
+                "home": 0,
+                "away": 0,
+                "text": "红牌"
+            }
+        ]
+    }
+}

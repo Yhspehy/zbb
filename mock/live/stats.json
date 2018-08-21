@@ -3,6 +3,7 @@
     "msg": "...",
     "data": {
         "status": 0,
+        "type": 0,
         "source": "NBA总冠军第四轮",
         "hometeam": "湖人",
         "awayteam": "勇士",
@@ -12,7 +13,7 @@
         },
         "home_score": 100,
         "away_score": 90,
-        "team_total": {
+        "team_stats": {
             "home": {
                 "score": 100,
                 "assists": 15,

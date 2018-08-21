@@ -26,12 +26,13 @@ print_background: false
 	* [新闻详情页](#新闻详情页)
 	* [评论](#评论)
 * [首页-推荐](#首页-推荐)
-	* [获取头部图片swiper](#获取头部图片swiper)
+	* [获取头部焦点图片list](#获取头部焦点图片list)
 	* [获取比赛卡片swiper](#获取比赛卡片swiper)
 	* [获取今日热门比赛场数](#获取今日热门比赛场数)
 	* [直播预告区](#直播预告区)
 * [集锦](#集锦)
 	* [获取集锦视频列表](#获取集锦视频列表)
+	* [获取集锦视频详情](#获取集锦视频详情)
 	* [获取集锦视频评论列表](#获取集锦视频评论列表)
 * [首页-二级标题](#首页-二级标题)
 	* [header swiper图片展示栏](#header-swiper图片展示栏)
@@ -1383,6 +1384,7 @@ print_background: false
      * @params {String}  match_id
      * 
      * @return status                    比赛状态<0:未开始  1:进行中  2:已结束>
+     * @return type                      比赛类型，0:篮球，1:足球
      * @return score                     总得分             
      * @return assists                   助攻数
      * @return blocks                    盖帽数
@@ -1405,12 +1407,17 @@ print_background: false
      * 
      * @return player_stats 球员表现列表
      *         严格按照参数排列，数组中的第一项默认给headbar的内容，第2-6项为5个首发球员的数据，数据都传字符串格式。 (match_history相同)
+     * 
+     * @return football_events  足球赛况
      */
+
+    // NBA
     return {
         "status": true,
         "msg": "...",
         "data": {
             "status": 0,
+            "type": 0,
             "source": "NBA总冠军第四轮",
             "hometeam": "湖人",
             "awayteam": "勇士",
@@ -1420,7 +1427,7 @@ print_background: false
             },
             "home_score": 100,
             "away_score": 90,
-            "team_total": {
+            "team_stats": {
                 "home": {
                     "score": 100,
                     "assists": 15,
@@ -1522,6 +1529,109 @@ print_background: false
                 {
                     "match_id": "111",
                     "row": ['2018/06/09', 'NBA季后赛', '湖人队', '99:101', '勇士队']
+                },
+                ....
+            ]
+        }
+    }
+
+    // 足球
+    return {
+        "status": true,
+        "msg": "...",
+        "data": {
+            "status": 0,
+            "type": 1,
+            "source": "小组赛第四轮",
+            "hometeam": "瑞典",
+            "awayteam": "巴西",
+            "home_score": 1,
+            "away_score": 2,
+            "team_stats": [
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "进球"
+                },
+                {
+                    "home": "77.1%",
+                    "away": "22.9",
+                    "text": "控球率"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "助攻"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "射正"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "射门"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "传球"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "抢断"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "角球"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "任意球"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "越位"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "犯规"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "黄牌"
+                },
+                {
+                    "home": 6,
+                    "away": 1,
+                    "text": "红牌"
+                }
+            ],
+            "football_events": [
+                {
+                    "time": "25",
+                    "player_name": "内马尔",
+                    "player_id": "122",
+                    "score": "1:0",
+                    "side": "home",
+                    "type": "进球",
+                    "team_id": "1212"
+                }
+            ],
+            "match_history": [
+                {
+                    "row": ['日期', '赛事', '主队', '比分', '客队']
+                },
+                {
+                    "match_id": "111",
+                    "row": ['2018/06/09', '世界杯预选赛', '巴西队', '1:2', '瑞士队']
                 },
                 ....
             ]

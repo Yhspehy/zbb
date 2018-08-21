@@ -17,9 +17,10 @@ const getApi = {
     '/mock/schedule/:id/playoff': path.resolve(__dirname, 'schedule/playoff.json'),
     '/mock/live/review/:id': path.resolve(__dirname, 'live/review.json'),
     '/mock/live/hotComments/:id': path.resolve(__dirname, 'live/hotComments.json'),
-    '/mock/live/stats/:id': path.resolve(__dirname, 'live/stats.json'),
     '/mock/live/liveRoom/:id': path.resolve(__dirname, 'live/liveRoom.json'),
-    '/mock/live/quizList/:id': path.resolve(__dirname, 'live/quizList.json')
+    '/mock/live/quizList/:id': path.resolve(__dirname, 'live/quizList.json'),
+    '/mock/live/stats/1': path.resolve(__dirname, 'live/stats.json'),
+    '/mock/live/stats/2': path.resolve(__dirname, 'live/footballStats.json')
 };
 
 module.exports = getApi;

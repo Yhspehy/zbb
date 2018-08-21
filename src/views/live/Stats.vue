@@ -6,8 +6,8 @@
         <cut-off-line></cut-off-line>
 
 
-        <!-- 赛况 -->
-        <div class="period">
+        <!-- NBA赛况 -->
+        <div v-if="data.type === 0" class="period">
             <div class="periodTitle border-bottom-1px">赛况</div>
             <div class="periodRow periodRowTitle border-bottom-1px">
                 <div v-for="item in periodTitle" :key="item">{{item}}</div>
@@ -24,39 +24,36 @@
 
         <!-- 球队统计 -->
         <stats-item-header name="球队统计" :isExpand="expandObj.teamStats" @expand="expand('teamStats')"></stats-item-header>
-        <!-- <transition name="expand">
-            <stats-team v-if="expandObj.teamStats && data.team_total" :data="data.team_total"></stats-team>
-        </transition> -->
-        <collapse :active="expandObj.teamStats">
-            <stats-team v-if="data.team_total" :data="data.team_total"></stats-team>
+        <collapse v-if="data.type === 0" :active="expandObj.teamStats">
+            <stats-team-nba v-if="data.team_stats" :data="data.team_stats"></stats-team-nba>
+        </collapse>
+        <collapse v-if="data.type === 1" :active="expandObj.teamStats">
+            <stats-team-football v-if="data.team_stats" :data="data.team_stats"></stats-team-football>
         </collapse>
 
 
-        <!-- 球员统计 -->
-        <stats-item-header :name="`球员统计-${data.hometeam}`" :isExpand="expandObj.playerStats" @expand="expand('homePlayer')"></stats-item-header>
-        <!-- <transition name="expand">
-            <stats-player v-if="expandObj.homePlayer && data.player_stats" :data="data.player_stats.home"></stats-player>
-        </transition> -->
-        <collapse :active="expandObj.homePlayer">
+        <!-- NBA球员统计 -->
+        <stats-item-header v-if="data.type === 0" :name="`球员统计-${data.hometeam}`" :isExpand="expandObj.playerStats" @expand="expand('homePlayer')"></stats-item-header>
+        <collapse v-if="data.type === 0" :active="expandObj.homePlayer">
             <stats-player v-if="data.player_stats" :data="data.player_stats.home" id="PlayeStatsHome"></stats-player>
         </collapse>
 
-        <!-- 球员统计 -->
-        <stats-item-header :name="`球员统计-${data.awayteam}`" :isExpand="expandObj.playerStats" @expand="expand('awayPlayer')"></stats-item-header>
-        <!-- <transition name="expand">
-            <stats-player v-if="expandObj.awayPlayer && data.player_stats" :data="data.player_stats.away"></stats-player>
-        </transition> -->
-        <!-- <div class="expand" id="awayPlayer" v-if="data.player_stats">
-            <stats-player :data="data.player_stats.away"></stats-player>
-        </div> -->
-        <collapse :active="expandObj.awayPlayer">
+        <!-- NBA球员统计 -->
+        <stats-item-header v-if="data.type === 0" :name="`球员统计-${data.awayteam}`" :isExpand="expandObj.playerStats" @expand="expand('awayPlayer')"></stats-item-header>
+        <collapse v-if="data.type === 0" :active="expandObj.awayPlayer">
             <stats-player v-if="data.player_stats" :data="data.player_stats.away" id="PlayeStatsAway"></stats-player>
         </collapse>
 
-        <!-- 本场最佳 -->
-        <stats-item-header name="本场最佳" :isExpand="expandObj.bestPlayer" @expand="expand('bestPlayer')"></stats-item-header>
-        <collapse :active="expandObj.bestPlayer">
+        <!-- NBA本场最佳 -->
+        <stats-item-header v-if="data.type === 0" name="本场最佳" :isExpand="expandObj.bestPlayer" @expand="expand('bestPlayer')"></stats-item-header>
+        <collapse v-if="data.type === 0" :active="expandObj.bestPlayer">
             <stats-best-player v-if="data.max_players" :data="data.max_players" id="bestPlayer"></stats-best-player>
+        </collapse>
+
+        <!-- 足球赛况 -->
+        <stats-item-header v-if="data.type === 1" name="赛况" :isExpand="expandObj.footballEvents" @expand="expand('footballEvents')"></stats-item-header>
+        <collapse :active="expandObj.footballEvents">
+            <football-events v-if="data.football_events" :data="data.football_events" id="footballEvents"></football-events>
         </collapse>
 
         <!-- 交锋历史 -->
@@ -64,10 +61,6 @@
         <collapse :active="expandObj.history">
             <stats-history v-if="data.match_history" :data="data.match_history" id="history"></stats-history>
         </collapse>
-
-
-
-
 
 
     </div>
@@ -79,10 +72,12 @@ import cutOffLine from '@/components/CutOffLine';
 import matchInfo from './_components/MatchInfo';
 import collapse from '@/Utils/collapse';
 import statsItemHeader from './_components/StatsItemHeader';
-import statsTeam from './_components/StatsTeam';
+import StatsTeamNba from './_components/StatsTeamNBA';
+import StatsTeamFootball from './_components/StatsTeamFootball';
 import statsPlayer from './_components/StatsPlayer';
 import statsBestPlayer from './_components/StatsBestPlayer';
 import statsHistory from './_components/StatsHistory';
+import footballEvents from './_components/StatsFootballEvents';
 
 export default {
     name: 'live_stats',
@@ -91,10 +86,12 @@ export default {
         matchInfo,
         collapse,
         statsItemHeader,
-        statsTeam,
+        StatsTeamNba,
+        StatsTeamFootball,
         statsPlayer,
         statsBestPlayer,
-        statsHistory
+        statsHistory,
+        footballEvents
     },
     data() {
         return {
@@ -106,7 +103,8 @@ export default {
                 homePlayer: true,
                 awayPlayer: true,
                 bestPlayer: true,
-                history: true
+                history: true,
+                footballEvents: true
             }
         };
     },
@@ -120,13 +118,6 @@ export default {
         },
         expand(key) {
             this.expandObj[key] = !this.expandObj[key];
-            // let el = document.querySelector(`#${key}`);
-            // let scrollHeight = el.children[0].scrollHeight;
-            // if (!this.expandObj[key]) {
-            //     el.style.height = 0;
-            // } else {
-            //     el.style.height = scrollHeight + 'px';
-            // }
         }
     }
 };
