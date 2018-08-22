@@ -53,7 +53,7 @@ export default {
                 this.newsList = res.newsList;
                 this.updateCount = res.updateCount;
             });
-        },
+        }
     }
 };
 </script>

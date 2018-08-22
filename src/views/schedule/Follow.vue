@@ -1,36 +1,42 @@
 <template>
     <div class="follow">
-        <div>
-            <div v-for="(val, key) in followObj" :key="key">
-                <!-- 时间条 -->
-                <div class="timeBar">
-                    <span v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">
-                        <span class="today-text"> 今天 </span>
-                    </span>
-                    <span>{{$moment(key).format('MM月DD号')}} {{$moment(key).format('dddd')}}</span>
+        <scroll ref="scroll" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
+            <div>
+                <div v-for="(val, key) in followObj" :key="key">
+                    <div class="timeBar">
+                        <router-link 
+                            :to="{'name': 'schedule_calendar'}"
+                            v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">
+                            <i class="far fa-calendar-alt"></i>
+                            <span class="today-text"> 今天 </span>
+                        </router-link >
+                        <span>{{$moment(key).format('MM月DD号')}} {{$moment(key).format('dddd')}}</span>
+                    </div>
+
+                    <match-item
+                        v-for="item in followObj[key]"
+                        :key="item.id"
+                        :matchData="item">
+                    </match-item>
                 </div>
-
-                <match-item
-                    v-for="item in followObj[key]"
-                    :key="item.id"
-                    :matchData="item">
-                </match-item>
             </div>
-        </div>
+        </scroll>
 
-        <go-top word="今日赛事"></go-top>
+        <go-top word="今日赛事" :goTop="goTop"></go-top>
     </div>
 </template>
 
 <script>
 import matchItem from './_components/MatchItem';
 import goTop from './_components/GoTop';
+import Scroll from '@/components/Scroll';
 export default {
     name: 'schedule_follow',
-    components: { matchItem, goTop },
+    components: { matchItem, goTop, Scroll },
     data() {
         return {
-            followObj: {}
+            followObj: {},
+            pageIndex: 1
         };
     },
     created() {
@@ -48,8 +54,26 @@ export default {
                 if (this.$moment(key).format('MM月DD号') === this.$moment().format('MM月DD号')) {
                     console.log('today');
                 }
+                this.$set(this.followObj, key, res.data.data[key]);
             }
-            this.followObj = res.data.data;
+            this.pageIndex += 1;
+        },
+        goTop() {
+            this.$refs.scroll.scrollTo(0, 0, 500);
+        },
+        async onPullingUp() {
+            if (this.pageIndex < 2) {
+                await this.getFollowList();
+                this.$refs.scroll.forceUpdate(true);
+            } else {
+                this.$refs.scroll.forceUpdate(false);
+            }
+        },
+        async onPullingDown() {
+            this.pageIndex = 1;
+            this.followObj = {};
+            this.getFollowList();
+            this.$refs.scroll.forceUpdate(true);
         }
     }
 };
@@ -57,6 +81,7 @@ export default {
 
 <style scoped lang="scss">
 .follow {
+    height: calc(100vh - 182px);
     .timeBar {
         padding: 25px 0;
         background: #f3f7f9;

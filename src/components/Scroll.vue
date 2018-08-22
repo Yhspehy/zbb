@@ -62,7 +62,7 @@ export default {
             type: Number,
             default: 20
         },
-        options: {
+        scrollOptions: {
             type: Object,
             default: function() {
                 return {};
@@ -78,7 +78,8 @@ export default {
             pullUpDirty: true,
             pullDownStyle: '',
             bubbleY: 0,
-            pullDownInitTop: -50
+            pullDownInitTop: -50,
+            options: {}
         };
     },
     computed: {
@@ -91,7 +92,7 @@ export default {
                 (this.options.pullUpLoad && this.options.pullUpLoad.txt && this.options.pullUpLoad.txt.noMore) ||
                 '没有更多数据了';
 
-            return this.options.pullUpDirty ? moreTxt : noMoreTxt;
+            return this.pullUpDirty ? moreTxt : noMoreTxt;
         },
         refreshTxt() {
             return (this.options.pullDownRefresh && this.options.pullDownRefresh.txt) || '数据已更新';
@@ -115,15 +116,30 @@ export default {
                 this.$refs.listWrapper.style.minHeight = `${getRect(this.$refs.wrapper).height + 1}px`;
             }
 
-            const options = merge(
+            // 初始化设置
+            this.options = merge(
                 {
                     probeType: 1,
-                    click: true
+                    click: true,
+                    scrollbar: {
+                        fade: true
+                    },
+                    pullDownRefresh: {
+                        threshold: 90,
+                        stop: 40
+                    },
+                    pullUpLoad: {
+                        threshold: 0,
+                        txt: {
+                            more: '加载更多',
+                            noMore: '没有更多数据了'
+                        }
+                    }
                 },
-                this.options
+                this.scrollOptions
             );
 
-            this.scroll = new BScroll(this.$refs.wrapper, options);
+            this.scroll = new BScroll(this.$refs.wrapper, this.options);
 
             if (this.listenScroll) {
                 this.scroll.on('scroll', pos => {

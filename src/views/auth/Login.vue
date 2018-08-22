@@ -123,7 +123,7 @@ export default {
         .form {
             padding: 30px 24px;
             width: 100%;
-            .input-group{
+            .input-group {
                 position: relative;
             }
             .input-control {
@@ -153,7 +153,7 @@ export default {
                 bottom: -50px;
                 font-size: 24px;
                 color: red;
-                i{
+                i {
                     margin-right: 10px;
                 }
             }

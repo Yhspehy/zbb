@@ -1,7 +1,7 @@
 <template>
     <div class="league">
         <!-- <div class="league-wrapper"> -->
-            <scroll ref="scroll" :options="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
+            <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
                 <div class="point">
                     <div class="point-wrapper">
                         <h-scroll>
@@ -70,7 +70,6 @@
 <script>
 import HScroll from '@/components/HScroll';
 import Scroll from '@/components/Scroll';
-import BScroll from 'better-scroll';
 let pageIndex = 1;
 export default {
     name: 'league',
@@ -102,23 +101,7 @@ export default {
                     type: ''
                 }
             },
-            scrollOptions: {
-                scrollbar: {
-                    fade: true
-                },
-                pullDownRefresh: {
-                    threshold: 90,
-                    stop: 40
-                },
-                pullUpLoad: {
-                    threshold: 0,
-                    txt: {
-                        more: '加载更多',
-                        noMore: '没有更多数据了'
-                    }
-                },
-                startY: 0
-            },
+            scrollOptions: {},
             updateCount: 0,
             scrollToX: 0,
             scrollToY: 0,
@@ -160,7 +143,7 @@ export default {
         },
         async onPullingDown() {
             pageIndex = 1;
-            let [pointNews, newsList] = await Promise.all([this.getPointNews(), this.getNewsList()]);
+            await Promise.all([this.getPointNews(), this.getNewsList()]);
             this.$refs.scroll.forceUpdate(true);
         }
     },

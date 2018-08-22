@@ -1,6 +1,6 @@
 <template>
     <div class="goTop">
-        <span @click="goTop">{{word}}1</span>
+        <span @click="goTop1">{{word}}1</span>
     </div>
 </template>
 
@@ -35,6 +35,9 @@ export default {
         return {};
     },
     methods: {
+        goTop1() {
+            this.$emit('goTop');
+        },
         goTop() {
             let x = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
             if (x) {
@@ -83,5 +86,6 @@ export default {
     left: 257px;
     bottom: 130px;
     cursor: pointer;
+    z-index: 2;
 }
 </style>
