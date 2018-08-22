@@ -50,6 +50,13 @@ const ProfileSettingAbout = () => import('@/views/profile/About');
 const ProfileSettingJoin = () => import('@/views/profile/Join');
 const ProfileSettingMessage = () => import('@/views/profile/Message');
 
+/*----------  Auth  ----------*/
+const Auth = () => import('@/views/auth/Index');
+const Login = () => import('@/views/auth/Login');
+const Register = () => import('@/views/auth/Register');
+const ResetPwd = () => import('@/views/auth/ResetPwd');
+const BindMobile = () => import('@/views/auth/BindMobile');
+
 const About = () => import('@/views/About');
 const Demo = () => import('@/views/Demo');
 
@@ -262,6 +269,33 @@ const router = new Router({
                     path: 'message',
                     name: 'profile_setting_message',
                     component: ProfileSettingMessage
+                }
+            ]
+        },
+        {
+            path: '/auth',
+            name: 'auth',
+            component: Auth,
+            children: [
+                {
+                    path: 'login',
+                    name: 'login',
+                    component: Login
+                },
+                {
+                    path: 'register',
+                    name: 'register',
+                    component: Register
+                },
+                {
+                    path: 'resetpwd',
+                    name: 'resetpwd',
+                    component: ResetPwd
+                },
+                {
+                    path: 'bindmobile',
+                    name: 'bindmobile',
+                    component: BindMobile
                 }
             ]
         },

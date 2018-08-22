@@ -17,6 +17,7 @@
 
         <div>
             <div>相关新闻</div>
+            <news-list :newsList="newsList"></news-list>
         </div>  
     </div>
 </template>
@@ -24,23 +25,35 @@
 <script>
 import { getReview } from '@/Api/live';
 import cutOffLine from '@/components/CutOffLine';
+import NewsList from '@/components/NewsList';
 import matchInfo from './_components/MatchInfo';
+let pageIndex = 1;
 export default {
     name: 'live_review',
-    components: { cutOffLine, matchInfo },
+    components: { cutOffLine, matchInfo, NewsList },
     data() {
         return {
-            data: {}
+            data: {},
+            newsList: []
         };
     },
     created() {
         this.getData();
+        this.getNewsList();
     },
     methods: {
         async getData() {
             let res = await getReview(1);
             this.data = res.data.data;
-        }
+        },
+
+        /* 获取新闻列表 */
+        getNewsList() {
+            this.$store.dispatch('home/GetNewsList', { type_id: 1, page_index: pageIndex++ }).then(res => {
+                this.newsList = res.newsList;
+                this.updateCount = res.updateCount;
+            });
+        },
     }
 };
 </script>
