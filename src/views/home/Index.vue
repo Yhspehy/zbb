@@ -28,7 +28,6 @@
 <script>
 import HScroll from '@/components/HScroll';
 import vFooter from '@/components/TheFooter';
-import BScroll from 'better-scroll';
 export default {
     name: 'home',
     components: {
@@ -53,23 +52,23 @@ export default {
     },
     methods: {
         editSubLeagueList() {
-            let subList = [
-                {
-                    league_id: 11,
-                    league_name: 'NBA'
-                }
-            ];
-            let unSubList = [
-                {
-                    league_id: 12,
-                    league_name: 'CBA'
-                },
-                {
-                    league_id: 13,
-                    league_name: '英超'
-                }
-            ];
-            this.$store.dispatch('league/EditSubLeagueList', { subList: subList, unSubList: unSubList });
+            // let subList = [
+            //     {
+            //         league_id: 11,
+            //         league_name: 'NBA'
+            //     }
+            // ];
+            // let unSubList = [
+            //     {
+            //         league_id: 12,
+            //         league_name: 'CBA'
+            //     },
+            //     {
+            //         league_id: 13,
+            //         league_name: '英超'
+            //     }
+            // ];
+            // this.$store.dispatch('league/EditSubLeagueList', { subList: subList, unSubList: unSubList });
         }
     }
 };

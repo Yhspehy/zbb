@@ -98,7 +98,6 @@ export default {
                         click: true,
                         scrollY: true
                     });
-                    console.log(scroll);
                 }
             });
         },

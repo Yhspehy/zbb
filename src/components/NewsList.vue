@@ -37,7 +37,7 @@ export default {
     props: {
         newsList: {
             type: Array,
-            default: []
+            require: true
         }
     }
 };

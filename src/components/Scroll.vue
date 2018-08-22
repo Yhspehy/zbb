@@ -5,32 +5,28 @@
                 <slot>
                 </slot>
             </div>
-            <slot name="pullup" :pullUpLoad="pullUpLoad" :isPullUpLoad="isPullUpLoad">
-                <div class="pullup-wrapper" v-if="pullUpLoad">
-                    <div class="before-trigger" v-if="!isPullUpLoad">
-                        <span>{{pullUpTxt}}</span>
-                    </div>
-                    <div class="after-trigger" v-else>
-                        <loading></loading>
-                    </div>
-                </div>
-            </slot>
-        </div>
-        <slot name="pulldown" :pullDownRefresh="pullDownRefresh" :pullDownStyle="pullDownStyle" :beforePullDown="beforePullDown" :isPullingDown="isPullingDown" :bubbleY="bubbleY">
-            <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="pullDownRefresh">
-                <div class="before-trigger" v-if="beforePullDown">
-                    <bubble :y="bubbleY"></bubble>
+            <div class="pullup-wrapper" v-if="options.pullUpLoad">
+                <div class="before-trigger" v-if="!isPullUpLoad">
+                    <span>{{pullUpTxt}}</span>
                 </div>
                 <div class="after-trigger" v-else>
-                    <div v-if="isPullingDown" class="loading">
-                        <loading></loading>
-                    </div>
-                    <div v-else>
-                        <span>{{refreshTxt}}</span>
-                    </div>
+                    <loading></loading>
                 </div>
             </div>
-        </slot>
+        </div>
+        <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="options.pullDownRefresh">
+            <div class="before-trigger" v-if="beforePullDown">
+                <bubble :y="bubbleY"></bubble>
+            </div>
+            <div class="after-trigger" v-else>
+                <div v-if="isPullingDown" class="loading">
+                    <loading></loading>
+                </div>
+                <div v-else>
+                    <span>{{refreshTxt}}</span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -39,27 +35,16 @@ import BScroll from 'better-scroll';
 import Loading from '@/components/loading/loading';
 import Bubble from '@/components/bubble/bubble';
 import { getRect } from '@/assets/js/dom';
-
-const COMPONENT_NAME = 'scroll';
-const DIRECTION_H = 'horizontal';
-const DIRECTION_V = 'vertical';
+import merge from 'lodash/merge';
 
 export default {
-    name: COMPONENT_NAME,
+    name: 'c_scroll',
     props: {
         data: {
             type: Array,
             default: function() {
                 return [];
             }
-        },
-        probeType: {
-            type: Number,
-            default: 1
-        },
-        click: {
-            type: Boolean,
-            default: true
         },
         listenScroll: {
             type: Boolean,
@@ -73,43 +58,15 @@ export default {
             type: Boolean,
             default: false
         },
-        direction: {
-            type: String,
-            default: DIRECTION_V
-        },
-        scrollbar: {
-            type: null,
-            default: false
-        },
-        pullDownRefresh: {
-            type: null,
-            default: false
-        },
-        pullUpLoad: {
-            type: null,
-            default: false
-        },
-        startY: {
-            type: Number,
-            default: 0
-        },
         refreshDelay: {
             type: Number,
             default: 20
         },
-        freeScroll: {
-            type: Boolean,
-            default: false
-        },
-        mouseWheel: {
-            type: Boolean,
-            default: false
-        },
-        bounce: {
-            default: true
-        },
-        zoom: {
-            default: false
+        options: {
+            type: Object,
+            default: function() {
+                return {};
+            }
         }
     },
     data() {
@@ -120,25 +77,27 @@ export default {
             isPullUpLoad: false,
             pullUpDirty: true,
             pullDownStyle: '',
-            bubbleY: 0
+            bubbleY: 0,
+            pullDownInitTop: -50
         };
     },
     computed: {
         pullUpTxt() {
-            const moreTxt = (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.more) || '加载数据';
+            const moreTxt =
+                (this.options.pullUpLoad && this.options.pullUpLoad.txt && this.options.pullUpLoad.txt.more) ||
+                '加载数据';
 
             const noMoreTxt =
-                (this.pullUpLoad && this.pullUpLoad.txt && this.pullUpLoad.txt.noMore) || '没有更多数据了';
+                (this.options.pullUpLoad && this.options.pullUpLoad.txt && this.options.pullUpLoad.txt.noMore) ||
+                '没有更多数据了';
 
-            return this.pullUpDirty ? moreTxt : noMoreTxt;
+            return this.options.pullUpDirty ? moreTxt : noMoreTxt;
         },
         refreshTxt() {
-            return (this.pullDownRefresh && this.pullDownRefresh.txt) || '数据已更新';
+            return (this.options.pullDownRefresh && this.options.pullDownRefresh.txt) || '数据已更新';
         }
     },
-    created() {
-        this.pullDownInitTop = -50;
-    },
+    created() {},
     mounted() {
         setTimeout(() => {
             this.initScroll();
@@ -152,24 +111,17 @@ export default {
             if (!this.$refs.wrapper) {
                 return;
             }
-            if (this.$refs.listWrapper && (this.pullDownRefresh || this.pullUpLoad)) {
+            if (this.$refs.listWrapper && (this.options.pullDownRefresh || this.options.pullUpLoad)) {
                 this.$refs.listWrapper.style.minHeight = `${getRect(this.$refs.wrapper).height + 1}px`;
             }
 
-            let options = {
-                probeType: this.probeType,
-                click: this.click,
-                scrollY: this.freeScroll || this.direction === DIRECTION_V,
-                scrollX: this.freeScroll || this.direction === DIRECTION_H,
-                scrollbar: this.scrollbar,
-                pullDownRefresh: this.pullDownRefresh,
-                pullUpLoad: this.pullUpLoad,
-                startY: this.startY,
-                freeScroll: this.freeScroll,
-                mouseWheel: this.mouseWheel,
-                bounce: this.bounce,
-                zoom: this.zoom
-            };
+            const options = merge(
+                {
+                    probeType: 1,
+                    click: true
+                },
+                this.options
+            );
 
             this.scroll = new BScroll(this.$refs.wrapper, options);
 
@@ -195,11 +147,11 @@ export default {
                 });
             }
 
-            if (this.pullDownRefresh) {
+            if (this.options.pullDownRefresh) {
                 this._initPullDownRefresh();
             }
 
-            if (this.pullUpLoad) {
+            if (this.options.pullUpLoad) {
                 this._initPullUpLoad();
             }
         },
@@ -226,12 +178,12 @@ export default {
             this.scroll.destroy();
         },
         forceUpdate(dirty) {
-            if (this.pullDownRefresh && this.isPullingDown) {
+            if (this.options.pullDownRefresh && this.isPullingDown) {
                 this.isPullingDown = false;
                 this._reboundPullDown().then(() => {
                     this._afterPullDown();
                 });
-            } else if (this.pullUpLoad && this.isPullUpLoad) {
+            } else if (this.options.pullUpLoad && this.isPullUpLoad) {
                 this.isPullUpLoad = false;
                 this.scroll.finishPullUp();
                 this.pullUpDirty = dirty;
@@ -248,7 +200,7 @@ export default {
             });
 
             this.scroll.on('scroll', pos => {
-                if (!this.pullDownRefresh) {
+                if (!this.options.pullDownRefresh) {
                     return;
                 }
                 if (this.beforePullDown) {
@@ -259,7 +211,7 @@ export default {
                 }
 
                 if (this.isRebounding) {
-                    this.pullDownStyle = `top:${10 - (this.pullDownRefresh.stop - pos.y)}px`;
+                    this.pullDownStyle = `top:${10 - (this.options.pullDownRefresh.stop - pos.y)}px`;
                 }
             });
         },
@@ -270,7 +222,7 @@ export default {
             });
         },
         _reboundPullDown() {
-            const { stopTime = 600 } = this.pullDownRefresh;
+            const { stopTime = 600 } = this.options.pullDownRefresh;
             return new Promise(resolve => {
                 setTimeout(() => {
                     this.isRebounding = true;
