@@ -24,7 +24,7 @@
             <!-- valueList -->
             <div class="valueList">
                 <div
-                    class="valueItem border-1px"
+                    class="valueItem"
                     @click="chooseValue(item)"
                     v-for="item in valueList"
                     :key="item">
@@ -131,7 +131,7 @@ export default {
                 height: 66px;
                 line-height: 66px;
                 text-align: center;
-                @include border-1px(#cccccc, 20px);
+                @include border-1px(#cccccc, 10px);
             }
         }
         .submit {

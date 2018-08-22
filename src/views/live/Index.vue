@@ -34,6 +34,7 @@ export default {
     data() {
         return {
             width: window.screen.width,
+            // status <0:未开始 1:进行中 2:已结束>
             status: 2,
             chosenNav: '',
             firstNavType: [

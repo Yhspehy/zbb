@@ -43,10 +43,11 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            new BScroll(`#${this.id}`, {
+            let scroll = new BScroll(`#${this.id}`, {
                 scrollX: true,
                 eventPassthrough: 'vertical'
             });
+            console.log(scroll);
         });
     }
 };

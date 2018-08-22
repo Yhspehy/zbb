@@ -23,7 +23,7 @@
                     <td class="away">
                         <div class="cell" v-for="(el, idx) in item.away" :key="idx">
                              <span :class="{
-                                 'up': el.type === '换上',
+                                'up': el.type === '换上',
                                 'down': el.type === '换下',
                                 'goal': el.type === '进球',
                                 'yellowCard': el.type === '黄牌'}">

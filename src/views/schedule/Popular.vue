@@ -1,5 +1,31 @@
 <template>
-    <div class="popular">
+    <div class="popular" ref="wrapper">
+        <!-- <scroll>
+            <div>
+                <div v-for="(val, key) in popularObj" :key="key">
+                    <div class="timeBar">
+                        <router-link 
+                            :to="{'name': 'schedule_calendar'}"
+                            v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">
+                            <i class="far fa-calendar-alt"></i>
+                            <span class="today-text"> 今天 </span>
+                        </router-link >
+                        <span>{{$moment(key).format('MM月DD号')}} {{$moment(key).format('dddd')}}</span>
+                    </div>
+
+                    <match-item
+                        v-for="item in popularObj[key]"
+                        :key="item.id"
+                        :matchData="item">
+                    </match-item>
+                </div>
+            </div>
+
+            <div class="a" @click="a">112222111</div>
+
+
+            <go-top word="今日赛事"></go-top>
+        </scroll> -->
         <div>
             <div v-for="(val, key) in popularObj" :key="key">
                 <!-- 时间条 -->
@@ -21,16 +47,23 @@
             </div>
         </div>
 
-        <go-top word="今日赛事"></go-top>
+        <div class="a" @click="a">112222111</div>
+
+
+        <!-- <go-top word="今日赛事"></go-top> -->
     </div>
 </template> 
 
 <script>
 import matchItem from './_components/MatchItem';
 import goTop from './_components/GoTop';
+import BScroll from 'better-scroll';
+import Scroll from '@/components/Scroll';
+
+let scroll = null;
 export default {
     name: 'schedule_popular',
-    components: { matchItem, goTop },
+    components: { matchItem, goTop, Scroll },
     data() {
         return {
             popularObj: {}
@@ -59,6 +92,18 @@ export default {
                 }
             }
             this.popularObj = res.data.data;
+            this.$nextTick(() => {
+                if (!scroll) {
+                    scroll = new BScroll(this.$refs.wrapper, {
+                        click: true,
+                        scrollY: true
+                    });
+                    console.log(scroll);
+                }
+            });
+        },
+        a() {
+            scroll.scrollTo(0, 0);
         }
     }
 };
@@ -66,6 +111,9 @@ export default {
 
 <style scoped lang="scss">
 .popular {
+    .a {
+        padding: 20px;
+    }
     .timeBar {
         padding: 25px 0;
         background: #f3f7f9;
