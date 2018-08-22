@@ -35,8 +35,7 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                data: `@import "@/assets/sass/variables.scss";
-                @import "@/assets/sass/mixins.scss";`
+                data: `@import "@/assets/sass/mixins.scss";`
                 // options here will be passed to css-loader
             },
             postcss: {

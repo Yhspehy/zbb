@@ -50,37 +50,10 @@
                 </div>
                 <div class="news">
                     <div class="news-wrapper">
-                        <div class="news-first d-flex justify-content-between">
-                            <img :src=newsGroup.first.img_list[0]>
-                            <div class="content d-flex flex-column justify-content-between">
-                                <div class="title">{{newsGroup.first.title}}</div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="date">{{newsGroup.first.create_time | moment('MM/DD HH:mm')}}</div>
-                                    <div class="source">
-                                        <i class="far"></i>Mavis报道
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="news-list">
-                            <div class="news-item d-flex flex-column justify-content-between" v-for="(item, index) in newsGroup.rest" :key="index">
-                                <div class="title">{{item.title}}</div>
-                                <div class="img-group d-flex justify-content-between">
-                                    <img :src=item.img_list[0]>
-                                    <img :src=item.img_list[1]>
-                                    <img :src=item.img_list[2]>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="date">{{newsGroup.first.create_time | moment('MM/DD HH:mm')}}</div>
-                                    <div class="source">
-                                        <i class="far"></i>Mavis报道
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <news-list :newsList="newsList"></news-list>
                     </div>
                 </div>
-                <template slot="pullup"></template>
+                <!-- <template slot="pullup"></template> -->
             </scroll>
         </div>
     </div>
@@ -90,12 +63,12 @@
 import Slide from '@/components/Slide';
 import HScroll from '@/components/HScroll';
 import Scroll from '@/components/Scroll';
+import NewsList from '@/components/NewsList';
 import { hello } from '@/assets/js/utils';
-import BScroll from 'better-scroll';
 let pageIndex = 1;
 export default {
     name: 'recommend',
-    components: { Slide, HScroll, Scroll },
+    components: { Slide, HScroll, Scroll, NewsList },
     data() {
         return {
             hello: '',
@@ -104,18 +77,6 @@ export default {
             focusListLength: 0,
             hotGameCount: 0,
             newsList: [],
-            newsGroup: {
-                first: {
-                    news_id: 0,
-                    title: '',
-                    img_list: [],
-                    img_count: 0,
-                    create_time: 0,
-                    source: '',
-                    league: '',
-                    type: ''
-                }
-            },
             updateCount: 0,
             // 这个配置可以开启滚动条，默认为 false。当设置为 true 或者是一个 Object 的时候，都会开启滚动条，默认是会 fade 的
             scrollbarObj: {
@@ -179,8 +140,6 @@ export default {
             this.$store.dispatch('home/GetNewsList', { type_id: 1, page_index: pageIndex++ }).then(res => {
                 this.newsList = res.newsList;
                 this.updateCount = res.updateCount;
-                const [first, ...rest] = this.newsList;
-                this.newsGroup = { first, rest };
             });
         },
         // 滚动到页面顶部
@@ -342,48 +301,35 @@ export default {
         .news-wrapper {
             padding: 0 26px;
             background: #fff;
-            .news-first {
-                padding: 20px 0;
-                @include border-bottom-1px;
-                img {
-                    margin-left: 10px;
-                    width: 212px;
-                    height: 144px;
-                }
-                .content {
-                    margin-left: 20px;
-                    .title {
-                        font-size: 28px;
-                        line-height: 36px;
-                        color: #4d4d4d;
-                    }
-                    .date,
-                    .source {
-                        font-size: 24px;
-                        color: #808080;
-                    }
-                }
-            }
             .news-list {
                 .news-item {
                     padding: 16px 10px;
                     @include border-bottom-1px;
                     overflow: hidden;
+                    img {
+                        width: 212px;
+                        height: 144px;
+                    }
                     .title {
                         font-size: 28px;
                         color: #4d4d4d;
-                    }
-                    .img-group {
-                        margin: 20px 0;
-                        img {
-                            width: 212px;
-                            height: 144px;
-                        }
                     }
                     .date,
                     .source {
                         font-size: 24px;
                         color: #808080;
+                    }
+                    .news-one {
+                        .content {
+                            margin-left: 20px;
+                            .title {
+                                line-height: 36px;
+                            }
+                        }
+                    }
+
+                    .img-group {
+                        margin: 20px 0;
                     }
                 }
             }

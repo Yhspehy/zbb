@@ -6,8 +6,8 @@
         "news_list": [{
                 "news_id": 11,
                 "title": "五大关键词解读自由市场72小时 谁说冠军已经定了？",
-                "img_list": ["http://temp.im/212x144", "http://temp.im/212x144", "http://temp.im/212x144"],
-                "img_count": 3,
+                "img_list": ["http://temp.im/212x144"],
+                "img_count": 1,
                 "create_time": 1534158498,
                 "source": "腾讯",
                 "league": "NBA",
@@ -26,8 +26,8 @@
             {
                 "news_id": 11,
                 "title": "五大关键词解读自由市场72小时 谁说冠军已经定了？",
-                "img_list": ["http://temp.im/212x144", "http://temp.im/212x144", "http://temp.im/212x144"],
-                "img_count": 3,
+                "img_list": ["http://temp.im/212x144", "http://temp.im/212x144"],
+                "img_count": 2,
                 "create_time": 1534158498,
                 "source": "腾讯",
                 "league": "NBA",
