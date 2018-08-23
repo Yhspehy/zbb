@@ -40,7 +40,7 @@
             </router-link>
         </div>
         <div class="mar-top padding-36 recommend">
-            <div class="item border-bottom">
+            <div class="item border-bottom" @click="show">
                 <span>推荐给好友</span>
                 <i class="fa fa-angle-right"></i>
             </div>
@@ -63,12 +63,28 @@
         <div class="mar-top padding-36 quit" @click="confirm('是否确认退出？')">
             退出当前账号
         </div>
+
+        <transition name="translateY-20">
+            <show-dialog
+                v-if="chosen.showStats"
+                @close="close">
+            </show-dialog>
+        </transition>
     </div>
 </template>
 
 <script>
+import showDialog from './_components/ShowDialog';
 export default {
     name: 'setting_index',
+    components: { showDialog },
+    data() {
+        return {
+            chosen: {
+                showStats: false
+            }
+        };
+    },
     created() {
         console.log('created');
     },
@@ -76,6 +92,12 @@ export default {
         console.log('activated');
     },
     methods: {
+        show() {
+            this.chosen.showStats = true;
+        },
+        close() {
+            this.chosen.showStats = false;
+        },
         goBack() {
             if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
             this.$router.back();
@@ -178,6 +200,16 @@ export default {
         color: #f5303d;
         text-align: center;
         line-height: 90px;
+    }
+
+    .translateY-20-enter-active,
+    .translateY-20-leave-active {
+        transition: all 0.5s;
+    }
+    .translateY-20-enter,
+    .translateY-20-leave-to {
+        transform: translateY(-20px);
+        opacity: 0;
     }
 }
 </style>
