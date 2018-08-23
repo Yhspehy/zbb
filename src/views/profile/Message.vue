@@ -143,7 +143,7 @@ export default {
                     font-size: 24px;
                     line-height: 32px;
                     .detail-link {
-                        color: #0088ff;
+                        color: $prime-blue;
                     }
                 }
             }

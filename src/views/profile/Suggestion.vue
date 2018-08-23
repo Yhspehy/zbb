@@ -109,7 +109,7 @@ export default {
             right: 35px;
             line-height: 90px;
             font-size: 24px;
-            color: #0088ff;
+            color: $prime-blue;
         }
     }
     .item-90 {

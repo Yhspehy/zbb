@@ -1,6 +1,6 @@
 <template>
     <div class="news-list">
-        <div class="news-item d-flex flex-column justify-content-between" v-for="(item, index) in newsList" :key="index">
+        <div class="news-item d-flex flex-column justify-content-between border-bottom-1px" v-for="(item, index) in newsList" :key="index">
             <div class="news-one d-flex justify-content-between" v-if="item.img_count < 3">
                 <img :src=item.img_list[0]>
                 <div class="content d-flex flex-column justify-content-between">

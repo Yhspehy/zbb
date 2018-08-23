@@ -4,7 +4,7 @@
             <div class="typeName">{{item.name}}</div>
             <div v-for="el in item.list" :key="el" class="leagueItem border-bottom-1px" @click="goLeagueMatch(el)">
                 <span class="leagueName">{{el}}</span>
-                <span class="count" :style="{'color': matchCountObj[el]? '#0088ff': ''}">
+                <span class="count" :style="{'color': matchCountObj[el]? '#00bbff': ''}">
                     <span v-if="matchCountObj[el]">今日共有{{matchCountObj[el]}}场比赛</span>
                     <i class="fas fa-chevron-right"></i>
                 </span>

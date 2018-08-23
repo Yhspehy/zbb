@@ -14,6 +14,5 @@ export default {
 .auth {
     width: 100%;
     height: 1334px;
-    padding: 0 36px;
 }
 </style>

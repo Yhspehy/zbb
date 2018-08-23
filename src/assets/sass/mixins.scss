@@ -1,9 +1,5 @@
 @import "./variables.scss";
 // ==============
-
-
-
-
 // 在多个元素的时候用这个写在class的样式中
 // 如果只有一个元素且并没有什么样式，直接在style中写类型，参考common.css
 @mixin text-ellipsis () {
@@ -19,8 +15,6 @@
     -webkit-line-clamp: $lineNum;
     overflow: hidden;
 }
-
-
 
 // ==============
 @mixin box-shadow($left, $top, $radius, $color) {
@@ -42,8 +36,6 @@
 }
 
 // ==============
-
-
 // ==================
 @mixin imgRetina($image, $extension, $width, $height, $position: center, $repeat: no-repeat) {
     background: url($image + '.' + $extension) $repeat $position;
@@ -78,7 +70,6 @@
 @mixin animation($str) {
     animation: #{$str};
 }
-
 
 @mixin border-1px($color: #f2f2f2, $border-radius: 0) {
     position: relative;
@@ -172,9 +163,8 @@
     background-image: linear-gradient(to left top, $color1, $color2);
 }
 
-
-
 /*----------  flex  ----------*/
+
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -186,31 +176,13 @@
     justify-content: space-between;
     align-items: center;
 }
+
 @mixin text-image() {
     color: transparent;
     -webkit-background-clip: text;
-    background-image: linear-gradient(
-        -45deg,
-        #1d75f2 0%,
-        #0f6ef9 0%,
-        #0066ff 0%,
-        #0073ff 0%,
-        #0080ff 0%,
-        #009aff 50%,
-        #04a7ff 73%,
-        #07b5ff 100%
-    );
+    background-image: linear-gradient( -45deg, #1d75f2 0%, #0f6ef9 0%, #0066ff 0%, #0073ff 0%, #0080ff 0%, #009aff 50%, #04a7ff 73%, #07b5ff 100%);
 }
+
 @mixin background-image() {
-    background-image: linear-gradient(
-        -45deg,
-        #1d75f2 0%,
-        #0f6ef9 0%,
-        #0066ff 0%,
-        #0073ff 0%,
-        #0080ff 0%,
-        #009aff 50%,
-        #04a7ff 73%,
-        #07b5ff 100%
-    );
+    background-image: linear-gradient( -45deg, #1d75f2 0%, #0f6ef9 0%, #0066ff 0%, #0073ff 0%, #0080ff 0%, #009aff 50%, #04a7ff 73%, #07b5ff 100%);
 }

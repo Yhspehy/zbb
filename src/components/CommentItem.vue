@@ -90,7 +90,7 @@ export default {
                 margin-bottom: 5px;
             }
             .commentExpand {
-                color: #0088ff;
+                color: $prime-blue;
                 margin-top: 15px;
             }
         }

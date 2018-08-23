@@ -17,7 +17,7 @@
                     <img src="http://temp.im/60x60" alt="">
                 </div>
                 <div class="infos">
-                    <div class="status"><a href="#">登录</a>/<a href="#">注册</a></div>
+                    <div class="status"><router-link :to = "{'name': 'login'}">登录</router-link>/<router-link :to = "{'name': 'register'}">注册</router-link></div>
                     <div class="d-flex justify-content-between">
                         <span>登录可享受更多服务</span>
                         <span class="d-none">G币：<span class="highlight">9999999</span></span>
@@ -187,7 +187,6 @@ export default {
         background-color: #000000;
         opacity: 0.8;
         .operation {
-            padding-top: 30px;
             color: #ffffff;
             font-size: 40px;
             font-weight: 200;

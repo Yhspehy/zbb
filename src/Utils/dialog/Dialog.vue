@@ -106,7 +106,7 @@ export default {
         }
         .ok {
             flex: 1 0 50%;
-            color: #0088ff;
+            color: $prime-blue;
             &.alert {
                 @include rounded(bottom, left);
                 @include rounded(bottom, right);
