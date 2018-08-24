@@ -21,7 +21,7 @@
                 </div>
 
                 <div 
-                    :style="{'color' : item.end_description_word === '详情' || item.end_description_word === '回看' ? '#b3b3b3' : '#0088ff'}"
+                    :style="{'color' : item.end_description_word === '详情' || item.end_description_word === '回看' ? '#b3b3b3' : '#00bbff'}"
                     class="endDes"
                 >{{item.end_description_word}}</div>
             </div>

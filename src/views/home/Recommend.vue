@@ -53,7 +53,6 @@
                         <news-list :newsList="newsList"></news-list>
                     </div>
                 </div>
-                <!-- <template slot="pullup"></template> -->
             </scroll>
         </div>
     </div>
@@ -267,7 +266,7 @@ export default {
         padding-left: 36px;
         line-height: 64px;
         font-size: 24px;
-        color: #0088ff;
+        color: $prime-blue;
         background-color: #fff;
         .line {
             color: #808080;

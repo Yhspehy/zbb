@@ -83,7 +83,7 @@ export default {
             color: #b3b3b3;
         }
         .confirm {
-            color: #0088ff;
+            color: $prime-blue;
         }
     }
     .picker-content {

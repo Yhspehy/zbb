@@ -10,14 +10,14 @@
                     <i class="fa fa-qq wid-50"></i>QQ群：
                     <input type="text" class="value" id="qq_group" value="123456789" readonly>
                 </span>
-                <span style="color: #0088ff;" @click="onCopy('qq_group')">复制</span>
+                <span style="color: $prime-blue;" @click="onCopy('qq_group')">复制</span>
             </div>
             <div class="item">
                 <span>
                     <i class="fa fa-weixin wid-50"></i>微信公众号：
                     <input type="text" class="value" id="weixin_num" value="43256676" readonly>
                 </span>
-                <span style="color: #0088ff;" @click="onCopy('weixin_num')">复制</span>
+                <span style="color: $prime-blue;" @click="onCopy('weixin_num')">复制</span>
             </div>
         </div>
     </div>

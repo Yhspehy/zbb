@@ -1,7 +1,7 @@
 <template>
     <div class="login">
         <div class="header">
-            <a class="go-back">
+            <a class="go-back" @click="goBack">
                 <i class="fa fa-angle-left"></i>
             </a>
             <div class="right-btn">
@@ -22,7 +22,8 @@
                     </div>
                     <div class="input-control">
                         <input type="password" placeholder="请输入密码">
-                        <i class="rt fas fa-eye-slash"></i>
+                        <span class="rt">获取验证码</span>
+                        <!-- <i class="rt fas fa-eye-slash"></i> -->
                     </div>
                     <div class="error">
                         <i class="fas fa-exclamation-circle"></i>账号/密码有误，请重新输入
@@ -31,7 +32,7 @@
 
                 <div class="btn-group">
                     <button class="login-btn" disabled>登录</button>
-                    <button class="login-with-mobile">手机号码登录</button>
+                    <button class="login-with-mobile border-1px">手机号码登录</button>
                 </div>
             </div>
 
@@ -68,7 +69,11 @@ export default {
             test: 1
         };
     },
-    methods: {}
+    methods: {
+        goBack() {
+            window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
+        }
+    }
 };
 </script>
 
@@ -81,7 +86,7 @@ export default {
     align-items: center;
     .header {
         width: 100%;
-        padding: 30px 0;
+        padding: 30px 36px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -91,18 +96,18 @@ export default {
         }
         .right-btn {
             font-size: 24px;
-            color: #0088ff;
+            color: $prime-blue;
         }
     }
     .content {
-        padding-top: 15px;
+        padding: 15px 36px 0;
         width: 100%;
         .logo-wrapper {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            color: #0088ff;
+            color: $prime-blue;
             .logo-img {
                 width: 160px;
                 height: 160px;
@@ -135,7 +140,7 @@ export default {
                 height: 98px;
                 @include border-bottom-1px;
                 input {
-                    width: 100%;
+                    flex: 1 1 60%;
                     height: 100%;
                     outline: none;
                     &::placeholder {
@@ -143,16 +148,17 @@ export default {
                     }
                 }
                 .rt {
-                    position: absolute;
-                    right: 0;
                     color: #b2b2b2;
+                    &.active {
+                        color: #f5303d;
+                    }
                 }
             }
             .error {
                 position: absolute;
                 bottom: -50px;
                 font-size: 24px;
-                color: red;
+                color: #f5303d;
                 i {
                     margin-right: 10px;
                 }
@@ -187,11 +193,19 @@ export default {
                         opacity: 0.7;
                     }
                 }
-
                 &.login-with-mobile {
                     margin-top: 30px;
-                    color: #0088ff;
-                    @include border-1px(#0088ff);
+                    color: $prime-blue;
+                }
+                @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+                    &.border-1px {
+                        @include border-1px($prime-blue, 80px);
+                    }
+                }
+                @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+                    &.border-1px {
+                        @include border-1px($prime-blue, 120px);
+                    }
                 }
             }
         }
@@ -215,6 +229,18 @@ export default {
                 width: 160px;
                 height: 1px;
                 background-color: #b3b3b3;
+            }
+            @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+                &::before,
+                &::after {
+                    transform: scaleY(0.5);
+                }
+            }
+            @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+                &::before,
+                &::after {
+                    transform: scaleY(0.33);
+                }
             }
         }
         .others-wrapper {

@@ -5,19 +5,21 @@
             <span>意见反馈</span>
             <router-link :to="{'name':'profile_setting_problem'}"><span class="problem">常见问题</span></router-link>
         </div>
-        <div class="mar-top item-90">
-            <div class="item padding-36" @click="select_state = !select_state">
-                <span>优化建议</span>
-                <i class="fa fa-angle-down"></i>
-            </div>
-            <ul class="select padding-36" id="select_ul" v-if="select_state">
-                <li class="option">直播</li>
-                <li class="option">等级</li>
-                <li class="option">社区</li>
-                <li class="option">其他</li>
-                <li class="option">优化建议</li>
-            </ul>
+        <div class="mar-top padding-36 d-flex justify-content-between align-items-center item ">
+            <span>建议优化</span>
+            <i class="fa fa-angle-down"
+                :class="{'rotate': expandObj.select}"
+                @click="emitClick('select')"></i>
         </div>
+        <collapse :active="expandObj.select">
+            <div class="padding-36 select">
+                <div class="option">直播</div>
+                <div class="option">等级</div>
+                <div class="option">社区</div>
+                <div class="option">其他</div>
+                <div class="option">优化建议</div>
+            </div>
+        </collapse>
         <div class="mar-top suggestion-content">
             <textarea class="textarea" id="content" @keyup="checkLen()" cols="30" rows="10"></textarea>
             <div class="word-count" id="word_count"><span id="count">0</span>/200</div>
@@ -27,11 +29,15 @@
 </template>
 
 <script>
+import collapse from '@/Utils/collapse';
 export default {
     name: 'setting_join',
+    components: { collapse },
     data() {
         return {
-            select_state: false
+            expandObj: {
+                select: false
+            }
         };
     },
     created() {
@@ -41,6 +47,9 @@ export default {
         console.log('activated');
     },
     methods: {
+        emitClick(key) {
+            this.expandObj[key] = !this.expandObj[key];
+        },
         checkLen() {
             let obj = document.getElementById('content');
             var maxChars = 200; //最多字符数
@@ -67,7 +76,6 @@ export default {
 
 <style scoped lang="scss">
 .setting-join {
-    position: relative;
     .mar-top {
         margin-top: 20px;
     }
@@ -76,6 +84,14 @@ export default {
     }
     .padding-36 {
         padding: 0 36px;
+        .fa-angle-down {
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+        .rotate {
+            transform: rotate(180deg);
+        }
     }
     .wid-50 {
         display: inline-block;
@@ -109,44 +125,43 @@ export default {
             right: 35px;
             line-height: 90px;
             font-size: 24px;
-            color: #0088ff;
+            color: $prime-blue;
         }
     }
-    .item-90 {
+    .item {
         position: relative;
         width: 100%;
         height: 90px;
         background: #ffffff;
-        .item {
-            height: 90px;
-            color: #4d4d4d;
-            font-size: 28px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        color: #4d4d4d;
+        font-size: 28px;
+        .fa-angle-down {
+            transition: transform 0.5s;
+        }
+        .rotate {
+            transform: rotate(180deg);
         }
     }
     .select {
-        position: absolute !important;
-        top: 90px;
         width: 100%;
-        height: auto;
-        overflow: hidden;
+        height: 400px;
         background: #ffffff;
-        transition: height 1.4s;
+        z-index: 99;
         @include border-bottom-1px(#cccccc);
         @include border-top-1px(#cccccc);
         .option {
             width: 100%;
-            height: 60px;
+            height: 80px;
             color: #808080;
-            line-height: 60px;
+            line-height: 80px;
             &:not(:last-child) {
                 @include border-bottom-1px;
             }
         }
     }
     .suggestion-content {
+        position: fixed;
+        top: 200px;
         width: 100%;
         min-height: 296px;
         background: #ffffff;

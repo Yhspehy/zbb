@@ -53,7 +53,7 @@ const ProfileSettingMessage = () => import('@/views/profile/Message');
 /*----------  Auth  ----------*/
 const Auth = () => import('@/views/auth/Index');
 const Login = () => import('@/views/auth/Login');
-const Register = () => import('@/views/auth/Register');
+const Register = () => import('@/views/auth/register/Index');
 const ResetPwd = () => import('@/views/auth/ResetPwd');
 const BindMobile = () => import('@/views/auth/BindMobile');
 
