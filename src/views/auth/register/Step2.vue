@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="btntxt">
-            <a @click="sendCode" :disabled='disabled'>{{btntxt}}</a>
+            <button @click="sendCode" :disabled='disabled'>{{btntxt}}</button>
         </div>
     </div>
 </template>
@@ -175,7 +175,8 @@ h2 {
     font-size: 28px;
     line-height: 70px;
     text-align: center;
-    a {
+    button {
+        background: transparent;
         color: #00bbff;
     }
 }

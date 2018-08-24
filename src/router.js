@@ -54,7 +54,7 @@ const ProfileSettingMessage = () => import('@/views/profile/Message');
 const Auth = () => import('@/views/auth/Index');
 const Login = () => import('@/views/auth/Login');
 const Register = () => import('@/views/auth/register/Index');
-const ResetPwd = () => import('@/views/auth/ResetPwd');
+const Forget = () => import('@/views/auth/forget/Index');
 const BindMobile = () => import('@/views/auth/BindMobile');
 
 const About = () => import('@/views/About');
@@ -288,9 +288,9 @@ const router = new Router({
                     component: Register
                 },
                 {
-                    path: 'resetpwd',
-                    name: 'resetpwd',
-                    component: ResetPwd
+                    path: 'forget',
+                    name: 'forget',
+                    component: Forget
                 },
                 {
                     path: 'bindmobile',

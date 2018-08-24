@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="register">
         <div class="header border-bottom-1px">
             <a class="go-back">
@@ -172,3 +172,4 @@ export default {
     }
 }
 </style>
+-->

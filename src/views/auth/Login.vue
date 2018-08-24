@@ -5,7 +5,7 @@
                 <i class="fa fa-angle-left"></i>
             </a>
             <div class="right-btn">
-                注册
+                <router-link :to="{'name':'register'}">注册</router-link>
             </div>
         </div>
         <div class="content">
@@ -22,8 +22,8 @@
                     </div>
                     <div class="input-control">
                         <input type="password" placeholder="请输入密码">
-                        <span class="rt">获取验证码</span>
-                        <!-- <i class="rt fas fa-eye-slash"></i> -->
+                        <!-- <span class="rt">获取验证码</span> -->
+                        <i class="rt fas fa-eye-slash"></i>
                     </div>
                     <div class="error">
                         <i class="fas fa-exclamation-circle"></i>账号/密码有误，请重新输入
@@ -32,7 +32,7 @@
 
                 <div class="btn-group">
                     <button class="login-btn" disabled>登录</button>
-                    <button class="login-with-mobile border-1px">手机号码登录</button>
+                    <button class="login-with-mobile border-1px" @click="routeTo">手机号码登录</button>
                 </div>
             </div>
 
@@ -70,6 +70,9 @@ export default {
         };
     },
     methods: {
+        routeTo() {
+            this.$router.push({ path: '/auth/bindmobile' });
+        },
         goBack() {
             window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/');
         }
@@ -95,8 +98,10 @@ export default {
             color: #7f7f7f;
         }
         .right-btn {
-            font-size: 24px;
-            color: $prime-blue;
+            a {
+                font-size: 24px;
+                color: $prime-blue;
+            }
         }
     }
     .content {
