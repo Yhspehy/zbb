@@ -567,6 +567,9 @@ print_background: false
      * 沟通，预计返回一周的数据,倒序排列
      * @api {get}  schedule/popular
      * 
+     * @params time  {String}  开始时间(时间戳) 
+     * @params type  {String}  查询时间类型 <now:查询当前time的赛程  before:查询time之前的赛程 after:查询time之后的赛程>
+     * 
      * @return details_url   如果比赛结束了，返回集锦或者回放的url，不然返回''
      * @return home_score away_score  如果比赛结束了，则返回比赛比分,不然返回''
      * @return media  直播平台
@@ -651,8 +654,8 @@ print_background: false
     /**
      * @api {get}  schedule/list/:league_id
      * 
-     * @params start_time  {String}  开始时间 
-     * @params end_time  {String}  结束时间
+     * @params time  {String}  开始时间(时间戳)
+     * @params type  {String}  查询时间类型 <now:查询当前time的赛程  before:查询time之前的赛程 after:查询time之后的赛程>
      * 
      * @return last_match_time  如果往前搜索比赛记录但是没有搜索到的时候，后台在这个参数中返回上一场最近的比赛的时间，好让我们重新根据时间来获取比赛列表，如果有比赛则返回""
      * @return match_count   当日所有的比赛

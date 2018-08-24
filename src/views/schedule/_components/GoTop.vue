@@ -1,6 +1,6 @@
 <template>
     <div class="goTop">
-        <span @click="goTop1">{{word}}1</span>
+        <span @click="goTop1">{{word}}</span>
     </div>
 </template>
 

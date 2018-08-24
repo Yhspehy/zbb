@@ -22,7 +22,7 @@
             </div>
         </scroll>
 
-        <go-top word="今日赛事" :goTop="goTop"></go-top>
+        <go-top word="今日赛事" @goTop="goTop"></go-top>
     </div>
 </template>
 
