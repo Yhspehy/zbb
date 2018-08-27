@@ -17,12 +17,12 @@
                         :class="isError || mobile.length < 11 || disabled ? 'disable' : 'able'"
                         @click="sendCode">{{btntxt}}</button>
                 </div>
-                <div class="error" v-show="yzmErrorShow">
-                    <i class="fas fa-exclamation-circle"></i>验证码有误，请重新输入
+                <div class="error" v-show="message !==''">
+                    <i class="fas fa-exclamation-circle"></i>{{message}}
                 </div>
             </div>
             <div class="btn-group">
-                <button class="btn" :disabled="yzmError || mobile.length < 11"  @click="next">下一步</button>
+                <button class="btn" :disabled="code.length < 4 || mobile.length < 11"  @click="next">下一步</button>
             </div>
         </div>
     </div>
@@ -34,21 +34,21 @@ export default {
         return {
             mobile: '',
             isError: false, // 手机号格式是否错误
-            yzmError: true, // 验证码是否错误
-            yzmErrorShow: false, // 验证码错误是否显示
-            length: 4,
+            message: '',
             code: '',
             focus: false,
             time: 0,
             btntxt: '获取验证码',
-            disabled: false //验证码是否无效
+            disabled: false //验证码倒计时是否无效
         };
     },
     methods: {
         // 发送验证码
         sendCode() {
             this.time = 60;
-            this.timer();
+            if (this.vertifyMobile()) {
+                this.timer();
+            }
         },
 
         // 获取验证码
@@ -62,14 +62,14 @@ export default {
         },
         timer() {
             if (this.time > 0) {
-                this.disabled = true;
+                this.disabled = true; // 倒计时未结束不可触发click事件
                 this.time--;
                 this.btntxt = this.time + 's后重新获取';
                 setTimeout(this.timer, 1000);
             } else {
                 this.time = 0;
                 this.btntxt = '获取验证码';
-                this.disabled = false;
+                this.disabled = false; // 倒计时结束可触发click事件
             }
         },
 
@@ -78,13 +78,25 @@ export default {
             let reg = 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
             if (!reg.test(this.mobile)) {
                 this.isError = true;
+                this.message = '手机号输入不正确，请重新输入';
                 return false;
             } else {
                 this.isError = false;
+                this.message = '';
+                return true;
             }
         },
         next() {
-            this.$emit('next', [2, this.mobile]);
+            this.verifyCode().then(res => {
+                if (res) {
+                    console.log('success');
+                    this.message = '';
+                    this.$emit('next', [2, this.mobile]);
+                } else {
+                    console.log('fail');
+                    this.message = '验证码有误，请重新输入';
+                }
+            });
         }
     },
     watch: {
@@ -92,27 +104,14 @@ export default {
             this.mobile = newVal.replace(/[^\d]/g, '');
             if (newVal.length >= 11) {
                 this.vertifyMobile();
+            } else {
+                this.message = '';
             }
         },
         code: function(newValue) {
             this.code = newValue.replace(/[^\d]/g, '');
-            console.log(newValue);
-            if (newValue.length >= 4) {
-                this.disabled = true;
-                this.verifyCode().then(res => {
-                    if (res) {
-                        console.log('success');
-                        this.yzmError = false;
-                        this.yzmErrorShow = false;
-                        // this.$emit('next', [2]);
-                    } else {
-                        console.log('fail');
-                        this.yzmError = true;
-                        this.yzmErrorShow = true;
-                    }
-                });
-            } else {
-                this.yzmError = true;
+            if (newValue.length < 4) {
+                this.message = '';
             }
         }
     }

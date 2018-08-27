@@ -45,7 +45,7 @@
         </collapse>
 
         <!-- NBA本场最佳 -->
-        <stats-it1em-header v-if="data.type === 0" name="本场最佳" :isExpand="expandObj.bestPlayer" @expand="expand('bestPlayer')"></stats-it1em-header>
+        <stats-item-header v-if="data.type === 0" name="本场最佳" :isExpand="expandObj.bestPlayer" @expand="expand('bestPlayer')"></stats-item-header>
         <collapse v-if="data.type === 0" :active="expandObj.bestPlayer">
             <stats-best-player v-if="data.max_players" :data="data.max_players" id="bestPlayer"></stats-best-player>
         </collapse>
