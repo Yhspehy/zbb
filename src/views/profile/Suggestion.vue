@@ -21,7 +21,7 @@
             </div>
         </collapse>
         <div class="mar-top suggestion-content">
-            <textarea class="textarea" id="content" @keyup="checkLen()" cols="30" rows="10"></textarea>
+            <textarea id="content" @keyup="checkLen()" cols="30" rows="10"></textarea>
             <div class="word-count" id="word_count"><span id="count">0</span>/200</div>
         </div>
         <div class="submit">提交</div>
@@ -166,9 +166,12 @@ export default {
         min-height: 296px;
         background: #ffffff;
         padding: 20px 36px;
-        .textarea {
+        textarea {
             width: 100%;
             outline: none;
+            resize: none;
+            border: 0;
+            overflow-y: hidden;
         }
         .word-count {
             text-align: right;

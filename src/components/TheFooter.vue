@@ -79,10 +79,9 @@ export default {
     font-size: 20px;
     background: #fff;
     box-shadow: 0px 0px 1px 0px #bfbfbf;
-    padding: 0 80px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     z-index: 99;
     a {
         color: #4d4d4d;
