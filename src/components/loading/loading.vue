@@ -13,9 +13,9 @@ export default {
 <style lang="scss">
 .mf-loading-container {
     img {
-        width: 20px;
-        height: 20px;
-        display: block;
+        width: 24px;
+        height: 24px;
+        display: inline-block;
     }
 }
 </style>

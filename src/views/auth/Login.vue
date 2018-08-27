@@ -113,6 +113,7 @@ export default {
             justify-content: space-around;
             align-items: center;
             color: $prime-blue;
+            // color: #0088ff;
             .logo-img {
                 width: 160px;
                 height: 160px;

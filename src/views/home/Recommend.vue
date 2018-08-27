@@ -1,7 +1,7 @@
 <template>
     <div class="recommend">
         <div class="recommend-wrapper">
-            <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp">
+            <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount ="updateCount" :updateDate ="updateDate">
                 <div class="focus-slide">
                     <slide>
                         <div v-for="(item, index) in focusList" :key="index">
@@ -76,12 +76,13 @@ export default {
             focusListLength: 0,
             hotGameCount: 0,
             newsList: [],
-            updateCount: 0,
             // scroll 配置项
             scrollOptions: {},
             scrollToX: 0,
             scrollToY: 0,
-            scrollToTime: 700
+            scrollToTime: 700,
+            updateCount: 0,
+            updateDate: this.$moment().calendar()
         };
     },
 
@@ -139,8 +140,12 @@ export default {
         },
         async onPullingDown() {
             pageIndex = 1;
-            await Promise.all([this.getLiveTrail(), this.getFocus(), this.getNewsList(), this.getHotGameCount()]);
-            this.$refs.scroll.forceUpdate(true);
+            let self = this;
+            setTimeout(async function() {
+                await Promise.all([self.getLiveTrail(), self.getFocus(), self.getNewsList(), self.getHotGameCount()]);
+                self.$refs.scroll.forceUpdate(true);
+                self.updateDate = self.$moment().calendar();
+            }, 2000);
         }
     },
     mounted() {

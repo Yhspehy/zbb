@@ -14,18 +14,24 @@
                 </div>
             </div>
         </div>
+
         <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="options.pullDownRefresh">
-            <div class="before-trigger" v-if="beforePullDown">
-                <bubble :y="bubbleY"></bubble>
-            </div>
-            <div class="after-trigger" v-else>
-                <div v-if="isPullingDown" class="loading">
-                    <loading></loading>
+            <slot name="pulldown" :beforePullDown="beforePullDown" :isPullingDown="isPullingDown">
+                <div class="before-trigger" v-if="beforePullDown">
+                    <div class="tip"><loading></loading>松开立即刷新</div>
+                    <div class="date">最近更新：{{updateDate}}</div>
+                    <!-- <bubble :y="bubbleY"></bubble> -->
                 </div>
-                <div v-else>
-                    <span>{{refreshTxt}}</span>
+                <div class="after-trigger" v-else>
+                    <div v-if="isPullingDown" class="loading">
+                        <loading></loading>
+                    </div>
+                    <div v-else class="tip">
+                        <div class="up">已更新{{updateCount}}条新闻</div>
+                        <div class="down">最近更新：{{updateDate}}</div>
+                    </div>
                 </div>
-            </div>
+            </slot>
         </div>
     </div>
 </template>
@@ -67,6 +73,13 @@ export default {
             default: function() {
                 return {};
             }
+        },
+        updateDate: {
+            type: String
+        },
+        updateCount: {
+            type: Number,
+            default: 0
         }
     },
     data() {
@@ -125,8 +138,8 @@ export default {
                         fade: true
                     },
                     pullDownRefresh: {
-                        threshold: 90,
-                        stop: 40
+                        threshold: 60,
+                        stop: 70
                     },
                     pullUpLoad: {
                         threshold: 0,
@@ -284,31 +297,58 @@ export default {
         position: relative;
         z-index: 1;
     }
-
-    .list-content {
-        position: relative;
-        z-index: 10;
-        background: #fff;
-        .list-item {
-            height: 60px;
-            line-height: 60px;
-            font-size: 18px;
-            padding-left: 20px;
-            border-bottom: 1px solid #e5e5e5;
-        }
-    }
 }
 
 .pulldown-wrapper {
     position: absolute;
     width: 100%;
     left: 0;
+    font-size: 22px;
+    color: #4d4d4d;
     display: flex;
     justify-content: center;
-    align-items: center;
     transition: all;
+    color: #4d4d4d;
     .after-trigger {
-        margin-top: 10px;
+        .loading {
+            margin-top: 45px;
+        }
+        .tip {
+            width: 750px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+        }
+        .up {
+            flex: 1;
+            line-height: 60px;
+            color: #fff;
+            text-align: center;
+            font-size: 24px;
+            @include gradient();
+        }
+        .down {
+            flex: 1;
+            line-height: 60px;
+            text-align: center;
+        }
+    }
+    .before-trigger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .tip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 50px;
+            img {
+                width: 24px;
+                height: 24px;
+                margin-right: 10px;
+            }
+        }
     }
 }
 
