@@ -11,7 +11,10 @@
                     <span>{{item.index}}楼 </span>
                     <span>{{item.create_time}}</span>
                 </span>
-                <span class="vote fr" :style="{'color': item.isVote ? '#f5303d' : '#b3b3b3'}">
+                <span
+                    class="vote fr"
+                    :style="{'color': item.isVote ? '#f5303d' : '#b3b3b3'}"
+                    @click="vote(item)">
                     <i class="far fa-thumbs-up"></i>
                     <span class="voteCount">{{item.vote_count}}</span>
                 </span>
@@ -47,7 +50,17 @@ export default {
         return {};
     },
     created() {},
-    methods: {}
+    methods: {
+        vote(item) {
+            if (item.isVote) {
+                item.vote_count--;
+                item.isVote = false;
+            } else {
+                item.vote_count++;
+                item.isVote = true;
+            }
+        }
+    }
 };
 </script>
 

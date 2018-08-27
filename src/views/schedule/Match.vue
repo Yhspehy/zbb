@@ -54,13 +54,15 @@ export default {
                 year: this.$moment().format('YYYY'),
                 month: this.$moment().format('M')
             });
-            todayMatchList = res[date];
-            todayMatchList.match_list.forEach(e => {
-                let l = find(self.allLeagueList, t => {
-                    return t === e.league;
+            if (res[date]) {
+                todayMatchList = res[date];
+                todayMatchList.match_list.forEach(e => {
+                    let l = find(self.allLeagueList, t => {
+                        return t === e.league;
+                    });
+                    self.matchCountObj[l] += 1;
                 });
-                self.matchCountObj[l] += 1;
-            });
+            }
         },
         goLeagueMatch(item) {
             this.$store.commit('schedule/SET_MATCHLEAGUENAME', item);

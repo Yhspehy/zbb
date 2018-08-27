@@ -10,7 +10,7 @@
             "start_time": 1533025880,
             "source": "NBA夏季联赛",
             "media": "CCTV5",
-            "status": "已结束",
+            "status": "未开始",
             "details_url": "url",
             "home_score": 100,
             "away_score": 99,
@@ -25,14 +25,14 @@
                 "start_time": 1533025880,
                 "source": "NBA夏季联赛",
                 "media": "CCTV5",
-                "status": "已结束",
+                "status": "进行中",
                 "details_url": "url",
                 "home_score": 100,
                 "away_score": 99,
                 "live_type": "文字直播",
                 "end_description_word": "直播",
                 "league": "NBA",
-                "is_trail": true
+                "is_trail": false
             }, {
                 "match_id": 2,
                 "hometeam": "灰熊",
@@ -55,14 +55,14 @@
                 "start_time": 1533025880,
                 "source": "NBA夏季联赛",
                 "media": "CCTV5",
-                "status": "已结束",
+                "status": "未开始",
                 "details_url": "url",
                 "home_score": 100,
                 "away_score": 99,
                 "live_type": "文字直播",
                 "end_description_word": "集锦",
                 "league": "NBA",
-                "is_trail": true
+                "is_trail": false
             }, {
                 "match_id": 4,
                 "hometeam": "热火",
@@ -70,7 +70,7 @@
                 "start_time": 1533025880,
                 "source": "NBA夏季联赛",
                 "media": "CCTV5",
-                "status": "已结束",
+                "status": "进行中",
                 "details_url": "url",
                 "home_score": 100,
                 "away_score": 99,

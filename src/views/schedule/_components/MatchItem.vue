@@ -10,23 +10,29 @@
         <!-- 比赛球队 -->
         <div class="team">
             <div class="hometeam">
-                <i></i>
+                <img src="http://temp.im/15x15">
                 <span>{{matchData.hometeam}}</span>
             </div>
             <div class="awayteam">
-                <i></i>
+                <img src="http://temp.im/15x15">
                 <span>{{matchData.awayteam}}</span>
             </div>
         </div>
 
         <!-- 比分预约 -->
         <div class="score team border-right-1px">
-            <div class="hometeam">{{matchData.home_score}}</div>
-            <div class="awayteam">{{matchData.away_score}}</div>
+            <div v-if="matchData.status !== '未开始'">
+                <div class="hometeam" :class="{'win': matchData.home_score > matchData.away_score}">{{matchData.home_score}}</div>
+                <div class="awayteam" :class="{'win': matchData.away_score > matchData.home_score}">{{matchData.away_score}}</div>
+            </div>
+            <div v-else :style="{'color': matchData.is_trail ? '#0077ff' : '#808080'}">
+                <div class="hometeam align-center"><i class="far fa-clock" ></i></div>
+                <div class="awayteam fontsize-24">图文直播</div>
+            </div>
         </div>
 
         <!-- 直播平台 -->
-        <div class="media">
+        <div class="media"> 
             <div>{{matchData.media}}</div>
             <div class="linkBtn" :class="{'live': matchData.end_description_word !== '直播'}" v-if="matchData.end_description_word">{{matchData.end_description_word}}</div>
         </div>
@@ -52,7 +58,7 @@ export default {
 <style scoped lang="scss">
 .matchItem {
     display: flex;
-    margin: 0 36px;
+    margin: 0 24px 0 36px;
     padding: 23px 0;
     @include border-bottom-1px;
     .timeAndSource {
@@ -75,15 +81,42 @@ export default {
         .hometeam {
             margin-bottom: 16px;
         }
+        img {
+            vertical-align: bottom;
+            margin-right: 20px;
+        }
+        .win {
+            color: #f63146;
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                top: 6px;
+                right: -20px;
+                width: 0;
+                height: 0;
+                border: 10px solid transparent;
+                border-right-color: #f3091a;
+            }
+        }
     }
     .score {
-        width: 100px;
-        padding-right: 20px;
-        @include border-right-1px;
+        width: 116px;
+        & > div {
+            padding-right: 20px;
+            text-align: right;
+            @include border-right-1px;
+        }
+        .align-center {
+            text-align: center;
+        }
+        .fontsize-24 {
+            font-size: 24px;
+        }
     }
     .media {
         width: 120px;
-        margin: 0 20px;
+        margin-left: 20px;
         font-size: 22px;
         color: $font-color-grey;
         display: flex;
