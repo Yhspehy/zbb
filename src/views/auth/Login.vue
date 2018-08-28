@@ -18,7 +18,7 @@
                 <div class="input-group">
                     <div class="input-control">
                         <input type="text" placeholder="请输入赛事通账号">
-                        <i class="rt fas fa-times-circle"></i>
+                        <i class="rt fas fa-times-circle" v-clean></i>
                     </div>
                     <div class="input-control">
                         <input type="password" placeholder="请输入密码">

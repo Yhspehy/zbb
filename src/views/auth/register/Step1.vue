@@ -5,7 +5,7 @@
             <div class="input-group">
                 <div class="input-control border-bottom-1px">
                     <input type="tel" v-model="mobile" placeholder="请输入11位手机号">
-                    <i class="rt fas fa-times-circle"></i>
+                    <i class="rt fas fa-times-circle" v-clean></i>
                 </div>
                 <div class="error" v-show="isError">
                     <i class="fas fa-exclamation-circle"></i>账号/密码有误，请重新输入

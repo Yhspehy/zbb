@@ -5,14 +5,14 @@
                 <div class="input-control border-bottom-1px">
                     <input type="tel" v-if="isLookPwd" v-model="password" placeholder="请输入新密码">
                     <input type="password" v-if="!isLookPwd" v-model="password" placeholder="请输入新密码">
-                    <i class="rt fas fa-times-circle" v-if="password.length > 0" @click="password=''"></i>
+                    <i class="rt fas fa-times-circle" v-if="password.length > 0" v-clean></i>
                     <i class="rt fas" :class="isLookPwd ? 'fa-eye' : 'fa-eye-slash'" @click="isLookPwd = !isLookPwd"></i>
                 </div>
                 <div class="input-control border-bottom-1px">
                     <input type="tel" v-if="isLookConfirmPwd" v-model="confirmPwd" placeholder="请再次输入新密码" >
                     <input type="password" v-if="!isLookConfirmPwd" v-model="confirmPwd" placeholder="请再次输入新密码" >
-                    <i class="rt fas fa-times-circle" v-if="confirmPwd.length > 0" @click="confirmPwd=''"></i>
-                    <i class="rt fa" :class="isLookConfirmPwd ? 'fa-bell' : 'fa-bell-slash'" @click="isLookConfirmPwd = !isLookConfirmPwd"></i>
+                    <i class="rt fas fa-times-circle" v-if="confirmPwd.length > 0" v-clean></i>
+                    <i class="rt fas" :class="isLookConfirmPwd ? 'fa-eye' : 'fa-eye-slash'" @click="isLookConfirmPwd = !isLookConfirmPwd"></i>
                 </div>
                 <div class="error" v-show="isError">
                     <i class="fas fa-exclamation-circle"></i>{{message}}
@@ -125,7 +125,7 @@ export default {
             .rt {
                 color: #b2b2b2;
                 background: transparent;
-                padding-left: 20px;
+                margin-left: 20px;
             }
             .disable {
                 color: $grey-light;

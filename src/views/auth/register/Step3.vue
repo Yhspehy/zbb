@@ -6,7 +6,7 @@
                 <div class="input-control border-bottom-1px">
                     <input type="password" v-if="!isLook" v-model="password" placeholder="密码由6-14位数字、英文及标点组成">
                     <input type="tel" v-if="isLook" v-model="password" placeholder="密码由6-14位数字、英文及标点组成">
-                    <i class="rt fas fa-times-circle"></i>
+                    <i class="rt fas fa-times-circle" v-clean></i>
                     <i class="rt fas" :class="isLook ? 'fa-eye' : 'fa-eye-slash'" @click="isLook = !isLook"></i>
                 </div>
                 <div class="error" v-show="isError">
@@ -103,7 +103,7 @@ h2 {
             }
             .rt {
                 color: #b2b2b2;
-                padding-left: 20px;
+                margin-left: 20px;
                 &.active {
                     color: $red;
                 }

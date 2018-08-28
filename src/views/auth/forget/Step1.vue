@@ -4,7 +4,7 @@
             <div class="input-group">
                 <div class="input-control border-bottom-1px">
                     <input type="tel" v-model="mobile" placeholder="请输入11位手机号">
-                    <i class="rt fas fa-times-circle" v-if="mobile.length > 0" @click="mobile=''"></i>
+                    <i class="rt fas fa-times-circle" v-if="mobile.length > 0" v-clean></i>
                 </div>
                 <div class="input-control border-bottom-1px">
                     <input type="tel" maxlength="4" ref="code" id="code" class="code" placeholder="请输入验证码"
