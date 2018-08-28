@@ -72,7 +72,7 @@ export default {
         async onPullingDown() {
             this.pageIndex = 1;
             this.followObj = {};
-            this.getFollowList();
+            await this.getFollowList();
             this.$refs.scroll.forceUpdate(true);
         }
     }

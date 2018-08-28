@@ -1,7 +1,7 @@
 <template>
     <div class="league">
         <!-- <div class="league-wrapper"> -->
-        <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount="updateCount" :updateDate="updateDate">
+        <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount="updateCount">
             <div class="point">
                 <div class="point-wrapper">
                     <h-scroll>
@@ -66,8 +66,7 @@ export default {
             scrollToX: 0,
             scrollToY: 0,
             scrollToTime: 700,
-            updateCount: 0,
-            updateDate: this.$moment().calendar()
+            updateCount: 0
         };
     },
     created() {

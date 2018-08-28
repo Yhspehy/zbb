@@ -186,7 +186,7 @@ export default {
     }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .slide {
     min-height: 1px;
     .slide-group {
