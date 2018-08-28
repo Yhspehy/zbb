@@ -10,11 +10,11 @@
         <!-- 比赛球队 -->
         <div class="team">
             <div class="hometeam">
-                <img src="http://temp.im/15x15">
+                <img src="http://temp.im/30x30">
                 <span>{{matchData.hometeam}}</span>
             </div>
             <div class="awayteam">
-                <img src="http://temp.im/15x15">
+                <img src="http://temp.im/30x30">
                 <span>{{matchData.awayteam}}</span>
             </div>
         </div>
@@ -84,6 +84,9 @@ export default {
         img {
             vertical-align: bottom;
             margin-right: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
         }
         .win {
             color: #f63146;

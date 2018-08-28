@@ -10,8 +10,9 @@ export default {
     name: COMPONENT_NAME
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .mf-loading-container {
+    @include flex-center;
     img {
         width: 24px;
         height: 24px;

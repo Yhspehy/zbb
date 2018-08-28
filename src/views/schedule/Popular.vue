@@ -4,7 +4,9 @@
             <div>
                 <div v-for="(val, key) in popularObj" :key="key">
                     <div class="timeBar">
-                        <router-link :to="{'name': 'schedule_calendar'}" v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">
+                        <router-link
+                            :to="{'name': 'schedule_calendar'}"
+                            v-if="$moment(key).format('MM月DD号') === $moment().format('MM月DD号')">
                             <i class="far fa-calendar-alt"></i>
                             <span class="today-text"> 今天 </span>
                         </router-link>
@@ -15,10 +17,14 @@
                     </match-item>
                 </div>
             </div>
+
+            <!-- 下拉加载 -->
             <template slot="pulldown" slot-scope="{beforePullDown,isPullingDown}">
                 <div class="before-trigger" v-if="beforePullDown">
                     <div class="tip">
-                        <loading></loading>松开立即刷新</div>
+                        <loading></loading>
+                        <span>松开立即刷新</span>
+                    </div>
                 </div>
                 <div class="after-trigger" v-else>
                     <div v-if="isPullingDown" class="loading">

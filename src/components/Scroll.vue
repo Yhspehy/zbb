@@ -18,7 +18,10 @@
         <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="options.pullDownRefresh">
             <slot name="pulldown" :beforePullDown="beforePullDown" :isPullingDown="isPullingDown">
                 <div class="before-trigger" v-if="beforePullDown">
-                    <div class="tip"><loading></loading>松开立即刷新</div>
+                    <div class="tip">
+                        <loading></loading>
+                        <span>松开立即刷新</span>
+                    </div>
                     <div class="date">最近更新：{{updateDate}}</div>
                     <!-- <bubble :y="bubbleY"></bubble> -->
                 </div>
@@ -74,9 +77,6 @@ export default {
                 return {};
             }
         },
-        updateDate: {
-            type: String
-        },
         updateCount: {
             type: Number,
             default: 0
@@ -109,6 +109,9 @@ export default {
         },
         refreshTxt() {
             return (this.options.pullDownRefresh && this.options.pullDownRefresh.txt) || '数据已更新';
+        },
+        updateDate() {
+            return this.$moment().calendar();
         }
     },
     created() {},
@@ -283,7 +286,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .list-wrapper {
     position: relative;
     height: 100%;
@@ -334,19 +337,13 @@ export default {
         }
     }
     .before-trigger {
-        display: flex;
+        @include flex-center;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         .tip {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex-center;
             line-height: 50px;
-            img {
-                width: 24px;
-                height: 24px;
-                margin-right: 10px;
+            span {
+                margin-left: 10px;
             }
         }
     }
@@ -354,9 +351,7 @@ export default {
 
 .pullup-wrapper {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
     padding: 16px 0;
 }
 </style>
