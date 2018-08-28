@@ -103,7 +103,7 @@ export default {
         background-color: #ffffff;
         border-radius: 10px;
         font-size: 28px;
-        color: #b3b3b3;
+        color: $grey-light;
         padding-top: 40px;
         .infoItem {
             display: flex;
@@ -120,7 +120,7 @@ export default {
             width: 560px;
             height: 80px;
             border-radius: 10px;
-            background: #f2f2f2;
+            background: $bg-grey;
             margin: 0 20px;
         }
         .valueList {
@@ -138,27 +138,17 @@ export default {
             width: 100%;
             height: 80px;
             border-radius: 0 0 10px 10px;
-            background-image: linear-gradient(
-                -90deg,
-                #0080ff 0%,
-                #0077ff 0%,
-                #006eff 0%,
-                #0073ff 0%,
-                #0077ff 0%,
-                #0089ff 50%,
-                #0091ff 79%,
-                #0099ff 100%
-            );
+            @include bg-blue;
             color: #fff;
             font-size: 36px;
         }
     }
 
     .blue {
-        color: #0099ff;
+        color: $blue-light;
     }
     .red {
-        color: #f5303d;
+        color: $red;
     }
 }
 </style>

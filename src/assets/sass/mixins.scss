@@ -71,7 +71,7 @@
     animation: #{$str};
 }
 
-@mixin border-1px($color: #f2f2f2, $border-radius: 0) {
+@mixin border-1px($color: $bg-grey, $border-radius: 0) {
     position: relative;
     border: none;
     &:after {
@@ -98,7 +98,7 @@
     }
 }
 
-@mixin border-top-1px($color: #f2f2f2, $width: 100%) {
+@mixin border-top-1px($color: $bg-grey, $width: 100%) {
     position: relative;
     &:after {
         content: '';
@@ -111,7 +111,7 @@
     }
 }
 
-@mixin border-right-1px($color: #f2f2f2) {
+@mixin border-right-1px($color: $bg-grey) {
     position: relative;
     &:after {
         content: '';
@@ -124,7 +124,7 @@
     }
 }
 
-@mixin border-bottom-1px($color: #f2f2f2, $width: 100%) {
+@mixin border-bottom-1px($color: $bg-grey, $width: 100%) {
     position: relative;
     &:after {
         content: '';
@@ -137,7 +137,7 @@
     }
 }
 
-@mixin border-left-1px($color: #f2f2f2) {
+@mixin border-left-1px($color: $bg-grey) {
     position: relative;
     &:after {
         content: '';
@@ -156,11 +156,6 @@
     }
 }
 
-// =====================
-@mixin gradient($color1: #0077ff, $color2: #0088ff, $color3: #0099ff) {
-    background-color: $color1;
-    background-image: linear-gradient(-90deg, $color1, $color2, $color3);
-}
 
 /*----------  flex  ----------*/
 
@@ -176,12 +171,26 @@
     align-items: center;
 }
 
-@mixin text-image() {
-    color: transparent;
-    -webkit-background-clip: text;
-    background-image: linear-gradient( -45deg, #1d75f2 0%, #0f6ef9 0%, #0066ff 0%, #0073ff 0%, #0080ff 0%, #009aff 50%, #04a7ff 73%, #07b5ff 100%);
+// =====================
+@mixin gradient($color1: #0077ff, $color2: #0099ff, $deg: -90) {
+    background-color: $color1;
+    background-image: linear-gradient(#{$deg}deg, $color1, $color2);
 }
 
-@mixin background-image() {
-    background-image: linear-gradient( -90deg, #1d75f2 0%, #0f6ef9 0%, #0066ff 0%, #0073ff 0%, #0080ff 0%, #009aff 50%, #04a7ff 73%, #07b5ff 100%);
+/*----------  gradient-background  ----------*/
+
+@mixin bg-blue() {
+    @include gradient();
+}
+@mixin bg-blue-light() {
+    @include gradient(#0080ff, #07b5ff);
+}
+@mixin bg-red {
+    @include gradient(#f3091a, #ff512f);
+}
+@mixin btn-bg {
+    @include gradient();
+    &:disabled {
+        @include bg-blue-light();
+    }
 }

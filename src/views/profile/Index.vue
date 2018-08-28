@@ -179,7 +179,7 @@ export default {
     bottom: 90px;
     left: 0;
     right: 0;
-    background: #f3f7f9;
+    background: $bg-body;
     .task {
         position: relative;
         width: 100%;
@@ -262,7 +262,7 @@ export default {
             }
         }
         .highlight {
-            color: #ffbb00;
+            color: $yellow;
         }
     }
     .circle {
@@ -275,7 +275,7 @@ export default {
             height: 88px;
             padding-top: 28px;
             a {
-                color: #808080;
+                color: $grey;
             }
         }
     }
@@ -285,7 +285,7 @@ export default {
         margin-top: 20px;
         background: #ffffff;
         .title {
-            color: #4d4d4d;
+            color: $grey-dark;
             height: 66px;
             line-height: 66px;
             margin: 0 26px;
@@ -316,7 +316,7 @@ export default {
         margin-top: 20px;
         background: #ffffff;
         .title {
-            color: #4d4d4d;
+            color: $grey-dark;
             height: 66px;
             line-height: 66px;
             margin: 0 26px;
@@ -338,7 +338,7 @@ export default {
                     flex: 0 0 172px;
                     text-align: center;
                     font-size: 24px;
-                    color: #808080;
+                    color: $grey;
                     img {
                         width: 60px;
                         height: 60px;

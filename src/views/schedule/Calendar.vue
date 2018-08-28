@@ -75,17 +75,17 @@ export default {
         margin-top: 85px;
     }
     .matchList {
-        background: #f3f7f9;
+        background: $bg-body;
         @include border-top-1px;
         font-size: 28px;
         padding: 25px 36px;
-        color: $font-color-deep-grey;
+        color: $grey-dark;
         .matchItem {
             display: flex;
             .time {
                 width: 75px;
                 font-size: 28px;
-                color: $font-color-deep-grey;
+                color: $grey-dark;
                 margin-right: 50px;
                 @include flex-center;
             }
@@ -94,7 +94,7 @@ export default {
                 .source {
                     margin-top: 10px;
                     font-size: 22px;
-                    color: $font-color-grey;
+                    color: $grey;
                 }
             }
             .endDes {

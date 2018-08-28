@@ -72,7 +72,7 @@ export default {
         }
         .leftItem {
             .value {
-                color: #f3091a;
+                color: $red-dark;
                 margin-right: 27px;
             }
             .histogram {
@@ -86,7 +86,7 @@ export default {
         }
         .rightItem {
             .value {
-                color: $prime-blue;
+                color: $blue;
                 margin-left: 27px;
             }
             .histogram {

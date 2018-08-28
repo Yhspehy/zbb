@@ -224,7 +224,7 @@ export default {
                 width: 8px;
                 height: 8px;
                 border-radius: 50%;
-                background: #f2f2f2;
+                background: $bg-grey;
                 &.active {
                     width: 20px;
                     border-radius: 5px;

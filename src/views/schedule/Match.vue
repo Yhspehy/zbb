@@ -76,11 +76,11 @@ export default {
 
 <style scoped lang="scss">
 .schedule_match {
-    color: $font-color-deep-grey;
+    color: $grey-dark;
     .typeName {
         font-size: 24px;
         padding: 25px 36px;
-        background-color: #f3f7f9;
+        background-color: $bg-body;
     }
     .leagueItem {
         padding: 30px 36px;

@@ -57,9 +57,9 @@ export default {
 .scheduleLeagueMatch {
     .timeBar {
         padding: 25px 0;
-        background: #f3f7f9;
+        background: $bg-body;
         font-size: 24px;
-        color: $font-color-deep-grey;
+        color: $grey-dark;
         @include flex-center;
         .fa-calendar-alt {
             font-size: 24px;

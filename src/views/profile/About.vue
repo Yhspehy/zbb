@@ -57,11 +57,11 @@ export default {
             left: 35px;
             line-height: 90px;
             font-size: 50px;
-            color: #808080;
+            color: $grey;
         }
         span {
             font-size: 30px;
-            color: #4d4d4d;
+            color: $grey-dark;
         }
     }
     .content {
@@ -78,7 +78,7 @@ export default {
                 text-align: center;
                 line-height: 80px;
                 font-size: 30px;
-                color: #4d4d4d;
+                color: $grey-dark;
             }
             img {
                 display: block;
@@ -88,7 +88,7 @@ export default {
         }
         .content-text {
             font-size: 24px;
-            color: #808080;
+            color: $grey;
             line-height: 40px;
         }
     }

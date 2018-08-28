@@ -37,7 +37,7 @@ export default {
     padding: 20px 10px 20px 10px;
     .title {
         font-size: 28px;
-        color: #4d4d4d;
+        color: $grey-dark;
     }
     .imgs {
         width: 100%;
@@ -50,7 +50,7 @@ export default {
     .time {
         font-size: 24px;
         .report-time {
-            color: #808080;
+            color: $grey;
         }
     }
 }

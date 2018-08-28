@@ -61,7 +61,7 @@ export default {
 <style scoped lang="scss">
 .liveReview {
     .greyColor {
-        color: $font-color-grey;
+        color: $grey;
         font-size: 24px;
     }
     .mainInfo {

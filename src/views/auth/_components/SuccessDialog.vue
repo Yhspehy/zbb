@@ -46,7 +46,7 @@ export default {
         background-color: #fff;
         border-radius: 10px;
         font-size: 30px;
-        color: #808080;
+        color: $grey;
         .infoItem {
             width: 100%;
             height: 100%;
@@ -63,7 +63,7 @@ export default {
             height: 90px;
             border-radius: 0 0 10px 10px;
             background: #ffffff;
-            color: #808080;
+            color: $grey;
             letter-spacing: 2px;
         }
     }

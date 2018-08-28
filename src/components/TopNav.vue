@@ -95,17 +95,17 @@ export default {
     background: #fff;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
     .navItem {
-        color: $font-color-grey;
+        color: $grey;
     }
     .navActive {
-        color: #0099ff;
+        color: $blue-light;
         position: relative;
         &:after {
             content: '';
             position: absolute;
             height: 4px;
             width: 60%;
-            background: #0099ff;
+            background: $blue-light;
             bottom: -10px;
             left: 20%;
         }

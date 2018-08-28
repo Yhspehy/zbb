@@ -88,11 +88,11 @@ export default {
             left: 35px;
             line-height: 90px;
             font-size: 50px;
-            color: #808080;
+            color: $grey;
         }
         span {
             font-size: 30px;
-            color: #4d4d4d;
+            color: $grey-dark;
         }
     }
     .item-fixed {
@@ -130,12 +130,12 @@ export default {
             }
             .message {
                 width: 580px;
-                color: #4d4d4d;
+                color: $grey-dark;
                 .title {
-                    color: #808080;
+                    color: $grey;
                 }
                 .time {
-                    color: #b3b3b3;
+                    color: $grey-light;
                     font-size: 22px;
                     line-height: 50px;
                 }
@@ -143,7 +143,7 @@ export default {
                     font-size: 24px;
                     line-height: 32px;
                     .detail-link {
-                        color: $prime-blue;
+                        color: $blue;
                     }
                 }
             }

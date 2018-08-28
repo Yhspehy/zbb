@@ -104,7 +104,7 @@ export default {
     .vedio-item {
         background: #ffffff;
         .light {
-            color: #f5303d;
+            color: $red;
         }
         .cover {
             position: relative;
@@ -131,13 +131,13 @@ export default {
             .title {
                 .describe {
                     font-size: 28px;
-                    color: #4d4d4d;
+                    color: $grey-dark;
                     padding-left: 10px;
                 }
             }
             .play-detail {
                 padding-bottom: 20px;
-                color: #b3b3b3;
+                color: $grey-light;
                 font-size: 22px;
             }
         }

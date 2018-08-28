@@ -43,7 +43,7 @@ export default {
     padding: 0 30px;
     table {
         width: 100%;
-        color: $font-color-grey;
+        color: $grey;
         font-size: 24px;
         padding: 20px 0;
         text-align: center;

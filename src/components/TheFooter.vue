@@ -84,7 +84,7 @@ export default {
     justify-content: space-evenly;
     z-index: 99;
     a {
-        color: #4d4d4d;
+        color: $grey-dark;
         @include flex-center;
         flex-direction: column;
         i {
@@ -94,7 +94,7 @@ export default {
     .active {
         color: #688cac;
         i {
-            @include text-image;
+            color: $blue;
         }
     }
 }

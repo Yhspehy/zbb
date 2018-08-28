@@ -90,7 +90,7 @@ export default {
     & > section {
         padding: 0 36px;
         font-size: 24px;
-        color: $font-color-deep-grey;
+        color: $grey-dark;
         .quizItem {
             padding: 20px 0;
             & > div {
@@ -120,7 +120,7 @@ export default {
                 height: 40px;
                 line-height: 40px;
                 padding-left: 10px;
-                @include border-1px(#e6e6e6);
+                @include border-1px($bg-grey-dark);
                 .quizOdds {
                     width: 200px;
                     height: 39px;

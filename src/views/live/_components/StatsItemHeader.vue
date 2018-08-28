@@ -41,7 +41,7 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 30px 35px 20px;
-    @include border-bottom-1px(#f2f2f2, 92%);
+    @include border-bottom-1px($bg-grey, 92%);
 
     .fa-angle-down {
         font-size: 30px;

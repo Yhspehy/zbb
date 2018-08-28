@@ -85,7 +85,7 @@ export default {
             padding: 14px 13px;
             background: rgba(179, 179, 179, 0.5);
             font-size: 28px;
-            color: $font-color-deep-grey;
+            color: $grey-dark;
             position: relative;
         }
         .navItem:first-child:after {
@@ -96,7 +96,7 @@ export default {
             border-left-color: rgba(179, 179, 179, 0.5);
         }
         .navItem.navActive:first-child:after {
-            border-left-color: #0099ff !important;
+            border-left-color: $blue-light !important;
         }
         .navItem:last-child:before {
             top: 0;
@@ -129,7 +129,7 @@ export default {
                 border-top-color: #0080ff !important;
             }
             &:after {
-                border-left-color: #0099ff !important;
+                border-left-color: $blue-light !important;
             }
         }
         .navActive {
@@ -143,7 +143,7 @@ export default {
                 #0077ff 0%,
                 #0089ff 50%,
                 #0091ff 79%,
-                #0099ff 100%
+                $blue-light 100%
             );
         }
     }
@@ -152,14 +152,14 @@ export default {
         flex-flow: row nowrap;
         padding: 16px 0 16px 30px;
         font-size: 28px;
-        color: $font-color-deep-grey;
+        color: $grey-dark;
         @include border-bottom-1px;
         .player {
             width: 450px;
             display: flex;
             flex-flow: row nowrap;
             .rank {
-                color: #f5303d;
+                color: $red;
                 margin-right: 20px;
             }
             .info {
@@ -167,7 +167,7 @@ export default {
                 .infoValue {
                     margin-top: 8px;
                     font-size: 24px;
-                    color: $font-color-grey;
+                    color: $grey;
                 }
             }
         }
@@ -180,7 +180,7 @@ export default {
     }
     .listHead {
         font-size: 24px;
-        color: $font-color-grey;
+        color: $grey;
     }
 }
 </style>

@@ -91,7 +91,7 @@ export default {
             line-height: 96px;
             text-align: center;
             a {
-                color: #808080;
+                color: $grey;
                 font-size: 30px;
             }
             .router-link-active {
@@ -101,7 +101,7 @@ export default {
                 text-align: center;
                 font-size: 36px;
                 font-weight: bold;
-                color: #0099ff;
+                color: $blue-light;
             }
             .router-link-active::after {
                 content: '';
@@ -111,7 +111,7 @@ export default {
                 width: 36px;
                 height: 4px;
                 right: 48px;
-                @include background-image;
+                @include bg-blue;
             }
         }
     }
@@ -126,7 +126,7 @@ export default {
         .add {
             width: 100%;
             height: 42px;
-            color: #b3b3b3;
+            color: $grey-light;
             font-size: 64px;
             line-height: 42px;
             background: #fff;

@@ -36,7 +36,7 @@ export default {
     .title {
         margin: 0 auto;
         font-size: 30px;
-        color: #4d4d4d;
+        color: $grey-dark;
     }
 }
 </style>

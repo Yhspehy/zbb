@@ -428,7 +428,7 @@ export default {
         .time {
             margin: 0 30px;
             font-size: 24px;
-            color: $font-color-grey;
+            color: $grey;
         }
     }
 
@@ -439,7 +439,7 @@ export default {
             width: 100%;
             text-align: center;
             thead tr td {
-                color: $font-color-grey;
+                color: $grey;
                 padding-bottom: 10px;
             }
             .dateCell {
@@ -450,13 +450,13 @@ export default {
                 transition: background-image 0.3s;
                 cursor: pointer;
                 border-radius: 50%;
-                color: $font-color-deep-grey;
+                color: $grey-dark;
                 @include flex-center;
                 flex-flow: column nowrap;
                 .matchCount {
                     margin-top: 10px;
                     font-size: 22px;
-                    color: #b3b3b3;
+                    color: $grey-light;
                 }
             }
             // .dateCell:not(.noData):hover {
@@ -473,8 +473,7 @@ export default {
                 color: rgba(0, 0, 0, 0.25);
             }
             .chooseDate {
-                background-image: linear-gradient(270deg, #f3091a 0%, #f63146 50%, #fb413b 74%, #ff512f 100%),
-                    linear-gradient(#4d4d4d, #4d4d4d);
+                @include bg-red;
                 color: #fff;
                 .matchCount {
                     color: #fff;

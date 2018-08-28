@@ -77,7 +77,7 @@ export default {
         }
     }
     .cutOffLine {
-        background: #f3f7f9;
+        background: $bg-body;
         height: 20px;
         width: 100%;
     }

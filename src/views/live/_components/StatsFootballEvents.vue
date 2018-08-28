@@ -71,7 +71,7 @@ export default {
     table {
         width: 100%;
         font-size: 23px;
-        color: $font-color-grey;
+        color: $grey;
         .home,
         .away {
             width: 45%;
@@ -103,7 +103,7 @@ export default {
                 height: 100%;
                 top: 0;
                 left: calc((100% - 1px) / 2);
-                background: $font-color-grey;
+                background: $grey;
             }
             .time {
                 width: 48px;

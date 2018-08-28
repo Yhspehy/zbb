@@ -121,10 +121,10 @@ export default {
 .notice {
     font-size: 24px;
     line-height: 70px;
-    color: #808080;
+    color: $grey;
     text-align: center;
     .num {
-        color: $prime-blue;
+        color: $blue;
     }
 }
 .form {
@@ -145,7 +145,7 @@ export default {
                 height: 100%;
                 outline: none;
                 &::placeholder {
-                    color: #b3b3b3;
+                    color: $grey-light;
                 }
             }
             .rt {
@@ -153,7 +153,7 @@ export default {
                 background: transparent;
             }
             .disable {
-                color: #b3b3b3;
+                color: $grey-light;
             }
             .able {
                 color: red;
@@ -164,7 +164,7 @@ export default {
         position: absolute;
         bottom: -50px;
         font-size: 24px;
-        color: #f5303d;
+        color: $red;
         i {
             margin-right: 10px;
         }
@@ -181,18 +181,7 @@ export default {
             letter-spacing: 12px;
             background-color: #fff;
             color: #fff;
-            background-image: linear-gradient(
-                    -90deg,
-                    #0080ff 0%,
-                    #0077ff 0%,
-                    #006eff 0%,
-                    #0073ff 0%,
-                    #0077ff 0%,
-                    #0089ff 50%,
-                    #0091ff 79%,
-                    #0099ff 100%
-                ),
-                linear-gradient(#808080, #808080);
+            @include bg-blue;
             &:disabled {
                 opacity: 0.7;
             }

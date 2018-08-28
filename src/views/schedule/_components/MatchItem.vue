@@ -66,18 +66,18 @@ export default {
         margin-right: 30px;
         .time {
             font-size: 28px;
-            color: $font-color-deep-grey;
+            color: $grey-dark;
             margin-bottom: 18px;
         }
         .source {
             font-size: 22px;
-            color: $font-color-grey;
+            color: $grey;
         }
     }
     .team {
         width: 230px;
         font-size: 28px;
-        color: $font-color-deep-grey;
+        color: $grey-dark;
         .hometeam {
             margin-bottom: 16px;
         }
@@ -86,7 +86,7 @@ export default {
             margin-right: 20px;
         }
         .win {
-            color: #f63146;
+            color: $red;
             position: relative;
             &:after {
                 content: '';
@@ -96,7 +96,7 @@ export default {
                 width: 0;
                 height: 0;
                 border: 10px solid transparent;
-                border-right-color: #f3091a;
+                border-right-color: $red-dark;
             }
         }
     }
@@ -118,7 +118,7 @@ export default {
         width: 120px;
         margin-left: 20px;
         font-size: 22px;
-        color: $font-color-grey;
+        color: $grey;
         display: flex;
         justify-content: center;
         align-items: center;
