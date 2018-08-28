@@ -143,7 +143,7 @@ export default {
                 #0077ff 0%,
                 #0089ff 50%,
                 #0091ff 79%,
-                $blue-light 100%
+                #0099ff 100%
             );
         }
     }

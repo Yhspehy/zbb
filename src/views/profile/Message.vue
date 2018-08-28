@@ -1,9 +1,5 @@
 <template>
     <div class="setting-push">
-        <div class="header">
-            <i @click="goBack" class="fa fa-angle-left"></i>
-            <span>系统消息</span>
-        </div>
         <ul class="mar-top item-fixed">
             <li class="item">
                 <div class="header-img">
@@ -51,7 +47,7 @@
 
 <script>
 export default {
-    name: 'setting_message',
+    name: 'profile_setting_message',
     created() {
         console.log('created');
     },
@@ -75,25 +71,6 @@ export default {
     }
     .border-bottom {
         @include border-bottom-1px;
-    }
-    .header {
-        width: 100%;
-        height: 90px;
-        padding: 0 35px;
-        background: #ffffff;
-        text-align: center;
-        line-height: 90px;
-        .fa-angle-left {
-            position: absolute;
-            left: 35px;
-            line-height: 90px;
-            font-size: 50px;
-            color: $grey;
-        }
-        span {
-            font-size: 30px;
-            color: $grey-dark;
-        }
     }
     .item-fixed {
         position: fixed;

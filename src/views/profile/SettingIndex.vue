@@ -1,9 +1,5 @@
 <template>
     <div class="setting-index">
-        <div class="header">
-            <i @click="goBack" class="fa fa-angle-left"></i>
-            <span>设置</span>
-        </div>
         <router-link :to="{'name':'profile_setting_myself'}" class="mar-top padding-36 myself item">
             <span>个人信息</span>
             <i class="fa fa-angle-right"></i>
@@ -76,7 +72,7 @@
 <script>
 import showDialog from './_components/ShowDialog';
 export default {
-    name: 'setting_index',
+    name: 'profile_setting_index',
     components: { showDialog },
     data() {
         return {
@@ -152,25 +148,6 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    .header {
-        width: 100%;
-        height: 90px;
-        padding: 0 35px;
-        background: #ffffff;
-        text-align: center;
-        line-height: 90px;
-        .fa-angle-left {
-            position: absolute;
-            left: 35px;
-            line-height: 90px;
-            font-size: 50px;
-            color: $grey;
-        }
-        span {
-            font-size: 30px;
-            color: $grey-dark;
-        }
     }
     .myself {
         width: 100%;

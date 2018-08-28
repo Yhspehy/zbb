@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             allData: {},
-            colorList: ['#ffbb00', '#f3091a', '$blue']
+            colorList: ['#ffbb00', '#f3091a', '#0088ff']
         };
     },
     created() {

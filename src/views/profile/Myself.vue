@@ -1,9 +1,5 @@
 <template>
     <div class="setting-myself">
-        <div class="header">
-            <i @click="goBack" class="fa fa-angle-left"></i>
-            <span>个人信息</span>
-        </div>
         <div class="mar-top padding-36 head d-flex justify-content-between align-items-center">
             <span>
                 <i class="fa fa-user-circle wid-50"></i>头像
@@ -70,7 +66,7 @@
 
 <script>
 export default {
-    name: 'setting_myself',
+    name: 'profile_setting_myself',
     created() {
         console.log('created');
     },
@@ -109,25 +105,6 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    .header {
-        width: 100%;
-        height: 90px;
-        padding: 0 35px;
-        background: #ffffff;
-        text-align: center;
-        line-height: 90px;
-        .fa-angle-left {
-            position: absolute;
-            left: 35px;
-            line-height: 90px;
-            font-size: 50px;
-            color: $grey;
-        }
-        span {
-            font-size: 30px;
-            color: $grey-dark;
-        }
     }
     .head {
         position: relative;

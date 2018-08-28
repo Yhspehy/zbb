@@ -1,9 +1,5 @@
 <template>
     <div class="setting-push">
-        <div class="header">
-            <i @click="goBack" class="fa fa-angle-left"></i>
-            <span>设置</span>
-        </div>
         <div class="mar-top padding-36 item-127 d-flex justify-content-between align-items-center">
             <div>
                 <p>要闻通知</p>
@@ -43,7 +39,7 @@
 
 <script>
 export default {
-    name: 'setting_push',
+    name: 'profile_setting_push',
     created() {
         console.log('created');
     },
@@ -78,25 +74,6 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    .header {
-        width: 100%;
-        height: 90px;
-        padding: 0 35px;
-        background: #ffffff;
-        text-align: center;
-        line-height: 90px;
-        .fa-angle-left {
-            position: absolute;
-            left: 35px;
-            line-height: 90px;
-            font-size: 50px;
-            color: $grey;
-        }
-        span {
-            font-size: 30px;
-            color: $grey-dark;
-        }
     }
     .item-127 {
         position: relative;

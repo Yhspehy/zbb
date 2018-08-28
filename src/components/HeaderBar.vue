@@ -2,7 +2,13 @@
     <div class="headerBar" :style="{'padding': padding}">
         <i @click="goBack" class="fas fa-chevron-left"></i>
         <span class="text">{{text}}</span>
-        <router-link v-if="rightText" class="rightText" :to="{'name': rightTextRouteName}">{{rightText}}</router-link>
+        <router-link
+            v-if="rightText"
+            :style="{'color': rightTextColor}"
+            class="rightText"
+            :to="{'name': rightTextRouteName}">
+            {{rightText}}
+        </router-link>
     </div>
 </template>
 
@@ -35,6 +41,10 @@ export default {
         padding: {
             type: String,
             default: '3.467vw 4.667vw'
+        },
+        rightTextColor: {
+            type: String,
+            default: '#f5303d'
         }
     },
     data() {
@@ -60,7 +70,6 @@ export default {
 
 <style scoped lang="scss">
 .headerBar {
-    height: 85px;
     font-size: 30px;
     position: fixed;
     top: 0;
@@ -76,7 +85,6 @@ export default {
     .rightText {
         position: absolute;
         font-size: 24px;
-        color: $red;
         bottom: 26px;
         right: 35px;
     }

@@ -1,9 +1,5 @@
 <template>
     <div class="setting-push">
-        <div class="header">
-            <i @click="goBack" class="fa fa-angle-left"></i>
-            <span>常见问题</span>
-        </div>
         <ul class="mar-top item-fixed">
             <li>
                 <div class="item border-bottom">
@@ -110,7 +106,7 @@
 <script>
 import collapse from '@/Utils/collapse';
 export default {
-    name: 'setting_push',
+    name: 'profile_setting_problem',
     components: { collapse },
     data() {
         return {
@@ -174,32 +170,8 @@ export default {
         color: $grey;
         line-height: 40px;
     }
-    .header {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: 90px;
-        padding: 0 35px;
-        background: #ffffff;
-        text-align: center;
-        line-height: 90px;
-        z-index: 99;
-        .fa-angle-left {
-            position: absolute;
-            left: 35px;
-            line-height: 90px;
-            font-size: 50px;
-            color: $grey;
-        }
-        span {
-            font-size: 30px;
-            color: $grey-dark;
-        }
-    }
     .item-fixed {
         position: relative;
-        top: 90px;
         width: 100%;
         height: 100%;
         background: #ffffff;

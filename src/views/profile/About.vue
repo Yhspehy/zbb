@@ -1,9 +1,5 @@
 <template>
     <div class="setting-index">
-        <div class="header">
-            <i @click="goBack" class="fa fa-angle-left"></i>
-            <span>关于我们</span>
-        </div>
         <div class="mar-top padding-36 content">
             <div class="header-img">
                 <img src="http://temp.im/110x110">
@@ -20,7 +16,7 @@
 
 <script>
 export default {
-    name: 'setting_about',
+    name: 'profile_setting_about',
     created() {
         console.log('created');
     },
@@ -44,25 +40,6 @@ export default {
     }
     .padding-36 {
         padding: 0 36px;
-    }
-    .header {
-        width: 100%;
-        height: 90px;
-        padding: 0 35px;
-        background: #ffffff;
-        text-align: center;
-        line-height: 90px;
-        .fa-angle-left {
-            position: absolute;
-            left: 35px;
-            line-height: 90px;
-            font-size: 50px;
-            color: $grey;
-        }
-        span {
-            font-size: 30px;
-            color: $grey-dark;
-        }
     }
     .content {
         position: fixed;

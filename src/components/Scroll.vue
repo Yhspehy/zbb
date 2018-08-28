@@ -49,12 +49,6 @@ import merge from 'lodash/merge';
 export default {
     name: 'c_scroll',
     props: {
-        data: {
-            type: Array,
-            default: function() {
-                return [];
-            }
-        },
         listenScroll: {
             type: Boolean,
             default: false
@@ -66,10 +60,6 @@ export default {
         listenScrollEnd: {
             type: Boolean,
             default: false
-        },
-        refreshDelay: {
-            type: Number,
-            default: 20
         },
         scrollOptions: {
             type: Object,
@@ -267,13 +257,6 @@ export default {
                 this.isRebounding = false;
                 this.refresh();
             }, this.scroll.options.bounceTime);
-        }
-    },
-    watch: {
-        data() {
-            setTimeout(() => {
-                this.forceUpdate(true);
-            }, this.refreshDelay);
         }
     },
     components: {
