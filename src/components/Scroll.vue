@@ -22,7 +22,7 @@
                         <loading></loading>
                         <span>松开立即刷新</span>
                     </div>
-                    <div class="date">最近更新：{{updateDate}}</div>
+                    <div class="date">最近更新：{{$moment().calendar()}}</div>
                     <!-- <bubble :y="bubbleY"></bubble> -->
                 </div>
                 <div class="after-trigger" v-else>
@@ -31,7 +31,7 @@
                     </div>
                     <div v-else class="tip">
                         <div class="up">已更新{{updateCount}}条新闻</div>
-                        <div class="down">最近更新：{{updateDate}}</div>
+                        <div class="down">最近更新：{{$moment().calendar()}}</div>
                     </div>
                 </div>
             </slot>
@@ -109,9 +109,6 @@ export default {
         },
         refreshTxt() {
             return (this.options.pullDownRefresh && this.options.pullDownRefresh.txt) || '数据已更新';
-        },
-        updateDate() {
-            return this.$moment().calendar();
         }
     },
     created() {},
