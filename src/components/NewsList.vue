@@ -54,12 +54,12 @@ export default {
         }
         .title {
             font-size: 28px;
-            color: #4d4d4d;
+            color: $grey-dark;
         }
         .date,
         .source {
             font-size: 24px;
-            color: #808080;
+            color: $grey;
         }
         .news-one {
             .content {

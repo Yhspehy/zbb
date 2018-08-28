@@ -54,7 +54,7 @@ export default {
             let obj = document.getElementById('content');
             var maxChars = 200; //最多字符数
             if (obj.value.length > maxChars) {
-                document.getElementById('word_count').style.color = '#f5303d';
+                document.getElementById('word_count').style.color = '$red';
                 //obj.value = obj.value.substring(0,maxChars);
             }
             let curr = obj.value.length;
@@ -98,7 +98,7 @@ export default {
         width: 50px;
     }
     .value {
-        color: #808080;
+        color: $grey;
         border: 0;
         outline: none;
     }
@@ -114,18 +114,18 @@ export default {
             left: 35px;
             line-height: 90px;
             font-size: 50px;
-            color: #808080;
+            color: $grey;
         }
         span {
             font-size: 30px;
-            color: #4d4d4d;
+            color: $grey-dark;
         }
         .problem {
             position: absolute;
             right: 35px;
             line-height: 90px;
             font-size: 24px;
-            color: $prime-blue;
+            color: $blue;
         }
     }
     .item {
@@ -133,7 +133,7 @@ export default {
         width: 100%;
         height: 90px;
         background: #ffffff;
-        color: #4d4d4d;
+        color: $grey-dark;
         font-size: 28px;
         .fa-angle-down {
             transition: transform 0.5s;
@@ -152,7 +152,7 @@ export default {
         .option {
             width: 100%;
             height: 80px;
-            color: #808080;
+            color: $grey;
             line-height: 80px;
             &:not(:last-child) {
                 @include border-bottom-1px;
@@ -175,7 +175,7 @@ export default {
         }
         .word-count {
             text-align: right;
-            color: #b3b3b3;
+            color: $grey-light;
         }
     }
     .submit {

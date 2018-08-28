@@ -76,7 +76,7 @@ export default {
     .rightText {
         position: absolute;
         font-size: 24px;
-        color: #f63146;
+        color: $red;
         bottom: 26px;
         right: 35px;
     }

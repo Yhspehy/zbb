@@ -59,7 +59,7 @@ export default {
 .statsTeamItem {
     font-size: 24px;
     padding: 10px 35px;
-    color: $font-color-grey;
+    color: $grey;
 
     .info {
         margin-bottom: 10px;
@@ -69,7 +69,7 @@ export default {
         @include flex-center-between;
         .line {
             width: 336px;
-            background: #f3f7f9;
+            background: $bg-body;
             height: 6px;
             position: relative;
             .dataLine {

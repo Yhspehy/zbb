@@ -100,7 +100,7 @@ export default {
         .right-btn {
             a {
                 font-size: 24px;
-                color: $prime-blue;
+                color: $blue;
             }
         }
     }
@@ -112,12 +112,12 @@ export default {
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            color: $prime-blue;
-            // color: #0088ff;
+            color: $blue;
+            // color: $blue-light;
             .logo-img {
                 width: 160px;
                 height: 160px;
-                background-color: #e6e6e6;
+                background-color: $bg-grey-dark;
             }
             .title {
                 font-size: 36px;
@@ -150,13 +150,13 @@ export default {
                     height: 100%;
                     outline: none;
                     &::placeholder {
-                        color: #b3b3b3;
+                        color: $grey-light;
                     }
                 }
                 .rt {
                     color: #b2b2b2;
                     &.active {
-                        color: #f5303d;
+                        color: $red;
                     }
                 }
             }
@@ -164,7 +164,7 @@ export default {
                 position: absolute;
                 bottom: -50px;
                 font-size: 24px;
-                color: #f5303d;
+                color: $red;
                 i {
                     margin-right: 10px;
                 }
@@ -183,34 +183,23 @@ export default {
                 background-color: #fff;
                 &.login-btn {
                     color: #fff;
-                    background-image: linear-gradient(
-                            -90deg,
-                            #0080ff 0%,
-                            #0077ff 0%,
-                            #006eff 0%,
-                            #0073ff 0%,
-                            #0077ff 0%,
-                            #0089ff 50%,
-                            #0091ff 79%,
-                            #0099ff 100%
-                        ),
-                        linear-gradient(#808080, #808080);
+                    @include bg-blue;
                     &:disabled {
-                        opacity: 0.7;
+                        @include bg-blue-light;
                     }
                 }
                 &.login-with-mobile {
                     margin-top: 30px;
-                    color: $prime-blue;
+                    color: $blue;
                 }
                 @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
                     &.border-1px {
-                        @include border-1px($prime-blue, 80px);
+                        @include border-1px($blue, 80px);
                     }
                 }
                 @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
                     &.border-1px {
-                        @include border-1px($prime-blue, 120px);
+                        @include border-1px($blue, 120px);
                     }
                 }
             }
@@ -228,13 +217,13 @@ export default {
             justify-content: space-between;
             align-items: center;
             font-size: 12px;
-            color: #e6e6e6;
+            color: $bg-grey-dark;
             &::before,
             &::after {
                 content: '';
                 width: 160px;
                 height: 1px;
-                background-color: #b3b3b3;
+                background-color: $grey-light;
             }
             @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
                 &::before,
@@ -275,7 +264,7 @@ export default {
             span {
                 margin-top: 22px;
                 font-size: 24px;
-                color: #b3b3b3;
+                color: $grey-light;
             }
         }
     }

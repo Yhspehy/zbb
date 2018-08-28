@@ -156,7 +156,7 @@ export default {
 <style scoped lang="scss">
 .recommend {
     height: 100%;
-    background: #f3f7f9;
+    background: $bg-body;
     .recommend-wrapper {
         height: 100%;
     }
@@ -193,11 +193,10 @@ export default {
                 width: 460px;
                 height: 100%;
                 font-size: 24px;
-                background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#f2f2f2, #f2f2f2);
-                background-blend-mode: normal, normal;
+                background-color: $bg-grey;
                 box-shadow: 0px 0px 11.9px rgba(0, 51, 109, 0.25);
                 border-radius: 6px;
-                color: #808080;
+                color: $grey;
                 .result {
                     width: 100%;
                     text-align: center;
@@ -209,16 +208,16 @@ export default {
                     i {
                         margin-right: 9px;
                         &.is_trail {
-                            color: #0099ff;
+                            color: $blue-light;
                         }
                     }
                     .win {
-                        color: #f3091a;
+                        color: $red-dark;
                     }
                 }
                 .name {
                     width: 100%;
-                    color: #4d4d4d;
+                    color: $grey-dark;
                     .team {
                         flex: 0 1 33%;
                         text-align: center;
@@ -229,35 +228,16 @@ export default {
                         line-height: 36px;
                         text-align: center;
                         color: #ffffff;
-                        background-image: linear-gradient(
-                                -90deg,
-                                #0080ff 0%,
-                                #0077ff 0%,
-                                #006eff 0%,
-                                #0073ff 0%,
-                                #0077ff 0%,
-                                #0089ff 50%,
-                                #0091ff 79%,
-                                #0099ff 100%
-                            ),
-                            linear-gradient(#808080, #808080);
+                        @include bg-blue;
                         border-radius: 18px;
                         &.is-not-trail {
-                            border: 1px solid #0099ff;
-                            color: #0099ff;
+                            border: 1px solid $blue-dark;
+                            color: $blue-light;
                             background: #fff;
                         }
                         &.is-online {
                             color: #fff;
-                            background-image: linear-gradient(
-                                    270deg,
-                                    #f3091a 0%,
-                                    #f63146 50%,
-                                    #fb413b 74%,
-                                    #ff512f 100%
-                                ),
-                                linear-gradient(#4d4d4d, #4d4d4d);
-                            background-blend-mode: normal, normal;
+                            @include bg-red;
                         }
                     }
                 }
@@ -269,10 +249,10 @@ export default {
         padding-left: 36px;
         line-height: 64px;
         font-size: 24px;
-        color: $prime-blue;
+        color: $blue;
         background-color: #fff;
         .line {
-            color: #808080;
+            color: $grey;
             padding: 0 20px;
         }
     }
@@ -293,12 +273,12 @@ export default {
                     }
                     .title {
                         font-size: 28px;
-                        color: #4d4d4d;
+                        color: $grey-dark;
                     }
                     .date,
                     .source {
                         font-size: 24px;
-                        color: #808080;
+                        color: $grey;
                     }
                     .news-one {
                         .content {

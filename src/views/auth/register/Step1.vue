@@ -53,16 +53,16 @@ export default {
 <style scoped lang="scss">
 h2 {
     font-size: 36px;
-    color: #4d4d4d;
+    color: $grey-dark;
     text-align: center;
 }
 .notice {
     font-size: 24px;
     line-height: 70px;
-    color: #808080;
+    color: $grey;
     text-align: center;
     .num {
-        color: $prime-blue;
+        color: $blue;
     }
 }
 .form {
@@ -83,13 +83,13 @@ h2 {
                 height: 100%;
                 outline: none;
                 &::placeholder {
-                    color: #b3b3b3;
+                    color: $grey-light;
                 }
             }
             .rt {
                 color: #b2b2b2;
                 &.active {
-                    color: #f5303d;
+                    color: $red;
                 }
             }
         }
@@ -98,7 +98,7 @@ h2 {
         position: absolute;
         bottom: -50px;
         font-size: 24px;
-        color: #f5303d;
+        color: $red;
         i {
             margin-right: 10px;
         }
@@ -115,21 +115,7 @@ h2 {
             letter-spacing: 12px;
             background-color: #fff;
             color: #fff;
-            background-image: linear-gradient(
-                    -90deg,
-                    #0080ff 0%,
-                    #0077ff 0%,
-                    #006eff 0%,
-                    #0073ff 0%,
-                    #0077ff 0%,
-                    #0089ff 50%,
-                    #0091ff 79%,
-                    #0099ff 100%
-                ),
-                linear-gradient(#808080, #808080);
-            &:disabled {
-                opacity: 0.7;
-            }
+            @include btn-bg;
         }
     }
 }

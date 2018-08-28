@@ -61,7 +61,7 @@ export default {
         text-align: center;
         font-size: 28px;
         border-collapse: collapse;
-        color: $font-color-grey;
+        color: $grey;
         thead tr td {
             font-size: 24px;
             padding: 10px 0;

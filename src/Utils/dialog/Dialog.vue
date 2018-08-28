@@ -75,7 +75,7 @@ export default {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: #4d4d4d;
+    color: $grey-dark;
     background-color: #fff;
     .content {
         display: flex;
@@ -95,27 +95,27 @@ export default {
     }
     .footer {
         display: flex;
-        @include border-top-1px(#e6e6e6);
+        @include border-top-1px($bg-grey-dark);
         height: 80px;
         line-height: 80px;
         text-align: center;
         letter-spacing: 2.8px;
         .cancel {
             flex: 1 0 50%;
-            color: #b3b3b3;
+            color: $grey-light;
         }
         .ok {
             flex: 1 0 50%;
-            color: $prime-blue;
+            color: $blue;
             &.alert {
                 @include rounded(bottom, left);
                 @include rounded(bottom, right);
                 color: #fff;
-                @include background-image;
+                @include bg-blue;
             }
         }
         .split {
-            @include border-right-1px(#e6e6e6);
+            @include border-right-1px($bg-grey-dark);
         }
     }
 }

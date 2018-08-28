@@ -129,20 +129,20 @@ export default {
         font-size: 28px;
         padding: 30px 0;
         .periodTitle {
-            color: $font-color-deep-grey;
+            color: $grey-dark;
             padding: 0 0 20px 35px;
-            @include border-bottom-1px(#f2f2f2, 90%);
+            @include border-bottom-1px($bg-grey, 90%);
         }
         .periodRowTitle {
             font-size: 24px;
             padding: 10px 0;
             margin-bottom: 10px;
-            @include border-bottom-1px(#f2f2f2, 90%);
+            @include border-bottom-1px($bg-grey, 90%);
         }
         .periodRow {
             display: flex;
             align-items: center;
-            color: $font-color-grey;
+            color: $grey;
             img {
                 height: 50px;
             }

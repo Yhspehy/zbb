@@ -73,7 +73,7 @@ export default {
     }
     .item {
         height: 90px;
-        color: #4d4d4d;
+        color: $grey-dark;
         font-size: 28px;
         display: flex;
         justify-content: space-between;
@@ -91,11 +91,11 @@ export default {
             left: 35px;
             line-height: 90px;
             font-size: 50px;
-            color: #808080;
+            color: $grey;
         }
         span {
             font-size: 30px;
-            color: #4d4d4d;
+            color: $grey-dark;
         }
     }
     .item-127 {
@@ -105,7 +105,7 @@ export default {
         background: #ffffff;
         .tips {
             font-size: 24px;
-            color: #808080;
+            color: $grey;
         }
     }
     .item-180 {

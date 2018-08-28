@@ -154,7 +154,7 @@ export default {
     }
     .item {
         height: 90px;
-        color: #4d4d4d;
+        color: $grey-dark;
         font-size: 28px;
         display: flex;
         padding: 0 36px;
@@ -169,9 +169,9 @@ export default {
     }
     .content {
         padding: 40px 36px 20px 36px;
-        background-color: #f3f7f9;
+        background-color: $bg-body;
         font-size: 24px;
-        color: #808080;
+        color: $grey;
         line-height: 40px;
     }
     .header {
@@ -190,11 +190,11 @@ export default {
             left: 35px;
             line-height: 90px;
             font-size: 50px;
-            color: #808080;
+            color: $grey;
         }
         span {
             font-size: 30px;
-            color: #4d4d4d;
+            color: $grey-dark;
         }
     }
     .item-fixed {

@@ -105,16 +105,16 @@ export default {
 <style scoped lang="scss">
 h2 {
     font-size: 36px;
-    color: #4d4d4d;
+    color: $grey-dark;
     text-align: center;
 }
 .notice {
     font-size: 24px;
     line-height: 70px;
-    color: #808080;
+    color: $grey;
     text-align: center;
     .num {
-        color: $prime-blue;
+        color: $blue;
     }
 }
 .form {
@@ -126,7 +126,7 @@ h2 {
         left: 25px;
         bottom: -50px;
         font-size: 24px;
-        color: #f5303d;
+        color: $red;
         i {
             margin-right: 10px;
         }
@@ -167,7 +167,7 @@ h2 {
     padding-bottom: 4px;
 }
 .active {
-    border-color: $prime-blue;
+    border-color: $blue
 }
 .btntxt {
     margin-top: 70px;

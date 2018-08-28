@@ -68,7 +68,7 @@ export default {
 .commentItem {
     display: flex;
     font-size: 28px;
-    color: $font-color-deep-grey;
+    color: $grey-dark;
     padding: 20px 0;
     @include border-bottom-1px;
     img {
@@ -80,13 +80,13 @@ export default {
     .commentMain {
         flex: 1;
         .commentInfo {
-            color: $font-color-grey;
+            color: $grey;
             margin-bottom: 25px;
             .userName {
                 max-width: 200px;
             }
             .time {
-                color: #b3b3b3;
+                color: $grey-light;
                 font-size: 22px;
                 margin-left: 22px;
             }
@@ -95,7 +95,7 @@ export default {
             }
         }
         .commentAnswer {
-            background: #f3f7f9;
+            background: $bg-body;
             font-size: 24px;
             padding: 20px;
             margin-top: 20px;
@@ -103,7 +103,7 @@ export default {
                 margin-bottom: 5px;
             }
             .commentExpand {
-                color: $prime-blue;
+                color: $blue;
                 margin-top: 15px;
             }
         }

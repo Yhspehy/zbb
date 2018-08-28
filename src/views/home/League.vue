@@ -115,7 +115,7 @@ export default {
 <style scoped lang="scss">
 .league {
     height: 100%;
-    background: #f3f7f9;
+    background: $bg-body;
     .point {
         position: relative;
         display: block;

@@ -304,11 +304,11 @@ export default {
     width: 100%;
     left: 0;
     font-size: 22px;
-    color: #4d4d4d;
+    color: $grey-dark;
     display: flex;
     justify-content: center;
     transition: all;
-    color: #4d4d4d;
+    color: $grey-dark;
     .after-trigger {
         .loading {
             margin-top: 45px;

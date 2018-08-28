@@ -47,19 +47,19 @@ export default {
             width: 90px;
         }
         .teamname {
-            color: $font-color-deep-grey;
+            color: $grey-dark;
             font-size: 24px;
         }
     }
     .match {
         .score {
             margin: 20px 0;
-            color: $font-color-deep-grey;
+            color: $grey-dark;
             font-size: 36px;
         }
     }
     .greyColor {
-        color: $font-color-grey;
+        color: $grey;
         font-size: 24px;
     }
 }

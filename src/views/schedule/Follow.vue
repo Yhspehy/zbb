@@ -84,9 +84,9 @@ export default {
     height: calc(100vh - 182px);
     .timeBar {
         padding: 25px 0;
-        background: #f3f7f9;
+        background: $bg-body;
         font-size: 24px;
-        color: $font-color-deep-grey;
+        color: $grey-dark;
         display: flex;
         align-items: center;
         padding-left: 35px;

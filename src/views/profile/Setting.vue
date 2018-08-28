@@ -24,7 +24,7 @@ export default {
 
 <style scoped lang="scss">
 .setting {
-    background-color: #f3f7f9;
+    background-color: $bg-body;
     position: absolute;
     width: 100%;
     height: 100%;

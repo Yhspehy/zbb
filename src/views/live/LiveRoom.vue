@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             allData: {},
-            colorList: ['#ffbb00', '#f3091a', '$prime-blue']
+            colorList: ['#ffbb00', '#f3091a', '$blue']
         };
     },
     created() {
@@ -56,7 +56,7 @@ export default {
             left: 4px;
             width: 1px;
             height: 120px;
-            background: #f2f2f2;
+            background: $bg-grey;
             z-index: -1;
         }
     }
@@ -64,12 +64,12 @@ export default {
         flex: 1;
         .user {
             font-size: 24px;
-            color: $font-color-grey;
+            color: $grey;
             margin-bottom: 20px;
         }
         .content {
             font-size: 28px;
-            color: $font-color-deep-grey;
+            color: $grey-dark;
             margin-bottom: 30px;
         }
     }

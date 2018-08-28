@@ -80,10 +80,10 @@ export default {
         letter-spacing: 2.8px;
         background-color: #eff0f3;
         .cancel {
-            color: #b3b3b3;
+            color: $grey-light;
         }
         .confirm {
-            color: $prime-blue;
+            color: $blue;
         }
     }
     .picker-content {
@@ -94,14 +94,14 @@ export default {
             pointer-events: none;
         }
         .border-bottom-1px {
-            @include border-bottom-1px(#e6e6e6);
+            @include border-bottom-1px($bg-grey-dark);
             position: absolute;
             top: 0;
             height: 155px;
             background: linear-gradient(0deg, hsla(0, 0%, 100%, 0.4), hsla(0, 0%, 100%, 0.8));
         }
         .border-top-1px {
-            @include border-top-1px(#e6e6e6);
+            @include border-top-1px($bg-grey-dark);
             position: absolute;
             bottom: 0;
             height: 150px;
