@@ -167,7 +167,7 @@ h2 {
     padding-bottom: 4px;
 }
 .active {
-    border-color: $blue
+    border-color: $blue;
 }
 .btntxt {
     margin-top: 70px;

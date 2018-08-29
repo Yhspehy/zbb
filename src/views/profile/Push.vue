@@ -39,19 +39,7 @@
 
 <script>
 export default {
-    name: 'profile_setting_push',
-    created() {
-        console.log('created');
-    },
-    activated() {
-        console.log('activated');
-    },
-    methods: {
-        goBack() {
-            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
-            this.$router.back();
-        }
-    }
+    name: 'profile_setting_push'
 };
 </script>
 

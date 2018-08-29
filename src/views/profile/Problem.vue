@@ -1,102 +1,15 @@
 <template>
     <div class="setting-push">
         <ul class="mar-top item-fixed">
-            <li>
+            <li v-for="item in contentList" :key="item.title">
                 <div class="item border-bottom">
-                    <span>播放问题</span>
+                    <span>{{item.title}}</span>
                     <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj.playStats}"
-                        @click="emitClick('playStats')"></i>
+                        :class="{'rotate': expandObj[item.colClass]}"
+                        @click="emitClick(item.colClass)"></i>
                 </div>
-                <collapse :active="expandObj.playStats">
-                    <div class="content">
-                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
-                    </div>
-                </collapse>
-            </li>
-            <li>
-                <div class="item border-bottom">
-                    <span>直播问题</span>
-                    <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj.livingStats}"
-                        @click="emitClick('livingStats')"></i>
-                </div>
-                <collapse :active="expandObj.livingStats">
-                    <div class="content">
-                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
-                    </div>
-                </collapse>
-            </li>
-            <li>
-                <div class="item border-bottom">
-                    <span>关于等级</span>
-                    <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj.rankStats}"
-                        @click="emitClick('rankStats')"></i>
-                </div>
-                <collapse :active="expandObj.rankStats">
-                    <div class="content">
-                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
-                    </div>
-                </collapse>
-            </li>
-            <li>
-                <div class="item border-bottom">
-                    <span>第三方登录以及绑定</span>
-                    <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj.thirdStats}"
-                        @click="emitClick('thirdStats')"></i>
-                </div>
-                <collapse :active="expandObj.thirdStats">
-                    <div class="content">
-                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
-                    </div>
-                </collapse>
-            </li>
-            <li>
-                <div class="item border-bottom">
-                    <span>密码找回</span>
-                    <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj.pwdStats}"
-                        @click="emitClick('pwdStats')"></i>
-                </div>
-                <collapse :active="expandObj.pwdStats">
-                    <div class="content">
-                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
-                    </div>
-                </collapse>
-            </li>
-            <li>
-                <div class="item border-bottom">
-                    <span>出现闪退</span>
-                    <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj.suddenStats}"
-                        @click="emitClick('suddenStats')"></i>
-                </div>
-                <collapse :active="expandObj.suddenStats">
-                    <div class="content">
-                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
-                    </div>
-                </collapse>
-            </li>
-            <li>
-                <div class="item border-bottom">
-                    <span>联系我们</span>
-                    <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj.contactStats}"
-                        @click="emitClick('contactStats')"></i>
-                </div>
-                <collapse :active="expandObj.contactStats">
-                    <div class="content">
-                        用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。<br>
-                        如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。
-                    </div>
+                <collapse :active="expandObj[item.colClass]">
+                    <div class="content">{{item.content}}</div>
                 </collapse>
             </li>
         </ul>
@@ -118,22 +31,56 @@ export default {
                 pwdStats: false,
                 suddenStats: false,
                 contactStats: false
-            }
+            },
+            contentList: [
+                {
+                    title: '播放问题',
+                    colClass: 'playStats',
+                    content:
+                        '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
+                },
+                {
+                    title: '直播问题',
+                    colClass: 'livingStats',
+                    content:
+                        '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
+                },
+                {
+                    title: '关于等级',
+                    colClass: 'rankStats',
+                    content:
+                        '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
+                },
+                {
+                    title: '第三方登陆以及绑定',
+                    colClass: 'thirdStats',
+                    content:
+                        '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
+                },
+                {
+                    title: '密码找回',
+                    colClass: 'pwdStats',
+                    content:
+                        '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
+                },
+                {
+                    title: '出现闪退',
+                    colClass: 'suddenStats',
+                    content:
+                        '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
+                },
+                {
+                    title: '联系我们',
+                    colClass: 'contactStats',
+                    content:
+                        '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
+                }
+            ]
         };
-    },
-    created() {
-        console.log('created');
-    },
-    activated() {
-        console.log('activated');
     },
     methods: {
         emitClick(key) {
             this.expandObj[key] = !this.expandObj[key];
-        },
-        goBack() {
-            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
-            this.$router.back();
         }
     }
 };
@@ -169,6 +116,7 @@ export default {
         font-size: 24px;
         color: $grey;
         line-height: 40px;
+        white-space: pre-line;
     }
     .item-fixed {
         position: relative;
