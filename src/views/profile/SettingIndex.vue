@@ -81,22 +81,12 @@ export default {
             }
         };
     },
-    created() {
-        console.log('created');
-    },
-    activated() {
-        console.log('activated');
-    },
     methods: {
         show() {
             this.chosen.showStats = true;
         },
         close() {
             this.chosen.showStats = false;
-        },
-        goBack() {
-            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
-            this.$router.back();
         },
         toast() {
             this.$toast('message');

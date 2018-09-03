@@ -24,22 +24,12 @@ import HeaderBar from '@/components/HeaderBar';
 export default {
     name: 'profile_setting_join',
     components: { HeaderBar },
-    created() {
-        console.log('created');
-    },
-    activated() {
-        console.log('activated');
-    },
     methods: {
         onCopy(id) {
             let url = document.getElementById(id);
             url.select(); // 选择对象
             document.execCommand('Copy');
             this.$toast({ duration: 500, message: '复制成功' });
-        },
-        goBack() {
-            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
-            this.$router.back();
         }
     }
 };

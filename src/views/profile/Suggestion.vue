@@ -35,12 +35,6 @@ export default {
             }
         };
     },
-    created() {
-        console.log('created');
-    },
-    activated() {
-        console.log('activated');
-    },
     methods: {
         emitClick(key) {
             this.expandObj[key] = !this.expandObj[key];
@@ -60,10 +54,6 @@ export default {
             url.select(); // 选择对象
             document.execCommand('Copy');
             this.$toast({ duration: 500, message: '复制成功' });
-        },
-        goBack() {
-            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
-            this.$router.back();
         }
     }
 };

@@ -37,7 +37,6 @@ export default {
 .toast {
     z-index: 9999;
     border-radius: 10px;
-    height: 100px;
     width: 460px;
     font-size: 28px;
     line-height: 100px;
