@@ -6,13 +6,14 @@ import Toast from './Utils/toast/toast';
 import Dialog from './Utils/dialog/dialog';
 
 import { request, setVm } from './Api/request';
-import C_Alert from './Utils/Alert';
+// import C_Alert from './Utils/Alert';
 import moment from 'moment';
 
 import clean from './directive/directive';
 Vue.prototype.$axios = request;
 Vue.prototype.$moment = moment;
-Vue.prototype.$C_Alert = C_Alert;
+Vue.prototype.$moment.locale('zh-cn');
+// Vue.prototype.$C_Alert = C_Alert;
 Vue.config.productionTip = false;
 
 Vue.filter('moment', function(value, formatString = 'YYYY-MM-DD HH:mm:ss') {

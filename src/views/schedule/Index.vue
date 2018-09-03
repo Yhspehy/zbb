@@ -3,7 +3,7 @@
         <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
         <div class="scheduleContent theFooterPaddingBottom">
-            <router-view ></router-view>
+            <router-view></router-view>
         </div>
 
         <v-footer></v-footer>
@@ -41,10 +41,10 @@ export default {
         };
     },
     created() {
-        console.log('schedule created');
+        // console.log('schedule created');
     },
     activated() {
-        console.log('schedule activated');
+        // console.log('schedule activated');
         this.chosenNav = this.$store.state.schedule.chosenNav;
     },
     mounted() {},
@@ -67,16 +67,6 @@ export default {
                 }
             }
         }
-    },
-    beforeRouteUpdate(to, from, next) {
-        let height = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-        from.meta.scrollHeight = height;
-        next();
-    },
-    beforeRouteLeave(to, from, next) {
-        let height = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-        from.meta.scrollHeight = height;
-        next();
     }
 };
 </script>
@@ -84,5 +74,6 @@ export default {
 <style scoped lang="scss">
 .scheduleContent {
     margin-top: 92px;
+    background-color: $bg-body;
 }
 </style>

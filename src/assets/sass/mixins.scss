@@ -1,4 +1,5 @@
 @import "./variables.scss";
+
 // ==============
 // 在多个元素的时候用这个写在class的样式中
 // 如果只有一个元素且并没有什么样式，直接在style中写类型，参考common.css
@@ -35,31 +36,15 @@
     border-#{$vert}-#{$horz}-radius: $radius;
 }
 
-// ==============
 // ==================
-@mixin imgRetina($image, $extension, $width, $height, $position: center, $repeat: no-repeat) {
-    background: url($image + '.' + $extension) $repeat $position;
-    @media screen and (-webkit-min-device-pixel-ratio: 2), screen and ( min--moz-device-pixel-ratio: 2), screen and ( -moz-min-device-pixel-ratio: 2), screen and ( -o-min-device-pixel-ratio: 2/1), screen and ( min-device-pixel-ratio: 2), screen and ( min-resolution: 192dpi), screen and ( min-resolution: 2dppx) {
-        background: url($image + '@2x' + '.' + $extension) $repeat $position;
-        background-size: $width $height;
-    }
-    @media screen and (-webkit-min-device-pixel-ratio: 3),
-    screen and ( min--moz-device-pixel-ratio: 3),
-    screen and ( -moz-min-device-pixel-ratio: 3),
-    screen and ( -o-min-device-pixel-ratio: 3/1),
-    screen and ( min-device-pixel-ratio: 3),
-    screen and ( min-resolution: 288dpi),
-    screen and ( min-resolution: 3dppx) {
-        background: url($image + '@3x' + '.' + $extension) $repeat $position;
-        background-size: $width $height;
+@mixin bg-image($url, $ext : ".png") {
+    background-image: url($url + "@2x"+ $ext);
+    @media (min-resolution: 3dppx) {
+        background-image: url($url + "@3x"+ $ext);
     }
 }
 
-// .bg-image {
-//    @include imgRetina(images/waterlily, jpg, 200px, 200px, no-repeat, center);
-//    height: 200px;
-//    width: 200px;
-// }
+
 // ==============
 @mixin keyframes($animation-name) {
     @keyframes #{$animation-name} {
@@ -74,6 +59,7 @@
 @mixin border-1px($color: $bg-grey, $border-radius: 0) {
     position: relative;
     border: none;
+
     &:after {
         content: '';
         position: absolute;
@@ -81,6 +67,7 @@
         left: 0;
         border: 1px solid $color;
         border-radius: $border-radius;
+
         @media screen and (min-resolution: 2dppx) {
             border-radius: ($border-radius * 2);
             width: 200%;
@@ -88,6 +75,7 @@
             transform: scale(0.5);
             transform-origin: left top;
         }
+
         @media screen and (min-resolution: 3dppx) {
             border-radius: ($border-radius * 3);
             width: 303%;
@@ -100,6 +88,7 @@
 
 @mixin border-top-1px($color: $bg-grey, $width: 100%) {
     position: relative;
+
     &:after {
         content: '';
         display: block;
@@ -113,6 +102,7 @@
 
 @mixin border-right-1px($color: $bg-grey) {
     position: relative;
+
     &:after {
         content: '';
         display: block;
@@ -126,6 +116,7 @@
 
 @mixin border-bottom-1px($color: $bg-grey, $width: 100%) {
     position: relative;
+
     &:after {
         content: '';
         display: block;
@@ -139,6 +130,7 @@
 
 @mixin border-left-1px($color: $bg-grey) {
     position: relative;
+
     &:after {
         content: '';
         display: block;
@@ -156,9 +148,7 @@
     }
 }
 
-
 /*----------  flex  ----------*/
-
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -178,18 +168,21 @@
 }
 
 /*----------  gradient-background  ----------*/
-
 @mixin bg-blue() {
     @include gradient();
 }
+
 @mixin bg-blue-light() {
     @include gradient(#0080ff, #07b5ff);
 }
+
 @mixin bg-red {
     @include gradient(#f3091a, #ff512f);
 }
+
 @mixin btn-bg {
     @include gradient();
+
     &:disabled {
         @include bg-blue-light();
     }

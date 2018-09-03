@@ -2,7 +2,7 @@
     "status": true,
     "msg": "...",
     "data": {
-        "2018-09-01": [{
+        "2018-08-29": [{
             "match_id": 8,
             "hometeam": "湖人",
             "awayteam": "勇士",
@@ -93,7 +93,7 @@
             "league": "NBA",
             "is_trail": true
         }],
-        "2018-09-02": [{
+        "2018-08-30": [{
             "match_id": 8,
             "hometeam": "湖人",
             "awayteam": "勇士",
@@ -184,7 +184,7 @@
             "league": "NBA",
             "is_trail": true
         }],
-        "2018-09-03": [{
+        "2018-08-31": [{
                 "match_id": 8,
                 "hometeam": "湖人",
                 "awayteam": "勇士",
@@ -323,158 +323,6 @@
                 "league": "NBA",
                 "is_trail": true
             }
-        ],
-        "2018-09-04": [{
-            "match_id": 1,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "集锦",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 2,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "直播",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 3,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 4,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "集锦",
-            "league": "NBA",
-            "is_trail": true
-        }],
-        "2018-09-05": [{
-            "match_id": 1,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "集锦",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 2,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "直播",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 3,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 4,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "集锦",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 5,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "直播",
-            "league": "NBA",
-            "is_trail": true
-        }, {
-            "match_id": 6,
-            "hometeam": "热火",
-            "awayteam": "老鹰",
-            "start_time": 1533025880,
-            "source": "NBA夏季联赛",
-            "media": "CCTV5",
-            "status": "已结束",
-            "details_url": "url",
-            "home_score": 100,
-            "away_score": 99,
-            "live_type": "文字直播",
-            "end_description_word": "集锦",
-            "league": "NBA",
-            "is_trail": true
-        }]
+        ]
     }
 }

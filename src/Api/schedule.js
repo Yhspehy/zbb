@@ -1,7 +1,13 @@
 import { request } from './request';
 
-export function getPopularList() {
-    return request('/mock/schedule/popularList');
+export function getPopularList(params) {
+    return request('/mock/schedule/popularList', params);
+}
+export function getPopularListBefore(params) {
+    return request('/mock/schedule/popularListBefore', params);
+}
+export function getPopularListAfter(params) {
+    return request('/mock/schedule/popularListAfter', params);
 }
 
 export function getGroupPic() {

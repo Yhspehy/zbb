@@ -1,5 +1,7 @@
 import {
     getPopularList,
+    getPopularListBefore,
+    getPopularListAfter,
     getGroupPic,
     getMonthList,
     getFollowList,
@@ -27,8 +29,16 @@ const schedule = {
         SET_CHOSENNAV: (state, name) => {
             state.chosenNav = name;
         },
-        SET_POPULARLIST: (state, list) => {
-            state.popularList = list;
+        SET_POPULARLIST: (state, { data, type }) => {
+            if (type === 'before') {
+                state.popularList = Object.assign({}, data, state.popularList);
+            }
+            if (type === 'after') {
+                state.popularList = Object.assign({}, state.popularList, data);
+            }
+            if (type === 'now') {
+                state.popularList = Object.assign({}, data);
+            }
         },
         SET_GROUPPIC: (state, list) => {
             state.groupPic = list;
@@ -53,17 +63,57 @@ const schedule = {
     },
 
     actions: {
-        GetPopularList({ commit }) {
-            return new Promise((resolve, reject) => {
-                getPopularList()
-                    .then(res => {
-                        commit('SET_POPULARLIST', res.data.data);
-                        resolve(res);
-                    })
-                    .catch(error => {
-                        reject(error);
-                    });
+        async GetPopularList({ commit, state }, { time, type }) {
+            //测试
+            let res = undefined;
+            if (type === 'now') {
+                res = await getPopularList({
+                    params: {
+                        time,
+                        type
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+            } else if (type === 'before') {
+                res = await getPopularListBefore({
+                    params: {
+                        time,
+                        type
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+            } else if (type === 'after') {
+                res = await getPopularListAfter({
+                    params: {
+                        time,
+                        type
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+            }
+            commit('SET_POPULARLIST', {
+                data: res.data.data,
+                type
             });
+            return state.popularList;
+            // return new Promise((resolve, reject) => {
+            //     getPopularList({
+            //         params: {
+            //             time,
+            //             type
+            //         }
+            //     })
+            //         .then(res => {
+            //             commit('SET_POPULARLIST', res.data.data);
+            //             resolve(res);
+            //         })
+            //         .catch(error => {
+            //             reject(error);
+            //         });
+            // });
         },
         GetGroupPic({ commit }) {
             return new Promise((resolve, reject) => {

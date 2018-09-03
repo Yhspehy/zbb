@@ -564,7 +564,7 @@ print_background: false
 
 ```js
     /**
-     * 沟通，预计返回一周的数据,倒序排列
+     * 沟通，预计返回一周的数据(当前日期前两天以及后四天的数据),倒序排列
      * @api {get}  schedule/popular
      * 
      * @params time  {String}  开始时间(时间戳) 

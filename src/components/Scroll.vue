@@ -1,8 +1,12 @@
 <template>
-    <div ref="wrapper" class="list-wrapper">
+    <div ref="wrapper" class="scroll-wrapper">
         <div class="scroll-content">
             <div ref="listWrapper">
                 <slot>
+                    <ul class="scroll-list">
+                        <li class="scroll-item" v-for="(item, key) in data" :key="key">
+                        </li>
+                    </ul>
                 </slot>
             </div>
             <div class="pullup-wrapper" v-if="options.pullUpLoad">
@@ -14,28 +18,27 @@
                 </div>
             </div>
         </div>
-
-        <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="options.pullDownRefresh">
-            <slot name="pulldown" :beforePullDown="beforePullDown" :isPullingDown="isPullingDown">
+        <slot name="pulldown" :pullDownStyle="pullDownStyle" :beforePullDown="beforePullDown" :isPullingDown="isPullingDown">
+            <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="options.pullDownRefresh">
                 <div class="before-trigger" v-if="beforePullDown">
                     <div class="tip">
                         <loading></loading>
                         <span>松开立即刷新</span>
                     </div>
-                    <div class="date">最近更新：{{$moment().calendar()}}</div>
-                    <!-- <bubble :y="bubbleY"></bubble> -->
+                    <div class="date">最近更新：{{updateDate}}</div>
                 </div>
                 <div class="after-trigger" v-else>
                     <div v-if="isPullingDown" class="loading">
                         <loading></loading>
                     </div>
-                    <div v-else class="tip">
+                    <div v-if="!isPullingDown" class="pulldown-loaded">
                         <div class="up">已更新{{updateCount}}条新闻</div>
-                        <div class="down">最近更新：{{$moment().calendar()}}</div>
+                        <div class="down">最近更新：{{updateDate}}</div>
                     </div>
                 </div>
-            </slot>
-        </div>
+
+            </div>
+        </slot>
     </div>
 </template>
 
@@ -49,6 +52,12 @@ import merge from 'lodash/merge';
 export default {
     name: 'c_scroll',
     props: {
+        data: {
+            type: Object,
+            default() {
+                return {};
+            }
+        },
         listenScroll: {
             type: Boolean,
             default: false
@@ -63,7 +72,7 @@ export default {
         },
         scrollOptions: {
             type: Object,
-            default: function() {
+            default() {
                 return {};
             }
         },
@@ -74,6 +83,7 @@ export default {
     },
     data() {
         return {
+            updateDate: this.$moment().calendar(),
             beforePullDown: true,
             isRebounding: false,
             isPullingDown: false,
@@ -115,10 +125,6 @@ export default {
             if (!this.$refs.wrapper) {
                 return;
             }
-            if (this.$refs.listWrapper && (this.options.pullDownRefresh || this.options.pullUpLoad)) {
-                this.$refs.listWrapper.style.minHeight = `${getRect(this.$refs.wrapper).height + 1}px`;
-            }
-
             // 初始化设置
             this.options = merge(
                 {
@@ -128,8 +134,8 @@ export default {
                         fade: true
                     },
                     pullDownRefresh: {
-                        threshold: 60,
-                        stop: 70
+                        threshold: 50,
+                        stop: 60
                     },
                     pullUpLoad: {
                         threshold: 0,
@@ -141,6 +147,9 @@ export default {
                 },
                 this.scrollOptions
             );
+            if (this.$refs.listWrapper && (this.options.pullDownRefresh || this.options.pullUpLoad)) {
+                this.$refs.listWrapper.style.minHeight = `${getRect(this.$refs.wrapper).height + 1}px`;
+            }
 
             this.scroll = new BScroll(this.$refs.wrapper, this.options);
 
@@ -241,7 +250,7 @@ export default {
             });
         },
         _reboundPullDown() {
-            const { stopTime = 600 } = this.options.pullDownRefresh;
+            const { stopTime = 800 } = this.options.pullDownRefresh;
             return new Promise(resolve => {
                 setTimeout(() => {
                     this.isRebounding = true;
@@ -259,6 +268,16 @@ export default {
             }, this.scroll.options.bounceTime);
         }
     },
+    watch: {
+        data() {
+            setTimeout(() => {
+                this.forceUpdate(true);
+            }, 20);
+        },
+        isPullingDown() {
+            this.updateDate = this.$moment().calendar();
+        }
+    },
     components: {
         Loading,
         Bubble
@@ -267,53 +286,47 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list-wrapper {
+.scroll-wrapper {
     position: relative;
     height: 100%;
-    /*position: absolute*/
-    /*left: 0*/
-    /*top: 0*/
-    /*right: 0*/
-    /*bottom: 0*/
     overflow: hidden;
     .scroll-content {
         position: relative;
         z-index: 1;
     }
 }
-
 .pulldown-wrapper {
     position: absolute;
     width: 100%;
+    top: 0;
     left: 0;
     font-size: 22px;
-    color: $grey-dark;
-    display: flex;
-    justify-content: center;
     transition: all;
-    color: $grey-dark;
     .after-trigger {
         .loading {
-            margin-top: 45px;
+            height: 60px;
+            @include flex-center;
         }
-        .tip {
-            width: 750px;
+        .pulldown-loaded {
+            position: absolute;
+            width: 100%;
+            top: -10px;
             height: 120px;
             display: flex;
             flex-direction: column;
-        }
-        .up {
-            flex: 1;
-            line-height: 60px;
-            color: #fff;
-            text-align: center;
-            font-size: 24px;
-            @include gradient();
-        }
-        .down {
-            flex: 1;
-            line-height: 60px;
-            text-align: center;
+            .up {
+                flex: 1;
+                line-height: 60px;
+                color: #fff;
+                text-align: center;
+                font-size: 24px;
+                @include gradient();
+            }
+            .down {
+                flex: 1;
+                line-height: 60px;
+                text-align: center;
+            }
         }
     }
     .before-trigger {
@@ -321,7 +334,7 @@ export default {
         flex-direction: column;
         .tip {
             @include flex-center;
-            line-height: 50px;
+            line-height: 60px;
             span {
                 margin-left: 10px;
             }

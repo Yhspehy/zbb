@@ -15,8 +15,8 @@
         <!-- 分割线 -->
         <cut-off-line></cut-off-line>
 
-        <div>
-            <div>相关新闻</div>
+        <div class="news">
+            <div class="header">相关新闻</div>
             <news-list :newsList="newsList"></news-list>
         </div>  
     </div>
@@ -67,15 +67,22 @@ export default {
     .mainInfo {
         padding: 0 36px;
         .matchImg {
-            @include flex-center;
-            margin-bottom: 10px;
+            @include flex-center-between;
+            padding-bottom: 10px;
             .matchImgItem {
+                width: 212px;
                 img {
                     width: 212px;
                     height: 144px;
                 }
             }
         }
+    }
+    .header {
+        margin: 19px 0;
+        padding-left: 36px;
+        font-size: 28px;
+        color: $grey-dark;
     }
 }
 </style>

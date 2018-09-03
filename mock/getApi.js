@@ -9,6 +9,8 @@ const getApi = {
     '/mock/home/recommend/newsList': path.resolve(__dirname, 'home/recommend/newsList.json'),
     '/mock/home/recommend/hotGameCount': path.resolve(__dirname, 'home/recommend/hotGameCount.json'),
     '/mock/schedule/popularList': path.resolve(__dirname, 'schedule/popularList.json'),
+    '/mock/schedule/popularListBefore': path.resolve(__dirname, 'schedule/popularListBefore.json'),
+    '/mock/schedule/popularListAfter': path.resolve(__dirname, 'schedule/popularListAfter.json'),
     '/mock/schedule/groupPic': path.resolve(__dirname, 'schedule/groupPic.json'),
     '/mock/schedule/monthList': path.resolve(__dirname, 'schedule/monthList.json'),
     '/mock/schedule/followList': path.resolve(__dirname, 'schedule/popularList.json'),

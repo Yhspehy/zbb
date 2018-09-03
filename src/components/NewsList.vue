@@ -1,10 +1,26 @@
 <template>
-    <div class="news-list">
-        <div class="news-item d-flex flex-column justify-content-between border-bottom-1px" v-for="(item, index) in newsList" :key="index">
-            <div class="news-one d-flex justify-content-between" v-if="item.img_count < 3">
-                <img :src=item.img_list[0]>
-                <div class="content d-flex flex-column justify-content-between">
+    <div class="news-wrapper">
+        <div class="news-list">
+            <div class="news-item d-flex flex-column justify-content-between border-bottom-1px" v-for="(item, index) in newsList" :key="index">
+                <div class="news-one d-flex justify-content-between" v-if="item.img_count < 3">
+                    <img :src=item.img_list[0]>
+                    <div class="content d-flex flex-column justify-content-between">
+                        <div class="title">{{item.title}}</div>
+                        <div class="d-flex justify-content-between">
+                            <div class="date">{{item.create_time | moment('MM/DD HH:mm')}}</div>
+                            <div class="source">
+                                <i class="far"></i>Mavis报道
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else>
                     <div class="title">{{item.title}}</div>
+                    <div class="img-group d-flex justify-content-between">
+                        <img :src=item.img_list[0]>
+                        <img :src=item.img_list[1]>
+                        <img :src=item.img_list[2]>
+                    </div>
                     <div class="d-flex justify-content-between">
                         <div class="date">{{item.create_time | moment('MM/DD HH:mm')}}</div>
                         <div class="source">
@@ -13,21 +29,6 @@
                     </div>
                 </div>
             </div>
-            <div v-else>
-                <div class="title">{{item.title}}</div>
-                <div class="img-group d-flex justify-content-between">
-                    <img :src=item.img_list[0]>
-                    <img :src=item.img_list[1]>
-                    <img :src=item.img_list[2]>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div class="date">{{item.create_time | moment('MM/DD HH:mm')}}</div>
-                    <div class="source">
-                        <i class="far"></i>Mavis报道
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </template>
@@ -43,6 +44,11 @@ export default {
 };
 </script>
 <style lang="scss">
+.news-wrapper {
+    width: 100%;
+    padding: 0 26px;
+    background: #fff;
+}
 .news-list {
     .news-item {
         padding: 16px 10px;

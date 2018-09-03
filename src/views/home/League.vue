@@ -70,7 +70,6 @@ export default {
         };
     },
     created() {
-        this.$moment.locale('zh-cn');
         this.getPointNews();
         this.getNewsList();
     },
@@ -153,10 +152,6 @@ export default {
     }
     .news {
         width: 750px;
-        .news-wrapper {
-            padding: 0 26px;
-            background: #fff;
-        }
     }
 }
 </style>

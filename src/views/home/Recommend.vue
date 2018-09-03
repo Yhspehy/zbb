@@ -1,7 +1,7 @@
 <template>
     <div class="recommend">
         <div class="recommend-wrapper">
-            <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount ="updateCount">
+            <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount="updateCount">
                 <div class="focus-slide">
                     <slide>
                         <div v-for="(item, index) in focusList" :key="index">
@@ -48,11 +48,8 @@
                     <span class="line">|</span>
                     <span>Mavis {{hello}} 今天有 {{hotGameCount}}场赛事直播</span>
                 </div>
-                <div class="news">
-                    <div class="news-wrapper">
-                        <news-list :newsList="newsList"></news-list>
-                    </div>
-                </div>
+                <cut-off-line></cut-off-line>
+                <news-list :newsList="newsList"></news-list>
             </scroll>
         </div>
     </div>
@@ -62,12 +59,13 @@
 import Slide from '@/components/Slide';
 import HScroll from '@/components/HScroll';
 import Scroll from '@/components/Scroll';
+import CutOffLine from '@/components/CutOffLine';
 import NewsList from '@/components/NewsList';
 import { hello } from '@/assets/js/utils';
 let pageIndex = 1;
 export default {
     name: 'recommend',
-    components: { Slide, HScroll, Scroll, NewsList },
+    components: { Slide, HScroll, Scroll, NewsList, CutOffLine },
     data() {
         return {
             hello: '',
@@ -86,7 +84,6 @@ export default {
     },
 
     created() {
-        this.$moment.locale('zh-cn');
         this.getLiveTrail();
         this.getFocus();
         this.getNewsList();
@@ -150,8 +147,7 @@ export default {
         this.hello = hello();
         this.onPullingDown();
     }
-};
-</script>
+};</script>
 
 <style scoped lang="scss">
 .recommend {
