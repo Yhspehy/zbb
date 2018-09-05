@@ -39,6 +39,9 @@ export default {
     mounted() {
         this.getLeagueTodaMatchCount();
     },
+    activated() {
+        console.log('match');
+    },
     methods: {
         initCount() {
             const self = this;

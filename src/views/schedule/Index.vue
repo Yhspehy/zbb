@@ -3,7 +3,9 @@
         <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
         <div class="scheduleContent theFooterPaddingBottom">
-            <router-view></router-view>
+            <keep-alive include="schedule_popular,schedule_follow,schedule_match">
+                <router-view></router-view>
+            </keep-alive>
         </div>
 
         <v-footer></v-footer>
@@ -57,18 +59,18 @@ export default {
         '$route.name': {
             immediate: true,
             handler: function(val) {
-                let fit = null;
                 if (val === 'schedule') {
                     this.chosenNav = this.$store.state.schedule.chosenNav;
                     this.$router.push({
                         name: this.chosenNav
                     });
-                }
-                fit = find(this.navList, function(e) {
-                    return val === e.routeName;
-                });
-                if (fit && fit.routeName && fit.routeName !== this.chosenNav) {
-                    this.chooseNav(fit.routeName);
+                } else {
+                    let fit = find(this.navList, function(e) {
+                        return val === e.routeName;
+                    });
+                    if (fit && fit.routeName && fit.routeName !== this.chosenNav) {
+                        this.chooseNav(fit.routeName);
+                    }
                 }
             }
         }

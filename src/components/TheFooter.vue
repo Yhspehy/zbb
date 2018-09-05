@@ -4,7 +4,6 @@
             v-for="el in navList"
             :key="el.name"
             :to="el.routePath"
-            @click.native="$store.commit('home/SET_HOMEFOOTER', el.routePath)"
             :class="{'active': el.routePath === $store.state.home.homeFooter}">
             <i class="fa" :class="el.icon"></i>
             <span>{{el.name}}</span>

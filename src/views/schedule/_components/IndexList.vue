@@ -80,6 +80,10 @@ export default {
         startY: {
             type: Number,
             default: null
+        },
+        isNoMoreData: {
+            type: Boolean,
+            require: true
         }
     },
     computed: {
@@ -188,6 +192,9 @@ export default {
             }
             this.fixedTop = fixedTop;
             this.$refs.fixed.style['transform'] = `translate3d(0,${fixedTop}px,0)`;
+        },
+        isNoMoreData(val) {
+            val ? this.$refs.scroll.forceUpdate(false) : '';
         }
     }
 };

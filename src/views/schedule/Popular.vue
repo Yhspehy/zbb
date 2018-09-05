@@ -1,9 +1,8 @@
 <template>
     <div class="popular">
         <index-list
-            ref="list"
             :data="popularObj"
-            :startY="y"
+            :isNoMoreData="isNoMoreData"
             @onPullingUp="onPullingUp"
             @onPullingDown="onPullingDown">
         </index-list>
@@ -25,17 +24,19 @@ export default {
     data() {
         return {
             popularObj: {},
-            pageIndex: 0,
-            y: null
+            pageIndex: 1,
+            isNoMoreData: false
         };
     },
     created() {
-        this.y = this.$route.meta.scrollHeight || null;
         if (Object.keys(this.$store.state.schedule.popularList).length) {
             this.popularObj = this.$store.state.schedule.popularList;
         } else {
             this.getPopularList();
         }
+    },
+    activated() {
+        console.log('popular');
     },
     methods: {
         async getPopularList(time = this.$moment(), type = 'now') {
@@ -45,10 +46,10 @@ export default {
         },
         onPullingUp(date) {
             let lastDate = date;
-            if (this.pageIndex < 5) {
+            if (this.pageIndex < 3) {
                 this.getPopularList(lastDate, 'after');
             } else {
-                this.$refs.list.$refs.scroll.forceUpdate(false);
+                this.isNoMoreData = true;
             }
         },
         onPullingDown(date) {
@@ -56,13 +57,10 @@ export default {
             this.getPopularList(firstDate, 'before');
         }
     },
-    beforeDestroy() {
-        console.log('before destory popluar');
-    },
     beforeRouteLeave(to, from, next) {
         console.log('before route popular');
-        let height = this.$refs.list.$refs.scroll.scroll.y;
-        from.meta.scrollHeight = height;
+        // let height = this.$refs.list.$refs.scroll.scroll.y;
+        // from.meta.scrollHeight = height;
         next();
     }
 };
