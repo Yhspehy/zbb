@@ -60,7 +60,7 @@ export default {
         this.type = this.$store.state.schedule.matchLeagueName || 'NBA';
         this.chosenNav = find(this.navList, function(e) {
             return e.routeName === self.$route.matched[1].name;
-        }).name;
+        }).routeName;
     },
     methods: {
         chooseNav(name) {

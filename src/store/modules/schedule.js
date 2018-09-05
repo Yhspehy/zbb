@@ -15,7 +15,7 @@ const schedule = {
     namespaced: true,
 
     state: {
-        chosenNav: '热门',
+        chosenNav: 'schedule_popular',
         popularList: {},
         groupPic: {},
         followList: {},

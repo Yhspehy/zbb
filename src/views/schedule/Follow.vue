@@ -1,6 +1,12 @@
 <template>
     <div class="follow">
-        <index-list ref="list" :data="followObj" :startY="y" @onPullingUp="onPullingUp" @onPullingDown="onPullingDown"></index-list>
+        <index-list 
+            ref = "list"
+            :data = "followObj"
+            :startY = "y"
+            @onPullingUp = "onPullingUp"
+            @onPullingDown = "onPullingDown">
+        </index-list>
     </div>
 </template> 
 
@@ -48,17 +54,17 @@ export default {
         onPullingDown(date) {
             let firstDate = date;
             this.getPopularList(firstDate, 'before');
+        },
+        setLeaveY(y) {
+            this.y = y;
         }
     },
-    beforeRouteUpdate(to, from, next) {
-        let height = this.$refs.list.$refs.scroll.scroll.y;
-        console.log(height);
-        from.meta.scrollHeight = height;
-        next();
+    beforeDestroy() {
+        console.log('before destory follow');
     },
     beforeRouteLeave(to, from, next) {
         let height = this.$refs.list.$refs.scroll.scroll.y;
-        console.log(this.$refs.list.$refs.scroll.scroll);
+        console.log('before route follow');
         from.meta.scrollHeight = height;
         next();
     }

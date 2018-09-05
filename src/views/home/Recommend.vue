@@ -147,7 +147,8 @@ export default {
         this.hello = hello();
         this.onPullingDown();
     }
-};</script>
+};
+</script>
 
 <style scoped lang="scss">
 .recommend {

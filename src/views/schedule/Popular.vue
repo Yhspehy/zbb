@@ -1,6 +1,12 @@
 <template>
     <div class="popular">
-        <index-list ref="list" :data="popularObj" :startY="y" @onPullingUp="onPullingUp" @onPullingDown="onPullingDown"></index-list>
+        <index-list
+            ref="list"
+            :data="popularObj"
+            :startY="y"
+            @onPullingUp="onPullingUp"
+            @onPullingDown="onPullingDown">
+        </index-list>
     </div>
 </template> 
 
@@ -50,12 +56,11 @@ export default {
             this.getPopularList(firstDate, 'before');
         }
     },
-    beforeRouteUpdate(to, from, next) {
-        let height = this.$refs.list.$refs.scroll.scroll.y;
-        from.meta.scrollHeight = height;
-        next();
+    beforeDestroy() {
+        console.log('before destory popluar');
     },
     beforeRouteLeave(to, from, next) {
+        console.log('before route popular');
         let height = this.$refs.list.$refs.scroll.scroll.y;
         from.meta.scrollHeight = height;
         next();

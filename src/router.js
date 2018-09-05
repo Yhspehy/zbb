@@ -108,7 +108,6 @@ const router = new Router({
             path: '/schedule',
             name: 'schedule',
             component: Schedule,
-            redirect: '/schedule/popular',
             children: [
                 {
                     path: 'match',

@@ -7,12 +7,12 @@
             'top': top
             }">
         <router-link class="navItem"
-            :style="{'font-size': ChosenNav === item.name ? activeFontSize : normalFontSize}"
-            :class="{'navActive': ChosenNav === item.name}"
-            @click.native="clickNav(item.name)"
+            :style="{'font-size': ChosenNav === item.routeName ? activeFontSize : normalFontSize}"
+            :class="{'navActive': ChosenNav === item.routeName}"
+            @click.native="clickNav(item.routeName)"
             :to="{'name': item.routeName}"
             :replace="replace"
-            v-for="item in navList" :key="item.name">
+            v-for="item in navList" :key="item.routeName">
              {{ item.name }}
         </router-link>
     </div>
@@ -75,7 +75,7 @@ export default {
     methods: {
         clickNav(name) {
             this.ChosenNav = name;
-            this.$emit('chooseNav', name);
+            this.$emit('chosenNav', name);
         }
     },
     watch: {

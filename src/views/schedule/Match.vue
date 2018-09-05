@@ -86,6 +86,7 @@ export default {
         padding: 30px 36px;
         display: flex;
         justify-content: space-between;
+        background: #fff;
         @include border-bottom-1px;
         .leagueName {
             font-size: 28px;

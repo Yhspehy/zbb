@@ -40,14 +40,14 @@ export default {
         this.getMatchObj();
     },
     methods: {
-        async getMatchObj() {
-            let res = await this.$store.dispatch('schedule/GetPopularList');
-            for (let key in res.data.data) {
+        async getMatchObj(time = this.$moment(), type = 'now') {
+            let res = await this.$store.dispatch('schedule/GetPopularList', { time, type });
+            for (let key in res) {
                 if (this.$moment(key).format('MM月DD号') === this.$moment().format('MM月DD号')) {
                     console.log('today');
                 }
             }
-            this.matchObj = res.data.data;
+            this.matchObj = res;
         }
     }
 };

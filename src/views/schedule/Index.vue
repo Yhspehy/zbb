@@ -41,11 +41,10 @@ export default {
         };
     },
     created() {
-        // console.log('schedule created');
+        console.log('schedule created');
     },
     activated() {
-        // console.log('schedule activated');
-        this.chosenNav = this.$store.state.schedule.chosenNav;
+        console.log('schedule activated');
     },
     mounted() {},
     methods: {
@@ -58,12 +57,18 @@ export default {
         '$route.name': {
             immediate: true,
             handler: function(val) {
-                let fit = find(this.navList, function(e) {
+                let fit = null;
+                if (val === 'schedule') {
+                    this.chosenNav = this.$store.state.schedule.chosenNav;
+                    this.$router.push({
+                        name: this.chosenNav
+                    });
+                }
+                fit = find(this.navList, function(e) {
                     return val === e.routeName;
                 });
-                if (fit && fit.name) {
-                    this.chosenNav = fit.name;
-                    this.$store.commit('schedule/SET_CHOSENNAV', fit.name);
+                if (fit && fit.routeName && fit.routeName !== this.chosenNav) {
+                    this.chooseNav(fit.routeName);
                 }
             }
         }

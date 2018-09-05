@@ -49,7 +49,7 @@ import Scroll from '@/components/Scroll';
 import Loading from '@/components/loading/loading';
 import { getRect } from '@/assets/js/dom';
 export default {
-    name: 'schedule_popular',
+    name: 'schedule_scrollList',
     components: { matchItem, Scroll, TimeBar, ScrollTo, Loading },
     data() {
         return {
@@ -107,6 +107,9 @@ export default {
             }
         }, 50);
     },
+    beforeDestroy() {
+        console.log(this.$refs.scroll);
+    },
     methods: {
         scroll(pos) {
             this.scrollY = pos.y;
@@ -118,6 +121,7 @@ export default {
         },
         //计算每条数据(日期)的top并保存到topMap
         _calculateTop() {
+            console.log(document.querySelectorAll('.timeBar'));
             this.dataKeys = Object.keys(this.data);
             for (let i = 0; i < this.dataKeys.length; i++) {
                 let elTop = getRect(this.$refs[this.dataKeys[i]][0]).top;
@@ -126,6 +130,7 @@ export default {
         },
         //获取该日期所在dom的top值
         _getElTop(date) {
+            // optomize
             if (this.topMap.has(date)) {
                 return this.topMap.get(date);
             } else {

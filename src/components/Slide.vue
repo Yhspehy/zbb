@@ -184,7 +184,8 @@ export default {
             this.update();
         }
     }
-};</script>
+};
+</script>
 <style lang="scss" scoped>
 .slide {
     min-height: 1px;
