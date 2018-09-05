@@ -145,8 +145,12 @@ export default {
             this.$refs.scroll.scrollTo(x, y, time);
         },
         onPullingUp() {
-            let lastDate = this.dataKeys[this.dataKeys.length - 1];
-            this.$emit('onPullingUp', lastDate);
+            if (!this.isNoMoreData) {
+                let lastDate = this.dataKeys[this.dataKeys.length - 1];
+                this.$emit('onPullingUp', lastDate);
+            } else {
+                this.$refs.scroll.forceUpdate(false);
+            }
         },
         onPullingDown() {
             let firstDate = this.dataKeys[0];

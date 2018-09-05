@@ -56,12 +56,6 @@ export default {
             let firstDate = date;
             this.getPopularList(firstDate, 'before');
         }
-    },
-    beforeRouteLeave(to, from, next) {
-        console.log('before route popular');
-        // let height = this.$refs.list.$refs.scroll.scroll.y;
-        // from.meta.scrollHeight = height;
-        next();
     }
 };
 </script>
