@@ -344,7 +344,8 @@ export default {
 
 .pullup-wrapper {
     width: 100%;
+    color: $grey;
     @include flex-center;
-    padding: 16px 0;
+    padding: 24px 0;
 }
 </style>

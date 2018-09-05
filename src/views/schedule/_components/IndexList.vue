@@ -1,8 +1,16 @@
 <template>
     <div class="scroll-list-wrapper">
-        <scroll ref="scroll" :data="data" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" @scroll="scroll" :listenScroll="listenScroll">
-            <ul class="scroll-list" ref="dataList">
-                <li class="scroll-item" v-for="(val, key) in data" :key="key" :ref="key">
+        <scroll
+            ref="scroll"
+            :data="data"
+            :scrollOptions="scrollOptions"
+            @pullingDown="onPullingDown"
+            @pullingUp="onPullingUp"
+            @scroll="scroll"
+            :listenScroll="listenScroll">
+
+            <ul class="scroll-list">
+                <li class="scroll-item" v-for="(val, key) in data" :key="key">
                     <time-bar :currentDate="key"></time-bar>
                     <match-item v-for="item in data[key]" :key="item.id" :matchData="item">
                     </match-item>
@@ -27,7 +35,7 @@
                 </div>
             </template>
         </scroll>
-        <div ref="fixed" class="index-list-fixed index-list-anchor" v-show="isShowFixed">
+        <div class="index-list-fixed index-list-anchor" v-show="isShowFixed">
             <time-bar :currentDate="currentDate"></time-bar>
         </div>
         <scroll-to word="今日赛事" @scrollTo="_scrollTo(0, -_getElTop(today))" :isShow="isShowScrollTo" :direction="direction"></scroll-to>
@@ -59,7 +67,6 @@ export default {
             direction: 'down',
             dataKeys: [], //所有赛程日期列表
             topMap: new Map(), // 存储所有赛程日期与其Top值
-            diff: -1,
             today: '', // 当天日期
             currentDate: '', //显示当前赛程的日期
             scrollOptions: {
@@ -67,7 +74,9 @@ export default {
                 pullDownRefresh: {
                     stopTime: 0 // 这里不需要
                 }
-            }
+            },
+            TimeBarheight: 0,
+            fixedTop: 0
         };
     },
     props: {
@@ -96,23 +105,19 @@ export default {
         this.currentDate = this.today;
     },
     mounted() {
-        let vm = this;
         this.$store.dispatch('schedule/GetMonthList', {
             year: this.$moment().format('YYYY'),
             month: this.$moment().format('M')
         });
-        setTimeout(function() {
-            vm._calculateTimeBarHeight();
-            vm._calculateTop();
-            if (vm.startY !== null) {
-                vm._scrollTo(0, vm.startY, 0);
+        setTimeout(() => {
+            let scrollEl = this.$refs.scroll.scroll;
+            let todayPosY = parseInt(this._getElTop(this.today));
+            if (scrollEl.scrollerHeight - todayPosY <= scrollEl.wrapperHeight) {
+                this._scrollTo(0, -(scrollEl.scrollerHeight - scrollEl.wrapperHeight), 0);
             } else {
-                vm._scrollTo(0, -parseInt(vm._getElTop(vm.today)), 0);
+                this._scrollTo(0, -todayPosY, 0);
             }
         }, 50);
-    },
-    beforeDestroy() {
-        console.log(this.$refs.scroll);
     },
     methods: {
         scroll(pos) {
@@ -120,32 +125,27 @@ export default {
         },
         //计算timeBar高度
         _calculateTimeBarHeight() {
-            const timeBarEl = this.$el.getElementsByClassName('timeBar')[0];
+            const timeBarEl = document.querySelector('.timeBar');
             this.TimeBarheight = timeBarEl ? getRect(timeBarEl).height : 0;
         },
         //计算每条数据(日期)的top并保存到topMap
         _calculateTop() {
-            console.log(document.querySelectorAll('.timeBar'));
+            const scrollItemList = document.querySelectorAll('.scroll-item');
             this.dataKeys = Object.keys(this.data);
             for (let i = 0; i < this.dataKeys.length; i++) {
-                let elTop = getRect(this.$refs[this.dataKeys[i]][0]).top;
+                let elTop = getRect(scrollItemList[i]).top;
                 this.topMap.set(this.dataKeys[i], elTop);
             }
         },
         //获取该日期所在dom的top值
         _getElTop(date) {
-            // optomize
-            if (this.topMap.has(date)) {
-                return this.topMap.get(date);
-            } else {
-                return 0;
-            }
+            return this.topMap.has(date) ? this.topMap.get(date) : 0;
         },
         _scrollTo(x = 0, y = 0, time = 500) {
             this.$refs.scroll.scrollTo(x, y, time);
         },
         onPullingUp() {
-            let lastDate = this.dataKeys.pop();
+            let lastDate = this.dataKeys[this.dataKeys.length - 1];
             this.$emit('onPullingUp', lastDate);
         },
         onPullingDown() {
@@ -157,41 +157,40 @@ export default {
         }
     },
     watch: {
-        data() {
-            this.$nextTick(() => {
-                this._calculateTimeBarHeight();
-                this._calculateTop();
-            });
+        data: {
+            immediate: true,
+            handler: function() {
+                this.$nextTick(() => {
+                    let els = document.querySelectorAll('.timeBar');
+                    if (els.length > 1) {
+                        this._calculateTimeBarHeight();
+                        this._calculateTop();
+                    }
+                });
+            }
         },
-        scrollY(val) {
+        scrollY(val, old) {
             let distance = val + this._getElTop(this.today);
             if (distance > 60 || distance < -130) {
                 this.isShowScrollTo = true;
-                if (distance < -130) {
-                    this.direction = 'up';
-                } else {
-                    this.direction = 'down';
-                }
+                this.direction = distance < -130 ? 'up' : 'down';
             } else {
                 this.isShowScrollTo = false;
             }
-            for (let i = 0; i < this.dataKeys.length - 1; i++) {
-                let top1 = this.topMap.get(this.dataKeys[i]);
-                let top2 = this.topMap.get(this.dataKeys[i + 1]);
-                if (-val >= top1 && -val < top2) {
-                    this.currentDate = this.dataKeys[i];
-                    this.diff = top2 + val;
-                    return;
-                }
-            }
-        },
-        diff(newVal) {
-            let fixedTop = newVal > 0 && newVal < this.TimeBarheight ? newVal - this.TimeBarheight : 0;
-            if (this.fixedTop === fixedTop) {
-                return;
-            }
+
+            let nowDatePosY = this.topMap.get(this.currentDate);
+            let dataKeysIndexNow = this.dataKeys.findIndex(e => e === this.currentDate);
+            const nextPosY =
+                this.dataKeys[dataKeysIndexNow + 1] && this.topMap.get(this.dataKeys[dataKeysIndexNow + 1]);
+
+            if (nowDatePosY > -val) this.currentDate = this.dataKeys[dataKeysIndexNow - 1];
+            if (val < old && -val > nextPosY) this.currentDate = this.dataKeys[dataKeysIndexNow + 1];
+
+            let fixedTop = -val + this.TimeBarheight > nextPosY ? nextPosY + val - this.TimeBarheight : 0;
+            if (fixedTop === this.fixedTop) return;
+            let fixedEl = document.querySelector('.index-list-fixed');
+            fixedEl.style['transform'] = `translateY(${fixedTop}px)`;
             this.fixedTop = fixedTop;
-            this.$refs.fixed.style['transform'] = `translate3d(0,${fixedTop}px,0)`;
         },
         isNoMoreData(val) {
             val ? this.$refs.scroll.forceUpdate(false) : '';
