@@ -9,7 +9,7 @@
 </template>
 <script>
 export default {
-    name: 'time_bar',
+    name: 'schedule_timeBar',
     props: {
         currentDate: {
             type: String,

@@ -3,9 +3,10 @@
         <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
         <div class="scheduleContent theFooterPaddingBottom">
-            <keep-alive include="schedule_popular,schedule_follow,schedule_match">
+            <keep-alive>
                 <router-view></router-view>
             </keep-alive>
+            
         </div>
 
         <v-footer></v-footer>

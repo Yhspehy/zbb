@@ -11,7 +11,7 @@
  *
  */
 export default {
-    name: 'schedule_scroll_to',
+    name: 'schedule_scrollTo',
     props: {
         direction: {
             type: String,
