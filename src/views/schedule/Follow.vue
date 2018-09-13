@@ -34,6 +34,7 @@ export default {
         } else {
             this.getPopularList();
         }
+        console.log(this);
     },
     activated() {
         console.log('follow');

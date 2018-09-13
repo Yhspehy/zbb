@@ -1,19 +1,17 @@
 <template>
     <div class="setting-join">
-        <div class="mar-top padding-36 id">
-            <div class="item border-bottom">
+        <cut-off-line></cut-off-line>
+
+        <div class="joinContent">
+            <div class="item border-bottom-1px" v-for="(item, idx) in list" :key="item.name">
                 <span>
-                    <i class="fa fa-qq wid-50"></i>QQ群：
-                    <input type="text" class="value" id="qq_group" value="123456789" readonly>
+                    <i class="fa fa-qq"></i>
+                    <span>
+                        {{item.name}}：
+                        <span class="greyValue" :class="'copy' + idx">{{item.value}}</span>
+                    </span>
                 </span>
-                <span style="color: $blue;" @click="onCopy('qq_group')">复制</span>
-            </div>
-            <div class="item">
-                <span>
-                    <i class="fa fa-weixin wid-50"></i>微信公众号：
-                    <input type="text" class="value" id="weixin_num" value="43256676" readonly>
-                </span>
-                <span style="color: $blue;" @click="onCopy('weixin_num')">复制</span>
+                <span class="copyBtn" @click="onCopy('.copy' + idx)">复制</span>
             </div>
         </div>
     </div>
@@ -21,15 +19,31 @@
 
 <script>
 import HeaderBar from '@/components/HeaderBar';
+import cutOffLine from '@/components/CutOffLine';
+import { copy } from '@/utils/index';
 export default {
     name: 'profile_setting_join',
-    components: { HeaderBar },
+    components: { HeaderBar, cutOffLine },
+    data() {
+        return {
+            list: [
+                {
+                    avatar: '',
+                    name: 'QQ群',
+                    value: 123456789
+                },
+                {
+                    avatar: '',
+                    name: '微信公众号',
+                    value: 43256676
+                }
+            ]
+        };
+    },
     methods: {
-        onCopy(id) {
-            let url = document.getElementById(id);
-            url.select(); // 选择对象
-            document.execCommand('Copy');
-            this.$toast({ duration: 500, message: '复制成功' });
+        onCopy(el) {
+            let res = copy(el);
+            if (res) this.$toast({ duration: 500, message: '复制成功' });
         }
     }
 };
@@ -37,77 +51,29 @@ export default {
 
 <style scoped lang="scss">
 .setting-join {
-    position: relative;
-    .mar-top {
-        margin-top: 20px;
-    }
-    .border-bottom {
-        @include border-bottom-1px;
-    }
-    .padding-36 {
-        padding: 0 36px;
-    }
-    .wid-50 {
-        display: inline-block;
-        width: 50px;
-    }
-    .value {
-        color: $grey;
-        border: 0;
-        outline: none;
-    }
-    .item {
-        height: 90px;
-        color: $grey-dark;
-        font-size: 28px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .head {
-        position: relative;
-        width: 100%;
-        height: 140px;
-        background: #ffffff;
-        .header-img {
-            width: 100px;
-            height: 100px;
-            .user-header {
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-            }
-            .album {
-                display: block;
-                position: absolute;
-                bottom: 20px;
-                right: 40px;
-                width: 30px;
-                height: 31px;
-                background-image: linear-gradient(
-                    -45deg,
-                    #1d75f2 0%,
-                    #0f6ef9 0%,
-                    #0066ff 0%,
-                    #0073ff 0%,
-                    #0080ff 0%,
-                    #009aff 50%,
-                    #04a7ff 73%,
-                    #07b5ff 100%
-                );
-                border-radius: 50%;
-            }
-        }
-    }
-    .information {
-        width: 100%;
-        height: 360px;
-        background: #ffffff;
-    }
-    .id {
+    .joinContent {
         width: 100%;
         height: 180px;
         background: #ffffff;
+        padding: 0 36px;
+
+        .greyValue {
+            color: $grey;
+        }
+        .item {
+            height: 90px;
+            color: $grey-dark;
+            font-size: 28px;
+            @include flex-center-between;
+            @include border-bottom-1px;
+            .fa {
+                display: inline-block;
+                width: 50px;
+            }
+        }
+        .copyBtn {
+            color: $blue;
+        }
     }
 }
 </style>

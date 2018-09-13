@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { getMatchStatus } from '@/Utils/live';
+import { getMatchStatus } from '@/utils/live';
 export default {
     name: 'live_matchInfo',
     props: {

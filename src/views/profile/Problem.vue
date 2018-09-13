@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import collapse from '@/Utils/collapse';
+import collapse from '@/utils/collapse';
 export default {
     name: 'profile_setting_problem',
     components: { collapse },

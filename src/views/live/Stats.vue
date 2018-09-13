@@ -70,7 +70,7 @@
 import { getStats } from '@/Api/live';
 import cutOffLine from '@/components/CutOffLine';
 import matchInfo from './_components/MatchInfo';
-import collapse from '@/Utils/collapse';
+import collapse from '@/utils/collapse';
 import statsItemHeader from './_components/StatsItemHeader';
 import StatsTeamNba from './_components/StatsTeamNBA';
 import StatsTeamFootball from './_components/StatsTeamFootball';

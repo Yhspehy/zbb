@@ -2,11 +2,11 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import Toast from './Utils/toast/toast';
-import Dialog from './Utils/dialog/dialog';
+import Toast from './utils/toast/toast';
+import Dialog from './utils/dialog/dialog';
 
 import { request, setVm } from './Api/request';
-// import C_Alert from './Utils/Alert';
+// import C_Alert from './utils/Alert';
 import moment from 'moment';
 
 import clean from './directive/directive';
