@@ -1,32 +1,36 @@
 <template>
-    <div class="setting-index">
-        <router-link :to="{'name':'profile_setting_myself'}" class="mar-top padding-36 myself item">
+    <div class="setting-index clearfix">
+        <router-link :to="{'name':'profile_setting_myself'}" class="setting-container item">
             <span>个人信息</span>
             <i class="fa fa-angle-right"></i>
         </router-link>
-        <div class="mar-top padding-36 push">
-            <router-link :to="{'name':'profile_setting_push'}" class="item border-bottom">
+
+
+        <div class="setting-container">
+            <router-link :to="{'name':'profile_setting_push'}" class="item border-bottom-1px">
                 <span>推送通知</span>
                 <i class="fa fa-angle-right"></i>
             </router-link>
-            <div class="item border-bottom">
+            <div class="item border-bottom-1px">
                 <span>无图模式下(2G/3G/4G)</span>
-                <i class="fa fa-check"></i>
+                <i class="fa fa-check" :style="{'color': check.noImgMode ? '#07b5ff' : ''}"></i>
             </div>
-            <div class="item border-bottom">
+            <div class="item border-bottom-1px">
                 <span>WIFI下自动播放</span>
-                <i class="fa fa-check" style="color:#07b5ff"></i>
+                <i class="fa fa-check" :style="{'color': check.autoPlayInWifi ? '#07b5ff' : ''}"></i>
             </div>
             <div class="item" @click="confirm(`<p>清除缓存文件</p><p>89.3MB</p>`)">
                 <span>清除缓存</span>
                 <span>
-                    39.9MB&nbsp;
+                    <span>39.9MB&nbsp;</span>
                     <i class="fa fa-angle-right"></i>
                 </span>
             </div>
         </div>
-        <div class="mar-top padding-36 join">
-            <router-link :to="{'name':'profile_setting_join'}" class="item border-bottom">
+
+
+        <div class="setting-container">
+            <router-link :to="{'name':'profile_setting_join'}" class="item border-bottom-1px">
                 <span>加入我们</span>
                 <i class="fa fa-angle-right"></i>
             </router-link>
@@ -35,30 +39,35 @@
                 <i class="fa fa-angle-right"></i>
             </router-link>
         </div>
-        <div class="mar-top padding-36 recommend">
-            <div class="item border-bottom" @click="show">
+
+
+        <div class="setting-container">
+            <div class="item border-bottom-1px" @click="show">
                 <span>推荐给好友</span>
                 <i class="fa fa-angle-right"></i>
             </div>
-            <div class="item border-bottom">
+            <div class="item border-bottom-1px">
                 <span>给我们评分鼓励下吧</span>
                 <i class="fa fa-angle-right"></i>
             </div>
-            <div class="item border-bottom" @click="confirm(`<p>当前版本:1.0.0</p><p>是否更新至最新版本:2.2.2</p>`)">
+            <div class="item border-bottom-1px" @click="confirm(`<p>当前版本:1.0.0</p><p>是否更新至最新版本:2.2.2</p>`)">
                 <span>检测新版本</span>
                 <i class="fa fa-angle-right"></i>
             </div>
             <router-link :to="{'name':'profile_setting_about'}" class="item">
                 <span>关于我们</span>
                 <span>
-                    1.0.0&nbsp;
+                    <span>1.0.0&nbsp;</span>
                     <i class="fa fa-angle-right"></i>
                 </span>
             </router-link>
         </div>
-        <div class="mar-top padding-36 quit" @click="confirm('是否确认退出？')">
+
+
+        <div class="setting-container" @click="confirm('是否确认退出？')">
             退出当前账号
         </div>
+
 
         <transition name="translateY-20">
             <show-dialog
@@ -78,6 +87,10 @@ export default {
         return {
             chosen: {
                 showStats: false
+            },
+            check: {
+                noImgMode: false,
+                autoPlayInWifi: true
             }
         };
     },
@@ -88,32 +101,8 @@ export default {
         close() {
             this.chosen.showStats = false;
         },
-        toast() {
-            this.$toast('message');
-        },
-        alert() {
-            this.$dialog.alert('alert').then(() => {
-                // This will be triggered when user clicks on ok
-                console.log('ok');
-            });
-        },
-        alertWithHtml() {
-            this.$dialog.alert(`<p>当前版本:1.0.0</p></br><p>是否更新至最新版本:2.2.2</p>`, { html: true }).then(() => {
-                // This will be triggered when user clicks on ok
-                console.log('ok');
-            });
-        },
         confirm(content) {
-            this.$dialog.confirm(content, { html: true }).then(
-                () => {
-                    // This will be triggered when user clicks on ok
-                    console.log('ok');
-                },
-                () => {
-                    // This will be triggered when user clicks on cancel
-                    console.log('cancel');
-                }
-            );
+            this.$dialog.confirm(content, { html: true });
         }
     }
 };
@@ -121,48 +110,21 @@ export default {
 
 <style scoped lang="scss">
 .setting-index {
-    position: relative;
-    .mar-top {
+    .setting-container {
+        background: #fff;
         margin-top: 20px;
-    }
-    .border-bottom {
-        @include border-bottom-1px;
-    }
-    .padding-36 {
         padding: 0 36px;
+    }
+    .border-bottom-1px {
+        @include border-bottom-1px;
     }
     .item {
         height: 90px;
         color: $grey-dark;
         font-size: 28px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .myself {
-        width: 100%;
-        height: 90px;
-        background: #ffffff;
-    }
-    .push {
-        width: 100%;
-        height: 360px;
-        background: #ffffff;
-    }
-    .join {
-        width: 100%;
-        height: 180px;
-        background: #ffffff;
-    }
-    .recommend {
-        width: 100%;
-        height: 360px;
-        background: #ffffff;
+        @include flex-center-between;
     }
     .quit {
-        width: 100%;
-        height: 90px;
-        background: #ffffff;
         font-size: 28px;
         color: $red;
         text-align: center;
