@@ -725,7 +725,7 @@ code.language-yaml {
 <h3 class="mume-header" id="%E7%83%AD%E9%97%A8%E8%B5%9B%E7%A8%8B">热门赛程</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
-     * 沟通，预计返回一周的数据,倒序排列
+     * 沟通，预计返回一周的数据(当前日期前两天以及后四天的数据),倒序排列
      * @api {get}  schedule/popular
      * 
      * @params time  {String}  开始时间(时间戳) 
@@ -2070,6 +2070,31 @@ code.language-yaml {
      * 
      * @return cache  缓存大小
      */</span>
+</pre><h3 class="mume-header" id="%E6%8E%A8%E9%80%81%E5%8A%9F%E8%83%BD">推送功能</h3>
+
+<pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**
+     * @api {get}  myself/push
+     * 
+     * @return important_news  要闻通知
+     * @return follow_team_games   关注球队比赛开始结束通知
+     * @return follow_team_news   关注球队的重要新闻
+     * @return mention    艾特@我的
+     * @return reply    回复我的
+     * @return no_border_in_night    夜间免打扰
+     */</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        <span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token string">"msg"</span><span class="token punctuation">:</span> <span class="token string">"..."</span><span class="token punctuation">,</span>
+        <span class="token string">"data"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token string">"important_news"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token string">"follow_team_games"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token string">"follow_team_news"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token string">"mention"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token string">"reply"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            <span class="token string">"no_border_in_night"</span><span class="token punctuation">:</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </pre><h3 class="mume-header" id="%E5%BB%BA%E8%AE%AE%E4%BC%98%E5%8C%96">建议优化</h3>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript">    <span class="token comment">/**

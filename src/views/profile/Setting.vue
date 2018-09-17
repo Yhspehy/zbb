@@ -76,6 +76,7 @@ export default {
 <style scoped lang="scss">
 .setting {
     background-color: $bg-body;
+    min-height: 100vh;
     .settingContent {
         margin-top: 110px;
     }

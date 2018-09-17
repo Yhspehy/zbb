@@ -1979,7 +1979,7 @@ print_background: false
 ```
 
 
-<!-- ### 推送功能
+### 推送功能
 
 ```js
     /**
@@ -2005,7 +2005,7 @@ print_background: false
             "no_border_in_night": true
         }
     }
-``` -->
+``` 
 
 
 

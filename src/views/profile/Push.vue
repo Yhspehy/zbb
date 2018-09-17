@@ -1,82 +1,104 @@
 <template>
-    <div class="setting-push">
-        <div class="mar-top padding-36 item-127 d-flex justify-content-between align-items-center">
-            <div>
-                <p>要闻通知</p>
-                <span class="tips">精选内容或重要新闻通知提醒</span>
+    <div class="setting-push clearfix">
+        <div class="container" v-for="(item, idx) in content" :key="idx">
+            <div v-for="(el, elIdx) in item"
+                 :key="elIdx"
+                 class="item"
+                 :class="{'border-bottom-1px': elIdx < item.length - 1}">
+
+                <div v-if="typeof el.text !== 'string'">
+                    <div v-for="(t, tIdx) in el.text" :key="tIdx" :class="{'tips': tIdx === el.text.length - 1}">{{t}}</div>
+                </div>
+
+                <div v-else>{{el.text}}</div>
+
+                <i  class="fa fa-check"
+                    :style="{'color': check[el.key] ? '#07b5ff' : ''}"
+                    @click="triggerPush(el.key)"></i>
             </div>
-            <i class="fa fa-check" style="color:#07b5ff"></i>
-        </div>
-        <div class="mar-top padding-36 item-180">
-            <div class="item border-bottom">
-                <span>关注球队比赛在开赛/进球/结束时通知</span>
-                <i class="fa fa-check" style="color:#07b5ff"></i>
-            </div>
-            <div class="item">
-                <span>关注球队的重要新闻</span>
-                <i class="fa fa-check" style="color:#07b5ff"></i>
-            </div>
-        </div>
-        <div class="mar-top padding-36 item-180">
-            <div class="item border-bottom">
-                <span>@我的</span>
-                <i class="fa fa-check" style="color:#07b5ff"></i>
-            </div>
-            <div class="item">
-                <span>@我的</span>
-                <i class="fa fa-check" style="color:#07b5ff"></i>
-            </div>
-        </div>
-        <div class="mar-top padding-36 item-127 d-flex justify-content-between align-items-center">
-            <div>
-                <p>要闻通知</p>
-                <span class="tips">精选内容或重要新闻通知提醒</span>
-            </div>
-            <i class="fa fa-check"></i>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'profile_setting_push'
+    name: 'profile_setting_push',
+    data() {
+        return {
+            check: {
+                importantNews: true,
+                followTeamGames: true,
+                followTeamNews: false,
+                mention: true,
+                reply: true,
+                noBorderInNight: false
+            },
+            content: [
+                [
+                    {
+                        text: ['要闻通知', '精选内容或重要新闻通知提醒'],
+                        key: 'importantNews'
+                    }
+                ],
+                [
+                    {
+                        text: '关注球队比赛在开赛/进球/结束时通知',
+                        key: 'followTeamGames'
+                    },
+                    {
+                        text: '关注球队的重要新闻',
+                        key: 'followTeamNews'
+                    }
+                ],
+                [
+                    {
+                        text: '@我的',
+                        key: 'mention'
+                    },
+                    {
+                        text: '回复我的',
+                        key: 'reply'
+                    }
+                ],
+                [
+                    {
+                        text: ['夜间免打扰', '免打扰模式下24:00-次日8:00都不再接受@和回复提醒'],
+                        key: 'noBorderInNight'
+                    }
+                ]
+            ]
+        };
+    },
+    methods: {
+        triggerPush(key) {
+            this.check[key] = !this.check[key];
+        }
+    }
 };
 </script>
 
 <style scoped lang="scss">
 .setting-push {
-    position: relative;
-    .mar-top {
+    .container {
         margin-top: 20px;
+        padding: 0 36px;
+        background: #ffffff;
     }
-    .border-bottom {
+    .border-bottom-1px {
         @include border-bottom-1px;
     }
-    .padding-36 {
-        padding: 0 36px;
-    }
     .item {
-        height: 90px;
+        width: 100%;
+        padding: 30px 0;
         color: $grey-dark;
         font-size: 28px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .item-127 {
-        position: relative;
-        width: 100%;
-        height: 127px;
-        background: #ffffff;
+        @include flex-center-between;
         .tips {
             font-size: 24px;
             color: $grey;
+            margin-top: 10px;
+            font-weight: 300;
         }
-    }
-    .item-180 {
-        width: 100%;
-        height: 180px;
-        background: #ffffff;
     }
 }
 </style>
