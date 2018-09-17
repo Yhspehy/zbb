@@ -76,9 +76,6 @@ export default {
 <style scoped lang="scss">
 .setting {
     background-color: $bg-body;
-    position: fixed;
-    width: 100%;
-    height: 100%;
     .settingContent {
         margin-top: 110px;
     }

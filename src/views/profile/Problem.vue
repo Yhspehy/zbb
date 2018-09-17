@@ -2,11 +2,9 @@
     <div class="setting-push">
         <ul class="mar-top item-fixed">
             <li v-for="item in contentList" :key="item.title">
-                <div class="item border-bottom">
+                <div class="item border-bottom" @click="emitClick(item.colClass)">
                     <span>{{item.title}}</span>
-                    <i class="fa fa-angle-down"
-                        :class="{'rotate': expandObj[item.colClass]}"
-                        @click="emitClick(item.colClass)"></i>
+                    <i class="fa fa-angle-down" :class="{'rotate': expandObj[item.colClass]}"></i>
                 </div>
                 <collapse :active="expandObj[item.colClass]">
                     <div class="content">{{item.content}}</div>

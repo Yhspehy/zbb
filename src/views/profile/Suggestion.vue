@@ -1,12 +1,10 @@
 <template>
     <div class="setting-join">
-        <div class="suggestType">
+        <div class="suggestType" @click="emitClick('select')">
             <span>{{type}}</span>
-            <i  class="fa fa-angle-down"
-                :class="{'rotate': expandObj.select}"
-                @click="emitClick('select')"></i>
+            <i  class="fa fa-angle-down" :class="{'rotate': expandObj.select}"></i>
         </div>
-        <collapse :active="expandObj.select">
+        <collapse :active="expandObj.select" :duration="200">
             <div class="select border-top-1px">
                 <div class="option border-bottom-1px"
                      v-for="item in typeList"
