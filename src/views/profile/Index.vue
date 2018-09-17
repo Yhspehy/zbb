@@ -83,12 +83,12 @@
 
 <script>
 import vFooter from '@/components/TheFooter';
-import HScroll from '@/components/HScroll';
+// import HScroll from '@/components/HScroll';
 import BScroll from 'better-scroll';
 export default {
     name: 'profile',
     components: {
-        HScroll,
+        // HScroll,
         vFooter
     },
     data() {

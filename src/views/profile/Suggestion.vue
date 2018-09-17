@@ -1,23 +1,29 @@
 <template>
     <div class="setting-join">
-        <div class="mar-top padding-36 d-flex justify-content-between align-items-center item ">
-            <span>建议优化</span>
-            <i class="fa fa-angle-down"
+        <div class="suggestType">
+            <span>{{type}}</span>
+            <i  class="fa fa-angle-down"
                 :class="{'rotate': expandObj.select}"
                 @click="emitClick('select')"></i>
         </div>
         <collapse :active="expandObj.select">
-            <div class="padding-36 select">
-                <div class="option">直播</div>
-                <div class="option">等级</div>
-                <div class="option">社区</div>
-                <div class="option">其他</div>
-                <div class="option">优化建议</div>
+            <div class="select border-top-1px">
+                <div class="option border-bottom-1px"
+                     v-for="item in typeList"
+                     @click="choosenType(item)"
+                     :key="item">{{ item }}
+                </div>
             </div>
         </collapse>
-        <div class="mar-top suggestion-content">
-            <textarea id="content" @keyup="checkLen()" cols="30" rows="10"></textarea>
-            <div class="word-count" id="word_count"><span id="count">0</span>/200</div>
+        <div class="suggestion-content">
+            <textarea
+                id="content"
+                placeholder="请输入您的建议"
+                v-model="content">
+            </textarea>
+            <div class="word-count" id="word_count">
+                <span id="count">{{wordCount}}/{{wordCountLimit}}</span>
+            </div>
         </div>
         <div class="submit">提交</div>
     </div>
@@ -30,30 +36,33 @@ export default {
     components: { collapse },
     data() {
         return {
+            aa: '',
+            type: '建议优化',
             expandObj: {
                 select: false
-            }
+            },
+            typeList: ['直播', '等级', '社区', '其他', '优化建议'],
+            wordCountLimit: 200,
+            wordCount: 0,
+            content: ''
         };
     },
     methods: {
         emitClick(key) {
             this.expandObj[key] = !this.expandObj[key];
         },
-        checkLen() {
-            let obj = document.getElementById('content');
-            var maxChars = 200; //最多字符数
-            if (obj.value.length > maxChars) {
-                document.getElementById('word_count').style.color = '$red';
-                //obj.value = obj.value.substring(0,maxChars);
+        choosenType(item) {
+            this.type = item;
+            this.expandObj.select = false;
+        }
+    },
+    watch: {
+        content(val, old) {
+            if (val.length > this.wordCountLimit) {
+                this.content = old;
+                return;
             }
-            let curr = obj.value.length;
-            document.getElementById('count').innerHTML = curr.toString();
-        },
-        onCopy(id) {
-            let url = document.getElementById(id);
-            url.select(); // 选择对象
-            document.execCommand('Copy');
-            this.$toast({ duration: 500, message: '复制成功' });
+            this.wordCount = val.length;
         }
     }
 };
@@ -61,14 +70,13 @@ export default {
 
 <style scoped lang="scss">
 .setting-join {
-    .mar-top {
+    .suggestType {
         margin-top: 20px;
-    }
-    .border-bottom {
-        @include border-bottom-1px;
-    }
-    .padding-36 {
-        padding: 0 36px;
+        padding: 30px 36px;
+        background: #fff;
+        color: $grey-dark;
+        font-size: 28px;
+        @include flex-center-between;
         .fa-angle-down {
             font-size: 30px;
             cursor: pointer;
@@ -78,39 +86,12 @@ export default {
             transform: rotate(180deg);
         }
     }
-    .wid-50 {
-        display: inline-block;
-        width: 50px;
-    }
-    .value {
-        color: $grey;
-        border: 0;
-        outline: none;
-    }
-    .item {
-        position: relative;
-        width: 100%;
-        height: 90px;
-        background: #ffffff;
-        color: $grey-dark;
-        font-size: 28px;
-        .fa-angle-down {
-            transition: transform 0.5s;
-        }
-        .rotate {
-            transform: rotate(180deg);
-        }
-    }
     .select {
-        width: 100%;
-        height: 400px;
+        padding: 0 36px;
         background: #ffffff;
         z-index: 99;
-        @include border-bottom-1px(#cccccc);
         @include border-top-1px(#cccccc);
         .option {
-            width: 100%;
-            height: 80px;
             color: $grey;
             line-height: 80px;
             &:not(:last-child) {
@@ -120,17 +101,17 @@ export default {
     }
     .suggestion-content {
         position: fixed;
-        top: 200px;
+        top: 220px;
         width: 100%;
-        min-height: 296px;
+        height: 336px;
         background: #ffffff;
         padding: 20px 36px;
         textarea {
             width: 100%;
+            height: 260px;
             outline: none;
             resize: none;
             border: 0;
-            overflow-y: hidden;
         }
         .word-count {
             text-align: right;
@@ -160,7 +141,6 @@ export default {
                 #07b5ff 100%
             ),
             linear-gradient(#eff0f3, #eff0f3);
-        background-blend-mode: normal, normal;
         border-radius: 10px;
     }
 }
