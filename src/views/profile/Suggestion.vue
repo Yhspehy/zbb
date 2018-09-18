@@ -1,5 +1,5 @@
 <template>
-    <div class="setting-join">
+    <div class="setting-join clearfix">
         <div class="suggestType" @click="emitClick('select')">
             <span>{{type}}</span>
             <i  class="fa fa-angle-down" :class="{'rotate': expandObj.select}"></i>
@@ -99,7 +99,7 @@ export default {
     }
     .suggestion-content {
         position: fixed;
-        top: 220px;
+        top: 226px;
         width: 100%;
         height: 336px;
         background: #ffffff;

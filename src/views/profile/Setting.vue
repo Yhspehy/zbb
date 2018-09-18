@@ -78,7 +78,7 @@ export default {
     background-color: $bg-body;
     min-height: 100vh;
     .settingContent {
-        margin-top: 110px;
+        margin-top: 90px;
     }
 }
 </style>
