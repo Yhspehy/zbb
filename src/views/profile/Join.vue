@@ -1,5 +1,6 @@
 <template>
-    <div class="setting-join">
+<transition name="birth">
+      <div class="setting-join">
         <cut-off-line></cut-off-line>
 
         <div class="joinContent">
@@ -15,6 +16,8 @@
             </div>
         </div>
     </div>
+</transition>
+  
 </template>
 
 <script>
@@ -74,6 +77,18 @@ export default {
         .copyBtn {
             color: $blue;
         }
+    }
+
+    .birth-enter-active {
+        transition: all 0.5s ease;
+    }
+    .birrh-leave-active {
+        transition: all 0.5s ease;
+    }
+    .birth-enter,
+    .birth-leave-to {
+        transform: translateY(100px);
+        opacity: 0;
     }
 }
 </style>

@@ -23,13 +23,14 @@ export function request(url, options) {
         timeout: 5000,
         params: {
             token: token
-        }
+        },
+        noStatus: false
     };
 
     const mergeOptions = merge(defaultOptions, options);
 
     return axios(mergeOptions).then(res => {
-        if (!res.data.status) {
+        if (!res.data.status && !mergeOptions.noStatus) {
             console.warn('status is not true');
             // 500提示页
             if (res.data.message === 500) {

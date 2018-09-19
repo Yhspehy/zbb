@@ -35,7 +35,7 @@
                 <span>
                     <i class="fa fa-birthday-cake"></i>生日
                 </span>
-                <span>
+                <span @click="show.birth = true">
                     {{birthday}}
                     <i class="fa fa-angle-right"></i>
                 </span>
@@ -67,8 +67,9 @@
             </div>
         </div>
 
-
-        <birth-location></birth-location>
+        <transition name="slide-fade">
+            <birth-location v-if="show.birth" @close="close"></birth-location>
+        </transition>
     </div>
 </template>
 
@@ -86,13 +87,21 @@ export default {
             birthday: '请选择',
             location: '请选择',
             mobile: '18283837373',
-            id: 10086
+            id: 10086,
+            show: {
+                birth: false
+            }
         };
     },
     computed: {
         encryptMobile() {
             const type = 'xxx****xxxx';
             return type.replace(/x/g, (a, b) => this.mobile[b]);
+        }
+    },
+    methods: {
+        close(key) {
+            this.show[key] = false;
         }
     }
 };
@@ -148,6 +157,18 @@ export default {
     }
     .border-bottom-1px {
         @include border-bottom-1px;
+    }
+
+    .birth-enter-active {
+        transition: all 0.5s ease;
+    }
+    .birrh-leave-active {
+        transition: all 0.5s ease;
+    }
+    .birth-enter,
+    .birth-leave-to {
+        transform: translateY(100px);
+        opacity: 0;
     }
 }
 </style>
