@@ -1,43 +1,50 @@
 <template>
-    <div class="birthAndLocation">
-        <div class="container">
-            <header>
-                <div class="close" @click="close">取消</div>
-                <div class="save">保存</div>
-            </header>
+    <transition name="slide-top">
 
-            <section>
-                <div class="mask-top"></div>
-                <div class="mask-bottom"></div>
-                <div class="wheel-wrapper" ref="wheelWrapper">
-                    <div class="wheel">
-                        <ul class="wheel-scroll">
-                            <li v-for="item in leftList" class="wheel-item" :key="item">{{item}}</li>
-                        </ul>
+        <div class="birthAndLocation">
+            <!-- <c-mask></c-mask> -->
+
+            <div class="container">
+                <header>
+                    <div class="close" @click="close">取消</div>
+                    <div class="save">保存</div>
+                </header>
+
+                <section>
+                    <div class="mask-top"></div>
+                    <div class="mask-bottom"></div>
+                    <div class="wheel-wrapper" ref="wheelWrapper">
+                        <div class="wheel">
+                            <ul class="wheel-scroll">
+                                <li v-for="item in leftList" class="wheel-item" :key="item">{{item}}</li>
+                            </ul>
+                        </div>
+                        <div class="wheel">
+                            <ul class="wheel-scroll">
+                                <li v-for="item in middleList" class="wheel-item" :key="item">{{item}}</li>
+                            </ul>
+                        </div>
+                        <div class="wheel">
+                            <ul class="wheel-scroll">
+                                <li v-for="item in rightList" class="wheel-item" :key="item">{{item}}</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="wheel">
-                        <ul class="wheel-scroll">
-                            <li v-for="item in middleList" class="wheel-item" :key="item">{{item}}</li>
-                        </ul>
-                    </div>
-                    <div class="wheel">
-                        <ul class="wheel-scroll">
-                            <li v-for="item in rightList" class="wheel-item" :key="item">{{item}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
-    </div>
+    </transition>
 
 </template>
 
 <script>
-import { getAddress } from '@/Api/profile';
+// import cMask from '@/components/Mask';
 import BScroll from 'better-scroll';
+import { getAddress } from '@/Api/profile';
 
 export default {
     name: 'profile_birthAndLocation',
+    // components: { cMask },
     data() {
         return {
             china: {},
@@ -188,17 +195,18 @@ export default {
 <style scoped lang="scss">
 .birthAndLocation {
     position: fixed;
-    z-index: 100;
+    z-index: 101;
     top: -200px;
     left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.4);
     .container {
-        position: fixed;
+        position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
+        z-index: 110;
         header {
             font-size: 28px;
             background: #eff0f3;
@@ -257,5 +265,17 @@ export default {
             }
         }
     }
+}
+
+.slide-top-enter-active {
+    transition: all 0.5s ease;
+}
+.slide-top-leave-active {
+    transition: all 0.5s ease;
+}
+.slide-top-enter,
+.slide-top-leave-to {
+    transform: translateY(100px);
+    opacity: 0;
 }
 </style>

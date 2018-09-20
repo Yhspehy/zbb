@@ -67,9 +67,8 @@
             </div>
         </div>
 
-        <transition name="slide-fade">
-            <birth-location v-if="show.birth" @close="close"></birth-location>
-        </transition>
+
+         <birth-location v-if="show.birth" @close="close"></birth-location>
     </div>
 </template>
 
@@ -166,18 +165,6 @@ export default {
     }
     .border-bottom-1px {
         @include border-bottom-1px;
-    }
-
-    .birth-enter-active {
-        transition: all 0.5s ease;
-    }
-    .birrh-leave-active {
-        transition: all 0.5s ease;
-    }
-    .birth-enter,
-    .birth-leave-to {
-        transform: translateY(100px);
-        opacity: 0;
     }
 }
 </style>

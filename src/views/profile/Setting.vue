@@ -77,11 +77,10 @@ export default {
         if (!this.$store.state.profile.transition) {
             this.transitionName = '';
             this.$store.commit('profile/SET_TRANSITION', true);
-            setTimeout(() => next(), 0);
         } else {
             this.transitionName = 'slide-left';
-            next();
         }
+        next();
     },
     watch: {
         $route() {
