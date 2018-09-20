@@ -1,5 +1,5 @@
 <template>
-    <div class="setting-myself clearfix">
+    <div class="setting-myself">
         <div class="container">
             <div class="item" style="padding: 2vw 0">
                 <span>
@@ -75,6 +75,8 @@
 
 <script>
 import birthLocation from './_components/birthAndLocation';
+import { SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
+
 export default {
     name: 'profile_setting_myself',
     components: {
@@ -99,6 +101,12 @@ export default {
             return type.replace(/x/g, (a, b) => this.mobile[b]);
         }
     },
+    mounted() {
+        SafariSlideLeftTwiceTransitionAddLis(this);
+    },
+    beforeDestroy() {
+        SafariSlideLeftTwiceTransitionRemoveLis();
+    },
     methods: {
         close(key) {
             this.show[key] = false;
@@ -109,6 +117,7 @@ export default {
 
 <style scoped lang="scss">
 .setting-myself {
+    overflow: hidden;
     .container {
         margin-top: 20px;
         padding: 0 36px;

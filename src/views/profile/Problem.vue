@@ -16,6 +16,8 @@
 
 <script>
 import collapse from '@/utils/collapse';
+import { SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
+
 export default {
     name: 'profile_setting_problem',
     components: { collapse },
@@ -75,6 +77,12 @@ export default {
                 }
             ]
         };
+    },
+    mounted() {
+        SafariSlideLeftTwiceTransitionAddLis(this);
+    },
+    beforeDestroy() {
+        SafariSlideLeftTwiceTransitionRemoveLis();
     },
     methods: {
         emitClick(key) {

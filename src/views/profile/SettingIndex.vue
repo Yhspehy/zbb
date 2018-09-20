@@ -1,10 +1,10 @@
 <template>
-    <div class="setting-index clearfix">
+
+    <div class="setting-index">
         <router-link :to="{'name':'profile_setting_myself'}" class="setting-container item">
             <span>个人信息</span>
             <i class="fa fa-angle-right"></i>
         </router-link>
-
 
         <div class="setting-container">
             <router-link :to="{'name':'profile_setting_push'}" class="item border-bottom-1px">
@@ -13,15 +13,11 @@
             </router-link>
             <div class="item border-bottom-1px">
                 <span>无图模式下(2G/3G/4G)</span>
-                <i  class="fa fa-check"
-                    @click="triggerSetting('noImgMode')"
-                    :style="{'color': check.noImgMode ? '#07b5ff' : ''}"></i>
+                <i class="fa fa-check" @click="triggerSetting('noImgMode')" :style="{'color': check.noImgMode ? '#07b5ff' : ''}"></i>
             </div>
             <div class="item border-bottom-1px">
                 <span>WIFI下自动播放</span>
-                <i  class="fa fa-check"
-                    @click="triggerSetting('autoPlayInWifi')"
-                    :style="{'color': check.autoPlayInWifi ? '#07b5ff' : ''}"></i>
+                <i class="fa fa-check" @click="triggerSetting('autoPlayInWifi')" :style="{'color': check.autoPlayInWifi ? '#07b5ff' : ''}"></i>
             </div>
             <div class="item" @click="confirm(`<p>清除缓存文件</p><p>89.3MB</p>`)">
                 <span>清除缓存</span>
@@ -31,7 +27,6 @@
                 </span>
             </div>
         </div>
-
 
         <div class="setting-container">
             <router-link :to="{'name':'profile_setting_join'}" class="item border-bottom-1px">
@@ -43,7 +38,6 @@
                 <i class="fa fa-angle-right"></i>
             </router-link>
         </div>
-
 
         <div class="setting-container">
             <div class="item border-bottom-1px" @click="show">
@@ -67,19 +61,16 @@
             </router-link>
         </div>
 
-
         <div class="setting-container quit" @click="confirm('是否确认退出？')">
             退出当前账号
         </div>
 
-
         <transition name="translateY-20">
-            <show-dialog
-                v-if="chosen.showStats"
-                @close="close">
+            <show-dialog v-if="chosen.showStats" @close="close">
             </show-dialog>
         </transition>
     </div>
+
 </template>
 
 <script>
@@ -95,9 +86,13 @@ export default {
             check: {
                 noImgMode: false,
                 autoPlayInWifi: true
-            }
+            },
+            birth: 'birth'
         };
     },
+    created() {},
+    mounted() {},
+    destroyed() {},
     methods: {
         triggerSetting(key) {
             this.check[key] = !this.check[key];
@@ -117,6 +112,7 @@ export default {
 
 <style scoped lang="scss">
 .setting-index {
+    overflow: hidden;
     .setting-container {
         background: #fff;
         margin-top: 20px;
@@ -147,5 +143,17 @@ export default {
         transform: translateY(-20px);
         opacity: 0;
     }
+}
+
+.birth-enter-active {
+    transition: all 0.5s ease;
+}
+.birrh-leave-active {
+    transition: all 0.5s ease;
+}
+.birth-enter,
+.birth-leave-to {
+    transform: translateX(-100px);
+    opacity: 0;
 }
 </style>

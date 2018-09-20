@@ -1,29 +1,27 @@
 <template>
-<transition name="birth">
-      <div class="setting-join">
-        <cut-off-line></cut-off-line>
+        <div class="setting-join">
+            <cut-off-line></cut-off-line>
 
-        <div class="joinContent">
-            <div class="item border-bottom-1px" v-for="(item, idx) in list" :key="item.name">
-                <span>
-                    <i class="fa fa-qq"></i>
+            <div class="joinContent">
+                <div class="item border-bottom-1px" v-for="(item, idx) in list" :key="item.name">
                     <span>
-                        {{item.name}}：
-                        <span class="greyValue" :class="'copy' + idx">{{item.value}}</span>
+                        <i class="fa fa-qq"></i>
+                        <span>
+                            {{item.name}}：
+                            <span class="greyValue" :class="'copy' + idx">{{item.value}}</span>
+                        </span>
                     </span>
-                </span>
-                <span class="copyBtn" @click="onCopy('.copy' + idx)">复制</span>
+                    <span class="copyBtn" @click="onCopy('.copy' + idx)">复制</span>
+                </div>
             </div>
+
         </div>
-    </div>
-</transition>
-  
 </template>
 
 <script>
 import HeaderBar from '@/components/HeaderBar';
 import cutOffLine from '@/components/CutOffLine';
-import { copy } from '@/utils/index';
+import { copy, SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
 export default {
     name: 'profile_setting_join',
     components: { HeaderBar, cutOffLine },
@@ -40,8 +38,15 @@ export default {
                     name: '微信公众号',
                     value: 43256676
                 }
-            ]
+            ],
+            start: -1
         };
+    },
+    mounted() {
+        SafariSlideLeftTwiceTransitionAddLis(this);
+    },
+    beforeDestroy() {
+        SafariSlideLeftTwiceTransitionRemoveLis();
     },
     methods: {
         onCopy(el) {
@@ -78,17 +83,17 @@ export default {
             color: $blue;
         }
     }
+}
 
-    .birth-enter-active {
-        transition: all 0.5s ease;
-    }
-    .birrh-leave-active {
-        transition: all 0.5s ease;
-    }
-    .birth-enter,
-    .birth-leave-to {
-        transform: translateY(100px);
-        opacity: 0;
-    }
+.birth-enter-active {
+    transition: all 0.5s ease;
+}
+.birrh-leave-active {
+    transition: all 0.5s ease;
+}
+.birth-enter,
+.birth-leave-to {
+    transform: translateX(100px);
+    opacity: 0;
 }
 </style>

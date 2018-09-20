@@ -15,31 +15,29 @@
 </template>
 
 <script>
+import { SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
+
 export default {
-    name: 'profile_setting_about'
+    name: 'profile_setting_about',
+    mounted() {
+        SafariSlideLeftTwiceTransitionAddLis(this);
+    },
+    beforeDestroy() {
+        SafariSlideLeftTwiceTransitionRemoveLis();
+    }
 };
 </script>
 
 <style scoped lang="scss">
 .setting-index {
-    position: relative;
-    .mar-top {
-        margin-top: 20px;
-    }
-    .padding-36 {
-        padding: 0 36px;
-    }
+    overflow: hidden;
     .content {
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        top: 100px;
+        margin-top: 20px;
+        padding: 0 36px;
         background: #ffffff;
         .header-img {
             width: 100%;
-            height: 380px;
             .title {
-                height: 80px;
                 text-align: center;
                 line-height: 80px;
                 font-size: 30px;

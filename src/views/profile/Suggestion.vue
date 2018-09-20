@@ -1,5 +1,5 @@
 <template>
-    <div class="setting-join clearfix">
+    <div class="setting-join">
         <div class="suggestType" @click="emitClick('select')">
             <span>{{type}}</span>
             <i  class="fa fa-angle-down" :class="{'rotate': expandObj.select}"></i>
@@ -29,6 +29,8 @@
 
 <script>
 import collapse from '@/utils/collapse';
+import { SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
+
 export default {
     name: 'profile_setting_suggestion',
     components: { collapse },
@@ -54,6 +56,12 @@ export default {
             this.expandObj.select = false;
         }
     },
+    mounted() {
+        SafariSlideLeftTwiceTransitionAddLis(this);
+    },
+    beforeDestroy() {
+        SafariSlideLeftTwiceTransitionRemoveLis();
+    },
     watch: {
         content(val, old) {
             if (val.length > this.wordCountLimit) {
@@ -68,6 +76,9 @@ export default {
 
 <style scoped lang="scss">
 .setting-join {
+    position: relative;
+    min-height: inherit;
+    overflow: hidden;
     .suggestType {
         margin-top: 20px;
         padding: 30px 36px;
@@ -98,8 +109,8 @@ export default {
         }
     }
     .suggestion-content {
-        position: fixed;
-        top: 226px;
+        position: absolute;
+        top: 140px;
         width: 100%;
         height: 336px;
         background: #ffffff;
@@ -117,7 +128,7 @@ export default {
         }
     }
     .submit {
-        position: fixed;
+        position: absolute;
         bottom: 60px;
         left: 50%;
         transform: translateX(-50%);

@@ -1,5 +1,6 @@
 <template>
-    <div class="setting-push clearfix">
+    <div class="setting-push">
+
         <div class="container" v-for="(item, idx) in content" :key="idx">
             <div v-for="(el, elIdx) in item"
                  :key="elIdx"
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+import { SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
+
 export default {
     name: 'profile_setting_push',
     data() {
@@ -69,6 +72,12 @@ export default {
             ]
         };
     },
+    mounted() {
+        SafariSlideLeftTwiceTransitionAddLis(this);
+    },
+    beforeDestroy() {
+        SafariSlideLeftTwiceTransitionRemoveLis();
+    },
     methods: {
         triggerPush(key) {
             this.check[key] = !this.check[key];
@@ -79,6 +88,7 @@ export default {
 
 <style scoped lang="scss">
 .setting-push {
+    overflow: hidden;
     .container {
         margin-top: 20px;
         padding: 0 36px;

@@ -1,11 +1,16 @@
 <template>
-    <div class="setting">
-        <header-bar :text="text" :rightText="rightText" rightTextRouteName="profile_setting_problem" rightTextColor="#0088ff"></header-bar>
+    <transition name="slide-down">
+        <div class="setting">
+            <header-bar :text="text" :rightText="rightText" rightTextRouteName="profile_setting_problem" rightTextColor="#0088ff"></header-bar>
 
-        <div class="settingContent">
-            <router-view></router-view>
+            <div class="settingContent">
+                <transition :name="transitionName" mode="out-in">
+                    <router-view></router-view>
+                </transition>
+            </div>
         </div>
-    </div>
+    </transition>
+
 </template>
 
 <script>
@@ -50,7 +55,8 @@ export default {
                     name: '关于我们',
                     routeName: 'profile_setting_about'
                 }
-            ]
+            ],
+            transitionName: 'slide-left'
         };
     },
     computed: {
@@ -66,9 +72,27 @@ export default {
     created() {
         console.log('created');
     },
-    activated() {
-        console.log('activated');
-        this.a += 1;
+    beforeRouteUpdate(to, from, next) {
+        console.log(this.$store.state.profile.transition);
+        if (!this.$store.state.profile.transition) {
+            this.transitionName = '';
+            this.$store.commit('profile/SET_TRANSITION', true);
+            setTimeout(() => next(), 0);
+        } else {
+            this.transitionName = 'slide-left';
+            next();
+        }
+    },
+    watch: {
+        $route() {
+            // console.log(this.$store.state.profile.transition);
+            // if (!this.$store.state.profile.transition) {
+            //     this.transitionName = '';
+            //     this.$store.commit('profile/SET_TRANSITION', true);
+            // } else {
+            //     this.transitionName = 'slide-left';
+            // }
+        }
     }
 };
 </script>
@@ -77,8 +101,34 @@ export default {
 .setting {
     background-color: $bg-body;
     min-height: 100vh;
+    overflow: hidden;
     .settingContent {
-        margin-top: 90px;
+        margin-top: 86px;
+        min-height: calc(100vh - 86px);
     }
+}
+
+.slide-down-enter-active {
+    transition: all 0.5s ease;
+}
+.slide-down-leave-active {
+    transition: all 0.5s ease;
+}
+.slide-down-enter,
+.slide-down-leave-to {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+.slide-left-enter-active {
+    transition: all 0.5s ease;
+}
+.slide-left-leave-active {
+    transition: all 0.5s ease;
+}
+.slide-left-enter,
+.slide-left-leave-to {
+    transform: translateX(-100px);
+    opacity: 0;
 }
 </style>

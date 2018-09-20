@@ -4,6 +4,7 @@ import getters from './getters';
 import home from './modules/home';
 import user from './modules/user';
 import league from './modules/league';
+import profile from './modules/profile';
 import schedule from './modules/schedule.js';
 
 Vue.use(Vuex);
@@ -14,6 +15,7 @@ export default new Vuex.Store({
         home,
         user,
         league,
-        schedule
+        schedule,
+        profile
     }
 });
