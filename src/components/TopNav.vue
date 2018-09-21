@@ -12,7 +12,8 @@
             @click.native="clickNav(item.routeName)"
             :to="{'name': item.routeName}"
             :replace="replace"
-            v-for="item in navList" :key="item.routeName">
+            v-for="item in navList"
+            :key="item.routeName">
              {{ item.name }}
         </router-link>
     </div>

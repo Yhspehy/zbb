@@ -9,6 +9,10 @@
             :to="{'name': rightTextRouteName}">
             {{rightText}}
         </router-link>
+
+        <span v-if="share" class="rightText share">
+            <i class="fas fa-share-square"></i>
+        </span>
     </div>
 </template>
 
@@ -26,7 +30,7 @@ export default {
     props: {
         text: {
             type: String,
-            require: true
+            default: ''
         },
         goBackRouteName: {
             type: String
@@ -45,6 +49,11 @@ export default {
         rightTextColor: {
             type: String,
             default: '#f5303d'
+        },
+        // 是否可以分享
+        share: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -77,6 +86,7 @@ export default {
     right: 0;
     background: #fff;
     z-index: 100;
+    border-bottom: 1px solid $bg-grey;
     .text {
         display: inline-block;
         width: calc(100% - 30px);
@@ -87,6 +97,12 @@ export default {
         font-size: 24px;
         bottom: 26px;
         right: 35px;
+    }
+
+    .share {
+        color: $grey;
+        font-weight: lighter;
+        font-size: 30px;
     }
 }
 </style>

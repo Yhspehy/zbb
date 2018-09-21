@@ -15,7 +15,8 @@
         <div class="container">
             <div class="item border-bottom-1px">
                 <span>
-                    <i class="fa fa-user"></i>昵称
+                    <i class="fa fa-user"></i>
+                    <span>昵称</span>
                 </span>
                 <span  @click="show.nickname = true">
                     {{nickname}}
@@ -24,7 +25,8 @@
             </div>
             <div class="item border-bottom-1px">
                 <span>
-                    <i class="fa fa-male"></i>性别
+                    <i class="fa fa-male"></i>
+                    <span>性别</span>
                 </span>
                 <span @click="show.genderPhoto = 'gender'">
                     {{gender}}
@@ -33,7 +35,8 @@
             </div>
             <div class="item border-bottom-1px">
                 <span>
-                    <i class="fa fa-birthday-cake"></i>生日
+                    <i class="fa fa-birthday-cake"></i>
+                    <span>生日</span>
                 </span>
                 <span @click="show.birthLocation = 'birth'">
                     {{birthday}}
@@ -42,7 +45,8 @@
             </div>
             <div class="item">
                 <span>
-                    <i class="fa fa-map-marker"></i>位置
+                    <i class="fa fa-map-marker"></i>
+                    <span>位置</span>
                 </span>
                 <span @click="show.birthLocation = 'location'">
                     {{location}}

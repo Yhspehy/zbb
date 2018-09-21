@@ -22,11 +22,11 @@ export default {
                     routePath: '/home',
                     icon: 'fa-home'
                 },
-                {
-                    name: '新闻',
-                    routePath: '/news',
-                    icon: 'fa-file'
-                },
+                // {
+                //     name: '新闻',
+                //     routePath: '/news',
+                //     icon: 'fa-file'
+                // },
                 {
                     name: '赛程',
                     routePath: '/schedule',
@@ -74,13 +74,13 @@ export default {
     left: 0;
     right: 0;
     width: 100%;
-    height: 90px;
+    padding: 16px 0 10px;
     font-size: 20px;
     background: #fff;
     box-shadow: 0px 0px 1px 0px #bfbfbf;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     z-index: 99;
     a {
         color: $grey-dark;
@@ -88,6 +88,7 @@ export default {
         flex-direction: column;
         i {
             font-size: 40px;
+            margin-bottom: 5px;
         }
     }
     .active {

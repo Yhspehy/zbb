@@ -101,7 +101,7 @@ export default {
             } else {
                 this.chosenNav = find(this.firstNavType, function(e) {
                     return e.routeName === self.$route.name;
-                }).name;
+                }).routeName;
             }
         } else {
             if (this.$route.name === 'live') {
@@ -110,7 +110,7 @@ export default {
             } else {
                 this.chosenNav = find(this.secondNavType, function(e) {
                     return e.routeName === self.$route.name;
-                }).name;
+                }).routeName;
             }
         }
     },
@@ -130,8 +130,8 @@ export default {
                     return val === e.routeName;
                 });
                 if (fit && fit.name) {
-                    this.chosenNav = fit.name;
-                    this.$store.commit('schedule/SET_CHOSENNAV', fit.name);
+                    this.chosenNav = fit.routeName;
+                    this.$store.commit('schedule/SET_CHOSENNAV', fit.routeName);
                 }
             }
         }

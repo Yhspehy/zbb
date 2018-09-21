@@ -1,31 +1,32 @@
 <template>
-    <div class="news-wrapper">
-        <div class="news-list">
-            <div class="news-item d-flex flex-column justify-content-between border-bottom-1px" v-for="(item, index) in newsList" :key="index">
-                <div class="news-one d-flex justify-content-between" v-if="item.img_count < 3">
-                    <img :src=item.img_list[0]>
-                    <div class="content d-flex flex-column justify-content-between">
-                        <div class="title">{{item.title}}</div>
-                        <div class="d-flex justify-content-between">
-                            <div class="date">{{item.create_time | moment('MM/DD HH:mm')}}</div>
-                            <div class="source">
-                                <i class="far"></i>Mavis报道
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div v-else>
+    <div class="news-list">
+        <div class="news-item  border-bottom-1px"
+             v-for="(item, index) in newsList"
+             :key="index"
+             @click="goNewInfo(item)">
+            <div class="news-one" v-if="item.img_count < 3">
+                <img :src=item.img_list[0]>
+                <div class="content d-flex flex-column justify-content-between">
                     <div class="title">{{item.title}}</div>
-                    <div class="img-group d-flex justify-content-between">
-                        <img :src=item.img_list[0]>
-                        <img :src=item.img_list[1]>
-                        <img :src=item.img_list[2]>
-                    </div>
                     <div class="d-flex justify-content-between">
                         <div class="date">{{item.create_time | moment('MM/DD HH:mm')}}</div>
                         <div class="source">
                             <i class="far"></i>Mavis报道
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div v-else class="news-three">
+                <div class="title">{{item.title}}</div>
+                <div class="img-group">
+                    <img :src=item.img_list[0]>
+                    <img :src=item.img_list[1]>
+                    <img :src=item.img_list[2]>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="date">{{item.create_time | moment('MM/DD HH:mm')}}</div>
+                    <div class="source">
+                        <i class="far"></i>Mavis报道
                     </div>
                 </div>
             </div>
@@ -40,19 +41,28 @@ export default {
             type: Array,
             require: true
         }
+    },
+    methods: {
+        goNewInfo(item) {
+            this.$router.push({
+                name: 'news',
+                query: {
+                    id: item.news_id
+                }
+            });
+        }
     }
 };
 </script>
-<style lang="scss">
-.news-wrapper {
+<style lang="scss" scoped>
+.news-list {
     width: 100%;
     padding: 0 26px;
     background: #fff;
-}
-.news-list {
     .news-item {
         padding: 16px 10px;
         @include border-bottom-1px;
+        flex-flow: column nowrap;
         overflow: hidden;
         img {
             width: 212px;
@@ -68,6 +78,8 @@ export default {
             color: $grey;
         }
         .news-one {
+            @include flex-center-between;
+            align-items: initial;
             .content {
                 margin-left: 20px;
                 .title {
@@ -76,8 +88,12 @@ export default {
             }
         }
 
-        .img-group {
-            margin: 20px 0;
+        .news-three {
+            width: 100%;
+            .img-group {
+                @include flex-center-between;
+                margin: 20px 0;
+            }
         }
     }
 }

@@ -1,0 +1,160 @@
+{
+    "status": true,
+    "msg": "获取联赛列表成功!",
+    "data": {
+        "news_id": 11,
+        "title": "新赛季薪水排行：萌神位居首位 保罗泡椒上榜",
+        "source": "Mavis报道",
+        "create_time": 122323211212,
+        "img_list": ["url"],
+        "hot": [
+            {
+                "comment_id": 1,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 5,
+                "isExpand": false,
+                "commentlist": [
+                    {
+                        "comment_id": 1212,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 1,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 2,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 3,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 4,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 5,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    },
+                    {
+                        "comment_id": 12,
+                        "user_id": 111,
+                        "thread_id": 1212,
+                        "user_name": "MAVIS",
+                        "content": "你好",
+                        "create_time": 121212,
+                        "is_answer": true,
+                        "answer_user_name": "HIHI"
+                    }
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1,
+                "isVote": true
+            }
+        ],
+        "comments": [
+            {
+                "comment_id": 1212,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 0,
+                "commentlist": [
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1
+            },
+            {
+                "comment_id": 22,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 0,
+                "commentlist": [
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1
+            },
+            {
+                "comment_id": 33,
+                "author": {
+                    "user_id": 1212,
+                    "user_type": "normal",
+                    "user_name": "Mavis",
+                    "avatar_url": "url",
+                    "gender": "male"
+                },
+                "content": "快快乐乐",
+                "commentlist_count": 0,
+                "commentlist": [
+                ],
+                "create_time": 121212,
+                "vote_count": 222,
+                "isHot": true,
+                "index": 1
+            }
+        ],
+        "content": "<p>北京时间7月1日中午12点，联盟自由球员市场已经正式开启，保罗、乔治、杜兰特、约基奇等多名球员签下大合同，他们的薪水比上赛季都有不小的增长</p><img src='http://temp.im/340x220'><p>北京时间7月1日中午12点，联盟自由球员市场已经正式开启，保罗、乔治、杜兰特、约基奇等多名球员签下大合同，他们的薪水比上赛季都有不小的增长，下面我们来看看2018-19赛季哪些球员的薪水排名联盟前列（考辛斯等还未确定合同金额的球员没有列入。</p><p>1、斯蒂芬-库里（3746万美元）去年夏天，库里与勇士达成续约协议，他符合指定老将条款的规定，可以拿到起薪最高为35%、最长五年、每年工资涨幅为8%的超级顶薪，库里与勇士签订了一份5年总价值2.01亿美元的顶薪合同，新赛季他的薪水是3746万美元。</p>"
+    }
+}

@@ -229,7 +229,7 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  home/newsList
+     * @api {get}  news/newsList
      * @params {String} type_id   类目的id
      * @params {Number} page_index	 
      *
@@ -276,8 +276,10 @@ print_background: false
 
 ```js
     /**
-     * @api {get}  home/news
+     * @api {get}  news/newInfo
      * @params {String} news_id   新闻的id
+     * 
+     * @return content 是html代码，不是纯粹的内容，图片的位置等信息后台自己放置。
      */
 
     return {
@@ -298,7 +300,7 @@ print_background: false
 
 ```js
     /**
-     * @api {post}  home/comment
+     * @api {post}  news/comment
      * @params {String} news_id  新闻或视频id
      * @params {String} type  类别  <news highlights>
      * @params {Boolean}  is_answer  是否是回复别人的消息，是否@  没有传""

@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<keep-alive include="home,news,schedule,community,profile,auth">
+		<keep-alive include="home,schedule,community,profile">
 			<router-view></router-view>
 		</keep-alive>
 	</div>

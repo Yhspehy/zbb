@@ -13,6 +13,9 @@ const HomeLeague = () => import('@/views/home/League');
 /*----------  新闻  ----------*/
 const News = () => import('@/views/news/News');
 
+/*----------  评论  ----------*/
+const Comments = () => import('@/views/comment/Comments');
+
 /*----------  赛事  ----------*/
 const Schedule = () => import('@/views/schedule/Index');
 const ScheduleMatch = () => import('@/views/schedule/Match');
@@ -103,6 +106,11 @@ const router = new Router({
             path: '/news',
             name: 'news',
             component: News
+        },
+        {
+            path: '/comments',
+            name: 'comments',
+            component: Comments
         },
         {
             path: '/schedule',
