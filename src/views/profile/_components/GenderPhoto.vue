@@ -1,29 +1,41 @@
 <template>
     <transition name="slide-top">
-        <div class="gender">
+        <div class="genderPhoto">
             <div class="container">
                 <div class="choose">请选择</div>
 
-                <div class="border-top-1px" v-for="item in list" :key="item" @click="save(item)">
+                <div class="border-top-1px" :class="{'blue': type === 'photo'}" v-for="item in list" :key="item" @click="save(item)">
                     {{ item }}
                 </div>
             </div>
         </div>
     </transition>
-
 </template>
 
 <script>
 export default {
-    name: 'profile_gender',
+    name: 'profile_genderPhoto',
     data() {
         return {
-            list: ['保密', '男', '女', '取消']
+            gender: ['保密', '男', '女', '取消'],
+            photo: ['从相册选取', '拍照', '取消']
         };
     },
+    props: {
+        // gender or photo
+        type: {
+            type: String,
+            defalut: 'gender'
+        }
+    },
+    computed: {
+        list() {
+            return this.type === 'gender' ? this.gender : this.photo;
+        }
+    },
     methods: {
-        save(gender) {
-            const r = gender === '取消' ? '请选择' : gender;
+        save(data) {
+            const r = data === '取消' ? '请选择' : data;
             this.$emit('save', r);
         }
     }
@@ -31,7 +43,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.gender {
+.genderPhoto {
     position: fixed;
     z-index: 101;
     top: -200px;
@@ -66,14 +78,18 @@ export default {
                 color: #f5303d;
             }
         }
+
+        .blue {
+            color: #0088ff;
+        }
     }
 }
 
 .slide-top-enter-active {
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
 }
 .slide-top-leave-active {
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
 }
 .slide-top-enter,
 .slide-top-leave-to {

@@ -5,7 +5,7 @@
                 <span>
                     <i class="fa fa-user-circle"></i>头像
                 </span>
-                <div class="header-img">
+                <div class="header-img" @click="show.genderPhoto = 'photo'">
                     <img src="http://temp.im/50x50" class="user-header">
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <span>
                     <i class="fa fa-male"></i>性别
                 </span>
-                <span @click="show.gender = true">
+                <span @click="show.genderPhoto = 'gender'">
                     {{gender}}
                     <i class="fa fa-angle-right"></i>
                 </span>
@@ -71,7 +71,7 @@
         
         <nickname v-if="show.nickname" @save="nicknameSave" @close="close"></nickname>
 
-        <gender v-if="show.gender" @save="genderSave"></gender>
+        <gender-photo v-if="show.genderPhoto" :type="show.genderPhoto" @save="genderPhotoSave"></gender-photo>
 
         <birth-location
             v-if="show.birthLocation"
@@ -85,7 +85,7 @@
 
 <script>
 import birthLocation from './_components/BirthAndLocation';
-import gender from './_components/Gender';
+import genderPhoto from './_components/GenderPhoto';
 import nickname from './_components/Nickname';
 
 import { SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
@@ -94,7 +94,7 @@ export default {
     name: 'profile_setting_myself',
     components: {
         birthLocation,
-        gender,
+        genderPhoto,
         nickname
     },
     data() {
@@ -108,7 +108,7 @@ export default {
             show: {
                 nickname: false,
                 birthLocation: false,
-                gender: false
+                genderPhoto: false
             }
         };
     },
@@ -138,10 +138,12 @@ export default {
             }
             this.close('birthLocation');
         },
-        genderSave(gender) {
-            const old = this.gender;
-            this.gender = gender === '请选择' ? old : gender;
-            this.close('gender');
+        genderPhotoSave(data) {
+            if (this.show.genderPhoto === 'gender') {
+                const old = this.gender;
+                this.gender = data === '请选择' ? old : data;
+            }
+            this.close('genderPhoto');
         },
         nicknameSave(name) {
             this.nickname = name;
