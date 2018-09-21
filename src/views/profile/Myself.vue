@@ -35,7 +35,7 @@
                 <span>
                     <i class="fa fa-birthday-cake"></i>生日
                 </span>
-                <span @click="show.birth = true">
+                <span @click="show.birthLocation = 'birth'">
                     {{birthday}}
                     <i class="fa fa-angle-right"></i>
                 </span>
@@ -44,7 +44,7 @@
                 <span>
                     <i class="fa fa-map-marker"></i>位置
                 </span>
-                <span>
+                <span @click="show.birthLocation = 'location'">
                     {{location}}
                     <i class="fa fa-angle-right"></i>
                 </span>
@@ -68,7 +68,13 @@
         </div>
 
 
-         <birth-location v-if="show.birth" @close="close"></birth-location>
+         <birth-location
+            v-if="show.birthLocation"
+            :type="show.birthLocation"
+            @save="birthLocationSave"
+            @close="close">
+        </birth-location>
+        
     </div>
 </template>
 
@@ -90,7 +96,7 @@ export default {
             mobile: '18283837373',
             id: 10086,
             show: {
-                birth: false
+                birthLocation: false
             }
         };
     },
@@ -109,6 +115,16 @@ export default {
     methods: {
         close(key) {
             this.show[key] = false;
+        },
+        birthLocationSave(res) {
+            const type = this.show.birthLocation;
+            const val = `${res[0]}-${res[1]}-${res[2]}`;
+            if (type === 'birth') {
+                this.birthday = val;
+            } else {
+                this.location = val;
+            }
+            this.close('birthLocation');
         }
     }
 };

@@ -7,7 +7,7 @@
             <div class="container">
                 <header>
                     <div class="close" @click="close">取消</div>
-                    <div class="save">保存</div>
+                    <div class="save" @click="save">保存</div>
                 </header>
 
                 <section>
@@ -50,10 +50,8 @@ export default {
             china: {},
             pickerData: ['leftList', 'middleList', 'rightList'],
             pickerSelectedIndex: [0, 0, 0],
-            province: '',
-            city: '',
-            area: '',
-            state: 0
+            state: 0,
+            isScroll: false
         };
     },
     props: {
@@ -61,10 +59,6 @@ export default {
         type: {
             type: String,
             default: 'birth'
-        },
-        isScrollToTop: {
-            type: Boolean,
-            default: false
         }
     },
     computed: {
@@ -114,6 +108,8 @@ export default {
             getAddress().then(res => {
                 this.china = res.data['中国'];
             });
+        } else {
+            this.$set(this.pickerSelectedIndex, 0, 50);
         }
         this.show();
     },
@@ -129,10 +125,13 @@ export default {
                     probeType: 3,
                     deceleration: 0.004
                 });
+                this.wheels[i].on('scroll', () => {
+                    this.isScroll = true;
+                });
                 this.wheels[i].on('scrollEnd', () => {
                     this.$set(this.pickerSelectedIndex, i, this.wheels[i].getSelectedIndex());
                     // location gotoTop
-                    if (this.isScrollToTop) {
+                    if (this.type === 'location') {
                         if (i == 0) {
                             this.$set(this.pickerSelectedIndex, 1, 0);
                             this.wheels[1].wheelTo(0);
@@ -147,6 +146,7 @@ export default {
                     if (i !== 2 && !this.rightList[this.pickerSelectedIndex[2]]) {
                         this.validateDay();
                     }
+                    this.isScroll = false;
                 });
             } else {
                 this.wheels[i].refresh();
@@ -176,10 +176,16 @@ export default {
         },
         close() {
             this.state = 0;
-            // for (let i = 0; i < this.pickerData.length; i++) {
-            //     this.wheels[i].disable();
-            // }
-            this.$emit('close', 'birth');
+            for (let i = 0; i < this.pickerData.length; i++) {
+                this.wheels[i].destroy();
+            }
+            this.$emit('close', 'birthLocation');
+        },
+        save() {
+            if (!this.isScroll) {
+                const res = [this.leftVal, this.middleVal, this.rightVal];
+                this.$emit('save', res);
+            }
         },
         validateDay() {
             let i = this.pickerSelectedIndex[2];
