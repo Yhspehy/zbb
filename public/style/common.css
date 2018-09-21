@@ -51,6 +51,11 @@ body {
     display: none;
 }
 
+
+.p-re {
+    position: relative;
+}
+
 /*----------  flex config  ----------*/
 
 .d-flex {

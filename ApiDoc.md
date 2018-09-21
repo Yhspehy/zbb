@@ -61,6 +61,7 @@ print_background: false
 	* [获取最新版本](#获取最新版本)
 	* [获取缓存大小](#获取缓存大小)
 	* [删除缓存](#删除缓存)
+	* [推送功能](#推送功能)
 	* [建议优化](#建议优化)
 
 <!-- /code_chunk_output -->
@@ -1910,7 +1911,7 @@ print_background: false
 ```js
     /**
      * 前端只会传要修改的参数，如果需要传所有的参数也可以，需要提前沟通
-     * 
+     * 这一步同时带了验证灯等功能。
      * @api {put}  myself/info
      * 
      * @params user_id   账户Id
@@ -1918,6 +1919,7 @@ print_background: false
      * @params level   用户等级
      * @params g_money   G币
      * @params gender    性别  <male female secret>
+     * @params location   位置  
      * @params avatar_img    头像链接
      * ....同上
      */

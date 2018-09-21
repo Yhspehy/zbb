@@ -5,3 +5,11 @@ export function getAddress() {
         noStatus: true
     });
 }
+
+export function validateNickname(name) {
+    return name === 'Yhspehy';
+}
+
+export function changeInfo(options) {
+    return request(`/mock/addressResult`, options);
+}

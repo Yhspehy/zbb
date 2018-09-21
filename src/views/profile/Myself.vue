@@ -17,7 +17,7 @@
                 <span>
                     <i class="fa fa-user"></i>昵称
                 </span>
-                <span>
+                <span  @click="show.nickname = true">
                     {{nickname}}
                     <i class="fa fa-angle-right"></i>
                 </span>
@@ -26,7 +26,7 @@
                 <span>
                     <i class="fa fa-male"></i>性别
                 </span>
-                <span>
+                <span @click="show.gender = true">
                     {{gender}}
                     <i class="fa fa-angle-right"></i>
                 </span>
@@ -68,24 +68,34 @@
         </div>
 
 
-         <birth-location
+        
+        <nickname v-if="show.nickname" @save="nicknameSave" @close="close"></nickname>
+
+        <gender v-if="show.gender" @save="genderSave"></gender>
+
+        <birth-location
             v-if="show.birthLocation"
             :type="show.birthLocation"
             @save="birthLocationSave"
             @close="close">
         </birth-location>
-        
+
     </div>
 </template>
 
 <script>
-import birthLocation from './_components/birthAndLocation';
+import birthLocation from './_components/BirthAndLocation';
+import gender from './_components/Gender';
+import nickname from './_components/Nickname';
+
 import { SafariSlideLeftTwiceTransitionAddLis, SafariSlideLeftTwiceTransitionRemoveLis } from '@/utils/index';
 
 export default {
     name: 'profile_setting_myself',
     components: {
-        birthLocation
+        birthLocation,
+        gender,
+        nickname
     },
     data() {
         return {
@@ -96,7 +106,9 @@ export default {
             mobile: '18283837373',
             id: 10086,
             show: {
-                birthLocation: false
+                nickname: false,
+                birthLocation: false,
+                gender: false
             }
         };
     },
@@ -125,6 +137,15 @@ export default {
                 this.location = val;
             }
             this.close('birthLocation');
+        },
+        genderSave(gender) {
+            const old = this.gender;
+            this.gender = gender === '请选择' ? old : gender;
+            this.close('gender');
+        },
+        nicknameSave(name) {
+            this.nickname = name;
+            this.close('nickname');
         }
     }
 };
