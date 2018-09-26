@@ -3,15 +3,21 @@
 
         <header-bar text="全部评论" :share="true"></header-bar>
 
-        <div class="commentContainer">
-            <div class="commentTitle">精彩热评</div>
+        <!-- <div id="commentContainer"> -->
+            <div class="commentContainer">
+                <div class="commentTitle">精彩热评</div>
 
-            <comment-list :commentlist="hot"></comment-list>
+                <comment-list :commentlist="hot"></comment-list>
 
-            <div class="commentTitle">全部评论</div>
+                <div class="commentTitle">全部评论</div>
 
-            <comment-list :commentlist="list"></comment-list>
-        </div>
+                <comment-list :commentlist="list"></comment-list>
+            </div>
+        <!-- </div> -->
+       
+
+        <comment-input></comment-input>
+
 
     </div>
 </template>
@@ -20,10 +26,11 @@
 import { getHotComments } from '@/Api/live';
 import commentList from '@/components/CommentList';
 import HeaderBar from '@/components/HeaderBar';
+import commentInput from '@/components/CommentInput';
 
 export default {
-    name: 'news_comments',
-    components: { HeaderBar, commentList },
+    name: 'comments',
+    components: { HeaderBar, commentList, commentInput },
     data() {
         return {
             hot: [],
@@ -46,10 +53,23 @@ export default {
 <style scoped lang="scss">
 .comments {
     min-height: 100vh;
+    // height: 100%;
+    // display: flex;
+    // flex-direction: column;
     overflow: hidden;
-    .commentContainer {
+
+    // flex and bscroll
+    #commentContainer {
         margin-top: 86px;
-        min-height: calc(100vh - 86px);
+        height: calc(100% - 176px);
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .commentContainer {
+        // fixed
+        margin: 86px 0 90px;
+        min-height: calc(100vh - 176px);
         padding: 20px 30px;
         .commentTitle {
             margin-top: 30px;

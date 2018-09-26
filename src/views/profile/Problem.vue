@@ -10,6 +10,13 @@
                     <div class="content">{{item.content}}</div>
                 </collapse>
             </li>
+
+            <!-- collapse 最后一条会出现视觉不协调的感觉 -->
+            <!-- <li>
+                <div class="item border-bottom">
+                    <span>nothing</span>
+                </div>
+            </li> -->
         </ul>
     </div>
 </template>
