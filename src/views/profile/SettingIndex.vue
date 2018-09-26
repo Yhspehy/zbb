@@ -113,6 +113,11 @@ export default {
 <style scoped lang="scss">
 .setting-index {
     overflow: hidden;
+
+    a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
     .setting-container {
         background: #fff;
         margin-top: 20px;

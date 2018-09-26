@@ -3,7 +3,7 @@
 
         <header-bar text="全部评论" :share="true"></header-bar>
 
-        <!-- <div id="commentContainer"> -->
+        <div id="commentContainer">
             <div class="commentContainer">
                 <div class="commentTitle">精彩热评</div>
 
@@ -13,7 +13,7 @@
 
                 <comment-list :commentlist="list"></comment-list>
             </div>
-        <!-- </div> -->
+        </div>
        
 
         <comment-input></comment-input>
@@ -52,24 +52,25 @@ export default {
 
 <style scoped lang="scss">
 .comments {
-    min-height: 100vh;
-    // height: 100%;
-    // display: flex;
-    // flex-direction: column;
-    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // overflow: hidden;
+    // min-height: 100vh;
 
     // flex and bscroll
     #commentContainer {
         margin-top: 86px;
         height: calc(100% - 176px);
         flex: 1;
-        overflow: hidden;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 
     .commentContainer {
         // fixed
-        margin: 86px 0 90px;
-        min-height: calc(100vh - 176px);
+        // margin: 86px 0 90px;
+        // min-height: calc(100vh - 176px);
         padding: 20px 30px;
         .commentTitle {
             margin-top: 30px;

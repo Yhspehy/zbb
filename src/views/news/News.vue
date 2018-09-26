@@ -2,7 +2,7 @@
     <div class="newInfoScoped">
         <header-bar :share="true"></header-bar>
 
-        <!-- <div id="newsContainer"> -->
+        <div id="newsContainer">
             <div class="newsContainer border-top-1px">
                 <div class="title">{{info.title}}</div>
 
@@ -22,7 +22,7 @@
                 <div class="moreComments" @click="gotoMoreComments">更多评论</div>
 
             </div>
-        <!-- </div> -->
+        </div>
 
         <comment-input></comment-input>
 
@@ -53,15 +53,15 @@ export default {
     created() {
         this.getNews();
     },
-    mounted() {
-        // this.$nextTick(() => {
-        //     const scroll = new BScroll('#newsContainer', {
-        //         deceleration: 0.00001,
-        //         click: true
-        //     });
-        //     console.log(scroll);
-        // });
-    },
+    // mounted() {
+    //     this.$nextTick(() => {
+    //         const scroll = new BScroll('#newsContainer', {
+    //             deceleration: 0.00001,
+    //             click: true
+    //         });
+    //         console.log(scroll);
+    //     });
+    // },
     methods: {
         async getNews(id) {
             let data = await getNewInfo(id);
@@ -81,25 +81,27 @@ export default {
 
 <style lang="scss">
 .newInfoScoped {
-    // height: 100%;
-    // display: flex;
-    // flex-direction: column;
-    min-height: 100vh;
-    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // min-height: 100vh;
+    // overflow: hidden;
 
     // flex and bscroll
     #newsContainer {
         margin-top: 86px;
         height: calc(100% - 176px);
         flex: 1;
-        overflow: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
     }
     .newsContainer {
         // fixed
         @include border-top-1px;
         padding: 20px 30px;
-        min-height: calc(100vh - 176px);
-        margin: 86px 0 90px;
+        // min-height: calc(100vh - 176px);
+        // margin: 86px 0 90px;
 
         .title {
             font-size: 30px;

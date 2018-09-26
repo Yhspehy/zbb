@@ -68,10 +68,19 @@ export default {
             }
         }
     },
+    mounted() {
+        this.$el.addEventListener('touchstart', this.scroll);
+    },
+    beforeDestroy() {
+        this.$el.removeEventListener('touchstart', this.scroll);
+    },
     methods: {
         goBack() {
             if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
             this.$router.back();
+        },
+        scroll(e) {
+            e.preventDefault();
         }
     }
 };

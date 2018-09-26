@@ -34,24 +34,15 @@ export default {
         };
     },
     mounted() {
-        this.$el.addEventListener(
-            'touchmove',
-            e => {
-                e.preventDefault();
-            },
-            false
-        );
+        this.$el.addEventListener('touchmove', this.scroll);
     },
     beforeDestroy() {
-        this.$el.removeEventListener(
-            'touchmove',
-            e => {
-                e.preventDefault();
-            },
-            false
-        );
+        this.$el.removeEventListener('touchmove', this.scroll);
     },
     methods: {
+        scroll(e) {
+            e.preventDefault();
+        },
         inputFocus(el) {
             if (this.disScroll) return;
             this.scrollY = window.scrollY;
@@ -88,12 +79,12 @@ export default {
 <style scoped lang="scss">
 .commentInput {
     // flex
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    // position: fixed;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
     // fixed
-    // position: relative;
+    position: relative;
     height: 90px;
     z-index: 110;
     background: #fff;
