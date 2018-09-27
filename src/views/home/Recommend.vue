@@ -15,10 +15,12 @@
                         </div>
                     </slide>
                 </div>
+
+
                 <div class="schedule">
-                    <div class="schedule-wrapper">
-                        <h-scroll>
-                            <li class="schedule-item" v-for="(item, index) in liveTrailList" :key="index">
+                    <h-scroll>
+                        <li class="schedule-wrapper" style="display: inline-block" v-for="(item, index) in liveTrailList" :key="index">
+                            <div class="schedule-item">
                                 <div class="title">{{item.source}}</div>
                                 <div class="result d-flex justify-content-around align-items-center">
                                     <img :src=item.hometeam_img alt="">
@@ -37,15 +39,20 @@
                                     <span class="state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</span>
                                     <span class="team">{{item.awayteam}}</span>
                                 </div>
-                            </li>
-                        </h-scroll>
-                    </div>
+                            </div>
+                        </li>
+                    </h-scroll>
                 </div>
+
+
+
                 <div class="notice">
                     <span class="tip-time">{{$moment().format('MM月DD号')}}</span>
                     <span class="line">|</span>
                     <span>Mavis {{hello}} 今天有 {{hotGameCount}}场赛事直播</span>
                 </div>
+
+
 
                 <cut-off-line></cut-off-line>
 
@@ -63,6 +70,7 @@ import CutOffLine from '@/components/CutOffLine';
 import NewsList from '@/components/NewsList';
 import { hello } from '@/assets/js/utils';
 let pageIndex = 1;
+
 export default {
     name: 'recommend',
     components: { Slide, HScroll, Scroll, NewsList, CutOffLine },
@@ -91,6 +99,10 @@ export default {
     },
     activated() {
         console.log('activated');
+    },
+    mounted() {
+        this.hello = hello();
+        this.onPullingDown();
     },
     methods: {
         /* 获取当日直播比赛 */
@@ -142,10 +154,6 @@ export default {
                 self.$refs.scroll.forceUpdate(true);
             }, 2000);
         }
-    },
-    mounted() {
-        this.hello = hello();
-        this.onPullingDown();
     }
 };
 </script>
@@ -176,17 +184,18 @@ export default {
             opacity: 0.3;
         }
     }
+
+    // 赛事直播
     .schedule {
+        background: #fff;
         .schedule-wrapper {
-            position: relative;
-            width: 100%;
-            background: #fff;
             padding-top: 20px;
             height: 192px;
+            display: inline-block;
+            white-space: nowrap;
             .schedule-item {
                 margin: 0 10px;
                 padding: 20px 0;
-                flex: 0 0 460px;
                 width: 460px;
                 height: 100%;
                 font-size: 24px;
@@ -194,7 +203,7 @@ export default {
                 box-shadow: 0px 0px 11.9px rgba(0, 51, 109, 0.25);
                 border-radius: 6px;
                 color: $grey;
-                @include flex-center;
+                @include flex-center-between;
                 flex-flow: column nowrap;
                 .result {
                     width: 100%;

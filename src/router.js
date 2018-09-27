@@ -40,6 +40,9 @@ const LiveHotComments = () => import('@/views/live/HotComments');
 
 /*----------  社区  ----------*/
 const Community = () => import('@/views/community/Index');
+const CommunityRecommend = () => import('@/views/community/Recommend');
+const CommunityCircle = () => import('@/views/community/Circle');
+const CommunityActivity = () => import('@/views/community/Activity');
 
 /*----------  我的  ----------*/
 const Profile = () => import('@/views/profile/Index');
@@ -224,7 +227,24 @@ const router = new Router({
         {
             path: '/community',
             name: 'community',
-            component: Community
+            component: Community,
+            children: [
+                {
+                    path: 'recommend',
+                    name: 'community_recommend',
+                    component: CommunityRecommend
+                },
+                {
+                    path: 'circle',
+                    name: 'community_circle',
+                    component: CommunityCircle
+                },
+                {
+                    path: 'activity',
+                    name: 'community_activity',
+                    component: CommunityActivity
+                }
+            ]
         },
         {
             path: '/profile',

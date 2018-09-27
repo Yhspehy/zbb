@@ -87,7 +87,7 @@ export default {
         .nav-item {
             width: 130px;
             height: 96px;
-            flex: 0 0 130px;
+            display: inline-block;
             line-height: 96px;
             text-align: center;
             a {

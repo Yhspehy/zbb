@@ -57,10 +57,10 @@ export default {
 <style lang="scss" scoped>
 .news-list {
     width: 100%;
-    padding: 0 26px;
+    padding: 0 36px;
     background: #fff;
     .news-item {
-        padding: 16px 10px;
+        padding: 16px 0;
         @include border-bottom-1px;
         flex-flow: column nowrap;
         overflow: hidden;

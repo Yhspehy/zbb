@@ -6,6 +6,7 @@ import user from './modules/user';
 import league from './modules/league';
 import profile from './modules/profile';
 import schedule from './modules/schedule.js';
+import community from './modules/community';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
         user,
         league,
         schedule,
+        community,
         profile
     }
 });

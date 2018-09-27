@@ -53,15 +53,15 @@ export default {
     created() {
         this.getNews();
     },
-    // mounted() {
-    //     this.$nextTick(() => {
-    //         const scroll = new BScroll('#newsContainer', {
-    //             deceleration: 0.00001,
-    //             click: true
-    //         });
-    //         console.log(scroll);
-    //     });
-    // },
+    mounted() {
+        // this.$nextTick(() => {
+        //     const scroll = new BScroll('#newsContainer', {
+        //         deceleration: 0.00001,
+        //         click: true
+        //     });
+        //     console.log(scroll);
+        // });
+    },
     methods: {
         async getNews(id) {
             let data = await getNewInfo(id);

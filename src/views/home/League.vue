@@ -3,24 +3,24 @@
         <!-- <div class="league-wrapper"> -->
         <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount="updateCount">
             <div class="point">
-                <div class="point-wrapper">
-                    <h-scroll>
-                        <li v-for="(item, index) in pointNewsList" :key="index">
-                            <div class="point-item d-flex flex-column justify-content-between align-items-center">
-                                <img :src=item.imgUrl alt="">
-                                <div class="pagination">{{item.title}}</div>
-                            </div>
-                        </li>
-                    </h-scroll>
-                </div>
+                <h-scroll>
+                    <li style="display: inline-block" v-for="(item, index) in pointNewsList" :key="index">
+                        <div class="point-item">
+                            <img :src=item.imgUrl alt="">
+                            <div class="pagination">{{item.title}}</div>
+                        </div>
+                    </li>
+                </h-scroll>
             </div>
+
             <div class="news">
                 <div class="news-wrapper">
                     <news-list :newsList="newsList"></news-list>
-
                 </div>
             </div>
+
             <template slot="pullup"></template>
+
         </scroll>
         <!-- </div> -->
     </div>
@@ -31,6 +31,7 @@ import HScroll from '@/components/HScroll';
 import Scroll from '@/components/Scroll';
 import NewsList from '@/components/NewsList';
 let pageIndex = 1;
+
 export default {
     name: 'league',
     components: { HScroll, Scroll, NewsList },
@@ -117,36 +118,27 @@ export default {
     background: $bg-body;
     .point {
         position: relative;
-        display: block;
         width: 100%;
-        height: 270px;
         background: #fff;
-        .point-wrapper {
-            padding-top: 6px;
-            padding-left: 30px;
-            padding-right: 30px;
-            box-sizing: border-box;
-            overflow: hidden;
-            .point-item {
-                margin: 0 10px;
+        padding: 6px 26px 0 36px;
+
+        .point-item {
+            margin-right: 10px;
+            width: 500px;
+            border-radius: 6px;
+            @include flex-center-between;
+            flex-direction: column;
+            .pagination {
+                position: absolute;
+                background: rgba(0, 0, 0, 0.6);
+                bottom: 0;
                 width: 500px;
-                height: 250px;
-                flex: 0 0 500px;
-                border-radius: 6px;
-                .pagination {
-                    position: absolute;
-                    background: rgba(0, 0, 0, 0.6);
-                    bottom: 0;
-                    width: 500px;
-                    height: 60px;
-                    padding-left: 10px;
-                    color: #ffffff;
-                    line-height: 60px;
-                    font-size: 24px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                }
+                height: 60px;
+                padding-left: 10px;
+                color: #ffffff;
+                line-height: 60px;
+                font-size: 24px;
+                @include text-ellipsis;
             }
         }
     }
