@@ -33,7 +33,7 @@ import NewsList from '@/components/NewsList';
 let pageIndex = 1;
 
 export default {
-    name: 'league',
+    name: 'home_league',
     components: { HScroll, Scroll, NewsList },
     data() {
         return {

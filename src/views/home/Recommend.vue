@@ -2,9 +2,9 @@
     <div class="recommend">
         <div class="recommend-wrapper">
             <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount="updateCount">
-                <div class="focus-slide">
-                    <slide>
-                        <div v-for="(item, index) in focusList" :key="index">
+                <div class="swiper">
+                    <slide :length="this.focusList.length">
+                        <div class="swiperItem" v-for="(item, index) in focusList" :key="index">
                             <a href="#" class="item-link">
                                 <img :src=item.imgUrl>
                                 <div class="tip">
@@ -15,7 +15,6 @@
                         </div>
                     </slide>
                 </div>
-
 
                 <div class="schedule">
                     <h-scroll>
@@ -34,7 +33,7 @@
                                     </div>
                                     <img :src=item.awayteam_img alt="">
                                 </div>
-                                <div class="name d-flex justify-content-between align-items-center">
+                                <div class="name">
                                     <span class="team">{{item.hometeam}}(主)</span>
                                     <span class="state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</span>
                                     <span class="team">{{item.awayteam}}</span>
@@ -44,15 +43,11 @@
                     </h-scroll>
                 </div>
 
-
-
                 <div class="notice">
                     <span class="tip-time">{{$moment().format('MM月DD号')}}</span>
                     <span class="line">|</span>
                     <span>Mavis {{hello}} 今天有 {{hotGameCount}}场赛事直播</span>
                 </div>
-
-
 
                 <cut-off-line></cut-off-line>
 
@@ -72,7 +67,7 @@ import { hello } from '@/assets/js/utils';
 let pageIndex = 1;
 
 export default {
-    name: 'recommend',
+    name: 'home_recommend',
     components: { Slide, HScroll, Scroll, NewsList, CutOffLine },
     data() {
         return {
@@ -150,6 +145,7 @@ export default {
             pageIndex = 1;
             let self = this;
             setTimeout(async function() {
+                console.log(1);
                 await Promise.all([self.getLiveTrail(), self.getFocus(), self.getNewsList(), self.getHotGameCount()]);
                 self.$refs.scroll.forceUpdate(true);
             }, 2000);
@@ -165,10 +161,14 @@ export default {
     .recommend-wrapper {
         height: 100%;
     }
-    .focus-slide {
+    .swiper {
         width: 750px;
         height: 360px;
         overflow: hidden;
+        .swiperItem {
+            width: 750px;
+            display: inline-block;
+        }
         .tip {
             position: absolute;
             display: flex;
@@ -226,6 +226,7 @@ export default {
                 .name {
                     width: 100%;
                     color: $grey-dark;
+                    @include flex-center-between;
                     .team {
                         flex: 0 1 33%;
                         text-align: center;

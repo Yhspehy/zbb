@@ -81,7 +81,7 @@ export default {
 
 <style scoped lang="scss">
 .scheduleContent {
-    margin-top: 92px;
+    margin-top: 86px;
     background-color: $bg-body;
 }
 </style>

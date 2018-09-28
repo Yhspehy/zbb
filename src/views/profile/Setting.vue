@@ -56,7 +56,7 @@ export default {
                     routeName: 'profile_setting_about'
                 }
             ],
-            transitionName: 'slide-left'
+            transitionName: ''
         };
     },
     computed: {

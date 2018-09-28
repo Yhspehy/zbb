@@ -69,14 +69,17 @@ export default {
         }
     },
     mounted() {
-        this.$el.addEventListener('touchstart', this.scroll);
+        this.$el.addEventListener('touchmove', this.scroll);
     },
     beforeDestroy() {
-        this.$el.removeEventListener('touchstart', this.scroll);
+        this.$el.removeEventListener('touchmove', this.scroll);
     },
     methods: {
         goBack() {
-            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
+            if (this.goBackRouteName) {
+                this.$router.push({ name: this.goBackRouteName });
+                return false;
+            }
             this.$router.back();
         },
         scroll(e) {

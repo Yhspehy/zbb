@@ -52,7 +52,7 @@ export default {
 
 <style scoped lang="scss">
 .comments {
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     // overflow: hidden;

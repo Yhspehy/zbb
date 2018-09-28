@@ -2,7 +2,7 @@
     <div class="community">
          <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
-         <div class="scheduleContent theFooterPaddingBottom">
+         <div class="communityContent">
             <router-view></router-view>
         </div>
 
@@ -14,6 +14,7 @@
 import find from 'lodash/find';
 import topNav from '@/components/TopNav.vue';
 import vFooter from '@/components/TheFooter';
+
 export default {
     name: 'community',
     components: {
@@ -42,14 +43,11 @@ export default {
     created() {
         console.log('community created');
     },
-    activated() {
-        console.log('community activated');
-    },
     mounted() {},
     methods: {
         chooseNav(name) {
             this.chosenNav = name;
-            this.$store.commit('schedule/SET_CHOSENNAV', name);
+            this.$store.commit('community/SET_CHOSENNAV', name);
         }
     },
     watch: {
@@ -76,8 +74,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.community {
+    overflow: hidden;
+}
 .communityContent {
-    margin-top: 92px;
+    height: 100%;
+    margin: 86px 0 90px;
     background-color: $bg-body;
+    min-height: calc(100vh - 176px);
+    overflow: hidden;
 }
 </style>

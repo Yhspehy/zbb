@@ -24,7 +24,9 @@ const getApi = {
     '/mock/live/stats/1': path.resolve(__dirname, 'live/stats.json'),
     '/mock/live/stats/2': path.resolve(__dirname, 'live/footballStats.json'),
     '/mock/addressResult': path.resolve(__dirname, 'addressResult.json'),
-    '/mock/news/newInfo/:id': path.resolve(__dirname, 'news/newInfo.json')
+    '/mock/news/newInfo/:id': path.resolve(__dirname, 'news/newInfo.json'),
+    '/mock/community/recommend/swiper': path.resolve(__dirname, 'home/recommend/focusList.json'),
+    '/mock/community/recommend/list': path.resolve(__dirname, 'community/recommendList.json')
 };
 
 module.exports = getApi;

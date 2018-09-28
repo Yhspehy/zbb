@@ -92,7 +92,7 @@
 
 <script>
 export default {
-    name: 'highlights',
+    name: 'home_highlights',
     data() {
         return {};
     }

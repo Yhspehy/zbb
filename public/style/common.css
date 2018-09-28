@@ -219,3 +219,13 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+
+
+
+/*----------  svg  ----------*/
+.svg-inline {
+    display: inline-block;
+    height: 1em;
+    font-size: 1em;
+}
+

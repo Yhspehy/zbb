@@ -83,12 +83,10 @@
 
 <script>
 import vFooter from '@/components/TheFooter';
-// import HScroll from '@/components/HScroll';
 import BScroll from 'better-scroll';
 export default {
     name: 'profile',
     components: {
-        // HScroll,
         vFooter
     },
     data() {
@@ -175,8 +173,11 @@ export default {
     },
     methods: {
         goBack() {
-            if (this.goBackRouteName) this.$router.push({ name: this.goBackRouteName });
-            this.$router.back();
+            if (this.goBackRouteName) {
+                this.$router.push({ name: this.goBackRouteName });
+            } else {
+                this.$router.back();
+            }
         }
     }
 };
@@ -184,7 +185,7 @@ export default {
 
 <style scoped lang="scss">
 .profile {
-    min-height: 100vh;
+    min-height: 110vh;
     background: $bg-body;
     .task {
         position: relative;
