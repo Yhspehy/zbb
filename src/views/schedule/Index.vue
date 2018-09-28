@@ -1,5 +1,5 @@
 <template>
-    <div class="schedule">
+    <div class="schedule" :style="{'height': chosenNav === 'schedule_match' ? 'auto' : '100%'}">
         <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
         <div class="scheduleContent theFooterPaddingBottom">
@@ -80,7 +80,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.schedule {
+    overflow: hidden;
+    height: 100%;
+}
+
 .scheduleContent {
+    height: 100%;
     margin-top: 86px;
     background-color: $bg-body;
 }

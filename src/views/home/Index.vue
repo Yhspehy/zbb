@@ -18,11 +18,15 @@
                 <div class="add">+</div>
             </div>
         </div>
+
+        
         <div class="content">
             <keep-alive include='home_recommend'>
                 <router-view></router-view>
             </keep-alive>
         </div>
+
+        
         <v-footer></v-footer>
     </div>
 </template>

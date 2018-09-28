@@ -1,10 +1,10 @@
 <template>
     <div class="follow">
         <index-list 
-            :data = "followObj"
+            :data="followObj"
             :isNoMoreData="isNoMoreData"
-            @onPullingUp = "onPullingUp"
-            @onPullingDown = "onPullingDown">
+            @onPullingUp="onPullingUp"
+            @onPullingDown="onPullingDown">
         </index-list>
     </div>
 </template> 
@@ -64,6 +64,6 @@ export default {
 <style scoped lang="scss">
 .follow {
     position: relative;
-    height: calc(100vh - 182px);
+    height: calc(100% - 86px);
 }
 </style>

@@ -16,6 +16,7 @@
                     </match-item>
                 </li>
             </ul>
+
             <!-- 下拉加载 -->
             <template slot="pulldown" slot-scope="{beforePullDown,isPullingDown,pullDownStyle}">
                 <div class="pulldown-wrapper" :style="pullDownStyle">
@@ -117,7 +118,7 @@ export default {
             } else {
                 this._scrollTo(0, -todayPosY, 0);
             }
-        }, 50);
+        }, 20);
     },
     methods: {
         scroll(pos) {

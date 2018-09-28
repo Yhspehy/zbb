@@ -60,7 +60,7 @@ export default {
         },
         listenScroll: {
             type: Boolean,
-            default: false
+            default: true
         },
         listenBeforeScroll: {
             type: Boolean,
@@ -92,7 +92,8 @@ export default {
             pullDownStyle: '',
             bubbleY: 0,
             pullDownInitTop: -50,
-            options: {}
+            options: {},
+            isDestroying: false
         };
     },
     computed: {
@@ -114,8 +115,21 @@ export default {
     created() {},
     mounted() {
         setTimeout(() => {
-            this.initScroll();
+            this.$nextTick(() => {
+                this.initScroll();
+            });
         }, 20);
+    },
+    activated() {
+        this.isDestroying = false;
+        this.enable();
+    },
+    deactivated() {
+        this.isDestroying = true;
+        this.disable();
+    },
+    beforeDestroy() {
+        this.isDestroying = true;
     },
     destroyed() {
         this.$refs.scroll && this.$refs.scroll.destroy();
@@ -155,6 +169,16 @@ export default {
 
             if (this.listenScroll) {
                 this.scroll.on('scroll', pos => {
+                    // 如果一个页面还在滚动的时候切换到别的页面
+                    // 则之前的那个页面默认还是在滚动
+                    // 这里调用stop()浏览器直接崩溃，天坑
+                    // console.log(pos);
+                    if (this.isDestroying) {
+                        // console.log(12);
+                        // this.scroll.stop();
+                    }
+                    if (pos.x === 0 && pos.y === 0) this.refresh();
+                    if (pos.x === 0 && pos.y === 0) this.refresh();
                     this.$emit('scroll', pos);
                 });
             }
@@ -199,7 +223,6 @@ export default {
             this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments);
         },
         clickItem(e, item) {
-            console.log(e);
             this.$emit('click', item);
         },
         destroy() {

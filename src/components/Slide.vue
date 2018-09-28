@@ -88,9 +88,11 @@ export default {
             if (this.slide) {
                 this.slide.destroy();
             }
-            setTimeout(() => {
-                this.init();
-            }, 200);
+            this.initTimer = setTimeout(() => {
+                this.$nextTick(() => {
+                    this.init();
+                });
+            }, 20);
         },
         refresh() {
             this.slide.refresh();
@@ -145,6 +147,8 @@ export default {
             if (this.autoPlay) {
                 this._play();
             }
+
+            console.log(this.slide);
         },
         _onScrollEnd() {
             let pageIndex = this.slide.getCurrentPage().pageX;

@@ -25,12 +25,13 @@ export default {
     methods: {
         update() {
             if (this.scroll) {
-                this.scroll.refresh();
-            } else {
-                this.$nextTick(() => {
-                    this.init();
-                });
+                this.scroll.destroy();
             }
+            setTimeout(() => {
+                this.init();
+            }, 20);
+            // this.$nextTick(() => {
+            // });
         },
         init() {
             this.scroll = new BScroll(this.$refs.scroll, {
