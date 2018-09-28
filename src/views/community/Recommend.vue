@@ -1,58 +1,63 @@
 <template>
-    <div class="community">
+    <div id="recommend">
+        <div class="refresh">{{status}}</div>
 
-        <!-- swiper -->
-        <slide class="swiper" :length="swiperList.length">
-            <div class="swiperItem" v-for="(item, index) in swiperList" :key="index">
-                <div class="item-link">
-                    <img :src=item.imgUrl>
-                    <div class="tip">
-                        <span class="title">{{item.title}}</span>
-                        <span class="page">{{index+1}} / {{swiperList.length}}</span>
+        <div class="recommend">
+            
+            <!-- swiper -->
+            <slide class="swiper" :length="swiperList.length">
+                <div class="swiperItem" v-for="(item, index) in swiperList" :key="index">
+                    <div class="item-link">
+                        <img :src=item.imgUrl>
+                        <div class="tip">
+                            <span class="title">{{item.title}}</span>
+                            <span class="page">{{index+1}} / {{swiperList.length}}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </slide>
+            </slide>
 
-        <!-- circle -->
-        <div class="circle">
-            <div>我的圈子</div>
-            <div></div>
-        </div>
-
-        <div class="zone" v-for="zone in zones" :key="zone.id">
-            <div class="zoneHeader">
-                <span class="zoneName">{{zone.name}}专区</span>
-                <span class="zonePoster"> | {{zone.poster}}</span>
+            <!-- circle -->
+            <div class="circle">
+                <div>我的圈子</div>
+                <div></div>
             </div>
 
-            <div class="zoneTitle">{{zone.title}}</div>
+            <div class="zone" v-for="zone in zones" :key="zone.id">
+                <div class="zoneHeader">
+                    <span class="zoneName">{{zone.name}}专区</span>
+                    <span class="zonePoster"> | {{zone.poster}}</span>
+                </div>
 
-            <img class="zoneImg" v-if="zone.img.length" :src="zone.img[0]">
+                <div class="zoneTitle">{{zone.title}}</div>
 
-            <div class="zoneComment">{{zone.comment}}</div>
+                <img class="zoneImg" v-if="zone.img.length" :src="zone.img[0]">
 
-            <div class="zoneFooter">
-                <span class="zoneUpdateTime">{{zone.update_time}}</span>
-                <span class="zoneVoteComment">
-                    <span class="zoneVoteCount" :style="{'color': zone.isVote ? '#f5303d' : '#b3b3b3'}" @click="vote(zone)">
-                        <i class="far fa-thumbs-up"></i>
-                        <span class="voteCount">{{zone.vote_count}}</span>
+                <div class="zoneComment">{{zone.comment}}</div>
+
+                <div class="zoneFooter">
+                    <span class="zoneUpdateTime">{{zone.update_time}}</span>
+                    <span class="zoneVoteComment">
+                        <span class="zoneVoteCount" :style="{'color': zone.isVote ? '#f5303d' : '#b3b3b3'}" @click="vote(zone)">
+                            <i class="far fa-thumbs-up"></i>
+                            <span class="voteCount">{{zone.vote_count}}</span>
+                        </span>
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline">
+                            <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm32 352c0 17.6-14.4 32-32 32H293.3l-8.5 6.4L192 460v-76H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h384c17.6 0 32 14.4 32 32v288zM128 184c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24z" class=""></path>
+                        </svg>
                     </span>
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline">
-                        <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm32 352c0 17.6-14.4 32-32 32H293.3l-8.5 6.4L192 460v-76H64c-17.6 0-32-14.4-32-32V64c0-17.6 14.4-32 32-32h384c17.6 0 32 14.4 32 32v288zM128 184c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24z" class=""></path>
-                    </svg>
-                </span>
+                </div>
             </div>
+
+            <!-- postBtn -->
+            <button class="postTitle" @click="postTitle">
+                <i class="fas fa-pen"></i>
+                <span>我要发帖</span>
+            </button>
+
         </div>
-
-        <!-- postBtn -->
-        <button class="postTitle" @click="postTitle">
-            <i class="fas fa-pen"></i>
-            <span>我要发帖</span>
-        </button>
-
     </div>
+
 </template>
 
 <script>
@@ -60,6 +65,9 @@ import slide from '@/components/Slide';
 
 import { getSwiper, getRecommendList } from '@/Api/community';
 
+import { slideRefresh } from '@/utils/index';
+
+let slideRefreshFn = null;
 export default {
     name: 'community_recommend',
     components: {
@@ -68,14 +76,30 @@ export default {
     data() {
         return {
             swiperList: [],
-            zones: []
+            zones: [],
+            status: [0]
         };
     },
     created() {
         this.getFocus();
         this.getList();
     },
+    mounted() {
+        this.refresh();
+    },
+    beforeDestroy() {
+        slideRefreshFn.destroy();
+    },
     methods: {
+        refresh() {
+            slideRefreshFn = slideRefresh({
+                parent: '#recommend',
+                el: '.recommend',
+                re: '.refresh',
+                status: this.status
+            });
+            slideRefreshFn.init();
+        },
         /* 获取首页焦点图 */
         getFocus() {
             getSwiper().then(res => {
@@ -101,24 +125,33 @@ export default {
             }
         },
         postTitle() {}
+    },
+    watch: {
+        status(val) {
+            console.log(val);
+        }
     }
 };
 </script>
 
 <style scoped lang="scss">
-.community {
+#recommend {
     position: relative;
+}
 
-    .update {
-        position: absolute;
-        top: -100px;
-        height: 200px;
-        left: 0;
-        right: 0;
-        background: pink;
-        z-index: 1000;
-    }
+.refresh {
+    height: 200px;
+    width: 100%;
+    background: pink;
+    color: blue;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    opacity: 0;
+}
 
+.recommend {
     .swiper {
         width: 750px;
         height: 360px;
