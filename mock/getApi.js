@@ -26,7 +26,8 @@ const getApi = {
     '/mock/addressResult': path.resolve(__dirname, 'addressResult.json'),
     '/mock/news/newInfo/:id': path.resolve(__dirname, 'news/newInfo.json'),
     '/mock/community/recommend/swiper': path.resolve(__dirname, 'home/recommend/focusList.json'),
-    '/mock/community/recommend/list': path.resolve(__dirname, 'community/recommendList.json')
+    '/mock/community/recommend/list': path.resolve(__dirname, 'community/recommendList.json'),
+    '/mock/community/circle/all': path.resolve(__dirname, 'community/circle.json')
 };
 
 module.exports = getApi;

@@ -59,7 +59,9 @@ export default {
         this.getList();
     },
     mounted() {
-        if (this.zones.length) this.refresh();
+        setTimeout(() => {
+            if (this.zones.length) this.refresh();
+        }, 20);
     },
     beforeDestroy() {
         if (this.zones.length) slideRefreshFn.destroy();

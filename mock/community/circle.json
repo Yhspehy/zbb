@@ -1,0 +1,187 @@
+{
+    "status": true,
+    "message": "...",
+    "data": {
+        "poppular": {
+            "name": "热门",
+            "list": [{
+                    "name": "NBA",
+                    "id": "1",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "勇士",
+                    "id": "2",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "湖人",
+                    "id": "3",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "火箭",
+                    "id": "4",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "马刺",
+                    "id": "5",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "76人",
+                    "id": "6",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "骑士",
+                    "id": "7",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "凯尔特人",
+                    "id": "8",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "活塞",
+                    "id": "9",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "公牛",
+                    "id": "10",
+                    "img": "http://temp.im/60x60"
+                }
+            ]
+        },
+        "follow": {
+            "name": "我的关注",
+            "list": [{
+                    "name": "NBA",
+                    "id": "1",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "勇士",
+                    "id": "2",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "湖人",
+                    "id": "3",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "火箭",
+                    "id": "4",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "马刺",
+                    "id": "5",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "76人",
+                    "id": "6",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "骑士",
+                    "id": "7",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "凯尔特人",
+                    "id": "8",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "活塞",
+                    "id": "9",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "公牛",
+                    "id": "10",
+                    "img": "http://temp.im/60x60"
+                }
+            ]
+        },
+        "country": {
+            "name": "国家队伍",
+            "list": [{
+                    "name": "中国",
+                    "id": "1",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "德国",
+                    "id": "2",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "阿根廷",
+                    "id": "3",
+                    "img": "http://temp.im/60x60"
+                }
+            ]
+        },
+        "NBA": {
+            "name": "NBA",
+            "list": [{
+                    "name": "NBA",
+                    "id": "1",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "勇士",
+                    "id": "2",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "湖人",
+                    "id": "3",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "火箭",
+                    "id": "4",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "马刺",
+                    "id": "5",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "76人",
+                    "id": "6",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "骑士",
+                    "id": "7",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "凯尔特人",
+                    "id": "8",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "活塞",
+                    "id": "9",
+                    "img": "http://temp.im/60x60"
+                },
+                {
+                    "name": "公牛",
+                    "id": "10",
+                    "img": "http://temp.im/60x60"
+                }
+            ]
+        }
+    }
+}
