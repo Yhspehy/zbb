@@ -87,7 +87,7 @@ export default {
 
 .scheduleContent {
     height: 100%;
-    margin-top: 86px;
+    margin-top: 92px;
     background-color: $bg-body;
 }
 </style>

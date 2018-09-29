@@ -64,6 +64,6 @@ export default {
 <style scoped lang="scss">
 .follow {
     position: relative;
-    height: calc(100% - 86px);
+    height: calc(100% - 92px);
 }
 </style>
