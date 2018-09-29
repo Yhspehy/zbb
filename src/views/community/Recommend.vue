@@ -1,7 +1,7 @@
 <template>
     <div id="recommend">
         <div class="refresh">
-            <div>{{refreshText}}</div>
+            <div class="refreshText">{{refreshText}}</div>
         </div>
 
         <div class="recommend" :class="{'refreshOver': isRefreshOver}">
@@ -80,7 +80,7 @@ export default {
             swiperList: [],
             zones: [],
             status: { value: 0 },
-            refreshText: '',
+            refreshText: 'pull to refresh',
             isRefreshOver: true
         };
     },
@@ -112,6 +112,7 @@ export default {
                 container.style['transition'] = 'transform 0.6s ease';
                 container.style['transform'] = 'translate(0, 0px)';
                 re.style.opacity = 0;
+                re.style.height = 60 / 7.5 + 'vw';
             }, 1000);
         },
         /* 获取首页焦点图 */
@@ -162,19 +163,6 @@ export default {
 <style scoped lang="scss">
 #recommend {
     position: relative;
-}
-
-.refresh {
-    height: 150px;
-    width: 100%;
-    background: pink;
-    color: blue;
-    position: absolute;
-    top: 0px;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    @include flex-center;
 }
 
 .recommend {

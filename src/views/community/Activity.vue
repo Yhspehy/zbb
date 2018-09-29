@@ -1,7 +1,7 @@
 <template>
     <div id="activity">
         <div class="refresh">
-            <div>{{refreshText}}</div>
+            <div class="refreshText">{{refreshText}}</div>
         </div>
 
         <div v-if="zones.length" class="activity" :class="{'refreshOver': isRefreshOver}">
@@ -51,7 +51,7 @@ export default {
         return {
             zones: [],
             status: { value: 0 },
-            refreshText: '',
+            refreshText: 'pull to refresh',
             isRefreshOver: true
         };
     },
@@ -84,6 +84,7 @@ export default {
                 container.style['transition'] = 'transform 0.6s ease';
                 container.style['transform'] = 'translate(0, 0px)';
                 re.style.opacity = 0;
+                re.style.height = '3vw';
             }, 1000);
         },
         getList() {
@@ -127,19 +128,6 @@ export default {
 <style scoped lang="scss">
 #activity {
     position: relative;
-}
-
-.refresh {
-    height: 150px;
-    width: 100%;
-    background: pink;
-    color: blue;
-    position: absolute;
-    top: 0px;
-    left: 0;
-    right: 0;
-    opacity: 0;
-    @include flex-center;
 }
 
 .activity {

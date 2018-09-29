@@ -48,7 +48,7 @@ function watchTouchEnd(e) {
  * 所以先写一个原生的，体验也好一点
  *
  * 参数：
- * parent 父元素的id或者class
+ * parent 父元素的id或者clcxpass
  * el     选中的容器的id或者class
  * re     刷新div的id或者class
  *
@@ -58,13 +58,23 @@ function watchTouchEnd(e) {
  *        在使用的组件中监听status.value来切换div即可
  *        状态为2的时候要手动设置过渡效果
  *
+ * bottom  re相对container的-top值，不建议修改
+ *
+ *
+ * 使用说明：
+ *   参照community/recommend
+ *   设置好那几个.refresh和.refreshText
+ *   监听status.value，当status.value为2的时候重新获取数据
  */
 
 export function slideRefresh(options) {
     const parent = document.querySelector(options.parent);
     const container = document.querySelector(options.el);
     const re = document.querySelector(options.re);
+    // re的原始高度
+    const originReHeight = re.offsetHeight;
     const refreshHeight = options.refreshHeight || 60;
+    const bottom = options.bottom || window.screen.width / 50;
     // let startY = 0;
     // 手指滑动距离
     let dis = 0;
@@ -84,18 +94,20 @@ export function slideRefresh(options) {
             dis = -document.body.scrollTop;
         }
         if (isScroll) {
-            re.style.opacity = dis > re.offsetHeight ? 1 : dis / re.offsetHeight;
+            re.style.opacity = dis >= re.offsetHeight ? 1 : dis / re.offsetHeight;
             if (!top) {
                 top = parent.offsetTop;
                 parent.style.position = 'fixed';
                 parent.style.top = top + 'px';
             }
 
-            if (dis < re.offsetHeight) {
-                container.style['transform'] = 'translate(0, ' + dis + 'px)';
-                if (dis > refreshHeight) {
-                    options.status.value = 1;
-                }
+            if (dis > originReHeight - bottom) {
+                re.style.height = dis + bottom + 'px';
+            }
+
+            container.style['transform'] = 'translate(0, ' + dis + 'px)';
+            if (dis > refreshHeight) {
+                options.status.value = 1;
             }
         } else {
             dis = 0;
