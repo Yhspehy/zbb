@@ -1,11 +1,13 @@
 <template>
     <div id="recommend">
-        <div class="refresh">{{status}}</div>
+        <div class="refresh">
+            <div>{{refreshText}}</div>
+        </div>
 
-        <div class="recommend">
-            
+        <div class="recommend" :class="{'refreshOver': isRefreshOver}">
+
             <!-- swiper -->
-            <slide class="swiper" :length="swiperList.length">
+            <slide class="swiper" :length="swiperList.length" eventPassthrough="vertical">
                 <div class="swiperItem" v-for="(item, index) in swiperList" :key="index">
                     <div class="item-link">
                         <img :src=item.imgUrl>
@@ -77,7 +79,9 @@ export default {
         return {
             swiperList: [],
             zones: [],
-            status: [0]
+            status: { value: 0 },
+            refreshText: '',
+            isRefreshOver: true
         };
     },
     created() {
@@ -99,6 +103,16 @@ export default {
                 status: this.status
             });
             slideRefreshFn.init();
+            this.isScroll = slideRefreshFn.isScroll;
+        },
+        getData() {
+            setTimeout(() => {
+                const container = document.querySelector('.recommend');
+                const re = document.querySelector('.refresh');
+                container.style['transition'] = 'transform 0.6s ease';
+                container.style['transform'] = 'translate(0, 0px)';
+                re.style.opacity = 0;
+            }, 1000);
         },
         /* 获取首页焦点图 */
         getFocus() {
@@ -127,8 +141,19 @@ export default {
         postTitle() {}
     },
     watch: {
-        status(val) {
-            console.log(val);
+        'status.value': function(val) {
+            switch (val) {
+                case 0:
+                    this.refreshText = 'pull to refresh';
+                    return;
+                case 1:
+                    this.refreshText = 'release to refresh';
+                    return;
+                case 2:
+                    this.refreshText = 'refreshing';
+                    this.getData();
+                    return;
+            }
         }
     }
 };
@@ -140,7 +165,7 @@ export default {
 }
 
 .refresh {
-    height: 200px;
+    height: 150px;
     width: 100%;
     background: pink;
     color: blue;
@@ -149,6 +174,7 @@ export default {
     left: 0;
     right: 0;
     opacity: 0;
+    @include flex-center;
 }
 
 .recommend {

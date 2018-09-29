@@ -52,8 +52,11 @@ function watchTouchEnd(e) {
  * el     选中的容器的id或者class
  * re     刷新div的id或者class
  *
+ * refreshHeight   超过多少高度就可以释放刷新
  * status 状态 0:下拉来刷新  1:释放了就可以刷新  2:已经释放，正在刷新
- *        status是一个数组，监听status[0]即可
+ *        值存在status.value中
+ *        在使用的组件中监听status.value来切换div即可
+ *        状态为2的时候要手动设置过渡效果
  *
  */
 
@@ -61,7 +64,8 @@ export function slideRefresh(options) {
     const parent = document.querySelector(options.parent);
     const container = document.querySelector(options.el);
     const re = document.querySelector(options.re);
-    let startY = 0;
+    const refreshHeight = options.refreshHeight || 60;
+    // let startY = 0;
     // 手指滑动距离
     let dis = 0;
     // 固定parent
@@ -69,24 +73,18 @@ export function slideRefresh(options) {
     // 判断是否在滚动刷新条
     let isScroll = false;
 
-    function touchstart(e) {
-        startY = e.pageY;
-        re.style.opacity = 1;
+    function touchstart() {
+        // startY = e.pageY;
         container.style['transition'] = 'transform 0s';
     }
 
-    function touchmove(e) {
-        if (!isScroll) isScroll = document.body.scrollTop < 0;
-        dis = e.pageY - startY;
-
-        // 如果正常滚动，不是touch到slide组件的时候
+    function touchmove() {
+        isScroll = document.body.scrollTop < 0;
         if (document.body.scrollTop < 0) {
             dis = -document.body.scrollTop;
-        } else if (dis > 0 && document.body.scrollTop === 0) {
-            // touch 到slide组件的时候
-            isScroll = true;
         }
-        if (isScroll && dis > 0) {
+        if (isScroll) {
+            re.style.opacity = dis > re.offsetHeight ? 1 : dis / re.offsetHeight;
             if (!top) {
                 top = parent.offsetTop;
                 parent.style.position = 'fixed';
@@ -95,26 +93,38 @@ export function slideRefresh(options) {
 
             if (dis < re.offsetHeight) {
                 container.style['transform'] = 'translate(0, ' + dis + 'px)';
-                if (dis > 60) {
-                    options.status.splice(0, 1, 1);
+                if (dis > refreshHeight) {
+                    options.status.value = 1;
                 }
             }
+        } else {
+            dis = 0;
+            // startY = 0;
+            re.style.opacity = 0;
+            top = 0;
+            parent.style.position = '';
+            parent.style.top = '';
+            isScroll = false;
+            options.status.value = 0;
         }
     }
 
     function touchend() {
         if (isScroll) {
+            if (dis > refreshHeight) {
+                options.status.value = 2;
+            } else {
+                re.style.opacity = 0;
+                container.style['transition'] = 'transform 0.6s ease';
+                container.style['transform'] = 'translate(0, 0px)';
+            }
             window.scrollTo(0, 0);
             dis = 0;
-            startY = 0;
-            re.style.opacity = 0;
+            // startY = 0;
             top = 0;
             parent.style.position = '';
             parent.style.top = '';
-            container.style['transition'] = 'transform 0.6s ease';
-            container.style['transform'] = 'translate(0, 0px)';
             isScroll = false;
-            options.status.splice(0, 1, 2);
         }
     }
 
@@ -131,7 +141,7 @@ export function slideRefresh(options) {
     }
 
     return {
-        dis,
+        isScroll,
         init,
         destroy
     };

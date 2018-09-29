@@ -45,6 +45,10 @@ export default {
             type: Number,
             default: 400
         },
+        eventPassthrough: {
+            type: String,
+            default: ''
+        },
         length: {
             type: Number,
             require: true
@@ -126,6 +130,7 @@ export default {
                     speed: this.speed
                 },
                 bounce: false,
+                eventPassthrough: this.eventPassthrough,
                 // stopPropagation: true,
                 click: this.click
             });
@@ -147,8 +152,6 @@ export default {
             if (this.autoPlay) {
                 this._play();
             }
-
-            console.log(this.slide);
         },
         _onScrollEnd() {
             let pageIndex = this.slide.getCurrentPage().pageX;
