@@ -112,7 +112,7 @@ export default {
                 container.style['transition'] = 'transform 0.6s ease';
                 container.style['transform'] = 'translate(0, 0px)';
                 re.style.opacity = 0;
-                re.style.height = 60 / 7.5 + 'vw';
+                re.style.height = '3vw';
             }, 1000);
         },
         /* 获取首页焦点图 */
