@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["ffd7"],{ffd7:function(e,n,a){"use strict";a.r(n);var s=function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("div",{staticClass:"sub-add"},[e._v("\n    启动页\n")])},t=[],d={name:"subadd"},u=d,c=a("2877"),i=Object(c["a"])(u,s,t,!1,null,"e4688aac",null);i.options.__file="Add.vue";n["default"]=i.exports}}]);
+//# sourceMappingURL=ffd7.d23de06e.js.map

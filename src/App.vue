@@ -11,8 +11,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 #app {
+    color: pink;
     height: 100%;
 }
 </style>

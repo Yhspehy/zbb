@@ -70,7 +70,7 @@ Vue.use(Router);
 
 const router = new Router({
     // base: __dirname,
-    mode: 'history',
+    // mode: 'history',
     routes: [
         {
             path: '/subadd',

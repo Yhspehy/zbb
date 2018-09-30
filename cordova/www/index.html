@@ -1,49 +1,15 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon href=favicon.ico><title>zbb</title><link rel=stylesheet href=https://use.fontawesome.com/releases/v5.1.1/css/all.css integrity=sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ crossorigin=anonymous><link href=style/normalize.css rel=stylesheet><link href=style/common.css rel=stylesheet><link href=style/swiper.css rel=stylesheet><link href=js/009a.a2cb8266.js rel=prefetch><link href=js/1fba.560d51b4.js rel=prefetch><link href=js/2852.84d8c1d0.js rel=prefetch><link href=js/292e.34b38cb3.js rel=prefetch><link href=js/4af1.6255f16d.js rel=prefetch><link href=js/4afd.ecd90415.js rel=prefetch><link href=js/5326.49b936fd.js rel=prefetch><link href=js/7ac3.6fff8336.js rel=prefetch><link href=js/81cc.6187e59e.js rel=prefetch><link href=js/8f21.73c10e12.js rel=prefetch><link href=js/aa74.0d88d6bb.js rel=prefetch><link href=js/c4a3.f770ce5c.js rel=prefetch><link href=js/chunk-062f.70546183.js rel=prefetch><link href=js/chunk-06c9.8fac64c2.js rel=prefetch><link href=js/chunk-0804.7e1b3000.js rel=prefetch><link href=js/chunk-0d2b.9b149aa0.js rel=prefetch><link href=js/chunk-0dcf.4b371202.js rel=prefetch><link href=js/chunk-110d.0b997a4f.js rel=prefetch><link href=js/chunk-1883.dedf6ae4.js rel=prefetch><link href=js/chunk-1e9d.d36838c5.js rel=prefetch><link href=js/chunk-216f.dc4ba347.js rel=prefetch><link href=js/chunk-23a4.8e4c18bb.js rel=prefetch><link href=js/chunk-23ce.6a7f84bc.js rel=prefetch><link href=js/chunk-23e4.f52f1e1e.js rel=prefetch><link href=js/chunk-272b.0df00dda.js rel=prefetch><link href=js/chunk-28cb.1722e347.js rel=prefetch><link href=js/chunk-2b79.85965685.js rel=prefetch><link href=js/chunk-2dec.c810af18.js rel=prefetch><link href=js/chunk-37ba.264be22e.js rel=prefetch><link href=js/chunk-4228.c40e9ab7.js rel=prefetch><link href=js/chunk-450c.94fa26e9.js rel=prefetch><link href=js/chunk-4bce.b30dc5ad.js rel=prefetch><link href=js/chunk-4e48.d67ffd54.js rel=prefetch><link href=js/chunk-5073.9d3e7787.js rel=prefetch><link href=js/chunk-56a6.9161cfb7.js rel=prefetch><link href=js/chunk-5aec.80f62e8a.js rel=prefetch><link href=js/chunk-6187.027faa47.js rel=prefetch><link href=js/chunk-68ca.fa15bedb.js rel=prefetch><link href=js/chunk-6ad6.9a9c0c68.js rel=prefetch><link href=js/chunk-7e44.99da6d00.js rel=prefetch><link href=js/chunk-99ce.8314f185.js rel=prefetch><link href=js/chunk-9e14.893962df.js rel=prefetch><link href=js/chunk-a993.2a203a92.js rel=prefetch><link href=js/chunk-ba37.1c4eb6f5.js rel=prefetch><link href=js/chunk-c511.c81d71dc.js rel=prefetch><link href=js/chunk-eb9e.2bda1453.js rel=prefetch><link href=js/chunk-f02d.657d34dc.js rel=prefetch><link href=js/chunk-f2f7.50a2dcf0.js rel=prefetch><link href=js/chunk-fa3b.6c6c9abe.js rel=prefetch><link href=js/def4.c8af443e.js rel=prefetch><link href=js/ffd7.d23de06e.js rel=prefetch><link href=js/app.c3285e36.js rel=preload as=script><link href=js/chunk-vendors.6a76c14a.js rel=preload as=script></head><body><noscript><strong>We're sorry but zbb doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app></div><script>function plusReady() {
+			alert("uuid: " + plus.device.uuid);
+		}
+		if (window.plus) {
+			plusReady();
+		} else {
+			document.addEventListener("plusready", plusReady, false);
+		}
 
-    http://www.apache.org/licenses/LICENSE-2.0
+		function setHtmlFontSize() {
+			var docEl = window.document.documentElement
+			docEl.style.fontSize = docEl.getBoundingClientRect().width / 10 + 'px'
+		}
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
-</html>
+		setHtmlFontSize()</script><script src=js/chunk-vendors.6a76c14a.js></script><script src=js/app.c3285e36.js></script></body></html>

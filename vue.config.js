@@ -12,7 +12,8 @@ const postApi = require('./mock/postApi');
 // console.log();
 
 module.exports = {
-    outputDir: './cordova/www',
+    baseUrl: './',
+    // outputDir: './cordova/www',
     // pages: {
     //     index: {
     //         title: '直播吧'
@@ -37,7 +38,6 @@ module.exports = {
         loaderOptions: {
             sass: {
                 data: `@import "@/assets/sass/mixins.scss";`
-                // options here will be passed to css-loader
             },
             postcss: {
                 plugins: () => [
