@@ -83,6 +83,7 @@ export default {
 .schedule {
     overflow: hidden;
     height: 100%;
+    position: relative;
 }
 
 .scheduleContent {

@@ -8,7 +8,13 @@
   },
   "installed_plugins": {
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.zbb"
+      "PACKAGE_NAME": "com.nbycrj.zbb"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.nbycrj.zbb"
+    },
+    "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "com.nbycrj.zbb"
     }
   },
   "dependent_plugins": {}

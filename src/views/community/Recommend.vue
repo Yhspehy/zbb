@@ -163,9 +163,11 @@ export default {
 <style scoped lang="scss">
 #recommend {
     position: relative;
+    min-height: inherit;
 }
 
 .recommend {
+    min-height: inherit;
     .swiper {
         width: 750px;
         height: 360px;
