@@ -3,9 +3,9 @@ node_modules
 /dist
 
 #cordova
-cordova/plugins
-cordova/platforms
-cordova/res
+# cordova/plugins
+# cordova/platforms
+# cordova/res
 
 # local env files
 .env.local

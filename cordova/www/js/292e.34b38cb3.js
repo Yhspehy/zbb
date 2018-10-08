@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["292e"],{"292e":function(e,n,t){"use strict";t.r(n);var s=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div")},a=[],i={},o=i,u=t("2877"),c=Object(u["a"])(o,s,a,!1,null,"aa76b1e4",null);c.options.__file="News.vue";n["default"]=c.exports}}]);
-//# sourceMappingURL=292e.34b38cb3.js.map

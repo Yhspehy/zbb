@@ -79,6 +79,12 @@ export default {
             this.$emit('chosenNav', name);
         }
     },
+    mounted() {
+        this.$el.addEventListener('touchmove', e => e.preventDefault());
+    },
+    beforeDestroy() {
+        this.$el.removeEventListener('touchmove', e => e.preventDefault());
+    },
     watch: {
         // 兼容浏览器popstate，防止父组件数据改变而子组件未改变
         chosenNav(val) {

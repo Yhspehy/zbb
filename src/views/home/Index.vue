@@ -9,9 +9,13 @@
                     <li class="nav-item">
                         <router-link :to="{'name':'home_highLights'}">集锦</router-link>
                     </li>
+                    <li class="nav-item">
+                        <router-link :to="{'name':'live'}">直播</router-link>
+                    </li>
                     <li class="nav-item" v-for="item in subLeagueList" :key="item.league_id">
                         <router-link :to="{'name': 'home_league', 'params':{'league_id':item.league_id}}">{{item.league_name}}</router-link>
                     </li>
+                    
                 </h-scroll>
             </div>
             <div class="subscribe d-flex justify-content-between align-items-center">

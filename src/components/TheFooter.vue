@@ -54,6 +54,12 @@ export default {
         console.log('footer active');
         this.setHomeFooter();
     },
+    mounted() {
+        this.$el.addEventListener('touchmove', e => e.preventDefault());
+    },
+    beforeDestroy() {
+        this.$el.removeEventListener('touchmove', e => e.preventDefault());
+    },
     methods: {
         setHomeFooter() {
             this.$store.commit(

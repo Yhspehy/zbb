@@ -13,7 +13,7 @@ const postApi = require('./mock/postApi');
 
 module.exports = {
     baseUrl: './',
-    // outputDir: './cordova/www',
+    outputDir: './cordova/www',
     // pages: {
     //     index: {
     //         title: '直播吧'

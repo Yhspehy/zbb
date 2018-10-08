@@ -2,10 +2,6 @@
   "name": "zbb",
   "version": "0.1.0",
   "private": true,
-  "sideEffects": [
-    "*.scss",
-    "*.css"
-  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",

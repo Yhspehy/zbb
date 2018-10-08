@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["81cc"],{"81cc":function(e,t,n){"use strict";n.r(t);var c=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"auth"},[n("router-view")],1)},a=[],s={name:"auth"},u=s,i=n("2877"),o=Object(i["a"])(u,c,a,!1,null,"6c854799",null);o.options.__file="Index.vue";t["default"]=o.exports}}]);
-//# sourceMappingURL=81cc.6187e59e.js.map

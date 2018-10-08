@@ -78,7 +78,7 @@ export default {
     overflow: hidden;
 }
 .communityContent {
-    height: 100%;
+    // height: 100%;
     margin: 92px 0 90px;
     background-color: $bg-body;
     min-height: calc(100vh - 182px);

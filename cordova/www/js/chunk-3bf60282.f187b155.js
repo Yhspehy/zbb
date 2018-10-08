@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-3bf60282"],{"584d":function(n,a,t){"use strict";var e=t("a47b"),s=t.n(e);s.a},a47b:function(n,a,t){},ffd7:function(n,a,t){"use strict";t.r(a);var e=function(){var n=this,a=n.$createElement,t=n._self._c||a;return t("div",{staticClass:"sub-add"},[n._v("\n    启动页\n")])},s=[],u={name:"subadd"},c=u,d=(t("584d"),t("2877")),i=Object(d["a"])(c,e,s,!1,null,"e4688aac",null);i.options.__file="Add.vue";a["default"]=i.exports}}]);
+//# sourceMappingURL=chunk-3bf60282.f187b155.js.map
