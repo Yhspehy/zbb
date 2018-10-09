@@ -3,9 +3,9 @@ node_modules
 /dist
 
 #cordova
-cordova/plugins
-cordova/www
-cordova/platforms/ios/www
+/cordova/plugins
+/cordova/www
+/cordova/platforms/ios/www
 # cordova/platforms
 # cordova/res
 

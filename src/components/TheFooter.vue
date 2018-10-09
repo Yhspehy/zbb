@@ -1,14 +1,14 @@
 <template>
-    <footer class="footer">
-        <router-link
-            v-for="el in navList"
-            :key="el.name"
-            :to="el.routePath"
-            :class="{'active': el.routePath === $store.state.home.homeFooter}">
-            <i class="fa" :class="el.icon"></i>
-            <span>{{el.name}}</span>
-        </router-link>
-    </footer>
+        <footer class="footer">
+            <router-link
+                v-for="el in navList"
+                :key="el.name"
+                :to="el.routePath"
+                :class="{'active': el.routePath === $store.state.home.homeFooter}">
+                <i class="fa" :class="el.icon"></i>
+                <span>{{el.name}}</span>
+            </router-link>
+        </footer>
 </template>
 
 <script>
@@ -80,15 +80,20 @@ export default {
     left: 0;
     right: 0;
     width: 100%;
-    padding-top: 16px;
-    padding-bottom: calc(10px + env(safe-area-inset-bottom));
-    font-size: 20px;
     background: #fff;
+    z-index: 99;
     box-shadow: 0px 0px 1px 0px #bfbfbf;
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 10px;
+    font-size: 20px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    z-index: 99;
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        padding-bottom: calc(var(--safe-area-inset-bottom) + 10px);
+    }
     a {
         color: $grey-dark;
         @include flex-center;

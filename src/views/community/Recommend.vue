@@ -257,7 +257,11 @@ export default {
 
     .postTitle {
         position: fixed;
-        bottom: calc(120px + env(safe-area-inset-bottom));
+        bottom: 120px;
+        @supports (bottom: env(safe-area-inset-bottom)) {
+            --safe-area-inset-bottom: env(safe-area-inset-bottom);
+            bottom: calc(var(--safe-area-inset-bottom) + 120px);
+        }
         left: calc(50vw - 130px);
         width: 260px;
         height: 90px;

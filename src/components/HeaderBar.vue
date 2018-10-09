@@ -93,7 +93,7 @@ export default {
 .headerBar {
     font-size: 30px;
     position: fixed;
-    top: 0;
+    top: env(safe-area-inset-top);
     left: 0;
     right: 0;
     background: #fff;
