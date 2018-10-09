@@ -1,7 +1,12 @@
 <template>
     <div class="league">
         <!-- <div class="league-wrapper"> -->
-        <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount="updateCount">
+        <scroll ref="scroll"
+                :scrollOptions="scrollOptions"
+                @pullingDown="onPullingDown"
+                @pullingUp="onPullingUp"
+                :updateWord="updateWord"
+        >
             <div class="point">
                 <h-scroll>
                     <li style="display: inline-block" v-for="(item, index) in pointNewsList" :key="index">
@@ -67,7 +72,7 @@ export default {
             scrollToX: 0,
             scrollToY: 0,
             scrollToTime: 700,
-            updateCount: 0
+            updateWord: ''
         };
     },
     created() {
@@ -85,7 +90,7 @@ export default {
         getNewsList() {
             this.$store.dispatch('home/GetNewsList', { type_id: 2, page_index: pageIndex++ }).then(res => {
                 this.newsList = res.newsList;
-                this.updateCount = res.updateCount;
+                this.updateWord = `已更新${res.updateCount}条新闻`;
             });
         },
         // 滚动到页面顶部

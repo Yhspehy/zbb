@@ -35,7 +35,7 @@
                         <loading></loading>
                     </div>
                     <div v-show="!isPullingDown" class="pulldown-loaded">
-                        <div class="up">已更新{{updateCount}}条新闻</div>
+                        <div class="up">{{updateWord}}</div>
                         <div class="down">最近更新：{{updateDate}}</div>
                     </div>
                 </div>
@@ -79,9 +79,9 @@ export default {
                 return {};
             }
         },
-        updateCount: {
-            type: Number,
-            default: 0
+        updateWord: {
+            type: String,
+            default: ''
         }
     },
     data() {

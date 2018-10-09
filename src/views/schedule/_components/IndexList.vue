@@ -18,7 +18,7 @@
             </ul>
 
             <!-- 下拉加载 -->
-            <template slot="pulldown" slot-scope="{beforePullDown,isPullingDown,pullDownStyle}">
+            <!-- <template slot="pulldown" slot-scope="{beforePullDown,isPullingDown,pullDownStyle}">
                 <div class="pulldown-wrapper" :style="pullDownStyle">
                     <div class="before-trigger" v-if="beforePullDown">
                         <div class="tip">
@@ -30,11 +30,9 @@
                         <div v-if="isPullingDown" class="loading">
                             <loading></loading>
                         </div>
-                        <div v-if="!isPullingDown" class="pulldown-loaded">
-                        </div>
                     </div>
                 </div>
-            </template>
+            </template> -->
         </scroll>
 
         <div class="index-list-fixed index-list-anchor" v-show="isShowFixed">

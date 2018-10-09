@@ -4,7 +4,7 @@
                 :scrollOptions="scrollOptions"
                 @pullingDown="onPullingDown"
                 @pullingUp="onPullingUp"
-                :updateCount="updateCount"
+                :updateWord="updateWord"
         >
             <div class="swiper">
                 <slide :length="this.focusList.length">
@@ -85,7 +85,7 @@ export default {
             scrollToX: 0,
             scrollToY: 0,
             scrollToTime: 700,
-            updateCount: 0
+            updateWord: ''
         };
     },
 
@@ -129,7 +129,7 @@ export default {
         getNewsList() {
             this.$store.dispatch('home/GetNewsList', { type_id: 1, page_index: pageIndex++ }).then(res => {
                 this.newsList = res.newsList;
-                this.updateCount = res.updateCount;
+                this.updateWord = `已更新${res.updateCount}条新闻`;
             });
         },
         // 滚动到页面顶部
