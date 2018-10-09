@@ -82,19 +82,25 @@ export function slideRefresh(options) {
     let top = 0;
     // 判断是否在滚动刷新条
     let isScroll = false;
+    // 滚动高度
+    // let scrollTop = 0;
 
-    function touchstart() {
+    function touchstart(e) {
         // startY = e.pageY;
         container.style['transition'] = 'transform 0s';
     }
 
-    function touchmove() {
+    function touchmove(e) {
+        // scrollTop = document.querySelector('.communityContent').scrollTop;
+
         isScroll = document.body.scrollTop < 0;
         if (document.body.scrollTop < 0) {
             dis = -document.body.scrollTop;
         }
+        // console.log(scrollTop);
         if (isScroll) {
-            re.style.opacity = dis >= re.offsetHeight ? 1 : dis / re.offsetHeight;
+            // dis = (e.pageY - startY) / 2;
+            re.style.opacity = dis >= re.offsetHeight + 20 ? 1 : dis / (re.offsetHeight + 20);
             if (!top) {
                 top = parent.offsetTop;
                 parent.style.position = 'fixed';
@@ -109,6 +115,7 @@ export function slideRefresh(options) {
             if (dis > refreshHeight) {
                 options.status.value = 1;
             }
+            e.preventDefault();
         } else {
             dis = 0;
             // startY = 0;

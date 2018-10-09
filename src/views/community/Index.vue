@@ -56,7 +56,7 @@ export default {
             handler: function(val) {
                 if (val === 'community') {
                     this.chosenNav = this.$store.state.community.chosenNav;
-                    this.$router.push({
+                    this.$router.replace({
                         name: this.chosenNav
                     });
                 } else {
@@ -76,12 +76,21 @@ export default {
 <style scoped lang="scss">
 .community {
     overflow: hidden;
+    position: relative;
+    // padding-bottom: env(safe-area-inset-bottom);
+    // height: 100%;
+    // display: flex;
+    // flex-direction: column;
 }
 .communityContent {
     // height: 100%;
-    margin: 92px 0 90px;
+    margin-top: 92px;
     background-color: $bg-body;
     min-height: calc(100vh - 182px);
+    // height: calc(100% - 182px);
     overflow: hidden;
+    // overflow-y: auto;
+    // flex: 1;
+    // -webkit-overflow-scrolling: touch;
 }
 </style>

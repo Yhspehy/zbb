@@ -63,6 +63,7 @@ export default {
 <style scoped lang="scss">
 .popular {
     position: relative;
-    height: calc(100% - 92px);
+    height: 100%;
+    flex: 1;
 }
 </style>

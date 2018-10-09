@@ -1,8 +1,8 @@
 <template>
-    <div class="schedule" :style="{'height': chosenNav === 'schedule_match' ? 'auto' : '100%'}">
+    <div class="schedule">
         <top-nav :navList="navList" :chosenNav="chosenNav" @chosenNav="chooseNav"></top-nav>
 
-        <div class="scheduleContent theFooterPaddingBottom">
+        <div class="scheduleContent">
             <keep-alive>
                 <router-view></router-view>
             </keep-alive>
@@ -62,7 +62,7 @@ export default {
             handler: function(val) {
                 if (val === 'schedule') {
                     this.chosenNav = this.$store.state.schedule.chosenNav;
-                    this.$router.push({
+                    this.$router.replace({
                         name: this.chosenNav
                     });
                 } else {
@@ -84,10 +84,12 @@ export default {
     overflow: hidden;
     height: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .scheduleContent {
-    height: 100%;
+    height: calc(100% - 182px);
     margin-top: 92px;
     background-color: $bg-body;
 }

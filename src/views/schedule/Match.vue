@@ -90,7 +90,11 @@ export default {
 
 <style scoped lang="scss">
 .schedule_match {
+    height: 100%;
     color: $grey-dark;
+    overflow-y: auto;
+    flex: 1;
+    -webkit-overflow-scrolling: touch;
     .typeName {
         font-size: 24px;
         padding: 25px 36px;

@@ -4,6 +4,8 @@ node_modules
 
 #cordova
 cordova/plugins
+cordova/www
+cordova/platforms/ios/www
 # cordova/platforms
 # cordova/res
 

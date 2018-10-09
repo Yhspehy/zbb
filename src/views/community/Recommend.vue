@@ -56,10 +56,9 @@
                 <i class="fas fa-pen"></i>
                 <span>我要发帖</span>
             </button>
-
         </div>
-    </div>
 
+    </div>
 </template>
 
 <script>
@@ -258,7 +257,7 @@ export default {
 
     .postTitle {
         position: fixed;
-        bottom: 120px;
+        bottom: calc(120px + env(safe-area-inset-bottom));
         left: calc(50vw - 130px);
         width: 260px;
         height: 90px;

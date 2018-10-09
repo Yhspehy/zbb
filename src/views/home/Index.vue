@@ -1,5 +1,7 @@
 <template>
     <div class="home">
+        <!-- <div>{{userAgent}}</div> -->
+
         <div class="nav">
             <div class="nav-wrapper">
                 <h-scroll>
@@ -30,6 +32,7 @@
             </keep-alive>
         </div>
 
+
         
         <v-footer></v-footer>
     </div>
@@ -46,7 +49,8 @@ export default {
     },
     data() {
         return {
-            test: 1
+            test: 1,
+            userAgent: ''
         };
     },
     computed: {
@@ -56,6 +60,7 @@ export default {
     },
     created() {
         this.$store.dispatch('league/GetSubLeagueList');
+        this.userAgent = window.navigator.userAgent;
     },
     activated() {
         console.log('home activated');
@@ -88,6 +93,8 @@ export default {
 .home {
     height: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .nav {
@@ -150,11 +157,12 @@ export default {
     }
 }
 .content {
-    position: absolute;
-    top: 96px;
-    bottom: 90px;
-    left: 0;
-    right: 0;
-    overflow-y: auto;
+    height: calc(100% - 186px);
+    // position: absolute;
+    // top: 96px;
+    // bottom: 90px;
+    // left: 0;
+    // right: 0;
+    // overflow-y: auto;
 }
 </style>

@@ -52,7 +52,7 @@ export default {
         },
         top: {
             type: String,
-            default: '0'
+            default: 'env(safe-area-inset-top)'
         },
         normalFontSize: {
             type: String,
@@ -123,7 +123,7 @@ export default {
     position: fixed;
     left: 0;
     right: 0;
-    top: 0;
+    top: env(safe-area-inset-top);
     z-index: 99;
 }
 </style>

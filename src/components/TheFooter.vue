@@ -80,7 +80,8 @@ export default {
     left: 0;
     right: 0;
     width: 100%;
-    padding: 16px 0 10px;
+    padding-top: 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
     font-size: 20px;
     background: #fff;
     box-shadow: 0px 0px 1px 0px #bfbfbf;
