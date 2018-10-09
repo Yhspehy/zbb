@@ -100,7 +100,7 @@ export default {
     justify-content: space-between;
     margin: 0 auto;
     background: #fff;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    // box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
     .navItem {
         color: $grey;
     }

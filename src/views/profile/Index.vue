@@ -185,7 +185,7 @@ export default {
 
 <style scoped lang="scss">
 .profile {
-    min-height: 110vh;
+    min-height: 100%;
     background: $bg-body;
     .task {
         position: relative;

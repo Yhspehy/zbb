@@ -51,12 +51,14 @@
                 </div>
             </div>
 
-            <!-- postBtn -->
-            <button class="postTitle" @click="postTitle">
-                <i class="fas fa-pen"></i>
-                <span>我要发帖</span>
-            </button>
+            
         </div>
+
+        <!-- postBtn -->
+        <button class="postTitle" @click="postTitle">
+            <i class="fas fa-pen"></i>
+            <span>我要发帖</span>
+        </button>
 
     </div>
 </template>
@@ -166,7 +168,7 @@ export default {
 }
 
 .recommend {
-    min-height: inherit;
+    height: inherit;
     .swiper {
         width: 750px;
         height: 360px;
@@ -254,29 +256,29 @@ export default {
             margin-bottom: 10px;
         }
     }
+}
 
-    .postTitle {
-        position: fixed;
-        bottom: 120px;
-        @supports (bottom: env(safe-area-inset-bottom)) {
-            --safe-area-inset-bottom: env(safe-area-inset-bottom);
-            bottom: calc(var(--safe-area-inset-bottom) + 120px);
-        }
-        left: calc(50vw - 130px);
-        width: 260px;
-        height: 90px;
-        background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#000000, #000000);
-        background-blend-mode: normal, normal;
-        box-shadow: 0px 0px 11.9px 0.1px rgba(0, 51, 109, 0.3);
-        border-radius: 45px;
-        font-size: 28px;
-        letter-spacing: 2px;
-        color: #808080;
+.postTitle {
+    position: fixed;
+    bottom: 120px;
+    @supports (bottom: env(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        bottom: calc(var(--safe-area-inset-bottom) + 120px);
+    }
+    left: calc(50vw - 130px);
+    width: 260px;
+    height: 90px;
+    background-image: linear-gradient(#ffffff, #ffffff), linear-gradient(#000000, #000000);
+    background-blend-mode: normal, normal;
+    box-shadow: 0px 0px 11.9px 0.1px rgba(0, 51, 109, 0.3);
+    border-radius: 45px;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #808080;
 
-        .fa-pen {
-            color: #0088ff;
-            margin-right: 10px;
-        }
+    .fa-pen {
+        color: #0088ff;
+        margin-right: 10px;
     }
 }
 </style>

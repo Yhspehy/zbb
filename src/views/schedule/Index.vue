@@ -83,14 +83,15 @@ export default {
 .schedule {
     overflow: hidden;
     height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    // position: relative;
+    // display: flex;
+    // flex-direction: column;
 }
 
 .scheduleContent {
     height: calc(100% - 182px);
     margin-top: 92px;
+    margin-bottom: 90px;
     background-color: $bg-body;
 }
 </style>

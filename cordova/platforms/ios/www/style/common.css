@@ -1,7 +1,8 @@
 html {
-    height: 100%;
-    margin-top: env(safe-area-inset-top);
-    margin-bottom: env(safe-area-inset-bottom);
+    height: 100vh;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    overflow: hidden;
 }
 
 body {

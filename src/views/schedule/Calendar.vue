@@ -73,6 +73,7 @@ export default {
 .scheduleCalendar {
     .calendar {
         margin-top: 85px;
+        padding-top: 20px;
     }
     .matchList {
         background: $bg-body;

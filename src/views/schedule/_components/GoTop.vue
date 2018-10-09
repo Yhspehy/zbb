@@ -87,5 +87,10 @@ export default {
     bottom: 130px;
     cursor: pointer;
     z-index: 2;
+
+    @supports (bottom: env(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        bottom: calc(var(--safe-area-inset-bottom) + 130px);
+    }
 }
 </style>

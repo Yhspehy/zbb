@@ -1,6 +1,6 @@
 <template>
     <div class="timeBar">
-        <router-link :to="{'name': 'schedule_calendar'}" v-if="$moment(currentDate).format('MM月DD号') === $moment().format('MM月DD号')">
+        <router-link :to="{'name': 'schedule_calendar'}" >
             <i class="far fa-calendar-alt"></i>
             <span class="today-text"> 今天 </span>
         </router-link>

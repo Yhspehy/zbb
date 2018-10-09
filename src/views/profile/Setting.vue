@@ -115,7 +115,8 @@ export default {
 }
 .slide-down-enter,
 .slide-down-leave-to {
-    transform: translateY(-100px);
+    // transform: scale(0.8);
+    // transform-origin: center left;
     opacity: 0;
 }
 

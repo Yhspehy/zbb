@@ -71,6 +71,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.scheduleLeague {
+    overflow: hidden;
+    position: relative;
+}
+
 .scheduleLeagueContent {
     margin-top: 162px;
 }

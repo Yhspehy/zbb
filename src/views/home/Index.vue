@@ -92,9 +92,8 @@ export default {
 <style scoped lang="scss">
 .home {
     height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    // position: relative;
+    overflow: hidden;
 }
 
 .nav {
@@ -158,6 +157,7 @@ export default {
 }
 .content {
     height: calc(100% - 186px);
+    margin-bottom: 90px;
     // position: absolute;
     // top: 96px;
     // bottom: 90px;

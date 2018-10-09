@@ -77,8 +77,8 @@ export default {
 .community {
     overflow: hidden;
     position: relative;
-    // padding-bottom: env(safe-area-inset-bottom);
     // height: 100%;
+    // padding-bottom: env(safe-area-inset-bottom);
     // display: flex;
     // flex-direction: column;
 }
@@ -86,9 +86,10 @@ export default {
     // height: 100%;
     margin-top: 92px;
     background-color: $bg-body;
-    min-height: calc(100vh - 182px);
-    // height: calc(100% - 182px);
-    overflow: hidden;
+    margin-bottom: 90px;
+    // min-height: calc(100vh - 182px);
+    height: calc(100% - 182px);
+    // overflow: hidden;
     // overflow-y: auto;
     // flex: 1;
     // -webkit-overflow-scrolling: touch;
