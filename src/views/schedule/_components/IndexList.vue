@@ -36,9 +36,11 @@
                 </div>
             </template>
         </scroll>
+
         <div class="index-list-fixed index-list-anchor" v-show="isShowFixed">
             <time-bar :currentDate="currentDate"></time-bar>
         </div>
+
         <scroll-to word="今日赛事" @scrollTo="_scrollTo(0, -_getElTop(today))" :isShow="isShowScrollTo" :direction="direction"></scroll-to>
     </div>
 </template> 

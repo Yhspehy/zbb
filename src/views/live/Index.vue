@@ -96,7 +96,7 @@ export default {
         var self = this;
         if (this.status < 2) {
             if (this.$route.name === 'live') {
-                this.$router.push({ name: 'live_liveRoom' });
+                this.$router.replace({ name: 'live_liveRoom' });
                 this.chosenNav = 'live_liveRoom';
             } else {
                 this.chosenNav = find(this.firstNavType, function(e) {
@@ -105,7 +105,7 @@ export default {
             }
         } else {
             if (this.$route.name === 'live') {
-                this.$router.push({ name: 'live_review' });
+                this.$router.replace({ name: 'live_review' });
                 this.chosenNav = 'live_review';
             } else {
                 this.chosenNav = find(this.secondNavType, function(e) {
@@ -131,7 +131,6 @@ export default {
                 });
                 if (fit && fit.name) {
                     this.chosenNav = fit.routeName;
-                    this.$store.commit('schedule/SET_CHOSENNAV', fit.routeName);
                 }
             }
         }

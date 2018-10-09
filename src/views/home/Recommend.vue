@@ -1,59 +1,62 @@
 <template>
     <div class="recommend">
-        <div class="recommend-wrapper">
-            <scroll ref="scroll" :scrollOptions="scrollOptions" @pullingDown="onPullingDown" @pullingUp="onPullingUp" :updateCount="updateCount">
-                <div class="swiper">
-                    <slide :length="this.focusList.length">
-                        <div class="swiperItem" v-for="(item, index) in focusList" :key="index">
-                            <a href="#" class="item-link">
-                                <img :src=item.imgUrl>
-                                <div class="tip">
-                                    <span class="title">{{item.title}}</span>
-                                    <span class="page">{{index+1}} / {{focusListLength}}</span>
-                                </div>
-                            </a>
-                        </div>
-                    </slide>
-                </div>
-
-                <div class="schedule">
-                    <h-scroll>
-                        <li class="schedule-wrapper" style="display: inline-block" v-for="(item, index) in liveTrailList" :key="index">
-                            <div class="schedule-item">
-                                <div class="title">{{item.source}}</div>
-                                <div class="result d-flex justify-content-around align-items-center">
-                                    <img :src=item.hometeam_img alt="">
-                                    <div v-if="item.status !== '未开始'">
-                                        <span v-bind:class="{ 'win': item.home_score > item.away_score }">{{item.home_score}}</span> :
-                                        <span v-bind:class="{ 'win': item.home_score < item.away_score }">{{item.away_score}}</span>
-                                    </div>
-                                    <div v-else>
-                                        <i class="far fa-clock" :class="{is_trail: item.is_trail}"></i>
-                                        <span>{{item.start_time | moment('HH:mm')}}</span>
-                                    </div>
-                                    <img :src=item.awayteam_img alt="">
-                                </div>
-                                <div class="name">
-                                    <span class="team">{{item.hometeam}}(主)</span>
-                                    <span class="state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</span>
-                                    <span class="team">{{item.awayteam}}</span>
-                                </div>
+        <scroll ref="scroll"
+                :scrollOptions="scrollOptions"
+                @pullingDown="onPullingDown"
+                @pullingUp="onPullingUp"
+                :updateCount="updateCount"
+        >
+            <div class="swiper">
+                <slide :length="this.focusList.length">
+                    <div class="swiperItem" v-for="(item, index) in focusList" :key="index">
+                        <a href="#" class="item-link">
+                            <img :src=item.imgUrl>
+                            <div class="tip">
+                                <span class="title">{{item.title}}</span>
+                                <span class="page">{{index+1}} / {{focusListLength}}</span>
                             </div>
-                        </li>
-                    </h-scroll>
-                </div>
+                        </a>
+                    </div>
+                </slide>
+            </div>
 
-                <div class="notice">
-                    <span class="tip-time">{{$moment().format('MM月DD号')}}</span>
-                    <span class="line">|</span>
-                    <span>Mavis {{hello}} 今天有 {{hotGameCount}}场赛事直播</span>
-                </div>
+            <div class="schedule">
+                <h-scroll>
+                    <li class="schedule-wrapper" style="display: inline-block" v-for="(item, index) in liveTrailList" :key="index">
+                        <div class="schedule-item">
+                            <div class="title">{{item.source}}</div>
+                            <div class="result d-flex justify-content-around align-items-center">
+                                <img :src=item.hometeam_img alt="">
+                                <div v-if="item.status !== '未开始'">
+                                    <span v-bind:class="{ 'win': item.home_score > item.away_score }">{{item.home_score}}</span> :
+                                    <span v-bind:class="{ 'win': item.home_score < item.away_score }">{{item.away_score}}</span>
+                                </div>
+                                <div v-else>
+                                    <i class="far fa-clock" :class="{is_trail: item.is_trail}"></i>
+                                    <span>{{item.start_time | moment('HH:mm')}}</span>
+                                </div>
+                                <img :src=item.awayteam_img alt="">
+                            </div>
+                            <div class="name">
+                                <span class="team">{{item.hometeam}}(主)</span>
+                                <span class="state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</span>
+                                <span class="team">{{item.awayteam}}</span>
+                            </div>
+                        </div>
+                    </li>
+                </h-scroll>
+            </div>
 
-                <cut-off-line></cut-off-line>
+            <div class="notice">
+                <span class="tip-time">{{$moment().format('MM月DD号')}}</span>
+                <span class="line">|</span>
+                <span>Mavis {{hello}} 今天有 {{hotGameCount}}场赛事直播</span>
+            </div>
 
-                <news-list :newsList="newsList"></news-list>
-            </scroll>
-        </div>
+            <cut-off-line></cut-off-line>
+
+            <news-list :newsList="newsList"></news-list>
+        </scroll>
     </div>
 </template>
 

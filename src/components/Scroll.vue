@@ -1,5 +1,6 @@
 <template>
     <div ref="wrapper" class="scroll-wrapper">
+        <!-- 上拉加载更多 -->
         <div class="scroll-content">
             <div ref="listWrapper">
                 <slot>
@@ -9,29 +10,31 @@
                     </ul>
                 </slot>
             </div>
-            <div class="pullup-wrapper" v-if="options.pullUpLoad">
-                <div class="before-trigger" v-if="!isPullUpLoad">
+            <div class="pullup-wrapper" v-show="options.pullUpLoad">
+                <div class="before-trigger" v-show="!isPullUpLoad">
                     <span>{{pullUpTxt}}</span>
                 </div>
-                <div class="after-trigger" v-else>
+                <div class="after-trigger" v-show="isPullUpLoad">
                     <loading></loading>
                 </div>
             </div>
         </div>
+        
+        <!-- 下拉刷新 -->
         <slot name="pulldown" :pullDownStyle="pullDownStyle" :beforePullDown="beforePullDown" :isPullingDown="isPullingDown">
-            <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="options.pullDownRefresh">
-                <div class="before-trigger" v-if="beforePullDown">
+            <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-show="options.pullDownRefresh">
+                <div class="before-trigger" v-show="beforePullDown">
                     <div class="tip">
                         <loading></loading>
                         <span>松开立即刷新</span>
                     </div>
                     <div class="date">最近更新：{{updateDate}}</div>
                 </div>
-                <div class="after-trigger" v-else>
-                    <div v-if="isPullingDown" class="loading">
+                <div class="after-trigger" v-show="!beforePullDown">
+                    <div v-show="isPullingDown" class="loading">
                         <loading></loading>
                     </div>
-                    <div v-if="!isPullingDown" class="pulldown-loaded">
+                    <div v-show="!isPullingDown" class="pulldown-loaded">
                         <div class="up">已更新{{updateCount}}条新闻</div>
                         <div class="down">最近更新：{{updateDate}}</div>
                     </div>
@@ -91,7 +94,7 @@ export default {
             pullUpDirty: true,
             pullDownStyle: '',
             bubbleY: 0,
-            pullDownInitTop: -50,
+            pullDownInitTop: 0,
             options: {},
             isDestroying: false
         };
@@ -200,7 +203,9 @@ export default {
             }
 
             if (this.options.pullDownRefresh) {
-                this._initPullDownRefresh();
+                setTimeout(() => {
+                    this._initPullDownRefresh();
+                }, 20);
             }
 
             if (this.options.pullUpLoad) {
@@ -249,6 +254,9 @@ export default {
                 this.isPullingDown = true;
                 this.$emit('pullingDown');
             });
+
+            this.pullDownInitTop = -document.querySelector('.pulldown-wrapper').offsetHeight;
+            this.pullDownStyle = `top:${this.pullDownInitTop}px`;
 
             this.scroll.on('scroll', pos => {
                 if (!this.options.pullDownRefresh) {
@@ -324,7 +332,7 @@ export default {
     top: 0;
     left: 0;
     font-size: 22px;
-    transition: all;
+    transition: top;
     .after-trigger {
         .loading {
             height: 60px;
