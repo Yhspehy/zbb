@@ -1,131 +1,135 @@
 <template>
-  <div>
-    <home-header></home-header>
+    <div>
+        <home-header></home-header>
 
-    <recycle-list for="(item, i) in lists" @loadmore="fetch">
-      <!-- 下拉刷新 -->
-      <!-- <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
-        <text class="indicator-text">Refreshing ...</text>
-        <loading-indicator class="indicator"></loading-indicator>
-      </refresh> -->
+        <scroller  @loadmore="fetch">
+            <!-- 下拉刷新 -->
+            <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
+                <text class="indicator-text">Refreshing ...</text>
+                <loading-indicator class="indicator"></loading-indicator>
+            </refresh>
 
-      <!-- slide -->
-      <!-- <slider class="slider" interval="3000" auto-play="false" :index="2">
-        <div class="frame" v-for="(img, idx) in imgList" :key="idx">
-          <image class="image" :src="img"></image>
-        </div>
-      </slider> -->
+            <!-- slide -->
+            <slider class="slider" interval="3000" auto-play="false" :index="2">
+                <div class="frame" v-for="(img, idx) in imgList" :key="idx">
+                    <image class="image" :src="img"></image>
+                </div>
+            </slider>
 
-      <!-- 列表内容 -->
+            <div class="list-content">
+                <!-- 列表内容 -->
+                <div v-for="(item, i) in lists" :key="i">
+                    <news-item :item="item" ></news-item>
+                </div>
+            </div>
 
-      <cell-slot>
-        <news-item :item="item" :key="i"></news-item>
-      </cell-slot>
+        </scroller>
 
-    </recycle-list>
+        <!-- <recycle-list for="(item, i) in lists" @loadmore="fetch">
+            <cell-slot>
+                <news-item :item="item" :key="i"></news-item>
+            </cell-slot>
+        </recycle-list> -->
 
-  </div>
+        <home-footer></home-footer>
+
+    </div>
 </template>
 
 <script>
 import HomeHeader from './components/HomeHeader.vue'
+import HomeFooter from './components/HomeFooter'
 import newsItem from './components/newsItem'
 import newsListData from './mock/newsList.json'
 import cloneDeep from 'lodash/cloneDeep'
 const modal = weex.requireModule('modal')
 
 export default {
-  components: { HomeHeader, newsItem },
-  data () {
-    return {
-      refreshing: false,
-      refreshHeight: '180px',
-      headerBar: ['推荐', '集锦', '直播', '11', '22', '33', '44', '5', '6'],
-      lists: [],
-      imgList: [
-        'https://fakeimg.pl/750x360/',
-        'https://fakeimg.pl/750x360/',
-        'https://fakeimg.pl/750x360/'
-      ]
+    components: { HomeHeader, newsItem, HomeFooter },
+    data () {
+        return {
+            refreshing: false,
+            refreshHeight: '180px',
+            headerBar: ['推荐', '集锦', '直播', '11', '22', '33', '44', '5', '6'],
+            lists: [],
+            imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/']
+        }
+    },
+    created () {
+        this.lists = cloneDeep(newsListData.data.news_list)
+    },
+    methods: {
+        onrefresh (event) {
+            modal.toast({ message: 'Refreshing', duration: 1 })
+            this.refreshing = true
+            setTimeout(() => {
+                this.refreshing = false
+            }, 2000)
+        },
+        onpullingdown (event) {
+            console.log('dy: ' + event.dy)
+            console.log('pullingDistance: ' + event.pullingDistance)
+            console.log('viewHeight: ' + event.viewHeight)
+            console.log('type: ' + event.type)
+        },
+        scroll (e) {
+            console.log(e)
+        },
+        fetch () {
+            const newData = cloneDeep(newsListData.data.news_list)
+            modal.toast({ message: `loadmore (${this.lists.length + newData.length})`, duration: 0.5 })
+            setTimeout(() => {
+                this.lists.push(...newData)
+            }, 0)
+        }
     }
-  },
-  created () {
-    this.lists = cloneDeep(newsListData.data.news_list)
-  },
-  methods: {
-    onrefresh (event) {
-      modal.toast({ message: 'Refreshing', duration: 1 })
-      this.refreshing = true
-      setTimeout(() => {
-        this.refreshing = false
-      }, 2000)
-    },
-    onpullingdown (event) {
-      console.log('dy: ' + event.dy)
-      console.log('pullingDistance: ' + event.pullingDistance)
-      console.log('viewHeight: ' + event.viewHeight)
-      console.log('type: ' + event.type)
-    },
-    scroll (e) {
-      console.log(e)
-    },
-    fetch () {
-      const newData = cloneDeep(newsListData.data.news_list)
-      modal.toast({ message: `loadmore (${this.lists.length + newData.length})`, duration: 0.5 })
-      setTimeout(() => {
-        this.lists.push(...newData)
-      }, 0)
-    }
-  }
 }
 </script>
 
 <style scoped>
 .home-content {
-  background-color: #f3f7f9;
+    background-color: #f3f7f9;
 }
 
 /*----------  下拉刷新  ----------*/
 .refresh {
-  width: 750px;
-  height: 180px;
-  background-color: #333333;
-  align-items: center;
+    width: 750px;
+    height: 180px;
+    background-color: #333333;
+    align-items: center;
 }
 
 .indicator-text {
-  color: rgb(170, 15, 15);
-  font-size: 42px;
-  text-align: center;
+    color: rgb(170, 15, 15);
+    font-size: 42px;
+    text-align: center;
 }
 .indicator {
-  margin-top: 16px;
-  height: 40px;
-  width: 40px;
-  color: #0000ff;
+    margin-top: 16px;
+    height: 40px;
+    width: 40px;
+    color: #0000ff;
 }
 
 /*----------  slide  ----------*/
 
 .slider {
-  margin-top: 25px;
-  margin-left: 25px;
-  width: 700px;
-  height: 360px;
+    width: 750px;
+    height: 360px;
 }
 .image {
-  width: 750px;
-  height: 360px;
+    width: 750px;
+    height: 360px;
 }
 .frame {
-  width: 750px;
-  height: 360px;
+    width: 750px;
+    height: 360px;
 }
 
 .aa {
-  width: 750px;
-  height: 400px;
-  margin-bottom: 40px;
-  background-color: rgb(230, 219, 184);
+    width: 750px;
+    height: 400px;
+    margin-bottom: 40px;
+    background-color: rgb(230, 219, 184);
 }
 </style>

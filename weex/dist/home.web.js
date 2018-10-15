@@ -36518,7 +36518,7 @@ exports.push([module.i, "\n.header-scroller[data-v-e695a4cc] {\n  width: 10rem;\
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -36534,12 +36534,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  data: function data() {
-    return {
-      headerBar: ['推荐', '集锦', '直播'],
-      chosenName: '推荐'
-    };
-  }
+    data: function data() {
+        return {
+            headerBar: ['推荐', '集锦', '直播'],
+            chosenName: '推荐'
+        };
+    }
 };
 
 /***/ }),
@@ -36655,7 +36655,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.news-item[data-v-b96d4b98] {\n  width: 10rem;\n  padding-top: 0.21333rem;\n  padding-bottom: 0.21333rem;\n  padding-left: 0.48rem;\n  padding-right: 0.48rem;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  border-bottom-color: #808080;\n  background-color: #ffffff;\n}\n.title[data-v-b96d4b98] {\n  font-size: 0.37333rem;\n  color: #808080;\n  line-height: 0.48rem;\n}\n.date[data-v-b96d4b98],\n.source[data-v-b96d4b98] {\n  font-size: 0.32rem;\n  color: #808080;\n}\n.img[data-v-b96d4b98] {\n  margin-right: 0.13333rem;\n  width: 2.82667rem;\n  height: 1.92rem;\n  background-color: pink;\n}\n.info[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 一张图片 */\n.news-one[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n.content[data-v-b96d4b98] {\n  width: 6rem;\n  height: 1.92rem;\n  margin-left: 0.26667rem;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 三张图片 */\n.img-group[data-v-b96d4b98] {\n  margin: 0.26667rem 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n", ""]);
+exports.push([module.i, "\n.news-item[data-v-b96d4b98] {\n  width: 10rem;\n  padding-top: 0.21333rem;\n  padding-bottom: 0.21333rem;\n  padding-left: 0.48rem;\n  padding-right: 0.48rem;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  border-bottom-color: #808080;\n  background-color: #ffffff;\n}\n.title[data-v-b96d4b98] {\n  font-size: 0.37333rem;\n  color: #808080;\n  line-height: 0.48rem;\n}\n.date[data-v-b96d4b98],\n.source[data-v-b96d4b98] {\n  font-size: 0.32rem;\n  color: #808080;\n}\n.img[data-v-b96d4b98] {\n  margin-right: 0.13333rem;\n  width: 2.82667rem;\n  height: 1.92rem;\n  background-color: #ffc0cb;\n}\n.info[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 一张图片 */\n.news-one[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n.content[data-v-b96d4b98] {\n  width: 6rem;\n  height: 1.92rem;\n  margin-left: 0.26667rem;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 三张图片 */\n.img-group[data-v-b96d4b98] {\n  margin: 0.26667rem 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n", ""]);
 
 // exports
 
@@ -36668,7 +36668,7 @@ exports.push([module.i, "\n.news-item[data-v-b96d4b98] {\n  width: 10rem;\n  pad
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _moment = __webpack_require__(0);
@@ -36678,18 +36678,18 @@ var _moment2 = _interopRequireDefault(_moment);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'newsList',
-  props: {
-    item: {
-      type: Object,
-      require: true
+    name: 'newsList',
+    props: {
+        item: {
+            type: Object,
+            require: true
+        }
+    },
+    computed: {
+        time: function time() {
+            return (0, _moment2.default)(this.item.create_time).format('MM-DD HH:mm');
+        }
     }
-  },
-  computed: {
-    time: function time() {
-      return (0, _moment2.default)(this.item.create_time).format('MM-DD HH:mm');
-    }
-  }
 }; //
 //
 //
@@ -38057,7 +38057,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.home-content[data-v-50b89dda] {\n  background-color: #f3f7f9;\n}\n\n/*----------  下拉刷新  ----------*/\n\n.refresh[data-v-50b89dda] {\n  width: 10rem;\n  height: 2.4rem;\n  background-color: #333333;\n  -webkit-box-align: center;\n              -ms-flex-align: center;\n          align-items: center;\n}\n\n.indicator-text[data-v-50b89dda] {\n  color: rgb(170, 15, 15);\n  font-size: 0.56rem;\n  text-align: center;\n}\n\n.indicator[data-v-50b89dda] {\n  margin-top: 0.21333rem;\n  height: 0.53333rem;\n  width: 0.53333rem;\n  color: #0000ff;\n}\n\n/*----------  slide  ----------*/\n\n.slider[data-v-50b89dda] {\n  margin-top: 0.33333rem;\n  margin-left: 0.33333rem;\n  width: 9.33333rem;\n  height: 4.8rem;\n}\n\n.image[data-v-50b89dda] {\n  width: 10rem;\n  height: 4.8rem;\n}\n\n.frame[data-v-50b89dda] {\n  width: 10rem;\n  height: 4.8rem;\n}\n\n.aa[data-v-50b89dda] {\n  width: 10rem;\n  height: 5.33333rem;\n  margin-bottom: 0.53333rem;\n  background-color: rgb(230, 219, 184);\n}\n", ""]);
+exports.push([module.i, "\n.home-content[data-v-50b89dda] {\n    background-color: #f3f7f9;\n}\n\n/*----------  下拉刷新  ----------*/\n\n.refresh[data-v-50b89dda] {\n    width: 10rem;\n    height: 2.4rem;\n    background-color: #333333;\n    -webkit-box-align: center;\n                -ms-flex-align: center;\n            align-items: center;\n}\n\n.indicator-text[data-v-50b89dda] {\n    color: rgb(170, 15, 15);\n    font-size: 0.56rem;\n    text-align: center;\n}\n\n.indicator[data-v-50b89dda] {\n    margin-top: 0.21333rem;\n    height: 0.53333rem;\n    width: 0.53333rem;\n    color: #0000ff;\n}\n\n/*----------  slide  ----------*/\n\n.slider[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.image[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.frame[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.aa[data-v-50b89dda] {\n    width: 10rem;\n    height: 5.33333rem;\n    margin-bottom: 0.53333rem;\n    background-color: rgb(230, 219, 184);\n}\n", ""]);
 
 // exports
 
@@ -38070,12 +38070,16 @@ exports.push([module.i, "\n.home-content[data-v-50b89dda] {\n  background-color:
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _HomeHeader = __webpack_require__(147);
 
 var _HomeHeader2 = _interopRequireDefault(_HomeHeader);
+
+var _HomeFooter = __webpack_require__(275);
+
+var _HomeFooter2 = _interopRequireDefault(_HomeFooter);
 
 var _newsItem = __webpack_require__(152);
 
@@ -38120,55 +38124,64 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 
 exports.default = {
-  components: { HomeHeader: _HomeHeader2.default, newsItem: _newsItem2.default },
-  data: function data() {
-    return {
-      refreshing: false,
-      refreshHeight: '180px',
-      headerBar: ['推荐', '集锦', '直播', '11', '22', '33', '44', '5', '6'],
-      lists: [],
-      imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/']
-    };
-  },
-  created: function created() {
-    this.lists = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
-  },
-
-  methods: {
-    onrefresh: function onrefresh(event) {
-      var _this = this;
-
-      modal.toast({ message: 'Refreshing', duration: 1 });
-      this.refreshing = true;
-      setTimeout(function () {
-        _this.refreshing = false;
-      }, 2000);
+    components: { HomeHeader: _HomeHeader2.default, newsItem: _newsItem2.default, HomeFooter: _HomeFooter2.default },
+    data: function data() {
+        return {
+            refreshing: false,
+            refreshHeight: '180px',
+            headerBar: ['推荐', '集锦', '直播', '11', '22', '33', '44', '5', '6'],
+            lists: [],
+            imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/']
+        };
     },
-    onpullingdown: function onpullingdown(event) {
-      console.log('dy: ' + event.dy);
-      console.log('pullingDistance: ' + event.pullingDistance);
-      console.log('viewHeight: ' + event.viewHeight);
-      console.log('type: ' + event.type);
+    created: function created() {
+        this.lists = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
     },
-    scroll: function scroll(e) {
-      console.log(e);
-    },
-    fetch: function fetch() {
-      var _this2 = this;
 
-      var newData = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
-      modal.toast({ message: 'loadmore (' + (this.lists.length + newData.length) + ')', duration: 0.5 });
-      setTimeout(function () {
-        var _lists;
+    methods: {
+        onrefresh: function onrefresh(event) {
+            var _this = this;
 
-        (_lists = _this2.lists).push.apply(_lists, _toConsumableArray(newData));
-      }, 0);
+            modal.toast({ message: 'Refreshing', duration: 1 });
+            this.refreshing = true;
+            setTimeout(function () {
+                _this.refreshing = false;
+            }, 2000);
+        },
+        onpullingdown: function onpullingdown(event) {
+            console.log('dy: ' + event.dy);
+            console.log('pullingDistance: ' + event.pullingDistance);
+            console.log('viewHeight: ' + event.viewHeight);
+            console.log('type: ' + event.type);
+        },
+        scroll: function scroll(e) {
+            console.log(e);
+        },
+        fetch: function fetch() {
+            var _this2 = this;
+
+            var newData = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
+            modal.toast({ message: 'loadmore (' + (this.lists.length + newData.length) + ')', duration: 0.5 });
+            setTimeout(function () {
+                var _lists;
+
+                (_lists = _this2.lists).push.apply(_lists, _toConsumableArray(newData));
+            }, 0);
+        }
     }
-  }
 };
 
 /***/ }),
@@ -40326,41 +40339,243 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('home-header'), _vm._v(" "), _c('recycle-list', {
+  }, [_c('home-header'), _vm._v(" "), _c('scroller', {
     attrs: {
-      "for": "(item, i) in lists",
-      "_items": _vm.lists,
       "data-evt-loadmore": ""
     },
     nativeOn: {
       "loadmore": _vm.fetch
+    }
+  }, [_c('refresh', {
+    staticClass: "refresh",
+    attrs: {
+      "display": _vm.refreshing ? 'show' : 'hide',
+      "data-evt-refresh": "",
+      "data-evt-pullingdown": ""
     },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function(ref) {
-        var item = ref.item;
-        var i = ref.index;
-
-        return _c('section', {
-          staticClass: " weex-ct weex-cell",
-          attrs: {
-            "weex-type": "cell"
-          }
-        }, [_c('news-item', {
-          key: i,
-          attrs: {
-            "item": item
-          }
-        })], 1)
+    nativeOn: {
+      "refresh": function($event) {
+        $event.stopPropagation();
+        return _vm.onrefresh($event)
+      },
+      "pullingdown": function($event) {
+        $event.stopPropagation();
+        return _vm.onpullingdown($event)
       }
-    }])
-  })], 1)
+    }
+  }, [_c('p', {
+    staticClass: "indicator-text weex-el weex-text",
+    attrs: {
+      "weex-type": "text"
+    }
+  }, [_vm._v("Refreshing ...")]), _vm._v(" "), _c('loading-indicator', {
+    staticClass: "indicator",
+    attrs: {}
+  })], 1), _vm._v(" "), _c('slider', {
+    staticClass: "slider",
+    attrs: {
+      "interval": "3000",
+      "auto-play": "false",
+      "index": 2
+    }
+  }, _vm._l((_vm.imgList), function(img, idx) {
+    return _c('div', {
+      key: idx,
+      staticClass: "frame weex-ct weex-div",
+      attrs: {
+        "weex-type": "div"
+      }
+    }, [_c('figure', {
+      staticClass: "image weex-el weex-image",
+      attrs: {
+        "src": img,
+        "data-img-src": img,
+        "weex-type": "image"
+      }
+    })])
+  })), _vm._v(" "), _c('div', {
+    staticClass: "list-content weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, _vm._l((_vm.lists), function(item, i) {
+    return _c('div', {
+      key: i,
+      staticClass: " weex-ct weex-div",
+      attrs: {
+        "weex-type": "div"
+      }
+    }, [_c('news-item', {
+      attrs: {
+        "item": item
+      }
+    })], 1)
+  }))], 1), _vm._v(" "), _c('home-footer')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-50b89dda", module.exports)
+  }
+}
+
+/***/ }),
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(276)
+}
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(278),
+  /* template */
+  __webpack_require__(279),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  "data-v-6b82c9a8",
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/yc/Project/zbb/weex/src/components/HomeFooter.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] HomeFooter.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6b82c9a8", Component.options)
+  } else {
+    hotAPI.reload("data-v-6b82c9a8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 276 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(277);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(10)("620d3a34", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b82c9a8\",\"scoped\":true,\"hasInlineConfig\":true}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./HomeFooter.vue", function() {
+     var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6b82c9a8\",\"scoped\":true,\"hasInlineConfig\":true}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./HomeFooter.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 277 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(9)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.home-footer[data-v-6b82c9a8] {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n                -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n                -ms-flex-pack: justify;\n            justify-content: space-between;\n    background-color: #ffffff;\n    padding-left: 0.53333rem;\n    padding-right: 0.53333rem;\n    padding-top: 0.26667rem;\n    padding-bottom: 0.26667rem;\n    border-top-color: #808080;\n    border-top-width: 1px;\n    border-top-style: solid;\n    border-bottom-width: 1px;\n    border-bottom-color: transparent;\n    border-bottom-style: solid;\n}\n.nav-item[data-v-6b82c9a8] {\n    color: #ffc0cb;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 278 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: 'home_footer',
+    data: function data() {
+        return {
+            navList: [{
+                name: '首页',
+                url: 'home'
+            }, {
+                name: '赛程',
+                url: 'schedule'
+            }, {
+                name: '社区',
+                url: 'community'
+            }, {
+                name: '我的',
+                url: 'profile'
+            }]
+        };
+    }
+};
+
+/***/ }),
+/* 279 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "home-footer weex-ct weex-div",
+    attrs: {
+      "weex-type": "div"
+    }
+  }, _vm._l((_vm.navList), function(nav) {
+    return _c('p', {
+      key: nav.name,
+      staticClass: "nav-item weex-el weex-text",
+      attrs: {
+        "weex-type": "text"
+      }
+    }, [_vm._v(_vm._s(nav.name))])
+  }))
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6b82c9a8", module.exports)
   }
 }
 

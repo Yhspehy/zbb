@@ -12,12 +12,12 @@
 
 <script>
 export default {
-  data () {
-    return {
-      headerBar: ['推荐', '集锦', '直播'],
-      chosenName: '推荐'
+    data () {
+        return {
+            headerBar: ['推荐', '集锦', '直播'],
+            chosenName: '推荐'
+        }
     }
-  }
 }
 </script>
 

@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 174);
+/******/ 	return __webpack_require__(__webpack_require__.s = 179);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -149,7 +149,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -165,12 +165,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  data: function data() {
-    return {
-      headerBar: ['推荐', '集锦', '直播'],
-      chosenName: '推荐'
-    };
-  }
+    data: function data() {
+        return {
+            headerBar: ['推荐', '集锦', '直播'],
+            chosenName: '推荐'
+        };
+    }
 };
 
 /***/ }),
@@ -196,7 +196,7 @@ module.exports.render._withStripped = true
 
 /***/ }),
 
-/***/ 174:
+/***/ 179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

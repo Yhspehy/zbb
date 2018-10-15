@@ -215,7 +215,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _HelloWorld = __webpack_require__(135);
@@ -238,24 +238,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var navigator = weex.requireModule('navigator');
 exports.default = {
-  name: 'App',
-  components: {
-    HelloWorld: _HelloWorld2.default
-  },
-  data: function data() {
-    return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
-    };
-  },
+    name: 'App',
+    components: {
+        HelloWorld: _HelloWorld2.default
+    },
+    data: function data() {
+        return {
+            logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+        };
+    },
 
-  methods: {
-    jump: function jump() {
-      navigator.push({
-        url: (0, _utils.getBaseURL)('home'),
-        animated: 'true'
-      });
+    methods: {
+        jump: function jump() {
+            navigator.push({
+                url: (0, _utils.getBaseURL)('home'),
+                animated: 'true'
+            });
+        }
     }
-  }
 };
 
 /***/ }),
@@ -267,46 +267,46 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.getBaseURL = getBaseURL;
 function getBaseURL(jsFile) {
-  var bundleUrl = weex.config.bundleUrl;
-  var host = '';
-  var path = '';
-  var nativeBase = void 0;
-  var isAndroidAssets = bundleUrl.indexOf('your_current_IP') >= 0 || bundleUrl.indexOf('file://assets/') >= 0;
-  var isiOSAssets = bundleUrl.indexOf('file:///') >= 0 && bundleUrl.indexOf('WeexDemo.app') > 0;
-  if (isAndroidAssets) {
-    nativeBase = 'file://assets/dist';
-  } else if (isiOSAssets) {
-    nativeBase = bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1);
-  } else {
-    var matches = /\/\/([^/]+?)\//.exec(bundleUrl);
-    var matchFirstPath = /\/\/[^/]+\/([^/\s]+)\//.exec(bundleUrl);
-    if (matches && matches.length >= 2) {
-      host = matches[1];
+    var bundleUrl = weex.config.bundleUrl;
+    var host = '';
+    var path = '';
+    var nativeBase = void 0;
+    var isAndroidAssets = bundleUrl.indexOf('your_current_IP') >= 0 || bundleUrl.indexOf('file://assets/') >= 0;
+    var isiOSAssets = bundleUrl.indexOf('file:///') >= 0 && bundleUrl.indexOf('WeexDemo.app') > 0;
+    if (isAndroidAssets) {
+        nativeBase = 'file://assets/dist';
+    } else if (isiOSAssets) {
+        nativeBase = bundleUrl.substring(0, bundleUrl.lastIndexOf('/') + 1);
+    } else {
+        var matches = /\/\/([^/]+?)\//.exec(bundleUrl);
+        var matchFirstPath = /\/\/[^/]+\/([^/\s]+)\//.exec(bundleUrl);
+        if (matches && matches.length >= 2) {
+            host = matches[1];
+        }
+        if (matchFirstPath && matchFirstPath.length >= 2) {
+            path = matchFirstPath[1];
+        }
+        nativeBase = 'http://' + host + '/';
     }
-    if (matchFirstPath && matchFirstPath.length >= 2) {
-      path = matchFirstPath[1];
+    // const h5Base = './index.html?page=./'
+    // in Native
+    var base = nativeBase;
+    if (typeof navigator !== 'undefined' && (navigator.appCodeName === 'Mozilla' || navigator.product === 'Gecko')) {
+        // check if in weexpack project
+        base = nativeBase + jsFile + '.html';
+        // if (path === 'web' || path === 'dist') {
+        //   base = h5Base + '/dist/'
+        // } else {
+        //   base = h5Base + ''
+        // }
+    } else {
+        base = nativeBase + (path ? path + '/' : '') + jsFile + '.js';
     }
-    nativeBase = 'http://' + host + '/';
-  }
-  // const h5Base = './index.html?page=./'
-  // in Native
-  var base = nativeBase;
-  if (typeof navigator !== 'undefined' && (navigator.appCodeName === 'Mozilla' || navigator.product === 'Gecko')) {
-    // check if in weexpack project
-    base = nativeBase + jsFile + '.html';
-    // if (path === 'web' || path === 'dist') {
-    //   base = h5Base + '/dist/'
-    // } else {
-    //   base = h5Base + ''
-    // }
-  } else {
-    base = nativeBase + (path ? path + '/' : '') + jsFile + '.js';
-  }
-  return base;
+    return base;
 }
 
 /***/ }),

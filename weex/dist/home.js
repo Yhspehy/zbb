@@ -16825,7 +16825,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 //
 //
@@ -16841,12 +16841,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-  data: function data() {
-    return {
-      headerBar: ['推荐', '集锦', '直播'],
-      chosenName: '推荐'
-    };
-  }
+    data: function data() {
+        return {
+            headerBar: ['推荐', '集锦', '直播'],
+            chosenName: '推荐'
+        };
+    }
 };
 
 /***/ }),
@@ -16947,7 +16947,7 @@ module.exports = {
     "marginRight": "10",
     "width": "212",
     "height": "144",
-    "backgroundColor": "#FFC0CB"
+    "backgroundColor": "#ffc0cb"
   },
   "info": {
     "flexDirection": "row",
@@ -16979,7 +16979,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _moment = __webpack_require__(0);
@@ -16989,18 +16989,18 @@ var _moment2 = _interopRequireDefault(_moment);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'newsList',
-  props: {
-    item: {
-      type: Object,
-      require: true
+    name: 'newsList',
+    props: {
+        item: {
+            type: Object,
+            require: true
+        }
+    },
+    computed: {
+        time: function time() {
+            return (0, _moment2.default)(this.item.create_time).format('MM-DD HH:mm');
+        }
     }
-  },
-  computed: {
-    time: function time() {
-      return (0, _moment2.default)(this.item.create_time).format('MM-DD HH:mm');
-    }
-  }
 }; //
 //
 //
@@ -18367,9 +18367,7 @@ module.exports = {
     "color": "#0000ff"
   },
   "slider": {
-    "marginTop": "25",
-    "marginLeft": "25",
-    "width": "700",
+    "width": "750",
     "height": "360"
   },
   "image": {
@@ -18396,12 +18394,16 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _HomeHeader = __webpack_require__(137);
 
 var _HomeHeader2 = _interopRequireDefault(_HomeHeader);
+
+var _HomeFooter = __webpack_require__(259);
+
+var _HomeFooter2 = _interopRequireDefault(_HomeFooter);
 
 var _newsItem = __webpack_require__(141);
 
@@ -18446,55 +18448,64 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 
 exports.default = {
-  components: { HomeHeader: _HomeHeader2.default, newsItem: _newsItem2.default },
-  data: function data() {
-    return {
-      refreshing: false,
-      refreshHeight: '180px',
-      headerBar: ['推荐', '集锦', '直播', '11', '22', '33', '44', '5', '6'],
-      lists: [],
-      imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/']
-    };
-  },
-  created: function created() {
-    this.lists = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
-  },
-
-  methods: {
-    onrefresh: function onrefresh(event) {
-      var _this = this;
-
-      modal.toast({ message: 'Refreshing', duration: 1 });
-      this.refreshing = true;
-      setTimeout(function () {
-        _this.refreshing = false;
-      }, 2000);
+    components: { HomeHeader: _HomeHeader2.default, newsItem: _newsItem2.default, HomeFooter: _HomeFooter2.default },
+    data: function data() {
+        return {
+            refreshing: false,
+            refreshHeight: '180px',
+            headerBar: ['推荐', '集锦', '直播', '11', '22', '33', '44', '5', '6'],
+            lists: [],
+            imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/']
+        };
     },
-    onpullingdown: function onpullingdown(event) {
-      console.log('dy: ' + event.dy);
-      console.log('pullingDistance: ' + event.pullingDistance);
-      console.log('viewHeight: ' + event.viewHeight);
-      console.log('type: ' + event.type);
+    created: function created() {
+        this.lists = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
     },
-    scroll: function scroll(e) {
-      console.log(e);
-    },
-    fetch: function fetch() {
-      var _this2 = this;
 
-      var newData = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
-      modal.toast({ message: 'loadmore (' + (this.lists.length + newData.length) + ')', duration: 0.5 });
-      setTimeout(function () {
-        var _lists;
+    methods: {
+        onrefresh: function onrefresh(event) {
+            var _this = this;
 
-        (_lists = _this2.lists).push.apply(_lists, _toConsumableArray(newData));
-      }, 0);
+            modal.toast({ message: 'Refreshing', duration: 1 });
+            this.refreshing = true;
+            setTimeout(function () {
+                _this.refreshing = false;
+            }, 2000);
+        },
+        onpullingdown: function onpullingdown(event) {
+            console.log('dy: ' + event.dy);
+            console.log('pullingDistance: ' + event.pullingDistance);
+            console.log('viewHeight: ' + event.viewHeight);
+            console.log('type: ' + event.type);
+        },
+        scroll: function scroll(e) {
+            console.log(e);
+        },
+        fetch: function fetch() {
+            var _this2 = this;
+
+            var newData = (0, _cloneDeep2.default)(_newsList2.default.data.news_list);
+            modal.toast({ message: 'loadmore (' + (this.lists.length + newData.length) + ')', duration: 0.5 });
+            setTimeout(function () {
+                var _lists;
+
+                (_lists = _this2.lists).push.apply(_lists, _toConsumableArray(newData));
+            }, 0);
+        }
     }
-  }
 };
 
 /***/ }),
@@ -20647,34 +20658,184 @@ module.exports = baseIsSet;
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('home-header'), _c('recycle-list', {
-    appendAsTree: true,
-    attrs: {
-      "listData": _vm.lists,
-      "bindingExpression": "lists",
-      "alias": "item",
-      "index": "i",
-      "append": "tree"
-    },
+  return _c('div', [_c('home-header'), _c('scroller', {
     on: {
       "loadmore": _vm.fetch
     }
-  }, [_c('cell-slot', {
-    appendAsTree: true,
+  }, [_c('refresh', {
+    staticClass: ["refresh"],
     attrs: {
-      "append": "tree"
-    }
-  }, [_c('news-item', {
-    key: {
-      "@binding": "i"
+      "display": _vm.refreshing ? 'show' : 'hide'
     },
-    attrs: {
-      "item": {
-        "@binding": "item"
-      },
-      "@inRecycleList": true
+    on: {
+      "refresh": _vm.onrefresh,
+      "pullingdown": _vm.onpullingdown
     }
-  })], 1)], 1)], 1)
+  }, [_c('text', {
+    staticClass: ["indicator-text"]
+  }, [_vm._v("Refreshing ...")]), _c('loading-indicator', {
+    staticClass: ["indicator"]
+  })]), _c('slider', {
+    staticClass: ["slider"],
+    attrs: {
+      "interval": "3000",
+      "autoPlay": "false",
+      "index": 2
+    }
+  }, _vm._l((_vm.imgList), function(img, idx) {
+    return _c('div', {
+      key: idx,
+      staticClass: ["frame"]
+    }, [_c('image', {
+      staticClass: ["image"],
+      attrs: {
+        "src": img
+      }
+    })])
+  })), _c('div', {
+    staticClass: ["list-content"]
+  }, _vm._l((_vm.lists), function(item, i) {
+    return _c('div', {
+      key: i
+    }, [_c('news-item', {
+      attrs: {
+        "item": item
+      }
+    })], 1)
+  }))]), _c('home-footer')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(260)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(261)
+
+/* template */
+var __vue_template__ = __webpack_require__(262)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/yc/Project/zbb/weex/src/components/HomeFooter.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-9b1ddeec"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "home-footer": {
+    "position": "fixed",
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "backgroundColor": "#ffffff",
+    "paddingLeft": "40",
+    "paddingRight": "40",
+    "paddingTop": "20",
+    "paddingBottom": "20",
+    "borderTopColor": "#808080",
+    "borderTopWidth": "1",
+    "borderTopStyle": "solid",
+    "borderBottomWidth": "1",
+    "borderBottomColor": "rgba(0,0,0,0)",
+    "borderBottomStyle": "solid"
+  },
+  "nav-item": {
+    "color": "#ffc0cb"
+  }
+}
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+    name: 'home_footer',
+    data: function data() {
+        return {
+            navList: [{
+                name: '首页',
+                url: 'home'
+            }, {
+                name: '赛程',
+                url: 'schedule'
+            }, {
+                name: '社区',
+                url: 'community'
+            }, {
+                name: '我的',
+                url: 'profile'
+            }]
+        };
+    }
+};
+
+/***/ }),
+/* 262 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["home-footer"]
+  }, _vm._l((_vm.navList), function(nav) {
+    return _c('text', {
+      key: nav.name,
+      staticClass: ["nav-item"]
+    }, [_vm._v(_vm._s(nav.name))])
+  }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

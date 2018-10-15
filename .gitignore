@@ -9,6 +9,10 @@ node_modules
 # cordova/platforms
 # cordova/res
 
+#weex
+/weex/dist
+/weex/.temp
+
 # local env files
 .env.local
 .env.*.local

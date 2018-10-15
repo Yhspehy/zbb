@@ -34,18 +34,18 @@
 // 新闻列表的item
 import moment from 'moment'
 export default {
-  name: 'newsList',
-  props: {
-    item: {
-      type: Object,
-      require: true
+    name: 'newsList',
+    props: {
+        item: {
+            type: Object,
+            require: true
+        }
+    },
+    computed: {
+        time () {
+            return moment(this.item.create_time).format('MM-DD HH:mm')
+        }
     }
-  },
-  computed: {
-    time () {
-      return moment(this.item.create_time).format('MM-DD HH:mm')
-    }
-  }
 }
 </script>
 <style scoped>
@@ -76,7 +76,7 @@ export default {
   margin-right: 10px;
   width: 212px;
   height: 144px;
-  background-color: pink;
+  background-color: #ffc0cb;
 }
 
 .info {

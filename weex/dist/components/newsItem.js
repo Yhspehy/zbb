@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 175);
+/******/ 	return __webpack_require__(__webpack_require__.s = 180);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -16545,7 +16545,7 @@ module.exports = {
     "marginRight": "10",
     "width": "212",
     "height": "144",
-    "backgroundColor": "#FFC0CB"
+    "backgroundColor": "#ffc0cb"
   },
   "info": {
     "flexDirection": "row",
@@ -16577,7 +16577,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _moment = __webpack_require__(0);
@@ -16587,18 +16587,18 @@ var _moment2 = _interopRequireDefault(_moment);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'newsList',
-  props: {
-    item: {
-      type: Object,
-      require: true
+    name: 'newsList',
+    props: {
+        item: {
+            type: Object,
+            require: true
+        }
+    },
+    computed: {
+        time: function time() {
+            return (0, _moment2.default)(this.item.create_time).format('MM-DD HH:mm');
+        }
     }
-  },
-  computed: {
-    time: function time() {
-      return (0, _moment2.default)(this.item.create_time).format('MM-DD HH:mm');
-    }
-  }
 }; //
 //
 //
@@ -17047,7 +17047,12 @@ module.exports.render._withStripped = true
 /* 172 */,
 /* 173 */,
 /* 174 */,
-/* 175 */
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

@@ -12,23 +12,23 @@ import HelloWorld from './components/HelloWorld'
 import { getBaseURL } from './utils'
 var navigator = weex.requireModule('navigator')
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  data () {
-    return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+    name: 'App',
+    components: {
+        HelloWorld
+    },
+    data () {
+        return {
+            logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png'
+        }
+    },
+    methods: {
+        jump () {
+            navigator.push({
+                url: getBaseURL('home'),
+                animated: 'true'
+            })
+        }
     }
-  },
-  methods: {
-    jump () {
-      navigator.push({
-        url: getBaseURL('home'),
-        animated: 'true'
-      })
-    }
-  }
 }
 </script>
 
