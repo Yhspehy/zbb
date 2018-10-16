@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<text class="title">Hello Eros</text>		
-		<text class="desc">一套 Vue 代码，两端原生应用。</text>		
+		<text class="title">Hello Eros121</text>
+		<text class="desc">一套 Vue 代码，两端原生应用。</text>
 	</div>
 </template>
 <script>
@@ -22,5 +22,5 @@
 	}
 	.desc {
 		font-size: 30px;
-	}	
+	}
 </style>

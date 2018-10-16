@@ -8,7 +8,12 @@ module.exports = {
         // mediator
         'js/mediator/index.vue',
         // home
-        'js/pages/hello.vue'
+        // 'js/pages/hello.vue',
+        'js/pages/home/recommend.vue',
+        'js/pages/home/highlights.vue',
+        'js/pages/schedule/popular.vue',
+        'js/pages/community/recommend.vue',
+        'js/pages/profile/index.vue'
     ],
     'alias': {
         'Components': 'js/components',

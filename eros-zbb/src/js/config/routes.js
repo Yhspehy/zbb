@@ -5,8 +5,23 @@
 //  dev.json 的 exports 需要打包的js地址，填入src的需要被打包成js bundle的地址   从src开始
 
 export default {
-    'eros': {
-        title: 'eros',
-        url: '/pages/hello.js'
+    // 'eros': {
+    //     title: 'eros',
+    //     url: '/pages/hello.js'
+    // },
+    'home.recommend': {
+        url: 'pages/home/recommend.js'
+    },
+    'home.highlights': {
+        url: 'pages/home/highlights.js'
+    },
+    'schedule.popular': {
+        url: 'pages/schedule/popular.js'
+    },
+    'community.recommend': {
+        url: 'pages/community/recommend.js'
+    },
+    'profile': {
+        url: 'pages/profile/index.js'
     }
 }
