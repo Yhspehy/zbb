@@ -2,11 +2,11 @@
     <div>
         <home-header></home-header>
 
-        <scroller class="home-content" >
+        <scroller class="home-content" @loadmore="fetch">
             <!-- 下拉刷新 -->
             <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
                 <text class="indicator-text">Refreshing ...</text>
-                <loading-indicator class="indicator"></loading-indicator>
+                <loading-indicator class="indicator"></loading-i>
             </refresh>
 
             <!-- slide -->
@@ -68,9 +68,6 @@ export default {
             setTimeout(() => {
                 this.lists.pop()
                 this.refreshing = false
-                this.$nextTick(() => {
-                    dom.scrollToElement(this.$refs.item, {})
-                })
             }, 2000)
         },
         onpullingdown (event) {
