@@ -34,17 +34,14 @@ export default {
 
 <style scoped>
 .home-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    width: 750px;
+    height: 80px;
     flex-direction: row;
     justify-content: space-between;
     background-color: #ffffff;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 20px;
-    padding-bottom: 20px;
     border-top-color: #808080;
     border-top-width: 1px;
     border-top-style: solid;

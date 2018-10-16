@@ -62,7 +62,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 193);
+/******/ 	return __webpack_require__(__webpack_require__.s = 187);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4893,7 +4893,8 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 4 */
+/* 4 */,
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12931,10 +12932,10 @@ if (inBrowser) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(1), __webpack_require__(5).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(1), __webpack_require__(6).setImmediate))
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -12990,7 +12991,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(6);
+__webpack_require__(7);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -13004,7 +13005,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -13197,7 +13198,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23918,7 +23919,7 @@ console.log('START WEEX VUE RENDER: 1.0.33, Build 2018-10-10 18:12.');
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 /*
@@ -24000,7 +24001,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -24228,7 +24229,6 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 10 */,
 /* 11 */
 /***/ (function(module, exports) {
 
@@ -36205,7 +36205,7 @@ var content = __webpack_require__(154);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(9)("f2e2fbc2", content, false, {});
+var update = __webpack_require__(10)("f2e2fbc2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -36224,12 +36224,12 @@ if(false) {
 /* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(8)(false);
+exports = module.exports = __webpack_require__(9)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.news-item[data-v-b96d4b98] {\n  width: 10rem;\n  padding-top: 0.21333rem;\n  padding-bottom: 0.21333rem;\n  padding-left: 0.48rem;\n  padding-right: 0.48rem;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  border-bottom-color: #808080;\n  background-color: #ffffff;\n}\n.title[data-v-b96d4b98] {\n  font-size: 0.37333rem;\n  color: #808080;\n  line-height: 0.48rem;\n}\n.date[data-v-b96d4b98],\n.source[data-v-b96d4b98] {\n  font-size: 0.32rem;\n  color: #808080;\n}\n.img[data-v-b96d4b98] {\n  margin-right: 0.13333rem;\n  width: 2.82667rem;\n  height: 1.92rem;\n  background-color: #ffc0cb;\n}\n.info[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 一张图片 */\n.news-one[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n.content[data-v-b96d4b98] {\n  width: 6rem;\n  height: 1.92rem;\n  margin-left: 0.26667rem;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 三张图片 */\n.img-group[data-v-b96d4b98] {\n  margin: 0.26667rem 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n", ""]);
+exports.push([module.i, "\n.news-item[data-v-b96d4b98] {\n  width: 10rem;\n  padding-top: 0.21333rem;\n  padding-bottom: 0.21333rem;\n  padding-left: 0.48rem;\n  padding-right: 0.48rem;\n  border-top-style: solid;\n  border-top-width: 1px;\n  border-top-color: #808080;\n  background-color: #ffffff;\n}\n.title[data-v-b96d4b98] {\n  font-size: 0.37333rem;\n  color: #808080;\n  line-height: 0.48rem;\n}\n.date[data-v-b96d4b98],\n.source[data-v-b96d4b98] {\n  font-size: 0.32rem;\n  color: #808080;\n}\n.img[data-v-b96d4b98] {\n  margin-right: 0.13333rem;\n  width: 2.82667rem;\n  height: 1.92rem;\n  background-color: #ffc0cb;\n}\n.info[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 一张图片 */\n.news-one[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n.content[data-v-b96d4b98] {\n  width: 6rem;\n  height: 1.92rem;\n  margin-left: 0.26667rem;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 三张图片 */\n.img-group[data-v-b96d4b98] {\n  margin: 0.26667rem 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n", ""]);
 
 // exports
 
@@ -36582,10 +36582,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('div', {
-    staticClass: "img weex-ct weex-div",
+  }, [_c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[0],
+      "data-img-src": _vm.item.img_list[0],
+      "weex-type": "image"
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "content weex-ct weex-div",
@@ -36627,20 +36629,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('div', {
-    staticClass: "img weex-ct weex-div",
+  }, [_c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[0],
+      "data-img-src": _vm.item.img_list[0],
+      "weex-type": "image"
     }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "img weex-ct weex-div",
+  }), _vm._v(" "), _c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[1],
+      "data-img-src": _vm.item.img_list[1],
+      "weex-type": "image"
     }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "img weex-ct weex-div",
+  }), _vm._v(" "), _c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[2],
+      "data-img-src": _vm.item.img_list[2],
+      "weex-type": "image"
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "info weex-ct weex-div",
@@ -36697,23 +36705,17 @@ if (false) {
 /* 184 */,
 /* 185 */,
 /* 186 */,
-/* 187 */,
-/* 188 */,
-/* 189 */,
-/* 190 */,
-/* 191 */,
-/* 192 */,
-/* 193 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _vue = __webpack_require__(4);
+var _vue = __webpack_require__(5);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _weexVueRender = __webpack_require__(7);
+var _weexVueRender = __webpack_require__(8);
 
 var _weexVueRender2 = _interopRequireDefault(_weexVueRender);
 

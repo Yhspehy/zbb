@@ -1,8 +1,8 @@
 <template recyclable>
   <div class="news-item">
     <div class="news-one" v-if="item.img_count < 3">
-        <div class="img"></div>
-      <!-- <image class="img" :src="item.img_list[0]"></image> -->
+        <!-- <div class="img"></div> -->
+      <image class="img" :src="item.img_list[0]"></image>
       <div class="content">
         <text class="title">{{item.title}}</text>
         <div class="info">
@@ -15,12 +15,12 @@
     <div v-else class="news-three">
       <text class="">{{item.title}}</text>
       <div class="img-group">
+        <!-- <div class="img"></div>
         <div class="img"></div>
-        <div class="img"></div>
-        <div class="img"></div>
-        <!-- <image class="img" :src="item.img_list[0]"></image>
+        <div class="img"></div> -->
+        <image class="img" :src="item.img_list[0]"></image>
         <image class="img" :src="item.img_list[1]"></image>
-        <image class="img" :src="item.img_list[2]"></image> -->
+        <image class="img" :src="item.img_list[2]"></image>
       </div>
       <div class="info">
         <text class="date">{{time}}</text>
@@ -55,9 +55,9 @@ export default {
   padding-bottom: 16px;
   padding-left: 36px;
   padding-right: 36px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #808080;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #808080;
   background-color: #ffffff;
 }
 

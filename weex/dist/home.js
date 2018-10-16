@@ -16803,8 +16803,10 @@ module.exports = {
     "fontSize": "60",
     "textAlign": "center",
     "fontWeight": "bold",
-    "color": "#41b883",
-    "backgroundColor": "#ffffff"
+    "backgroundColor": "#ffffff",
+    "borderBottomWidth": "1",
+    "borderBottomColor": "#808080",
+    "borderBottomStyle": "solid"
   },
   "text": {
     "width": "100",
@@ -16827,10 +16829,6 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
 //
 //
 //
@@ -16925,9 +16923,9 @@ module.exports = {
     "paddingBottom": "16",
     "paddingLeft": "36",
     "paddingRight": "36",
-    "borderBottomStyle": "solid",
-    "borderBottomWidth": "1",
-    "borderBottomColor": "#808080",
+    "borderTopStyle": "solid",
+    "borderTopWidth": "1",
+    "borderTopColor": "#808080",
     "backgroundColor": "#ffffff"
   },
   "title": {
@@ -17313,8 +17311,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["news-item"]
   }, [(_vm.item.img_count < 3) ? _c('div', {
     staticClass: ["news-one"]
-  }, [_c('div', {
-    staticClass: ["img"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[0]
+    }
   }), _c('div', {
     staticClass: ["content"]
   }, [_c('text', {
@@ -17327,7 +17328,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["source"]
   }, [_vm._v("Mavis报道")])])])]) : _c('div', {
     staticClass: ["news-three"]
-  }, [_c('text', {}, [_vm._v(_vm._s(_vm.item.title))]), _vm._m(0), _c('div', {
+  }, [_c('text', {}, [_vm._v(_vm._s(_vm.item.title))]), _c('div', {
+    staticClass: ["img-group"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[0]
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[1]
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[2]
+    }
+  })]), _c('div', {
     staticClass: ["info"]
   }, [_c('text', {
     staticClass: ["date"]
@@ -17347,8 +17365,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "[[match]]": "item.img_count < 3"
     }
-  }, [_c('div', {
-    staticClass: ["img"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[0]"
+      }
+    }
   }), _c('div', {
     staticClass: ["content"]
   }, [_c('text', {
@@ -17385,12 +17408,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('div', {
     staticClass: ["img-group"]
-  }, [_c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[0]"
+      }
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[1]"
+      }
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[2]"
+      }
+    }
   })]), _c('div', {
     staticClass: ["info"]
   }, [_c('text', {
@@ -17406,17 +17444,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "Mavis报道"
     }
   })])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["img-group"]
-  }, [_c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -18347,7 +18375,8 @@ module.exports = __vue_exports__
 
 module.exports = {
   "home-content": {
-    "backgroundColor": "#f3f7f9"
+    "backgroundColor": "#f3f7f9",
+    "flex": 1
   },
   "refresh": {
     "width": "750",
@@ -18457,7 +18486,10 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
 
+var dom = weex.requireModule('dom');
 var modal = weex.requireModule('modal');
 
 exports.default = {
@@ -18482,7 +18514,11 @@ exports.default = {
             modal.toast({ message: 'Refreshing', duration: 1 });
             this.refreshing = true;
             setTimeout(function () {
+                _this.lists.pop();
                 _this.refreshing = false;
+                _this.$nextTick(function () {
+                    dom.scrollToElement(_this.$refs.item, {});
+                });
             }, 2000);
         },
         onpullingdown: function onpullingdown(event) {
@@ -18504,6 +18540,9 @@ exports.default = {
 
                 (_lists = _this2.lists).push.apply(_lists, _toConsumableArray(newData));
             }, 0);
+        },
+        goto: function goto(index) {
+            dom.scrollToElement(this.$refs.item, {});
         }
     }
 };
@@ -20659,9 +20698,7 @@ module.exports = baseIsSet;
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('home-header'), _c('scroller', {
-    on: {
-      "loadmore": _vm.fetch
-    }
+    staticClass: ["home-content"]
   }, [_c('refresh', {
     staticClass: ["refresh"],
     attrs: {
@@ -20676,6 +20713,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Refreshing ...")]), _c('loading-indicator', {
     staticClass: ["indicator"]
   })]), _c('slider', {
+    ref: "item",
     staticClass: ["slider"],
     attrs: {
       "interval": "3000",
@@ -20702,7 +20740,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "item": item
       }
     })], 1)
-  }))]), _c('home-footer')], 1)
+  }))]), _c('text', {
+    staticClass: ["button"],
+    on: {
+      "click": function($event) {
+        _vm.goto(0)
+      }
+    }
+  }, [_vm._v("Go to 0")]), _c('home-footer')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
@@ -20762,17 +20807,14 @@ module.exports = __vue_exports__
 
 module.exports = {
   "home-footer": {
-    "position": "fixed",
-    "bottom": 0,
-    "left": 0,
-    "right": 0,
+    "width": "750",
+    "height": "80",
     "flexDirection": "row",
     "justifyContent": "space-between",
     "backgroundColor": "#ffffff",
     "paddingLeft": "40",
     "paddingRight": "40",
     "paddingTop": "20",
-    "paddingBottom": "20",
     "borderTopColor": "#808080",
     "borderTopWidth": "1",
     "borderTopStyle": "solid",

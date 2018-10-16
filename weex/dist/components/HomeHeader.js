@@ -126,8 +126,10 @@ module.exports = {
     "fontSize": "60",
     "textAlign": "center",
     "fontWeight": "bold",
-    "color": "#41b883",
-    "backgroundColor": "#ffffff"
+    "backgroundColor": "#ffffff",
+    "borderBottomWidth": "1",
+    "borderBottomColor": "#808080",
+    "borderBottomStyle": "solid"
   },
   "text": {
     "width": "100",
@@ -151,10 +153,6 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
 //
 //
 //

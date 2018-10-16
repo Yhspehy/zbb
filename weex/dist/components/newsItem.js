@@ -16523,9 +16523,9 @@ module.exports = {
     "paddingBottom": "16",
     "paddingLeft": "36",
     "paddingRight": "36",
-    "borderBottomStyle": "solid",
-    "borderBottomWidth": "1",
-    "borderBottomColor": "#808080",
+    "borderTopStyle": "solid",
+    "borderTopWidth": "1",
+    "borderTopColor": "#808080",
     "backgroundColor": "#ffffff"
   },
   "title": {
@@ -16911,8 +16911,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["news-item"]
   }, [(_vm.item.img_count < 3) ? _c('div', {
     staticClass: ["news-one"]
-  }, [_c('div', {
-    staticClass: ["img"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[0]
+    }
   }), _c('div', {
     staticClass: ["content"]
   }, [_c('text', {
@@ -16925,7 +16928,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["source"]
   }, [_vm._v("Mavis报道")])])])]) : _c('div', {
     staticClass: ["news-three"]
-  }, [_c('text', {}, [_vm._v(_vm._s(_vm.item.title))]), _vm._m(0), _c('div', {
+  }, [_c('text', {}, [_vm._v(_vm._s(_vm.item.title))]), _c('div', {
+    staticClass: ["img-group"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[0]
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[1]
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": _vm.item.img_list[2]
+    }
+  })]), _c('div', {
     staticClass: ["info"]
   }, [_c('text', {
     staticClass: ["date"]
@@ -16945,8 +16965,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "[[match]]": "item.img_count < 3"
     }
-  }, [_c('div', {
-    staticClass: ["img"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[0]"
+      }
+    }
   }), _c('div', {
     staticClass: ["content"]
   }, [_c('text', {
@@ -16983,12 +17008,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _c('div', {
     staticClass: ["img-group"]
-  }, [_c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
+  }, [_c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[0]"
+      }
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[1]"
+      }
+    }
+  }), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "src": {
+        "@binding": "item.img_list[2]"
+      }
+    }
   })]), _c('div', {
     staticClass: ["info"]
   }, [_c('text', {
@@ -17004,17 +17044,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "Mavis报道"
     }
   })])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["img-group"]
-  }, [_c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
-  }), _c('div', {
-    staticClass: ["img"]
-  })])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),

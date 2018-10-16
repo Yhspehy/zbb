@@ -2,7 +2,7 @@
     <div>
         <home-header></home-header>
 
-        <scroller  @loadmore="fetch">
+        <scroller class="home-content" >
             <!-- 下拉刷新 -->
             <refresh class="refresh" @refresh="onrefresh" @pullingdown="onpullingdown" :display="refreshing ? 'show' : 'hide'">
                 <text class="indicator-text">Refreshing ...</text>
@@ -10,7 +10,7 @@
             </refresh>
 
             <!-- slide -->
-            <slider class="slider" interval="3000" auto-play="false" :index="2">
+            <slider class="slider" ref="item" interval="3000" auto-play="false" :index="2">
                 <div class="frame" v-for="(img, idx) in imgList" :key="idx">
                     <image class="image" :src="img"></image>
                 </div>
@@ -31,6 +31,8 @@
             </cell-slot>
         </recycle-list> -->
 
+        <text @click="goto(0)" class="button">Go to 0</text>
+
         <home-footer></home-footer>
 
     </div>
@@ -42,6 +44,7 @@ import HomeFooter from './components/HomeFooter'
 import newsItem from './components/newsItem'
 import newsListData from './mock/newsList.json'
 import cloneDeep from 'lodash/cloneDeep'
+const dom = weex.requireModule('dom')
 const modal = weex.requireModule('modal')
 
 export default {
@@ -63,7 +66,11 @@ export default {
             modal.toast({ message: 'Refreshing', duration: 1 })
             this.refreshing = true
             setTimeout(() => {
+                this.lists.pop()
                 this.refreshing = false
+                this.$nextTick(() => {
+                    dom.scrollToElement(this.$refs.item, {})
+                })
             }, 2000)
         },
         onpullingdown (event) {
@@ -81,6 +88,9 @@ export default {
             setTimeout(() => {
                 this.lists.push(...newData)
             }, 0)
+        },
+        goto (index) {
+            dom.scrollToElement(this.$refs.item, {})
         }
     }
 }
@@ -89,6 +99,7 @@ export default {
 <style scoped>
 .home-content {
     background-color: #f3f7f9;
+    flex: 1;
 }
 
 /*----------  下拉刷新  ----------*/

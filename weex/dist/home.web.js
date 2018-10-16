@@ -36505,7 +36505,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.header-scroller[data-v-e695a4cc] {\n  width: 10rem;\n  height: 1.33333rem;\n  padding: 0.33333rem;\n  font-size: 0.8rem;\n  text-align: center;\n  font-weight: bold;\n  color: #41b883;\n  background-color: #ffffff;\n}\n.text[data-v-e695a4cc] {\n  width: 1.33333rem;\n  margin-left: 0.4rem;\n  font-size: 0.66667rem;\n  text-align: center;\n}\n.chosen[data-v-e695a4cc] {\n  color: #0000ff;\n}\n", ""]);
+exports.push([module.i, "\n.header-scroller[data-v-e695a4cc] {\n    width: 10rem;\n    height: 1.33333rem;\n    padding: 0.33333rem;\n    font-size: 0.8rem;\n    text-align: center;\n    font-weight: bold;\n    background-color: #ffffff;\n    border-bottom-width: 1px;\n    border-bottom-color: #808080;\n    border-bottom-style: solid;\n}\n.text[data-v-e695a4cc] {\n    width: 1.33333rem;\n    margin-left: 0.4rem;\n    font-size: 0.66667rem;\n    text-align: center;\n}\n.chosen[data-v-e695a4cc] {\n    color: #0000ff;\n}\n", ""]);
 
 // exports
 
@@ -36520,10 +36520,6 @@ exports.push([module.i, "\n.header-scroller[data-v-e695a4cc] {\n  width: 10rem;\
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//
-//
-//
-//
 //
 //
 //
@@ -36655,7 +36651,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.news-item[data-v-b96d4b98] {\n  width: 10rem;\n  padding-top: 0.21333rem;\n  padding-bottom: 0.21333rem;\n  padding-left: 0.48rem;\n  padding-right: 0.48rem;\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  border-bottom-color: #808080;\n  background-color: #ffffff;\n}\n.title[data-v-b96d4b98] {\n  font-size: 0.37333rem;\n  color: #808080;\n  line-height: 0.48rem;\n}\n.date[data-v-b96d4b98],\n.source[data-v-b96d4b98] {\n  font-size: 0.32rem;\n  color: #808080;\n}\n.img[data-v-b96d4b98] {\n  margin-right: 0.13333rem;\n  width: 2.82667rem;\n  height: 1.92rem;\n  background-color: #ffc0cb;\n}\n.info[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 一张图片 */\n.news-one[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n.content[data-v-b96d4b98] {\n  width: 6rem;\n  height: 1.92rem;\n  margin-left: 0.26667rem;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 三张图片 */\n.img-group[data-v-b96d4b98] {\n  margin: 0.26667rem 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n", ""]);
+exports.push([module.i, "\n.news-item[data-v-b96d4b98] {\n  width: 10rem;\n  padding-top: 0.21333rem;\n  padding-bottom: 0.21333rem;\n  padding-left: 0.48rem;\n  padding-right: 0.48rem;\n  border-top-style: solid;\n  border-top-width: 1px;\n  border-top-color: #808080;\n  background-color: #ffffff;\n}\n.title[data-v-b96d4b98] {\n  font-size: 0.37333rem;\n  color: #808080;\n  line-height: 0.48rem;\n}\n.date[data-v-b96d4b98],\n.source[data-v-b96d4b98] {\n  font-size: 0.32rem;\n  color: #808080;\n}\n.img[data-v-b96d4b98] {\n  margin-right: 0.13333rem;\n  width: 2.82667rem;\n  height: 1.92rem;\n  background-color: #ffc0cb;\n}\n.info[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 一张图片 */\n.news-one[data-v-b96d4b98] {\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n.content[data-v-b96d4b98] {\n  width: 6rem;\n  height: 1.92rem;\n  margin-left: 0.26667rem;\n  -webkit-box-pack: justify;\n              -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n/* 三张图片 */\n.img-group[data-v-b96d4b98] {\n  margin: 0.26667rem 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n              -ms-flex-direction: row;\n          flex-direction: row;\n}\n", ""]);
 
 // exports
 
@@ -37008,10 +37004,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('div', {
-    staticClass: "img weex-ct weex-div",
+  }, [_c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[0],
+      "data-img-src": _vm.item.img_list[0],
+      "weex-type": "image"
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "content weex-ct weex-div",
@@ -37053,20 +37051,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "weex-type": "div"
     }
-  }, [_c('div', {
-    staticClass: "img weex-ct weex-div",
+  }, [_c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[0],
+      "data-img-src": _vm.item.img_list[0],
+      "weex-type": "image"
     }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "img weex-ct weex-div",
+  }), _vm._v(" "), _c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[1],
+      "data-img-src": _vm.item.img_list[1],
+      "weex-type": "image"
     }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "img weex-ct weex-div",
+  }), _vm._v(" "), _c('figure', {
+    staticClass: "img weex-el weex-image",
     attrs: {
-      "weex-type": "div"
+      "src": _vm.item.img_list[2],
+      "data-img-src": _vm.item.img_list[2],
+      "weex-type": "image"
     }
   })]), _vm._v(" "), _c('div', {
     staticClass: "info weex-ct weex-div",
@@ -38057,7 +38061,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.home-content[data-v-50b89dda] {\n    background-color: #f3f7f9;\n}\n\n/*----------  下拉刷新  ----------*/\n\n.refresh[data-v-50b89dda] {\n    width: 10rem;\n    height: 2.4rem;\n    background-color: #333333;\n    -webkit-box-align: center;\n                -ms-flex-align: center;\n            align-items: center;\n}\n\n.indicator-text[data-v-50b89dda] {\n    color: rgb(170, 15, 15);\n    font-size: 0.56rem;\n    text-align: center;\n}\n\n.indicator[data-v-50b89dda] {\n    margin-top: 0.21333rem;\n    height: 0.53333rem;\n    width: 0.53333rem;\n    color: #0000ff;\n}\n\n/*----------  slide  ----------*/\n\n.slider[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.image[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.frame[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.aa[data-v-50b89dda] {\n    width: 10rem;\n    height: 5.33333rem;\n    margin-bottom: 0.53333rem;\n    background-color: rgb(230, 219, 184);\n}\n", ""]);
+exports.push([module.i, "\n.home-content[data-v-50b89dda] {\n    background-color: #f3f7f9;\n    -webkit-box-flex: 1;\n                -ms-flex: 1;\n            flex: 1;\n}\n\n/*----------  下拉刷新  ----------*/\n\n.refresh[data-v-50b89dda] {\n    width: 10rem;\n    height: 2.4rem;\n    background-color: #333333;\n    -webkit-box-align: center;\n                -ms-flex-align: center;\n            align-items: center;\n}\n\n.indicator-text[data-v-50b89dda] {\n    color: rgb(170, 15, 15);\n    font-size: 0.56rem;\n    text-align: center;\n}\n\n.indicator[data-v-50b89dda] {\n    margin-top: 0.21333rem;\n    height: 0.53333rem;\n    width: 0.53333rem;\n    color: #0000ff;\n}\n\n/*----------  slide  ----------*/\n\n.slider[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.image[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.frame[data-v-50b89dda] {\n    width: 10rem;\n    height: 4.8rem;\n}\n\n.aa[data-v-50b89dda] {\n    width: 10rem;\n    height: 5.33333rem;\n    margin-bottom: 0.53333rem;\n    background-color: rgb(230, 219, 184);\n}\n", ""]);
 
 // exports
 
@@ -38133,7 +38137,10 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
 
+var dom = weex.requireModule('dom');
 var modal = weex.requireModule('modal');
 
 exports.default = {
@@ -38158,7 +38165,11 @@ exports.default = {
             modal.toast({ message: 'Refreshing', duration: 1 });
             this.refreshing = true;
             setTimeout(function () {
+                _this.lists.pop();
                 _this.refreshing = false;
+                _this.$nextTick(function () {
+                    dom.scrollToElement(_this.$refs.item, {});
+                });
             }, 2000);
         },
         onpullingdown: function onpullingdown(event) {
@@ -38180,6 +38191,9 @@ exports.default = {
 
                 (_lists = _this2.lists).push.apply(_lists, _toConsumableArray(newData));
             }, 0);
+        },
+        goto: function goto(index) {
+            dom.scrollToElement(this.$refs.item, {});
         }
     }
 };
@@ -40340,12 +40354,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "weex-type": "div"
     }
   }, [_c('home-header'), _vm._v(" "), _c('scroller', {
-    attrs: {
-      "data-evt-loadmore": ""
-    },
-    nativeOn: {
-      "loadmore": _vm.fetch
-    }
+    staticClass: "home-content",
+    attrs: {}
   }, [_c('refresh', {
     staticClass: "refresh",
     attrs: {
@@ -40372,6 +40382,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "indicator",
     attrs: {}
   })], 1), _vm._v(" "), _c('slider', {
+    ref: "item",
     staticClass: "slider",
     attrs: {
       "interval": "3000",
@@ -40410,7 +40421,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "item": item
       }
     })], 1)
-  }))], 1), _vm._v(" "), _c('home-footer')], 1)
+  }))], 1), _vm._v(" "), _c('p', {
+    staticClass: "button weex-el weex-text",
+    attrs: {
+      "weex-type": "text",
+      "data-evt-click": ""
+    },
+    on: {
+      "click": _vm.$stopOuterA,
+      "weex$tap": function($event) {
+        $event.stopPropagation();
+        _vm.goto(0)
+      }
+    }
+  }, [_vm._v("Go to 0")]), _vm._v(" "), _c('home-footer')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -40508,7 +40532,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n.home-footer[data-v-6b82c9a8] {\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n                -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n                -ms-flex-pack: justify;\n            justify-content: space-between;\n    background-color: #ffffff;\n    padding-left: 0.53333rem;\n    padding-right: 0.53333rem;\n    padding-top: 0.26667rem;\n    padding-bottom: 0.26667rem;\n    border-top-color: #808080;\n    border-top-width: 1px;\n    border-top-style: solid;\n    border-bottom-width: 1px;\n    border-bottom-color: transparent;\n    border-bottom-style: solid;\n}\n.nav-item[data-v-6b82c9a8] {\n    color: #ffc0cb;\n}\n\n", ""]);
+exports.push([module.i, "\n.home-footer[data-v-6b82c9a8] {\n    width: 10rem;\n    height: 1.06667rem;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n                -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-pack: justify;\n                -ms-flex-pack: justify;\n            justify-content: space-between;\n    background-color: #ffffff;\n    padding-left: 0.53333rem;\n    padding-right: 0.53333rem;\n    padding-top: 0.26667rem;\n    border-top-color: #808080;\n    border-top-width: 1px;\n    border-top-style: solid;\n    border-bottom-width: 1px;\n    border-bottom-color: transparent;\n    border-bottom-style: solid;\n}\n.nav-item[data-v-6b82c9a8] {\n    color: #ffc0cb;\n}\n\n", ""]);
 
 // exports
 
