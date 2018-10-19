@@ -5,11 +5,13 @@
 
         <wxc-tab-page ref="wxc-tab-page" :tab-styles="tabStyles" :tab-titles="tabTitles" :tabPageHeight="tabPageHeight" need-slider="true" @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
 
-            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
+            <!-- 推荐 -->
+            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <recommend></recommend>
             </div>
 
-            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
+            <!-- 集锦 -->
+            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <highlights></highlights>
             </div>
 
@@ -37,6 +39,7 @@ export default {
                 }
             ],
             tabPageHeight: 1334,
+            touchBarHeight: weex.config.eros.touchBarHeight,
             tabStyles: {
                 bgColor: '#FFFFFF',
                 titleColor: '#666666',

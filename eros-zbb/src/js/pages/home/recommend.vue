@@ -1,69 +1,48 @@
 <template>
-    <!-- <div class="home"> -->
-        <!-- Fit IphoneX -->
-        <!-- <status-bar></status-bar> -->
+    <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
+        <!-- Slide -->
+        <cell>
+            <slider class="slider" interval="3000" auto-play="true" :index="0" show-indicators="true">
+                <div class="frame" v-for="(img, idx) in imgList" :key="idx">
+                    <image class="image" :src="img"></image>
+                </div>
+                <indicator class="indicator"></indicator>
+            </slider>
+        </cell>
 
-        <!-- HeaderBar -->
-        <!-- <home-header></home-header> -->
+        <!-- homeMatch -->
+        <cell>
+            <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
+        </cell>
 
-        <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
-            <!-- Slide -->
-            <cell>
-                <slider class="slider" interval="3000" auto-play="true" :index="0" show-indicators="true">
-                    <div class="frame" v-for="(img, idx) in imgList" :key="idx">
-                        <image class="image" :src="img"></image>
-                    </div>
-                    <indicator class="indicator"></indicator>
-                </slider>
-            </cell>
 
-            <!-- homeMatch -->
-            <cell>
-                <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
-            </cell>
-
-            <cell>
-                <text class="title">Hello Eros</text>
-                <text class="desc">一套 Vue 代码，两端原生应用。</text>
-            </cell>
-        </list>
-    <!-- </div> -->
+        <cell style="margin-top: 20px" v-for="(item, idx) in newsList" :key="idx">
+            <new-item :item="item" :hasBorder="idx>0"></new-item>
+        </cell>
+    </list>
 </template>
 
 <script>
-import statusBar from '../components/statusBar';
-import homeHeader from './components/header';
 import homeMatch from './components/homeMatch';
+import newItem from './components/newItem'
 
 var modal = weex.requireModule('modal');
 export default {
     components: {
-        statusBar,
-        homeHeader,
-        homeMatch
+        homeMatch,
+        newItem
     },
     data() {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             list: 1,
-            liveTrailList: null
+            liveTrailList: null,
+            newsList: null
         };
     },
-    mounted() {
-        this.list = weex.config.eros.jsServer;
-        this.$fetch({
-            method: 'GET',
-            url: 'http://192.168.1.7:8889/dist/mock/test/homeMatch.json'
-        }).then(
-            res => {
-                this.liveTrailList = res.data;
-            },
-            error => {
-                modal.alert({
-                    message: error.errorMsg
-                });
-            }
-        );
+    created() {
+        this.fetchHomeMatch()
+        this.fetchNewList()
     },
     methods: {
         onrefresh() {
@@ -75,9 +54,38 @@ export default {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd();
             }, 2000);
+        },
+        fetchHomeMatch() {
+            this.$fetch({
+                method: 'GET',
+                url: 'http://192.168.1.7:8889/dist/mock/test/homeMatch.json'
+            }).then(
+                res => {
+                    this.liveTrailList = res.data;
+                },
+                error => {
+                    modal.alert({
+                        message: error.errorMsg
+                    });
+                }
+            );
+        },
+        fetchNewList() {
+            this.$fetch({
+                method: 'GET',
+                url: 'http://192.168.1.7:8889/dist/mock/test/newsList.json'
+            }).then(
+                res => {
+                    this.newsList = res.data.news_list;
+                },
+                error => {
+                    modal.alert({
+                        message: error.errorMsg
+                    });
+                }
+            );
         }
-    },
-
+    }
 };
 </script>
 

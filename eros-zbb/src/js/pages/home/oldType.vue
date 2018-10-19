@@ -1,34 +1,45 @@
 <template>
-    <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
-        <!-- Slide -->
-        <cell>
-            <slider class="slider" interval="3000" auto-play="true" :index="0" show-indicators="true">
-                <div class="frame" v-for="(img, idx) in imgList" :key="idx">
-                    <image class="image" :src="img"></image>
-                </div>
-                <indicator class="indicator"></indicator>
-            </slider>
-        </cell>
+    <div class="home">
+        <!-- Fit IphoneX -->
+        <status-bar></status-bar>
 
-        <!-- homeMatch -->
-        <cell>
-            <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
-        </cell>
+        <!-- HeaderBar -->
+        <home-header></home-header>
 
-        <cell>
-            <text class="title">Hello Eros</text>
-            <text class="desc">一套 Vue 代码，两端原生应用。</text>
-        </cell>
+        <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
+            <!-- Slide -->
+            <cell>
+                <slider class="slider" interval="3000" auto-play="true" :index="0" show-indicators="true">
+                    <div class="frame" v-for="(img, idx) in imgList" :key="idx">
+                        <image class="image" :src="img"></image>
+                    </div>
+                    <indicator class="indicator"></indicator>
+                </slider>
+            </cell>
 
-    </list>
+            <!-- homeMatch -->
+            <cell>
+                <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
+            </cell>
+
+            <cell>
+                <text class="title">Hello Eros</text>
+                <text class="desc">一套 Vue 代码，两端原生应用。</text>
+            </cell>
+        </list>
+    </div>
 </template>
 
 <script>
+import statusBar from '../components/statusBar';
+import homeHeader from './components/header';
 import homeMatch from './components/homeMatch';
 
 var modal = weex.requireModule('modal');
 export default {
     components: {
+        statusBar,
+        homeHeader,
         homeMatch
     },
     data() {
@@ -65,7 +76,8 @@ export default {
                 this.$refs['list'].loadMoreEnd();
             }, 2000);
         }
-    }
+    },
+
 };
 </script>
 

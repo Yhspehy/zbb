@@ -1,29 +1,30 @@
 <template>
-<div>
-    <scroller class="home-match" scroll-direction="horizontal" :show-scrollbar="false">
-        <div class="home-match-item" v-for="(item, index) in result" :key="index">
-            <text class="home-match-title">{{item.source}}</text>
-            <div class="home-match-result">
-                <image class="home-match-img" :src="item.hometeam_img"></image>
-                <div style="flex-direction: row" v-if="item.status !== '未开始'">
-                    <text :class="['score', item.home_score > item.away_score?'win': '']">{{item.home_score}}</text>
-                    <text class="score"> : </text>
-                    <text :class="['score', item.home_score < item.away_score?'win':'']">{{item.away_score}}</text>
+    <div class="container">
+        <scroller class="home-match" scroll-direction="horizontal" :show-scrollbar="false">
+            <div class="home-match-item" v-for="(item, index) in result" :key="index">
+                <text class="home-match-title">{{item.source}}</text>
+                <div class="home-match-result">
+                    <image class="home-match-img" :src="item.hometeam_img"></image>
+                    <div style="flex-direction: row" v-if="item.status !== '未开始'">
+                        <text :class="['score', item.home_score > item.away_score?'win': '']">{{item.home_score}}</text>
+                        <text class="score"> : </text>
+                        <text :class="['score', item.home_score < item.away_score?'win':'']">{{item.away_score}}</text>
+                    </div>
+                    <div v-else>
+                        <text class="time">{{item.start_time}}</text>
+                    </div>
+                    <image class="home-match-img" :src="item.awayteam_img"></image>
                 </div>
-                <div v-else>
-                    <text class="time">{{item.start_time}}</text>
+                <div class="home-match-info">
+                    <text class="home-match-team">{{item.hometeam}}(主)</text>
+                    <text class="home-match-state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</text>
+                    <text class="home-match-team">{{item.awayteam}}</text>
                 </div>
-                <image class="home-match-img" :src="item.awayteam_img"></image>
             </div>
-            <div class="home-match-info">
-                <text class="home-match-team">{{item.hometeam}}(主)</text>
-                <text class="home-match-state" :class="{'is-not-trail': !item.is_trail && item.status === '未开始', 'is-online': item.status === '已开始'}">{{item.end_description_word}}</text>
-                <text class="home-match-team">{{item.awayteam}}</text>
-            </div>
-        </div>
-    </scroller>
-</div>
+        </scroller>
 
+        <text class="info">10月8号 | Mavis下午好，今天有5场赛事直播</text>
+    </div>
 </template>
 
 <script>
@@ -59,13 +60,23 @@ export default {
 
 <style scoped>
 /* homeMatch */
-.home-match {
-    height: 232px;
-    flex-direction: row;
+
+.container {
     background-color: #ffffff;
     padding-top: 20px;
     padding-bottom: 20px;
+}
 
+.info {
+    color: #0088ff;
+    font-size: 24px;
+    margin-left: 30px;
+}
+
+
+.home-match {
+    height: 212px;
+    flex-direction: row;
 }
 
 .home-match-item {
