@@ -9,6 +9,7 @@ module.exports = {
         'js/mediator/index.vue',
         // home
         // 'js/pages/hello.vue',
+        'js/pages/home/index.vue',
         'js/pages/home/recommend.vue',
         'js/pages/home/highlights.vue',
         'js/pages/schedule/popular.vue',

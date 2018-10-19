@@ -16,7 +16,9 @@ module.exports = {
     },
     'url': {
         'image': 'https://lev-inf.benmu-health.com/test/xxx',
-        'bundleUpdate': 'http://localhosts:3001/app/check'
+        'bundleUpdate': 'http://localhosts:3001/app/check',
+        'socketServer': 'ws://192.168.1.7:8890',
+        'jsServer': "http://192.168.1.7"
     },
     'zipFolder': {
         'iOS': '/ios/WeexEros/WeexEros',
@@ -34,7 +36,7 @@ module.exports = {
         'backgroundColor': '#fafafa',
         'borderColor': '#dfe1eb',
         'list': [{
-                'pagePath': '/pages/home/recommend.js',
+                'pagePath': '/pages/home/index.js',
                 'text': '首页',
                 'icon': 'bmlocal://assets/TabBar_Item1@2x.png',
                 'selectedIcon': 'bmlocal://assets/TabBar_Item1_Selected@2x.png',

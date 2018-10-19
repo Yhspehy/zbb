@@ -1,10 +1,10 @@
 <template>
-    <div class="home">
+    <!-- <div class="home"> -->
         <!-- Fit IphoneX -->
-        <status-bar></status-bar>
+        <!-- <status-bar></status-bar> -->
 
         <!-- HeaderBar -->
-        <home-header></home-header>
+        <!-- <home-header></home-header> -->
 
         <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
             <!-- Slide -->
@@ -26,9 +26,8 @@
                 <text class="title">Hello Eros</text>
                 <text class="desc">一套 Vue 代码，两端原生应用。</text>
             </cell>
-
         </list>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>

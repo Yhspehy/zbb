@@ -9,6 +9,9 @@ export default {
     //     title: 'eros',
     //     url: '/pages/hello.js'
     // },
+    'home': {
+        url: '/pages/home/index.js'
+    },
     'home.recommend': {
         url: '/pages/home/recommend.js'
     },

@@ -26,11 +26,11 @@ export default {
                 {
                     name: '集锦',
                     route: 'home.highlights'
+                },
+                {
+                    name: '直播',
+                    route: 'home'
                 }
-                // {
-                //     name: '直播',
-                //     route: 'home.live'
-                // }
             ],
             chosenRoute: 'home.recommend'
         };
@@ -66,16 +66,16 @@ export default {
         }
     },
     eros: {
-        beforeAppear(params, options) {
-            this.$navigator.setNavigationInfo({
-                navShow: false
-            });
-        },
-        beforeBackAppear() {
-            this.$navigator.setNavigationInfo({
-                navShow: false
-            });
-        }
+        // beforeAppear(params, options) {
+        //     this.$navigator.setNavigationInfo({
+        //         navShow: false
+        //     });
+        // },
+        // beforeBackAppear() {
+        //     this.$navigator.setNavigationInfo({
+        //         navShow: false
+        //     });
+        // }
     }
 };
 </script>

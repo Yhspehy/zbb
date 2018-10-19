@@ -1,10 +1,10 @@
 <template>
-    <div class="highlights">
+    <!-- <div class="highlights"> -->
         <!-- Fit IphoneX -->
-        <status-bar></status-bar>
+        <!-- <status-bar></status-bar> -->
 
         <!-- HeaderBar -->
-        <home-header></home-header>
+        <!-- <home-header></home-header> -->
 
 
 
@@ -19,6 +19,7 @@
                 </slider>
             </cell>
 
+
             <!-- homeMatch -->
             <cell>
                 <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
@@ -30,19 +31,19 @@
             </cell>
 
         </list>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>
-import statusBar from '../components/statusBar';
-import homeHeader from './components/header';
+// import statusBar from '../components/statusBar';
+// import homeHeader from './components/header';
 import homeMatch from './components/homeMatch';
 
 var modal = weex.requireModule('modal');
 export default {
     components: {
-        statusBar,
-        homeHeader,
+        // statusBar,
+        // homeHeader,
         homeMatch
     },
     data() {
