@@ -10,18 +10,18 @@ export default {
     //     url: '/pages/hello.js'
     // },
     'home.recommend': {
-        url: 'pages/home/recommend.js'
+        url: '/pages/home/recommend.js'
     },
     'home.highlights': {
-        url: 'pages/home/highlights.js'
+        url: '/pages/home/highlights.js'
     },
     'schedule.popular': {
-        url: 'pages/schedule/popular.js'
+        url: '/pages/schedule/popular.js'
     },
     'community.recommend': {
-        url: 'pages/community/recommend.js'
+        url: '/pages/community/recommend.js'
     },
     'profile': {
-        url: 'pages/profile/index.js'
+        url: '/pages/profile/index.js'
     }
 }

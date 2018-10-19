@@ -30,13 +30,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    /* display: flex; */
-    /* flex: 1; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
-}
 .title {
     font-size: 100px;
 }
