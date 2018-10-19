@@ -36,7 +36,7 @@ export default {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             list: 1,
-            liveTrailList: null,
+            liveTrailList: [],
             newsList: null
         };
     },
@@ -56,9 +56,12 @@ export default {
             }, 2000);
         },
         fetchHomeMatch() {
+            [1,2,3,4,5].forEach(e => {
+                this.liveTrailList.push()
+            })
             this.$fetch({
                 method: 'GET',
-                url: 'http://192.168.1.7:8889/dist/mock/test/homeMatch.json'
+                url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/home/recommend/liveTrail'
             }).then(
                 res => {
                     this.liveTrailList = res.data;
@@ -73,7 +76,7 @@ export default {
         fetchNewList() {
             this.$fetch({
                 method: 'GET',
-                url: 'http://192.168.1.7:8889/dist/mock/test/newsList.json'
+                url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/news/newsList'
             }).then(
                 res => {
                     this.newsList = res.data.news_list;
