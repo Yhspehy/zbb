@@ -42,7 +42,7 @@ module.exports = {
                 'navTitle': ''
             },
             {
-                'pagePath': '/pages/schedule/popular.js',
+                'pagePath': '/pages/schedule/index.js',
                 'text': '赛程',
                 'icon': 'bmlocal://assets/TabBar_Item2@2x.png',
                 'selectedIcon': 'bmlocal://assets/TabBar_Item2_Selected@2x.png',
@@ -50,7 +50,7 @@ module.exports = {
                 'navTitle': ''
             },
             {
-                'pagePath': '/pages/community/recommend.js',
+                'pagePath': '/pages/community/index.js',
                 'text': '社区',
                 'icon': 'bmlocal://assets/TabBar_Item3@2x.png',
                 'selectedIcon': 'bmlocal://assets/TabBar_Item3_Selected@2x.png',

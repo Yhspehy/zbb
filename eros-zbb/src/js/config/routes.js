@@ -18,11 +18,29 @@ export default {
     'home.highlights': {
         url: '/pages/home/highlights.js'
     },
+    'schedule': {
+        url: '/pages/schedule/index.js'
+    },
     'schedule.popular': {
         url: '/pages/schedule/popular.js'
     },
+    'schedule.match': {
+        url: '/pages/schedule/match.js'
+    },
+    'schedule.follow': {
+        url: '/pages/schedule/follow.js'
+    },
+    'community': {
+        url: '/pages/community/index.js'
+    },
     'community.recommend': {
         url: '/pages/community/recommend.js'
+    },
+    'community.cirlce': {
+        url: '/pages/community/cirlce.js'
+    },
+    'community.activity': {
+        url: '/pages/community/activity.js'
     },
     'profile': {
         url: '/pages/profile/index.js'

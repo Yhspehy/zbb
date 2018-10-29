@@ -12,8 +12,14 @@ module.exports = {
         'js/pages/home/index.vue',
         'js/pages/home/recommend.vue',
         'js/pages/home/highlights.vue',
+        'js/pages/schedule/index.vue',
         'js/pages/schedule/popular.vue',
+        'js/pages/schedule/match.vue',
+        'js/pages/schedule/follow.vue',
+        'js/pages/community/index.vue',
         'js/pages/community/recommend.vue',
+        'js/pages/community/circle.vue',
+        'js/pages/community/activity.vue',
         'js/pages/profile/index.vue'
     ],
     'alias': {

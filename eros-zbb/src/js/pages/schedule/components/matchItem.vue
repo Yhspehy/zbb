@@ -1,0 +1,166 @@
+<template>
+    <!-- 比赛列表 -->
+    <div class="matchItem">
+        <!-- 比赛时间和联赛来源 -->
+        <div class="timeAndSource">
+            <text class="time">{{startTime}}</text>
+            <text class="source">{{matchData.source}}</text>
+        </div>
+
+        <!-- 比赛球队 -->
+        <div class="team">
+            <div class="teamLayout margin-bottom-16">
+                <image class="img" src="http://temp.im/30x30"></image>
+                <text class="teamName">{{matchData.hometeam}}</text>
+            </div>
+            <div class="teamLayout">
+                <image class="img" src="http://temp.im/30x30"></image>
+                <text class="teamName">{{matchData.awayteam}}</text>
+            </div>
+        </div>
+
+        <!-- 比分预约 -->
+        <div class="score">
+            <div v-if="matchData.status !== '未开始'">
+                <text :class="['teamLayout', 'margin-bottom-16', matchData.home_score > matchData.away_score?'win': '']">{{matchData.home_score}}</text>
+                <text :class="['teamLayout', matchData.away_score > matchData.home_score?'win': '']">{{matchData.away_score}}</text>
+            </div>
+            <div v-else :style="{'color': matchData.is_trail ? '#0077ff' : '#808080'}">
+                <div class="teamLayout align-center margin-bottom-16">
+                    <image class="clockImg" src="http://temp.im/28x28"></image>
+                </div>
+                <text class="awayteam fontsize-24">图文直播</text>
+            </div>
+        </div>
+
+        <!-- 直播平台 -->
+        <div class="media">
+            <text class="mediaName">{{matchData.media}}</text>
+            <text class="linkBtn" :class="[matchData.end_description_word !== '直播'?'live': '']" v-if="matchData.end_description_word">{{matchData.end_description_word}}</text>
+        </div>
+    </div>
+</template>
+
+<script>
+import moment from 'moment'
+export default {
+    nama: 'schedule_matchItem',
+    props: {
+        matchData: {
+            type: Object,
+            require: true
+        }
+    },
+    data() {
+        return {};
+    },
+    computed: {
+        startTime() {
+            return moment(this.matchData.start_time).format('HH:mm')
+        }
+    },
+    methods: {}
+};
+</script>
+
+<style scoped>
+.matchItem {
+    padding-right: 24px;
+    padding-left: 36px;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    flex-direction: row;
+    border-bottom-style: solid;
+    border-bottom-color: #f2f2f2;
+    border-bottom-width: 1px;
+    background-color: #ffffff;
+}
+.timeAndSource {
+    width: 160px;
+    margin-right: 30px;
+}
+.time {
+    font-size: 28px;
+    color: #4d4d4d;
+    margin-bottom: 18px;
+}
+.source {
+    font-size: 22px;
+    color: #808080;
+}
+.team {
+    width: 230px;
+}
+.teamLayout {
+    font-size: 28px;
+    flex-direction: row;
+}
+.margin-bottom-16 {
+    margin-bottom: 16px;
+}
+.img {
+    vertical-align: bottom;
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.teamName {
+    font-size: 28px;
+    color: #4d4d4d;
+}
+
+.clockImg {
+    width: 28px;
+    height: 28px;
+}
+
+.win {
+    color: red;
+    position: relative;
+    /* &:after {
+        content: '';
+        position: absolute;
+        top: 6px;
+        right: -20px;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+        border-right-color: $red-dark;
+    } */
+}
+.score {
+    width: 116px;
+    padding-right: 20px;
+}
+.align-center {
+    justify-content: center;
+}
+.fontsize-24 {
+    font-size: 24px;
+}
+.media {
+    width: 120px;
+    margin-left: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.mediaName {
+    font-size: 22px;
+    color: #808080;
+}
+.linkBtn {
+    margin-top: 14px;
+    width: 120px;
+    height: 36px;
+    color: #fff;
+    border-radius: 18px;
+    font-size: 22px;
+    background-color: #fb413b;
+    text-align: center;
+    line-height: 36px;
+}
+.live {
+    background-color: #0091ff;
+}
+</style>
