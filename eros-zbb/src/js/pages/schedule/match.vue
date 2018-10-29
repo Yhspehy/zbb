@@ -1,48 +1,45 @@
 <template>
-    <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
-        <!-- Slide -->
-        <cell>
-            <slider class="slider" interval="3000" auto-play="true" :index="0" show-indicators="true">
-                <div class="frame" v-for="(img, idx) in imgList" :key="idx">
-                    <image class="image" :src="img"></image>
+    <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh">
+        <cell v-for="item in typeList" :key="item.id">
+            <text class="typeName">{{item.name}}</text>
+            <div v-for="el in item.list" :key="el" class="leagueItem" @click="goLeagueMatch(el)">
+                <text class="leagueName">{{el}}</text>
+                <div class="count" :style="{'color': matchCountObj[el]? '#00bbff': ''}">
+                    <text v-if="matchCountObj[el]">今日共有{{matchCountObj[el]}}场比赛</text>
+                    <wxc-icon name="more" class="fa-chevron-right"></wxc-icon>
                 </div>
-                <indicator class="indicator"></indicator>
-            </slider>
-        </cell>
-
-        <!-- homeMatch -->
-        <cell>
-            <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
-        </cell>
-
-
-        <cell style="margin-top: 20px" v-for="(item, idx) in newsList" :key="idx">
-            <new-item :item="item" :hasBorder="idx>0"></new-item>
+            </div>
         </cell>
     </list>
 </template>
 
 <script>
-import homeMatch from './components/homeMatch';
-import newItem from './components/newItem'
-
-var modal = weex.requireModule('modal');
+import find from 'lodash/find';
+import { WxcIcon } from 'weex-ui'
 export default {
-    components: {
-        homeMatch,
-        newItem
-    },
+    name: 'schedule_match',
+    components: { WxcIcon },
     data() {
         return {
-            imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
-            list: 1,
-            liveTrailList: [],
-            newsList: null
+            typeList: [
+                {
+                    name: '篮球',
+                    list: ['NBA', 'CBA']
+                },
+                {
+                    name: '足球',
+                    list: ['世界杯', '英超', '西甲', '意甲', '德甲', '法甲', '欧冠', '中超']
+                }
+            ],
+            allLeagueList: ['NBA', 'CBA', '世界杯', '英超', '西甲', '意甲', '德甲', '法甲', '欧冠', '中超'],
+            matchCountObj: {}
         };
     },
     created() {
-        this.fetchHomeMatch()
-        this.fetchNewList()
+        this.initCount();
+    },
+    mounted() {
+        this.getLeagueTodaMatchCount();
     },
     methods: {
         onrefresh() {
@@ -50,78 +47,73 @@ export default {
                 this.$refs['list'].refreshEnd();
             }, 2000);
         },
-        loadMore() {
-            setTimeout(() => {
-                this.$refs['list'].loadMoreEnd();
-            }, 2000);
+        initCount() {
+            const self = this;
+            this.allLeagueList.forEach(e => {
+                if (!self.matchCountObj[e]) self.$set(self.matchCountObj, e, 0);
+            });
         },
-        fetchHomeMatch() {
-            [1,2,3,4,5].forEach(e => {
-                this.liveTrailList.push()
+        getLeagueTodaMatchCount() {
+            const self = this;
+            const date = this.$moment().format('YYYY-MM-DD');
+            let todayMatchList = {};
+            this.$fetch({
+                method: 'GET',
+                url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/GetMonthList'
+            }).then((res) => {
+                if (res[date]) {
+                    todayMatchList = res[date];
+                    todayMatchList.match_list.forEach(e => {
+                        let l = find(self.allLeagueList, t => {
+                            return t === e.league;
+                        });
+                        self.matchCountObj[l] += 1;
+                    });
+                }
             })
-            this.$fetch({
-                method: 'GET',
-                url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/home/recommend/liveTrail'
-            }).then(
-                res => {
-                    this.liveTrailList = res.data;
-                },
-                error => {
-                    modal.alert({
-                        message: error.errorMsg
-                    });
-                }
-            );
         },
-        fetchNewList() {
-            this.$fetch({
-                method: 'GET',
-                url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/news/newsList'
-            }).then(
-                res => {
-                    this.newsList = res.data.news_list;
-                },
-                error => {
-                    modal.alert({
-                        message: error.errorMsg
-                    });
-                }
-            );
+        goLeagueMatch(item) {
+            // this.$store.commit('schedule/SET_MATCHLEAGUENAME', item);
+            // this.$router.push({
+            //     path: `/schedule/league/1/match`
+            // });
         }
     }
 };
 </script>
 
 <style scoped>
-.title {
-    font-size: 100px;
+.schedule_match {
+    color: #4d4d4d;
+    overflow-y: auto;
 }
 
-.desc {
-    font-size: 30px;
+.typeName {
+    font-size: 24px;
+    padding: 25px 36px;
+    background-color: #f3f7f9;
+}
+.leagueItem {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 36px;
+    padding-left: 36px;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-color: #f2f2f2;
+    border-bottom-width: 1px;
 }
 
-/*----------  slide  ----------*/
-.slider {
-    width: 750px;
-    height: 360px;
+.leagueName {
+    font-size: 28px;
 }
-.image {
-    width: 750px;
-    height: 360px;
+.count {
+    font-size: 24px;
 }
-.frame {
-    width: 750px;
-    height: 360px;
-}
-
-.indicator {
-    width: 750px;
-    height: 360px;
-    item-color: #0088ff;
-    item-selected-color: rgb(223, 82, 164);
-    item-size: 10px;
-    position: absolute;
-    top: 150px;
+.fa-chevron-right {
+    font-size: 22px;
+    margin-left: 20px;
 }
 </style>

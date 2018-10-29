@@ -25,11 +25,11 @@
                 <text :class="['teamLayout', 'margin-bottom-16', matchData.home_score > matchData.away_score?'win': '']">{{matchData.home_score}}</text>
                 <text :class="['teamLayout', matchData.away_score > matchData.home_score?'win': '']">{{matchData.away_score}}</text>
             </div>
-            <div v-else :style="{'color': matchData.is_trail ? '#0077ff' : '#808080'}">
-                <div class="teamLayout align-center margin-bottom-16">
-                    <image class="clockImg" src="http://temp.im/28x28"></image>
+            <div v-else>
+                <div class="teamLayout align-center" style="margin-bottom: 8px">
+                    <wxc-icon name="clock" class="clockImg" :style="{'color': matchData.is_trail ? '#0077ff' : '#808080'}"></wxc-icon>
                 </div>
-                <text class="awayteam fontsize-24">图文直播</text>
+                <text class="awayteam fontsize-24" :style="{'color': matchData.is_trail ? '#0077ff' : '#808080'}">图文直播</text>
             </div>
         </div>
 
@@ -43,8 +43,11 @@
 
 <script>
 import moment from 'moment'
+import { WxcIcon } from 'weex-ui'
+
 export default {
     nama: 'schedule_matchItem',
+    components: { WxcIcon },
     props: {
         matchData: {
             type: Object,
@@ -111,8 +114,7 @@ export default {
 }
 
 .clockImg {
-    width: 28px;
-    height: 28px;
+    font-size: 28px;
 }
 
 .win {

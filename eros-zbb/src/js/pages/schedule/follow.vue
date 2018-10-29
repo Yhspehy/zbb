@@ -1,6 +1,6 @@
 <template>
     <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
-        <cell v-for="(val, key) in newsList" :key="key">
+        <cell v-for="(val, key) in matchList" :key="key">
             <time-bar :currentDate="key"></time-bar>
             <match-item v-for="(el, elIdx) in val" :key="elIdx" :matchData="el"></match-item>
         </cell>
@@ -19,7 +19,8 @@ export default {
     },
     data() {
         return {
-            newsList: {}
+            keys: [],
+            matchList: {}
         };
     },
     created() {
@@ -42,14 +43,14 @@ export default {
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/popularList'
             }).then(
                 res => {
-                    // this.keys = Object.keys(res.data)
-                    // this.keys.sort((a, b) => {
-                    //     return Date.parse(a) > Date.parse(b)
-                    // })
-                    // this.keys.forEach(key => {
-                    //     this.newsList[key] = res.data[key]
-                    // })
-                    this.newsList = res.data
+                    this.keys = Object.keys(res.data)
+                    this.keys.sort((a, b) => {
+                        return Date.parse(a) > Date.parse(b)
+                    })
+                    this.keys.forEach(key => {
+                        this.$set(this.matchList, key, res.data[key])
+                    })
+                    // this.matchList = res.data
                 },
                 error => {
                     modal.alert({
