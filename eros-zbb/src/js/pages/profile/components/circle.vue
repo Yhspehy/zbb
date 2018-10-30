@@ -1,6 +1,6 @@
 <template>
     <div class="circle">
-        <div class="cicleItem" v-for="item in myCicle" :key="item.name">
+        <div class="circleItem" v-for="item in mycircle" :key="item.name">
             <image class="img" src="http://temp.im/22x22" alt=""></image>
             <text class="text">{{item.name}}</text>
         </div>
@@ -11,7 +11,7 @@
 export default {
     data() {
         return {
-            myCicle: [
+            mycircle: [
                 {
                     name: '我的关注',
                     to: ''
@@ -58,7 +58,7 @@ export default {
     flex-wrap: wrap;
     flex-direction: row;
 }
-.cicleItem {
+.circleItem {
     width: 187.5px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -73,5 +73,6 @@ export default {
 .text {
     margin-top: 10px;
     color: #808080;
+    font-size: 24px;
 }
 </style>

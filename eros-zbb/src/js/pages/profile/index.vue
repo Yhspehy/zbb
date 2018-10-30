@@ -12,6 +12,8 @@
         <!-- activity -->
         <activity></activity>
 
+        <!-- game -->
+        <game></game>
     </div>
 </template>
 
@@ -20,13 +22,15 @@ import statusBar from '../components/statusBar';
 import login from './components/login'
 import circle from './components/circle'
 import activity from './components/activity'
+import game from './components/game'
 
 export default {
     components: {
         statusBar,
         login,
         circle,
-        activity
+        activity,
+        game
     },
     data() {
         return {};
