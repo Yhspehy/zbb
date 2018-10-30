@@ -5,6 +5,10 @@ Created by IDE
 
 docs
 
+# 自适配
+eros-diff-folder
+
+
 .*
 !.gitignore
 !.eslintrc
@@ -83,12 +87,14 @@ android/playground/local.properties
 !default.perspectivev3
 xcuserdata
 profile
+!src/js/pages/profile
 *.moved-aside
 DerivedData
 .idea/
 *.hmap
 WeexiOSSDK
 Benmu-iOS-Library
+
 
 #CocoaPods
 Pods

@@ -31,8 +31,8 @@ module.exports = {
         'Utils': 'js/utils'
     },
     'diff': {
-        'pwd': '/Users/yangmingzhe/Work/opensource/eros-diff-folder',
-        'proxy': 'https://app.weex-eros.com/source'
+        'pwd': '/Users/yc/Project/zbb/eros-zbb/eros-diff-folder',
+        'proxy': 'http://192.168.1.7:3001/static/dist/js/'
     },
     'server': {
         'path': './',

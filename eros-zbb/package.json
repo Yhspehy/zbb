@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "eros-widget": "^1.0.2-beta.1",
+    "moment": "^2.22.2",
     "weex-ui": "^0.6.6"
   },
   "devDependencies": {
