@@ -6,9 +6,10 @@
   "keywords": [
     "weex"
   ],
-  "author": "Zero<a2192466@163.com>",
+  "author": "Yhspehy<yhspehy@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.4.2",
     "eros-widget": "^1.0.2-beta.1",
     "moment": "^2.22.2",
     "weex-ui": "^0.6.6"

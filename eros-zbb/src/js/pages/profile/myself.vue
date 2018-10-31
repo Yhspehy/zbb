@@ -1,15 +1,166 @@
 <template>
-    <div>
+    <div class="setting-myself">
+        <div class="container">
+            <div class="item" style="padding: 2vw 0">
+                <text class="icon">&#xf2bd;  头像</text>
+                <div class="header-img" @click="show.genderPhoto = 'photo'">
+                    <image class="avatar" src="http://temp.im/50x50"></image>
+                    <div></div>
+                </div>
+            </div>
+        </div>
 
+        <div class="container">
+            <div class="item border-bottom-1px">
+                <text class="icon">&#xf007;  昵称</text>
+                <div class="flex-row" @click="show.nickname = true">
+                    <text class="value">{{nickname}}</text>
+                    <text class="rightIcon">&#xf054;</text>
+                </div>
+            </div>
+            <div class="item border-bottom-1px">
+                <text class="icon">&#xf183;  性别</text>
+                <div class="flex-row" @click="show.genderPhoto = 'gender'">
+                    <text class="value">{{gender}}</text>
+                    <text class="rightIcon">&#xf054;</text>
+                </div>
+            </div>
+            <div class="item border-bottom-1px">
+                <text class="icon">&#xf1fd;  生日</text>
+                <div class="flex-row" @click="show.birthLocation = 'birth'">
+                    <text class="value">{{birthday}}</text>
+                    <text class="rightIcon">&#xf054;</text>
+                </div>
+            </div>
+            <div class="item">
+                <text class="icon">&#xf041;  位置</text>
+                <div class="flex-row" @click="show.birthLocation = 'location'">
+                    <text class="value">{{location}}</text>
+                    <text class="rightIcon">&#xf054;</text>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="item border-bottom-1px">
+                <text class="icon">&#xf10b;  手机号码</text>
+                <text class="value">{{encryptMobile}}</text>
+            </div>
+            <div class="item">
+                <text class="icon">&#xf2c2;  账号ID</text>
+                <text class="value">{{id}}</text>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    export default {
+const domModule = weex.requireModule('dom');
 
+export default {
+    name: 'profile_setting_myself',
+    data() {
+        return {
+            nickname: '用户10086',
+            gender: '请选择',
+            birthday: '请选择',
+            location: '请选择',
+            mobile: '18283837373',
+            id: 10086,
+            show: {
+                nickname: false,
+                birthLocation: false,
+                genderPhoto: false
+            }
+        };
+    },
+    computed: {
+        encryptMobile() {
+            const type = 'xxx****xxxx';
+            return type.replace(/x/g, (a, b) => this.mobile[b]);
+        }
+    },
+    created() {
+        domModule.addRule('fontFace', {
+            fontFamily: 'fontAwesome',
+            src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
+        });
+    },
+    methods: {
+        close(key) {
+            this.show[key] = false;
+        },
+        birthLocationSave(res) {
+            const type = this.show.birthLocation;
+            const val = `${res[0]}-${res[1]}-${res[2]}`;
+            if (type === 'birth') {
+                this.birthday = val;
+            } else {
+                this.location = val;
+            }
+            this.close('birthLocation');
+        },
+        genderPhotoSave(data) {
+            if (this.show.genderPhoto === 'gender') {
+                const old = this.gender;
+                this.gender = data === '请选择' ? old : data;
+            }
+            this.close('genderPhoto');
+        },
+        nicknameSave(name) {
+            this.nickname = name;
+            this.close('nickname');
+        }
     }
+};
 </script>
 
 <style scoped>
+.icon {
+    font-family: fontAwesome;
+    color: #4d4d4d;
+    margin-right: 20px;
+    font-size: 30px;
+}
 
+.rightIcon {
+    font-family: fontAwesome;
+    color: #4d4d4d;
+    font-size: 20px;
+    margin-left: 16px;
+}
+
+.flex-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.container {
+    margin-top: 20px;
+    padding-left: 36px;
+    padding-right: 36px;
+    background-color: #ffffff;
+}
+
+/* 头像 */
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.item {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: #4d4d4d;
+    font-size: 28px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.value {
+    font-size: 28px;
+    color: #4d4d4d;
+}
 </style>
