@@ -3,8 +3,10 @@
         <div class="loginHeader">
             <text class="icon back">&#xf053;</text>
             <div style="flex-direction: row">
-                <text class="icon">&#xf013;</text>
-                <text class="icon">&#xf0e0;</text>
+                <!-- setting -->
+                <text class="icon" @click="jump('setting')">&#xf013;</text>
+                <!-- message -->
+                <text class="icon" @click="jump('message')">&#xf0e0;</text>
             </div>
         </div>
 
@@ -60,6 +62,13 @@ export default {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
         });
+    },
+    methods: {
+        jump(name) {
+            this.$router.open({
+                name: `profile.${name}`
+            })
+        }
     }
 };
 </script>
@@ -84,6 +93,11 @@ export default {
     font-family: fontAwesome;
     color: #ffffff;
     margin-right: 20px;
+    font-size: 40px;
+}
+
+.back {
+    font-size: 30px;
 }
 
 /* 登陆注册 */

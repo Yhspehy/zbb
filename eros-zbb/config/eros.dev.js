@@ -20,7 +20,15 @@ module.exports = {
         'js/pages/community/recommend.vue',
         'js/pages/community/circle.vue',
         'js/pages/community/activity.vue',
-        'js/pages/profile/index.vue'
+        'js/pages/profile/index.vue',
+        'js/pages/profile/setting.vue',
+        'js/pages/profile/myself.vue',
+        'js/pages/profile/push.vue',
+        'js/pages/profile/join.vue',
+        'js/pages/profile/suggestion.vue',
+        'js/pages/profile/problem.vue',
+        'js/pages/profile/message.vue',
+        'js/pages/profile/about.vue'
     ],
     'alias': {
         'Components': 'js/components',

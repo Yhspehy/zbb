@@ -44,5 +44,37 @@ export default {
     },
     'profile': {
         url: '/pages/profile/index.js'
+    },
+    'profile.setting': {
+        title: '设置',
+        url: '/pages/profile/setting.js'
+    },
+    'profile.myself': {
+        title: '个人信息',
+        url: '/pages/profile/myself.js'
+    },
+    'profile.push': {
+        title: '推送通知',
+        url: '/pages/profile/push.js'
+    },
+    'profile.join': {
+        title: '加入我们',
+        url: '/pages/profile/join.js'
+    },
+    'profile.suggestion': {
+        title: '意见反馈',
+        url: '/pages/profile/suggestion.js'
+    },
+    'profile.problem': {
+        title: '常见问题',
+        url: '/pages/profile/problem.js'
+    },
+    'profile.message': {
+        title: '系统消息',
+        url: '/pages/profile/message.js'
+    },
+    'profile.about': {
+        title: '关于我们',
+        url: '/pages/profile/about.js'
     }
 }

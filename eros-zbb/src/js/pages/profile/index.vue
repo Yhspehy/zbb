@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Fit IphoneX -->
-        <status-bar></status-bar>
+        <status-bar bg="#ffffff"></status-bar>
 
         <!-- login -->
         <login></login>
@@ -14,6 +14,7 @@
 
         <!-- game -->
         <game></game>
+
     </div>
 </template>
 
@@ -40,5 +41,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
