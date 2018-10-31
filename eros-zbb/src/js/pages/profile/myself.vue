@@ -2,7 +2,7 @@
     <div class="setting-myself">
         <div class="container">
             <div class="item" style="padding: 2vw 0">
-                <text class="icon">&#xf2bd;  头像</text>
+                <text class="icon">&#xf2bd; 头像</text>
                 <div class="header-img" @click="show.genderPhoto = 'photo'">
                     <image class="avatar" src="http://temp.im/50x50"></image>
                     <div></div>
@@ -12,29 +12,29 @@
 
         <div class="container">
             <div class="item border-bottom-1px">
-                <text class="icon">&#xf007;  昵称</text>
-                <div class="flex-row" @click="show.nickname = true">
+                <text class="icon">&#xf007; 昵称</text>
+                <div class="flex-row" @click="pickNickName">
                     <text class="value">{{nickname}}</text>
                     <text class="rightIcon">&#xf054;</text>
                 </div>
             </div>
             <div class="item border-bottom-1px">
-                <text class="icon">&#xf183;  性别</text>
-                <div class="flex-row" @click="show.genderPhoto = 'gender'">
+                <text class="icon">&#xf183; 性别</text>
+                <div class="flex-row" @click="pickGender">
                     <text class="value">{{gender}}</text>
                     <text class="rightIcon">&#xf054;</text>
                 </div>
             </div>
             <div class="item border-bottom-1px">
-                <text class="icon">&#xf1fd;  生日</text>
-                <div class="flex-row" @click="show.birthLocation = 'birth'">
+                <text class="icon">&#xf1fd; 生日</text>
+                <div class="flex-row" @click="pickBirth">
                     <text class="value">{{birthday}}</text>
                     <text class="rightIcon">&#xf054;</text>
                 </div>
             </div>
             <div class="item">
-                <text class="icon">&#xf041;  位置</text>
-                <div class="flex-row" @click="show.birthLocation = 'location'">
+                <text class="icon">&#xf041; 位置</text>
+                <div class="flex-row" @click="pickLocation">
                     <text class="value">{{location}}</text>
                     <text class="rightIcon">&#xf054;</text>
                 </div>
@@ -43,11 +43,11 @@
 
         <div class="container">
             <div class="item border-bottom-1px">
-                <text class="icon">&#xf10b;  手机号码</text>
+                <text class="icon">&#xf10b; 手机号码</text>
                 <text class="value">{{encryptMobile}}</text>
             </div>
             <div class="item">
-                <text class="icon">&#xf2c2;  账号ID</text>
+                <text class="icon">&#xf2c2; 账号ID</text>
                 <text class="value">{{id}}</text>
             </div>
         </div>
@@ -56,22 +56,21 @@
 
 <script>
 const domModule = weex.requireModule('dom');
+const picker = weex.requireModule('picker');
+const modal = weex.requireModule('modal');
 
+import { getFormatDate } from 'Utils/common';
 export default {
     name: 'profile_setting_myself',
     data() {
         return {
-            nickname: '用户10086',
+            nickname: '哈哈哈',
             gender: '请选择',
             birthday: '请选择',
             location: '请选择',
             mobile: '18283837373',
             id: 10086,
-            show: {
-                nickname: false,
-                birthLocation: false,
-                genderPhoto: false
-            }
+            genderList: ['保密', '男', '女']
         };
     },
     computed: {
@@ -87,29 +86,63 @@ export default {
         });
     },
     methods: {
-        close(key) {
-            this.show[key] = false;
+        pickNickName() {
+            modal.prompt(
+                {
+                    message: '昵称设置',
+                    duration: 0.3,
+                    okTitle: '确认',
+                    cancelTitle: '取消'
+                },
+                res => {
+                    if (res.result === '确认') {
+                        this.nickname = res.data
+                    }
+                }
+            );
         },
-        birthLocationSave(res) {
-            const type = this.show.birthLocation;
-            const val = `${res[0]}-${res[1]}-${res[2]}`;
-            if (type === 'birth') {
-                this.birthday = val;
-            } else {
-                this.location = val;
-            }
-            this.close('birthLocation');
+        pickGender() {
+            const i = this.genderList.findIndex(e => e === this.gender);
+            picker.pick(
+                {
+                    index: i > -1 ? i : 0,
+                    items: this.genderList
+                },
+                res => {
+                    if (res.result === 'success') {
+                        this.gender = this.genderList[res.data];
+                    }
+                }
+            );
         },
-        genderPhotoSave(data) {
-            if (this.show.genderPhoto === 'gender') {
-                const old = this.gender;
-                this.gender = data === '请选择' ? old : data;
-            }
-            this.close('genderPhoto');
+        pickBirth() {
+            const date = getFormatDate();
+            picker.pickDate(
+                {
+                    value: date,
+                    max: date
+                },
+                res => {
+                    if (res.result === 'success') {
+                        this.birthday = res.data;
+                    }
+                }
+            );
         },
-        nicknameSave(name) {
-            this.nickname = name;
-            this.close('nickname');
+        pickLocation () {
+            modal.prompt(
+                {
+                    message: '位置设置',
+                    duration: 0.3,
+                    okTitle: '确认',
+                    cancelTitle: '取消'
+                },
+                res => {
+                    if (res.result === '确认') {
+                        this.location = res.data
+                    }
+                }
+            );
         }
     }
 };
