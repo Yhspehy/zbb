@@ -53,10 +53,10 @@
             </div>
             <div class="item" @click="jump('about')">
                 <text class="leftWord">关于我们</text>
-                <text>
+                <div class="flex-row-center">
                     <text class="leftWord">1.0.0&nbsp;</text>
                     <text class="icon">&#xf054;</text>
-                </text>
+                </div>
             </div>
         </div>
 
@@ -181,7 +181,9 @@ export default {
 .icon {
     font-family: fontAwesome;
     color: #4d4d4d;
+    font-size: 24px;
     margin-right: 20px;
+    top: 2px;
 }
 
 .setting-container {

@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Fit IphoneX -->
-        <status-bar bg="#ffffff"></status-bar>
+        <status-bar></status-bar>
 
         <!-- login -->
         <login></login>
