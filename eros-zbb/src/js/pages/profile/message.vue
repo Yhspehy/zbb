@@ -102,7 +102,7 @@ export default {
         return {
         };
     },
-    created() {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"

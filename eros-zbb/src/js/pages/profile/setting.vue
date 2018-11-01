@@ -12,11 +12,11 @@
             </div>
             <div class="item">
                 <text class="leftWord">无图模式下(2G/3G/4G)</text>
-                <text class="icon">&#xf00c;</text>
+                <text class="icon" :style="{'color': check.noImgMode ? '#07b5ff' : ''}">&#xf00c;</text>
             </div>
             <div class="item">
                 <text class="leftWord">WIFI下自动播放</text>
-                <text class="icon">&#xf00c;</text>
+                <text class="icon" :style="{'color': check.autoPlayInWifi ? '#07b5ff' : ''}">&#xf00c;</text>
             </div>
             <div class="item" @click="clearCache">
                 <text class="leftWord">清除缓存</text>
@@ -100,9 +100,13 @@ const domModule = weex.requireModule('dom');
 export default {
     data() {
         return {
+            check: {
+                noImgMode: false,
+                autoPlayInWifi: true
+            }
         };
     },
-    created() {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"

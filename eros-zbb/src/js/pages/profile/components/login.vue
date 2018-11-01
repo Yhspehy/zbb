@@ -57,7 +57,7 @@ export default {
             isLogin: false
         };
     },
-    created() {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"

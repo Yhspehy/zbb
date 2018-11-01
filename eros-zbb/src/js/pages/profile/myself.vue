@@ -79,7 +79,7 @@ export default {
             return type.replace(/x/g, (a, b) => this.mobile[b]);
         }
     },
-    created() {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
