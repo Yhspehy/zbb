@@ -3,7 +3,19 @@
         <!-- Fit IphoneX -->
         <status-bar></status-bar>
 
-        <wxc-tab-page ref="wxc-tab-page" :tab-styles="tabStyles" :tab-titles="tabTitles" :tabPageHeight="tabPageHeight" need-slider="true" @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
+        <wxc-tab-page
+            ref="wxc-tab-page"
+            title-use-slot="true"
+            :tab-styles="tabStyles"
+            :tab-titles="tabTitles"
+            :tabPageHeight="tabPageHeight"
+            need-slider="true"
+            @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
+
+            <div v-for="(nav, navIdx) in tabTitles" :slot="'tab-title-' + navIdx" :key="navIdx" style="align-items: center">
+                <text :class="[navActivity === navIdx?'navActivity': '']">{{nav.title}}</text>
+                <div v-if="navActivity === navIdx" class="navActivityLine"></div>
+            </div>
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
@@ -39,13 +51,13 @@ export default {
         return {
             tabTitles: [
                 {
-                    title: '赛事'
+                    title: '推荐'
                 },
                 {
-                    title: '热门'
+                    title: '圈子'
                 },
                 {
-                    title: '关注'
+                    title: '活动'
                 }
             ],
             tabPageHeight: 1334,
@@ -58,6 +70,7 @@ export default {
                 isActiveTitleBold: true,
                 width: 160,
                 height: 100,
+                leftOffset: 140,
                 fontSize: 30,
                 hasActiveBottom: true,
                 activeBottomColor: '#FFC900',
@@ -65,7 +78,8 @@ export default {
                 activeBottomWidth: 120,
                 textPaddingLeft: 10,
                 textPaddingRight: 10
-            }
+            },
+            navActivity: 0
         };
     },
     created() {
@@ -73,6 +87,7 @@ export default {
     },
     methods: {
         wxcTabPageCurrentTabSelected(e) {
+            this.navActivity = e.page
         },
         wxcPanItemPan(e) {
             if (Utils.env.supportsEBForAndroid()) {
@@ -98,5 +113,17 @@ export default {
     border-bottom-width: 1px;
     border-style: solid;
     border-color: #e0e0e0;
+}
+
+.navActivity {
+    color: #0099ff;
+    font-size: 36px;
+}
+
+.navActivityLine {
+    height: 4px;
+    background-color: #0099ff;
+    width: 40px;
+    top: 14px;
 }
 </style>

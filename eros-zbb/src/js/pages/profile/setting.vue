@@ -10,11 +10,11 @@
                 <text class="leftWord">推送通知</text>
                 <text class="icon">&#xf054;</text>
             </div>
-            <div class="item">
+            <div class="item" @click="triggerSetting('noImgMode')">
                 <text class="leftWord">无图模式下(2G/3G/4G)</text>
                 <text class="icon" :style="{'color': check.noImgMode ? '#07b5ff' : ''}">&#xf00c;</text>
             </div>
-            <div class="item">
+            <div class="item" @click="triggerSetting('autoPlayInWifi')" >
                 <text class="leftWord">WIFI下自动播放</text>
                 <text class="icon" :style="{'color': check.autoPlayInWifi ? '#07b5ff' : ''}">&#xf00c;</text>
             </div>
@@ -117,6 +117,9 @@ export default {
             this.$router.open({
                 name: `profile.${name}`
             })
+        },
+        triggerSetting(key) {
+            this.check[key] = !this.check[key];
         },
         clearCache() {
             this.$notice.confirm({

@@ -1,7 +1,8 @@
 <template>
     <div class="loginContainer">
         <div class="loginHeader">
-            <text class="icon back">&#xf053;</text>
+            <text class="icon back"></text>
+            <!-- <text class="icon back">&#xf053;</text> -->
             <div style="flex-direction: row">
                 <!-- setting -->
                 <text class="icon" @click="jump('setting')">&#xf013;</text>
@@ -92,7 +93,7 @@ export default {
 .icon {
     font-family: fontAwesome;
     color: #ffffff;
-    margin-right: 20px;
+    margin-right: 30px;
     font-size: 40px;
 }
 
