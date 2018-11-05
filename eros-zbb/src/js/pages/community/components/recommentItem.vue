@@ -69,7 +69,7 @@ export default {
 }
 
 .zone {
-    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #fff;
     padding-top: 25px;
     padding-left: 36px;

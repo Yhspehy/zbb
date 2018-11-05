@@ -1,39 +1,48 @@
 <template>
-    <div class="community">
-        <status-bar></status-bar>
-
-        <div class="container">
-            <!-- slide -->
-            <slider class="slider" ref="item" interval="3000" auto-play="false" :index="2">
-                <div class="frame" v-for="(img, idx) in imgList" :key="idx">
-                    <image class="image" :src="img"></image>
-                </div>
-            </slider>
-
-            <text class="title">Hello Eros1</text>
-            <text class="desc">一套 Vue 代码，两端原生应用。</text>
-        </div>
-    </div>
+    <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
+        <cell v-for="(zone, idx) in zoneList" :key="idx">
+            <recommend-item :zone="zone"></recommend-item>
+        </cell>
+    </list>
 </template>
 
 <script>
-import statusBar from '../components/statusBar'
+import recommendItem from './components/recommentItem';
 
 export default {
-    components: { statusBar },
-    data () {
+    components: { recommendItem },
+    data() {
         return {
-            imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/']
+            zoneList: null
+        };
+    },
+    created() {
+        this.fetchNewList();
+    },
+    methods: {
+        onrefresh() {
+            setTimeout(() => {
+                this.$refs['list'].refreshEnd();
+            }, 2000);
+        },
+        loadMore() {
+            setTimeout(() => {
+                this.$refs['list'].loadMoreEnd();
+            }, 2000);
+        },
+        fetchNewList() {
+            this.$fetch({
+                method: 'GET',
+                url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/community/recommend/list'
+            }).then(
+                res => {
+                    this.zoneList = res.data;
+                }
+            );
         }
     }
 };
 </script>
 
 <style scoped>
-.title {
-    font-size: 100px;
-}
-.desc {
-    font-size: 30px;
-}
 </style>

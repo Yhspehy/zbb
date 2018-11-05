@@ -98,6 +98,7 @@ export default {
     padding-right: 36px;
     background-color: #fff;
     margin-top: 20px;
+    margin-bottom: 20px;
     color: pink;
 }
 

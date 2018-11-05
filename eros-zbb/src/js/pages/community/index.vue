@@ -5,16 +5,17 @@
 
         <wxc-tab-page
             ref="wxc-tab-page"
+            :title-use-slot="true"
             :tab-styles="tabStyles"
             :tab-titles="tabTitles"
             :tabPageHeight="tabPageHeight"
             need-slider="true"
             @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
 
-            <!-- <div v-for="(nav, navIdx) in tabTitles" :slot="'tab-title-' + navIdx" :key="navIdx" style="align-items: center">
+            <div v-for="(nav, navIdx) in tabTitles" :slot="'tab-title-' + navIdx" :key="navIdx" style="align-items: center">
                 <text :class="[navActivity === navIdx?'navActivity': '']">{{nav.title}}</text>
                 <div v-if="navActivity === navIdx" class="navActivityLine"></div>
-            </div> -->
+            </div>
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
