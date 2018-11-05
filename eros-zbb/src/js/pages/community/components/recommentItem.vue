@@ -1,26 +1,27 @@
 <template>
     <div class="zone">
-                <div class="zoneHeader">
-                    <text class="zoneName">{{zone.name}}专区</text>
-                    <text class="zonePoster"> | {{zone.poster}}</text>
+        <div class="zoneHeader">
+            <text class="zoneName">{{zone.name}}专区</text>
+            <text class="zonePoster"> | {{zone.poster}}</text>
+        </div>
+
+        <text class="zoneTitle">{{zone.title}}</text>
+
+        <image class="zoneImg" v-if="zone.img.length" :src="zone.img[0]"></image>
+
+        <text class="zoneComment">{{zone.comment}}</text>
+
+        <div class="zoneFooter">
+            <text class="zoneUpdateTime">{{updateTime}}</text>
+            <div class="zoneVoteComment">
+                <div class="zoneVoteCount" @click="vote(zone)">
+                    <text class="icon" :style="{'color': zone.isVote ? '#f5303d' : '#b3b3b3'}">&#xf164;</text>
+                    <text class="voteCount" :style="{'color': zone.isVote ? '#f5303d' : '#b3b3b3'}">{{zone.vote_count}}</text>
                 </div>
-
-                <text class="zoneTitle">{{zone.title}}</text>
-
-                <image class="zoneImg" v-if="zone.img.length" :src="zone.img[0]"></image>
-
-                <text class="zoneComment">{{zone.comment}}</text>
-
-                <div class="zoneFooter">
-                    <text class="zoneUpdateTime">{{updateTime}}</text>
-                    <div class="zoneVoteComment">
-                        <div class="zoneVoteCount" :style="{'color': zone.isVote ? '#f5303d' : '#b3b3b3'}" @click="vote(zone)">
-                            <text class="icon">&#xf164;</text>
-                            <text class="voteCount">{{zone.vote_count}}</text>
-                        </div>
-                    </div>
-                </div>
+                <text class="icon" style="font-size: 28px; top:1px;">&#xf086;</text>
             </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -40,7 +41,9 @@ export default {
     },
     computed: {
         updateTime() {
-            return this.$moment(this.zone.update_time).locale('zh-cn').fromNow()
+            return this.$moment(this.zone.update_time)
+                .locale('zh-cn')
+                .fromNow();
         }
     },
     methods: {
@@ -62,7 +65,6 @@ export default {
 .icon {
     font-family: fontAwesome;
     color: rgb(179, 179, 179);
-    margin-right: 30px;
     font-size: 26px;
 }
 
@@ -121,8 +123,8 @@ export default {
     align-items: center;
 }
 .voteCount {
-    margin-right: 14px;
-    margin-left: 2px;
+    margin-right: 20px;
+    margin-left: 4px;
     font-size: 22px;
     color: rgb(179, 179, 179);
 }
