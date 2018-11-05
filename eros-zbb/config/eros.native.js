@@ -11,8 +11,8 @@ module.exports = {
     'page': {
         'homePage': 'tabBar',
         'mediatorPage': '/mediator/index.js',
-        'navBarColor': '#1DA1F2',
-        'navItemColor': '#ffffff'
+        'navBarColor': '#ffffff',
+        'navItemColor': '#808080'
     },
     'url': {
         'image': 'https://lev-inf.benmu-health.com/test/xxx',

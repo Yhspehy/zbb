@@ -80,11 +80,16 @@ export default {
                 textPaddingRight: 10,
                 boxShadow: 'inset 0 -1px 4px rgba(0,0,0,0.4)'
             },
-            navActivity: 0
+            navActivity: 1
         };
     },
     created() {
         this.tabPageHeight = Utils.env.getPageHeight();
+    },
+    mounted() {
+        this.$nextTick(() => {
+            this.$refs['wxc-tab-page'].setPage(this.navActivity)
+        })
     },
     methods: {
         wxcTabPageCurrentTabSelected(e) {

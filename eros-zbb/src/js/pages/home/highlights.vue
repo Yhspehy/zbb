@@ -15,11 +15,6 @@
             <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
         </cell>
 
-        <cell>
-            <text class="title">Hello Eros</text>
-            <text class="desc">一套 Vue 代码，两端原生应用。</text>
-        </cell>
-
     </list>
 </template>
 

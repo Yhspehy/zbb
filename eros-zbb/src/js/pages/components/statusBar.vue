@@ -7,7 +7,7 @@ export default {
     props: {
         bg: {
             type: String,
-            default: '#1da1f2'
+            default: '#ffffff'
         }
     },
     data() {

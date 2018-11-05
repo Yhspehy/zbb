@@ -1,20 +1,22 @@
 <template>
-    <div>
+    <div class="profile">
         <!-- Fit IphoneX -->
         <status-bar></status-bar>
 
-        <!-- login -->
-        <login></login>
 
-        <!-- circle -->
-        <circle></circle>
+        <scroller class="scroller">
+            <!-- login -->
+            <login></login>
 
-        <!-- activity -->
-        <activity></activity>
+            <!-- circle -->
+            <circle></circle>
 
-        <!-- game -->
-        <game></game>
+            <!-- activity -->
+            <activity></activity>
 
+            <!-- game -->
+            <game></game>
+        </scroller>
     </div>
 </template>
 
@@ -41,4 +43,11 @@ export default {
 </script>
 
 <style scoped>
+.profile {
+    height: 1334px;
+}
+
+.scroller {
+    padding-bottom: 170px;
+}
 </style>

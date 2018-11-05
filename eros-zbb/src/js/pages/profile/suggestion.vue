@@ -44,7 +44,8 @@ export default {
         });
         this.$navigator.setRightItem({
             text: '常见问题',
-            fontSize: '24px'
+            fontSize: '24px',
+            textColor: '#808080'
         }, () => {
             this.$router.open({
                 name: 'profile.problem'

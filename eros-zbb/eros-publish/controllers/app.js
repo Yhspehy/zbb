@@ -10,7 +10,7 @@ const add = (req, res, next) => {
     appInfo.save(() => {
         res.send(format({
             data: 'success'
-        }))            
+        }))
     })
 }
 
@@ -18,7 +18,7 @@ const list = (req, res, next) => {
     let { appName } = req.query
 
     console.log(appName);
-    
+
     AppModel.find({ appName }).sort({ _id : 'desc'}).exec((err, app) =>{
         if (err) { return next(err) }
         if (!app) { return next(404) }
@@ -41,6 +41,7 @@ const check = (req, res, next) => {
     checkParams[platform] = version
     AppModel.find(checkParams, (err, apps) =>{
         if (err) { return next(err) }
+        console.log('update');
         requestZip({
             res, apps, appName, platform, version, jsVersion, isDiff, next
         })
@@ -49,22 +50,24 @@ const check = (req, res, next) => {
 
 const requestZip = ({res, apps, appName, platform, version, jsVersion, isDiff, next}) => {
     if(!appName || !platform || !version) {
+        console.log('参数缺失');
         res.send(format({
             resCode: 400,
             msg: "参数缺失",
             data: {}
-        }))   
-        return         
+        }))
+        return
     }
     getNewestInfo({ appName, platform, version}).then(newests => {
         // console.log(newests)
-        if (!newests || !newests.length) { 
+        if (!newests || !newests.length) {
+            console.log('无任何包信息');
             res.send(format({
                 resCode: 400,
                 msg: "无任何包信息",
                 data: {}
-            }))             
-            return 
+            }))
+            return
         }
 
         const fullZipPath = `${newests[0].jsPath}${newests[0].jsVersion}.zip`
@@ -72,17 +75,19 @@ const requestZip = ({res, apps, appName, platform, version, jsVersion, isDiff, n
 
         if(isDiff == 0 || isDiff === 'false' || isDiff === false) {
             // 请求全量包
+            console.log('请求全量包成功');
             res.send(format({
                 msg: "请求全量包成功",
                 data: {
                     diff: false,
                     path: fullZipPath
                 }
-            }))             
+            }))
             return
         }
         // 请求差分包
         if(!apps.length){
+            console.log('jsVersion 不存在');
             // 不存在jsVersion 当前包信息可能被篡改 直接返回最新版本全量包
                 res.send(format({
                     resCode:  401,
@@ -91,15 +96,17 @@ const requestZip = ({res, apps, appName, platform, version, jsVersion, isDiff, n
                         diff: false,
                         path: fullZipPath
                     }
-                }))                    
+                }))
         }else {
             if(newests[0].jsVersion === jsVersion) {
+                console.log('当前版本已是最新，不需要更新');
                 // 存在 jsVersion 并且是最新
                 res.send(format({
                     resCode: 4000,
                     msg: "当前版本已是最新，不需要更新"
-                }))                 
+                }))
             } else {
+                console.log('当前版本需要更新');
                 // 存在 jsVersion 但不是最新
                 res.send(format({
                     msg: "当前版本需要更新",
@@ -109,10 +116,10 @@ const requestZip = ({res, apps, appName, platform, version, jsVersion, isDiff, n
                         // path: `${newests[0].jsPath}${md5(jsVersion + newests[0].jsVersion)}.zip`
                         path: config.zipReturn === 'diff' ? diffZipPath : fullZipPath
                     }
-                }))                 
+                }))
             }
 
-        }    
+        }
     })
 }
 
@@ -122,8 +129,6 @@ const getNewestInfo = ({appName, platform, version}) => {
     }
     params[platform] = version
     return AppModel.find(params).sort({ timestamp : 'desc'})
-       
-
 }
 
 const aa = (req, res, next) => {
