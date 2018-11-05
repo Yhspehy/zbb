@@ -7,7 +7,6 @@
     </div>
 </template>
 <script>
-import moment from 'moment'
 export default {
     name: 'schedule_timeBar',
     props: {
@@ -18,13 +17,13 @@ export default {
     },
     computed: {
         date() {
-            return moment(this.currentDate).locale('zh-cn').format('MM月DD号')
+            return this.$moment(this.currentDate).locale('zh-cn').format('MM月DD号')
         },
         week() {
-            return moment(this.currentDate).locale('zh-cn').format('dddd')
+            return this.$moment(this.currentDate).locale('zh-cn').format('dddd')
         },
         isToday() {
-            return moment(this.currentDate).format('YYY-MM-DD') === moment().format('YYY-MM-DD')
+            return this.$moment(this.currentDate).format('YYY-MM-DD') === this.$moment().format('YYY-MM-DD')
         }
     }
 };

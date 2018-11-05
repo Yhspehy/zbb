@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import moment from 'moment'
 import { WxcIcon } from 'weex-ui'
 
 export default {
@@ -59,7 +58,7 @@ export default {
     },
     computed: {
         startTime() {
-            return moment(this.matchData.start_time).format('HH:mm')
+            return this.$moment(this.matchData.start_time).format('HH:mm')
         }
     },
     methods: {}

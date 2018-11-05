@@ -19,7 +19,7 @@
                 <image class="img" :src="item.img_list[2]"></image>
             </div>
             <div class="info">
-                <text class="date">{{item.create_time}}</text>
+                <text class="date">{{time}}</text>
                 <text class="source">Mavis报道</text>
             </div>
         </div>
@@ -28,7 +28,6 @@
 
 <script>
 // 新闻列表的item
-// import moment from 'moment';
 export default {
     name: 'newsList',
     props: {
@@ -43,7 +42,7 @@ export default {
     },
     computed: {
         time() {
-            // return moment(this.item.create_time).format('MM-DD HH:mm');
+            return this.$moment(this.item.create_time).format('MM-DD HH:mm');
         }
     }
 };
