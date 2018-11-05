@@ -2,6 +2,9 @@ import Widget from 'eros-widget'
 import apis from './apis'
 import routes from './routes'
 import './push'
+import moment from 'moment'
+
+Vue.prototype.$moment = moment
 
 new Widget({
     router: {
