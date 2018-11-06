@@ -95,82 +95,82 @@
 </template>
 
 <script>
-const domModule = weex.requireModule('dom');
+const domModule = weex.requireModule('dom')
 
 export default {
-    data() {
+    data () {
         return {
             check: {
                 noImgMode: false,
                 autoPlayInWifi: true
             }
-        };
+        }
     },
-    beforeCreate() {
+    beforeCreate () {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
-        });
+        })
     },
     methods: {
-        jump(name) {
+        jump (name) {
             this.$router.open({
                 name: `profile.${name}`
             })
         },
-        triggerSetting(key) {
-            this.check[key] = !this.check[key];
+        triggerSetting (key) {
+            this.check[key] = !this.check[key]
         },
-        clearCache() {
+        clearCache () {
             this.$notice.confirm({
                 title: '清除缓存',
                 message: '是否清除缓存39.9MB',
                 okTitle: '确认',
                 cancelTitle: '取消',
-                okCallback() {
-                    console.log('yes');
+                okCallback () {
+                    console.log('yes')
                 },
-                cancelCallback() {
-                    console.log('no');
+                cancelCallback () {
+                    console.log('no')
                 }
-            });
+            })
         },
-        update() {
+        update () {
             this.$notice.confirm({
                 title: '更新',
                 message: '当前版本:1.0.0,\n 是否更新至最新版本:2.2.2',
                 okTitle: '确认',
                 cancelTitle: '取消',
-                okCallback() {
-                    console.log('yes');
+                okCallback () {
+                    console.log('yes')
                 },
-                cancelCallback() {
-                    console.log('no');
+                cancelCallback () {
+                    console.log('no')
                 }
-            });
+            })
         },
-        logout() {
+        logout () {
             this.$notice.confirm({
                 title: '退出',
                 message: '是否退出当前账号',
                 okTitle: '确认',
                 cancelTitle: '取消',
-                okCallback() {
-                    console.log('yes');
+                okCallback () {
+                    console.log('yes')
                 },
-                cancelCallback() {
-                    console.log('no');
+                cancelCallback () {
+                    console.log('no')
                 }
-            });
+            })
         },
-        showMask() {
-            this.$refs['bmmask'].show();
+        showMask () {
+            this.$refs['bmmask'].show()
         },
-        closeMask() {
-            this.$refs['bmmask'].hide();
+        closeMask () {
+            this.$refs['bmmask'].hide()
         }
     }
-};
+}
 </script>
 
 <style scoped>
@@ -225,7 +225,6 @@ export default {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
 }
-
 
 .share {
     width: 680px;

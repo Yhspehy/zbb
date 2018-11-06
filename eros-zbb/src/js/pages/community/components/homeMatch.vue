@@ -37,7 +37,7 @@ export default {
     },
     computed: {
         result () {
-            let arr =  this.liveTrailList.map(e => {
+            let arr = this.liveTrailList.map(e => {
                 let d = new Date(e.start_time)
                 let hour = this.tranHour(d.getHours())
                 let min = this.tranMins(d.getMinutes())
@@ -48,14 +48,14 @@ export default {
         }
     },
     methods: {
-        tranHour(hour) {
-            return hour < 10 ? `0${hour}`: hour
+        tranHour (hour) {
+            return hour < 10 ? `0${hour}` : hour
         },
-        tranMins(mins) {
-            return mins < 10 ? `0${mins}`: mins
+        tranMins (mins) {
+            return mins < 10 ? `0${mins}` : mins
         }
     }
-};
+}
 </script>
 
 <style scoped>
@@ -72,7 +72,6 @@ export default {
     font-size: 24px;
     margin-left: 30px;
 }
-
 
 .home-match {
     height: 212px;

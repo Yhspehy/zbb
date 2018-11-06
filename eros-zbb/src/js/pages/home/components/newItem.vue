@@ -41,11 +41,11 @@ export default {
         }
     },
     computed: {
-        time() {
-            return this.$moment(this.item.create_time).format('MM-DD HH:mm');
+        time () {
+            return this.$moment(this.item.create_time).format('MM-DD HH:mm')
         }
     }
-};
+}
 </script>
 <style scoped>
 .news-item {

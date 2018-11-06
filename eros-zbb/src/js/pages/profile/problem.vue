@@ -11,11 +11,11 @@
 </template>
 
 <script>
-const domModule = weex.requireModule('dom');
+const domModule = weex.requireModule('dom')
 
 export default {
     name: 'profile_setting_problem',
-    data() {
+    data () {
         return {
             expandObj: {
                 playStats: false,
@@ -70,20 +70,20 @@ export default {
                         '用户首先需要确认目前使用的是否在WIFI环境下，并且在个人中心系统设置中确认目前是不是最新版本。\n如果人就发现播放出现卡顿或者播放不了视频，请点击本页右上角的意见反馈，输入您观看的哪场比赛/哪个视频和对应情况，您的问题会直接反馈给我们。'
                 }
             ]
-        };
+        }
     },
-    beforeCreate() {
+    beforeCreate () {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
-        });
+        })
     },
     methods: {
-        emitClick(key, idx) {
-            this.expandObj[key] = !this.expandObj[key];
+        emitClick (key, idx) {
+            this.expandObj[key] = !this.expandObj[key]
         }
     }
-};
+}
 </script>
 
 <style scoped>

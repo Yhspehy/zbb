@@ -31,54 +31,54 @@
 </template>
 
 <script>
-import statusBar from '../components/statusBar';
-import homeHeader from './components/header';
-import homeMatch from './components/homeMatch';
+import statusBar from '../components/statusBar'
+import homeHeader from './components/header'
+import homeMatch from './components/homeMatch'
 
-var modal = weex.requireModule('modal');
+var modal = weex.requireModule('modal')
 export default {
     components: {
         statusBar,
         homeHeader,
         homeMatch
     },
-    data() {
+    data () {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             list: 1,
             liveTrailList: null
-        };
+        }
     },
-    mounted() {
-        this.list = weex.config.eros.jsServer;
+    mounted () {
+        this.list = weex.config.eros.jsServer
         this.$fetch({
             method: 'GET',
             url: 'http://192.168.1.7:8889/dist/mock/test/homeMatch.json'
         }).then(
             res => {
-                this.liveTrailList = res.data;
+                this.liveTrailList = res.data
             },
             error => {
                 modal.alert({
                     message: error.errorMsg
-                });
+                })
             }
-        );
+        )
     },
     methods: {
-        onrefresh() {
+        onrefresh () {
             setTimeout(() => {
-                this.$refs['list'].refreshEnd();
-            }, 2000);
+                this.$refs['list'].refreshEnd()
+            }, 2000)
         },
-        loadMore() {
+        loadMore () {
             setTimeout(() => {
-                this.$refs['list'].loadMoreEnd();
-            }, 2000);
+                this.$refs['list'].loadMoreEnd()
+            }, 2000)
         }
-    },
+    }
 
-};
+}
 </script>
 
 <style scoped>

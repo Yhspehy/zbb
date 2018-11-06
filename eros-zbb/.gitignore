@@ -8,8 +8,6 @@ docs
 # 自适配
 eros-diff-folder
 
-
-.*
 !.gitignore
 !.eslintrc
 !.editorconfig

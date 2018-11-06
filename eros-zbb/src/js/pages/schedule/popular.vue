@@ -11,33 +11,34 @@
 import timeBar from './components/timeBar'
 import matchItem from './components/matchItem'
 
-var modal = weex.requireModule('modal');
+var modal = weex.requireModule('modal')
 export default {
     components: {
         timeBar,
         matchItem
     },
-    data() {
+    data () {
         return {
             keys: [],
             matchList: {}
-        };
+        }
     },
-    created() {
+    created () {
+        this.$notice.loading.show()
         this.fetchNewList()
     },
     methods: {
-        onrefresh() {
+        onrefresh () {
             setTimeout(() => {
-                this.$refs['list'].refreshEnd();
-            }, 2000);
+                this.$refs['list'].refreshEnd()
+            }, 2000)
         },
-        loadMore() {
+        loadMore () {
             setTimeout(() => {
-                this.$refs['list'].loadMoreEnd();
-            }, 2000);
+                this.$refs['list'].loadMoreEnd()
+            }, 2000)
         },
-        fetchNewList() {
+        fetchNewList () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/popularList'
@@ -50,17 +51,18 @@ export default {
                     this.keys.forEach(key => {
                         this.$set(this.matchList, key, res.data[key])
                     })
+                    this.$notice.loading.hide()
                     // this.matchList = res.data
                 },
                 error => {
                     modal.alert({
                         message: error.errorMsg
-                    });
+                    })
                 }
-            );
+            )
         }
     }
-};
+}
 </script>
 
 <style scoped>

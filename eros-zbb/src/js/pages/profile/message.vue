@@ -20,7 +20,7 @@
 <script>
 export default {
     name: 'profile_setting_message',
-    data() {
+    data () {
         return {
             list: [
                 {
@@ -45,9 +45,9 @@ export default {
                         '这里是系统消息喂啊喂啊喂，这里是系统消息喂啊喂啊喂啊喂啊喂，点击查看更多就可以跳转到官方活动页面拉是不是很开心喂 >>'
                 }
             ]
-        };
+        }
     }
-};
+}
 </script>
 
 <style scoped lang="scss">

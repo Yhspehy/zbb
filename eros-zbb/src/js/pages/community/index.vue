@@ -27,7 +27,7 @@
                 <circle></circle>
             </div>
 
-             <!-- 圈子 -->
+            <!-- 圈子 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <activity></activity>
             </div>
@@ -37,17 +37,15 @@
 </template>
 
 <script>
-const dom = weex.requireModule('dom');
-import { WxcTabPage, WxcPanItem, Utils } from 'weex-ui';
-import statusBar from '../components/statusBar';
-import recommend from './recommend';
+import { WxcTabPage, Utils } from 'weex-ui'
+import statusBar from '../components/statusBar'
+import recommend from './recommend'
 import circle from './circle'
 import activity from './activity'
 
-
 export default {
     components: { statusBar, WxcTabPage, recommend, circle, activity },
-    data() {
+    data () {
         return {
             tabTitles: [
                 {
@@ -80,28 +78,28 @@ export default {
                 textPaddingRight: 10,
                 boxShadow: 'inset 0 -1px 4px rgba(0,0,0,0.4)'
             },
-            navActivity: 1
-        };
+            navActivity: 0
+        }
     },
-    created() {
-        this.tabPageHeight = Utils.env.getPageHeight();
+    created () {
+        this.tabPageHeight = Utils.env.getPageHeight()
     },
-    mounted() {
+    mounted () {
         this.$nextTick(() => {
             this.$refs['wxc-tab-page'].setPage(this.navActivity)
         })
     },
     methods: {
-        wxcTabPageCurrentTabSelected(e) {
+        wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
         },
-        wxcPanItemPan(e) {
+        wxcPanItemPan (e) {
             if (Utils.env.supportsEBForAndroid()) {
-                this.$refs['wxc-tab-page'].bindExp(e.element);
+                this.$refs['wxc-tab-page'].bindExp(e.element)
             }
         }
     }
-};
+}
 </script>
 
 <style scoped>

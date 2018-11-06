@@ -17,52 +17,69 @@
         <cell v-for="(zone, idx) in newsList" :key="idx">
             <recommend-item :zone="zone"></recommend-item>
         </cell>
+
+        <cell>
+            <div class="postTitle">
+                <text class="pen">&#xf304;</text>
+                <text class="postTitleText">我要发帖</text>
+            </div>
+        </cell>
     </list>
 </template>
 
 <script>
-import recommendItem from './components/recommentItem';
-const modal = weex.requireModule('modal');
+import recommendItem from './components/recommentItem'
+
+const domModule = weex.requireModule('dom')
+const modal = weex.requireModule('modal')
 
 export default {
     components: { recommendItem },
-    data() {
+    data () {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             newsList: null
-        };
+        }
     },
-    created() {
-        this.fetchNewList();
+    beforeCreate () {
+        domModule.addRule('fontFace', {
+            fontFamily: 'fontAwesome',
+            src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
+        })
+    },
+    created () {
+        this.$notice.loading.show()
+        this.fetchNewList()
     },
     methods: {
-        onrefresh() {
+        onrefresh () {
             setTimeout(() => {
-                this.$refs['list'].refreshEnd();
-            }, 2000);
+                this.$refs['list'].refreshEnd()
+            }, 2000)
         },
-        loadMore() {
+        loadMore () {
             setTimeout(() => {
-                this.$refs['list'].loadMoreEnd();
-            }, 2000);
+                this.$refs['list'].loadMoreEnd()
+            }, 2000)
         },
-        fetchNewList() {
+        fetchNewList () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/community/recommend/list'
             }).then(
                 res => {
-                    this.newsList = res.data;
+                    this.newsList = res.data
+                    this.$notice.loading.hide()
                 },
                 error => {
                     modal.alert({
                         message: error.errorMsg
-                    });
+                    })
                 }
-            );
+            )
         }
     }
-};
+}
 </script>
 
 <style scoped>
@@ -102,5 +119,30 @@ export default {
     color: pink;
 }
 
+.postTitle {
+    position: fixed;
+    left: 240px;
+    bottom: 80px;
+    width: 260px;
+    height: 90px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 11.9px 0.1px rgba(0, 51, 109, 0.3);
+    border-radius: 45px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.postTitleText {
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #808080;
+}
+
+.pen {
+    font-family: fontAwesome;
+    color: #0088ff;
+    margin-right: 10px;
+}
 
 </style>

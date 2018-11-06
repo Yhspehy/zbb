@@ -10,12 +10,12 @@ export default {
             default: '#ffffff'
         }
     },
-    data() {
+    data () {
         return {
             statusBarHeight: weex.config.eros.statusBarHeight ? weex.config.eros.statusBarHeight : 40
-        };
+        }
     }
-};
+}
 </script>
 
 <style scoped>

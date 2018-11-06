@@ -3,7 +3,6 @@
         <!-- Fit IphoneX -->
         <status-bar></status-bar>
 
-
         <scroller class="scroller">
             <!-- login -->
             <login></login>
@@ -21,7 +20,7 @@
 </template>
 
 <script>
-import statusBar from '../components/statusBar';
+import statusBar from '../components/statusBar'
 import login from './components/login'
 import circle from './components/circle'
 import activity from './components/activity'
@@ -35,14 +34,18 @@ export default {
         activity,
         game
     },
-    data() {
-        return {};
+    data () {
+        return {}
     },
     methods: {}
-};
+}
 </script>
 
 <style scoped>
+.profile {
+    height: 1334px;
+}
+
 .scroller {
     padding-bottom: 170px;
 }

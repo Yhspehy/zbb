@@ -22,8 +22,12 @@
         <!-- 比分预约 -->
         <div class="score">
             <div v-if="matchData.status !== '未开始'">
-                <text :class="['teamLayout', 'margin-bottom-16', matchData.home_score > matchData.away_score?'win': '']">{{matchData.home_score}}</text>
-                <text :class="['teamLayout', matchData.away_score > matchData.home_score?'win': '']">{{matchData.away_score}}</text>
+                <div style="flex-direction: row">
+                    <text :class="['teamLayout', 'margin-bottom-16', matchData.home_score > matchData.away_score?'win': '']">{{matchData.home_score}}</text>
+                </div>
+                <div style="flex-direction: row">
+                    <text :class="['teamLayout', matchData.away_score > matchData.home_score?'win': '']">{{matchData.away_score}}</text>
+                </div>
             </div>
             <div v-else>
                 <div class="teamLayout align-center" style="margin-bottom: 8px">
@@ -38,6 +42,7 @@
             <text class="mediaName">{{matchData.media}}</text>
             <text class="linkBtn" :class="[matchData.end_description_word !== '直播'?'live': '']" v-if="matchData.end_description_word">{{matchData.end_description_word}}</text>
         </div>
+
     </div>
 </template>
 
@@ -53,16 +58,16 @@ export default {
             require: true
         }
     },
-    data() {
-        return {};
+    data () {
+        return {}
     },
     computed: {
-        startTime() {
+        startTime () {
             return this.$moment(this.matchData.start_time).format('HH:mm')
         }
     },
     methods: {}
-};
+}
 </script>
 
 <style scoped>

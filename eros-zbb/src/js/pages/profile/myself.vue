@@ -55,14 +55,14 @@
 </template>
 
 <script>
-const domModule = weex.requireModule('dom');
-const picker = weex.requireModule('picker');
-const modal = weex.requireModule('modal');
+import { getFormatDate } from 'Utils/common'
 
-import { getFormatDate } from 'Utils/common';
+const domModule = weex.requireModule('dom')
+const picker = weex.requireModule('picker')
+const modal = weex.requireModule('modal')
 export default {
     name: 'profile_setting_myself',
-    data() {
+    data () {
         return {
             nickname: '哈哈哈',
             gender: '请选择',
@@ -71,22 +71,22 @@ export default {
             mobile: '18283837373',
             id: 10086,
             genderList: ['保密', '男', '女']
-        };
-    },
-    computed: {
-        encryptMobile() {
-            const type = 'xxx****xxxx';
-            return type.replace(/x/g, (a, b) => this.mobile[b]);
         }
     },
-    beforeCreate() {
+    computed: {
+        encryptMobile () {
+            const type = 'xxx****xxxx'
+            return type.replace(/x/g, (a, b) => this.mobile[b])
+        }
+    },
+    beforeCreate () {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
-        });
+        })
     },
     methods: {
-        pickNickName() {
+        pickNickName () {
             modal.prompt(
                 {
                     message: '昵称设置',
@@ -99,10 +99,10 @@ export default {
                         this.nickname = res.data
                     }
                 }
-            );
+            )
         },
-        pickGender() {
-            const i = this.genderList.findIndex(e => e === this.gender);
+        pickGender () {
+            const i = this.genderList.findIndex(e => e === this.gender)
             picker.pick(
                 {
                     index: i > -1 ? i : 0,
@@ -110,13 +110,13 @@ export default {
                 },
                 res => {
                     if (res.result === 'success') {
-                        this.gender = this.genderList[res.data];
+                        this.gender = this.genderList[res.data]
                     }
                 }
-            );
+            )
         },
-        pickBirth() {
-            const date = getFormatDate();
+        pickBirth () {
+            const date = getFormatDate()
             picker.pickDate(
                 {
                     value: date,
@@ -124,10 +124,10 @@ export default {
                 },
                 res => {
                     if (res.result === 'success') {
-                        this.birthday = res.data;
+                        this.birthday = res.data
                     }
                 }
-            );
+            )
         },
         pickLocation () {
             modal.prompt(
@@ -142,10 +142,10 @@ export default {
                         this.location = res.data
                     }
                 }
-            );
+            )
         }
     }
-};
+}
 </script>
 
 <style scoped>

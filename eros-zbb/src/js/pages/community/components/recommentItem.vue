@@ -25,7 +25,7 @@
 </template>
 
 <script>
-const domModule = weex.requireModule('dom');
+const domModule = weex.requireModule('dom')
 
 export default {
     props: {
@@ -33,31 +33,31 @@ export default {
             require: true
         }
     },
-    beforeCreate() {
+    beforeCreate () {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
-        });
+        })
     },
     computed: {
-        updateTime() {
+        updateTime () {
             return this.$moment(this.zone.update_time)
                 .locale('zh-cn')
-                .fromNow();
+                .fromNow()
         }
     },
     methods: {
-        vote(item) {
+        vote (item) {
             if (item.isVote) {
-                item.vote_count--;
-                item.isVote = false;
+                item.vote_count--
+                item.isVote = false
             } else {
-                item.vote_count++;
-                item.isVote = true;
+                item.vote_count++
+                item.isVote = true
             }
         }
     }
-};
+}
 </script>
 
 <style scoped>

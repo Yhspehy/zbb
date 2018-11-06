@@ -13,10 +13,10 @@
 // import routes from 'Config/routes';
 // var navigator = weex.requireModule('navigator');
 // var router = weex.requireModule('bmRouter')
-var modal = weex.requireModule('modal');
+var modal = weex.requireModule('modal')
 
 export default {
-    data() {
+    data () {
         return {
             headerBar: [
                 {
@@ -33,20 +33,20 @@ export default {
                 }
             ],
             chosenRoute: 'home.recommend'
-        };
+        }
     },
-    created() {
+    created () {
         this.$storage.get('homeHeader').then(res => {
             if (!res) {
-                this.$storage.setSync('homeHeader', 'home.recommend');
-                this.chosenRoute = home.recommend;
+                this.$storage.setSync('homeHeader', 'home.recommend')
+                this.chosenRoute = home.recommend
             } else {
-                this.chosenRoute = res;
+                this.chosenRoute = res
             }
-        });
+        })
     },
     methods: {
-        goRoute(route) {
+        goRoute (route) {
             this.$storage.set('homeHeader', route).then(
                 res => {
                     this.$router.open({
@@ -60,9 +60,9 @@ export default {
                 error => {
                     modal.alert({
                         message: error.errorMsg
-                    });
+                    })
                 }
-            );
+            )
         }
     },
     eros: {
@@ -77,7 +77,7 @@ export default {
         //     });
         // }
     }
-};
+}
 </script>
 
 <style scoped>

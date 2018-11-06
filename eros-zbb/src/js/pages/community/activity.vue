@@ -7,41 +7,41 @@
 </template>
 
 <script>
-import recommendItem from './components/recommentItem';
+import recommendItem from './components/recommentItem'
 
 export default {
     components: { recommendItem },
-    data() {
+    data () {
         return {
             zoneList: null
-        };
+        }
     },
-    created() {
-        this.fetchNewList();
+    created () {
+        this.fetchNewList()
     },
     methods: {
-        onrefresh() {
+        onrefresh () {
             setTimeout(() => {
-                this.$refs['list'].refreshEnd();
-            }, 2000);
+                this.$refs['list'].refreshEnd()
+            }, 2000)
         },
-        loadMore() {
+        loadMore () {
             setTimeout(() => {
-                this.$refs['list'].loadMoreEnd();
-            }, 2000);
+                this.$refs['list'].loadMoreEnd()
+            }, 2000)
         },
-        fetchNewList() {
+        fetchNewList () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/community/recommend/list'
             }).then(
                 res => {
-                    this.zoneList = res.data;
+                    this.zoneList = res.data
                 }
-            );
+            )
         }
     }
-};
+}
 </script>
 
 <style scoped>

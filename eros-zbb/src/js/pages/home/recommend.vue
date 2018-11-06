@@ -15,7 +15,6 @@
             <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
         </cell>
 
-
         <cell style="margin-top: 20px" v-for="(item, idx) in newsList" :key="idx">
             <new-item :item="item" :hasBorder="idx>0"></new-item>
         </cell>
@@ -23,40 +22,41 @@
 </template>
 
 <script>
-import homeMatch from './components/homeMatch';
+import homeMatch from './components/homeMatch'
 import newItem from './components/newItem'
 
-var modal = weex.requireModule('modal');
+var modal = weex.requireModule('modal')
 export default {
     components: {
         homeMatch,
         newItem
     },
-    data() {
+    data () {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             list: 1,
             liveTrailList: [],
             newsList: null
-        };
+        }
     },
-    created() {
+    created () {
+        this.$notice.loading.show()
         this.fetchHomeMatch()
         this.fetchNewList()
     },
     methods: {
-        onrefresh() {
+        onrefresh () {
             setTimeout(() => {
-                this.$refs['list'].refreshEnd();
-            }, 2000);
+                this.$refs['list'].refreshEnd()
+            }, 2000)
         },
-        loadMore() {
+        loadMore () {
             setTimeout(() => {
-                this.$refs['list'].loadMoreEnd();
-            }, 2000);
+                this.$refs['list'].loadMoreEnd()
+            }, 2000)
         },
-        fetchHomeMatch() {
-            [1,2,3,4,5].forEach(e => {
+        fetchHomeMatch () {
+            [1, 2, 3, 4, 5].forEach(e => {
                 this.liveTrailList.push()
             })
             this.$fetch({
@@ -64,32 +64,33 @@ export default {
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/home/recommend/liveTrail'
             }).then(
                 res => {
-                    this.liveTrailList = res.data;
+                    this.liveTrailList = res.data
                 },
                 error => {
                     modal.alert({
                         message: error.errorMsg
-                    });
+                    })
                 }
-            );
+            )
         },
-        fetchNewList() {
+        fetchNewList () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/news/newsList'
             }).then(
                 res => {
-                    this.newsList = res.data.news_list;
+                    this.newsList = res.data.news_list
+                    this.$notice.loading.hide()
                 },
                 error => {
                     modal.alert({
                         message: error.errorMsg
-                    });
+                    })
                 }
-            );
+            )
         }
     }
-};
+}
 </script>
 
 <style scoped>

@@ -37,16 +37,16 @@
 </template>
 
 <script>
-const dom = weex.requireModule('dom');
-import { WxcTabPage, WxcPanItem, Utils } from 'weex-ui';
-import statusBar from '../components/statusBar';
-import popular from './popular';
+import { WxcTabPage, WxcPanItem, Utils } from 'weex-ui'
+import statusBar from '../components/statusBar'
+import popular from './popular'
 import match from './match'
 import follow from './follow'
+const dom = weex.requireModule('dom')
 
 export default {
     components: { statusBar, WxcTabPage, popular, match, follow },
-    data() {
+    data () {
         return {
             tabTitles: [
                 {
@@ -73,10 +73,10 @@ export default {
                 fontSize: 30
             },
             navActivity: 1
-        };
+        }
     },
-    created() {
-        this.tabPageHeight = Utils.env.getPageHeight();
+    created () {
+        this.tabPageHeight = Utils.env.getPageHeight()
     },
     mounted () {
         this.$nextTick(() => {
@@ -84,16 +84,16 @@ export default {
         })
     },
     methods: {
-        wxcTabPageCurrentTabSelected(e) {
+        wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
         },
-        wxcPanItemPan(e) {
+        wxcPanItemPan (e) {
             if (Utils.env.supportsEBForAndroid()) {
-                this.$refs['wxc-tab-page'].bindExp(e.element);
+                this.$refs['wxc-tab-page'].bindExp(e.element)
             }
         }
     }
-};
+}
 </script>
 
 <style scoped>

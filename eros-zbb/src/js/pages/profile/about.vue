@@ -13,7 +13,7 @@
 <script>
 export default {
     name: 'profile_setting_about'
-};
+}
 </script>
 
 <style scoped>

@@ -20,15 +20,14 @@
 </template>
 
 <script>
-const dom = weex.requireModule('dom');
-import { WxcTabPage, WxcPanItem, Utils } from 'weex-ui';
-import statusBar from '../components/statusBar';
-import recommend from './recommend';
+import { WxcTabPage, Utils } from 'weex-ui'
+import statusBar from '../components/statusBar'
+import recommend from './recommend'
 import highlights from './highlights'
 
 export default {
     components: { statusBar, WxcTabPage, recommend, highlights },
-    data() {
+    data () {
         return {
             tabTitles: [
                 {
@@ -56,21 +55,21 @@ export default {
                 textPaddingLeft: 10,
                 textPaddingRight: 10
             }
-        };
+        }
     },
-    created() {
-        this.tabPageHeight = Utils.env.getPageHeight();
+    created () {
+        this.tabPageHeight = Utils.env.getPageHeight()
     },
     methods: {
-        wxcTabPageCurrentTabSelected(e) {
+        wxcTabPageCurrentTabSelected (e) {
         },
-        wxcPanItemPan(e) {
+        wxcPanItemPan (e) {
             if (Utils.env.supportsEBForAndroid()) {
-                this.$refs['wxc-tab-page'].bindExp(e.element);
+                this.$refs['wxc-tab-page'].bindExp(e.element)
             }
         }
     }
-};
+}
 </script>
 
 <style scoped>

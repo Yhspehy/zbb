@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import find from 'lodash/find';
+import find from 'lodash/find'
 import { WxcIcon } from 'weex-ui'
 export default {
     name: 'schedule_match',
     components: { WxcIcon },
-    data() {
+    data () {
         return {
             typeList: [
                 {
@@ -33,53 +33,53 @@ export default {
             ],
             allLeagueList: ['NBA', 'CBA', '世界杯', '英超', '西甲', '意甲', '德甲', '法甲', '欧冠', '中超'],
             matchCountObj: {}
-        };
+        }
     },
-    created() {
-        this.initCount();
+    created () {
+        this.initCount()
     },
-    mounted() {
-        this.getLeagueTodaMatchCount();
+    mounted () {
+        this.getLeagueTodaMatchCount()
     },
     methods: {
-        onrefresh() {
+        onrefresh () {
             setTimeout(() => {
-                this.$refs['list'].refreshEnd();
-            }, 2000);
+                this.$refs['list'].refreshEnd()
+            }, 2000)
         },
-        initCount() {
-            const self = this;
+        initCount () {
+            const self = this
             this.allLeagueList.forEach(e => {
-                if (!self.matchCountObj[e]) self.$set(self.matchCountObj, e, 0);
-            });
+                if (!self.matchCountObj[e]) self.$set(self.matchCountObj, e, 0)
+            })
         },
-        getLeagueTodaMatchCount() {
-            const self = this;
-            const date = this.$moment().format('YYYY-MM-DD');
-            let todayMatchList = {};
+        getLeagueTodaMatchCount () {
+            const self = this
+            const date = this.$moment().format('YYYY-MM-DD')
+            let todayMatchList = {}
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/GetMonthList'
             }).then((res) => {
                 if (res[date]) {
-                    todayMatchList = res[date];
+                    todayMatchList = res[date]
                     todayMatchList.match_list.forEach(e => {
                         let l = find(self.allLeagueList, t => {
-                            return t === e.league;
-                        });
-                        self.matchCountObj[l] += 1;
-                    });
+                            return t === e.league
+                        })
+                        self.matchCountObj[l] += 1
+                    })
                 }
             })
         },
-        goLeagueMatch(item) {
+        goLeagueMatch (item) {
             // this.$store.commit('schedule/SET_MATCHLEAGUENAME', item);
             // this.$router.push({
             //     path: `/schedule/league/1/match`
             // });
         }
     }
-};
+}
 </script>
 
 <style scoped>

@@ -22,11 +22,11 @@
 </template>
 
 <script>
-const domModule = weex.requireModule('dom');
+const domModule = weex.requireModule('dom')
 
 export default {
     name: 'profile_setting_suggestion',
-    data() {
+    data () {
         return {
             type: '建议优化',
             isExpand: false,
@@ -35,13 +35,13 @@ export default {
             wordCountLimit: 200,
             wordCount: 0,
             content: ''
-        };
+        }
     },
-    beforeCreate() {
+    beforeCreate () {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
-        });
+        })
         this.$navigator.setRightItem({
             text: '常见问题',
             fontSize: '24px',
@@ -53,12 +53,12 @@ export default {
         })
     },
     methods: {
-        emitClick() {
+        emitClick () {
             if (this.isExpand) {
                 this.isSelectExist = false
                 setTimeout(() => {
                     this.isExpand = false
-                }, 300);
+                }, 300)
             } else {
                 this.isExpand = true
                 this.$nextTick(() => {
@@ -66,24 +66,24 @@ export default {
                 })
             }
         },
-        choosenType(item) {
+        choosenType (item) {
             this.isSelectExist = false
             this.type = item
             setTimeout(() => {
                 this.isExpand = false
-            }, 300);
+            }, 300)
         }
     },
     watch: {
-        content(val, old) {
+        content (val, old) {
             if (val.length > this.wordCountLimit) {
-                this.content = old;
-                return;
+                this.content = old
+                return
             }
-            this.wordCount = val.length;
+            this.wordCount = val.length
         }
     }
-};
+}
 </script>
 
 <style scoped>

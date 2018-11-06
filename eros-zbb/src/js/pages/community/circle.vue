@@ -27,19 +27,6 @@
                 </div>
             </cell>
         </list>
-
-        <!-- <cell v-for="(column, key) in columns" :key="key">
-            <div class="column">
-                <text class="columnName">{{column.name}}</text>
-
-                <div class="columnList">
-                    <div class="columnItem" v-for="item in column.list" :key="item.name">
-                        <image class="img" :src="item.img"></image>
-                        <text class="teamName">{{ item.name }}</text>
-                    </div>
-                </div>
-            </div>
-        </cell> -->
     </div>
 </template>
 
@@ -47,26 +34,33 @@
 export default {
     name: 'community_circle',
     components: {},
-    data() {
+    data () {
         return {
             columns: {},
             isFastSearch: false
-        };
+        }
     },
-    created() {
-        this.getColums();
+    created () {
+        this.$notice.loading.show()
+        this.getColums()
     },
     methods: {
-        getColums() {
+        getColums () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/community/circle/all'
             }).then(res => {
-                this.columns = res.data;
-            });
+                this.columns = {
+                    poppular: res.data.poppular,
+                    follow: res.data.follow,
+                    country: res.data.country,
+                    NBA: res.data.NBA
+                }
+                this.$notice.loading.hide()
+            })
         }
     }
-};
+}
 </script>
 
 <style scoped>
