@@ -1,6 +1,6 @@
 <template>
     <!-- 比赛列表 -->
-    <div class="matchItem">
+    <div class="matchItem" @click="goLive">
         <!-- 比赛时间和联赛来源 -->
         <div class="timeAndSource">
             <text class="time">{{startTime}}</text>
@@ -74,6 +74,15 @@ export default {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
         })
+    },
+    methods: {
+        goLive () {
+            this.$router.open({
+                name: 'live',
+                params: this.matchData,
+                statusBarStyle: 'LightContent'
+            })
+        }
     }
 }
 </script>

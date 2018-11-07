@@ -16,6 +16,7 @@ module.exports = {
         'js/pages/schedule/popular.vue',
         'js/pages/schedule/match.vue',
         'js/pages/schedule/follow.vue',
+        'js/pages/live/index.vue',
         'js/pages/community/index.vue',
         'js/pages/community/recommend.vue',
         'js/pages/community/circle.vue',

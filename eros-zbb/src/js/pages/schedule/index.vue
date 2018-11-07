@@ -85,11 +85,6 @@ export default {
     methods: {
         wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
-        },
-        wxcPanItemPan (e) {
-            if (Utils.env.supportsEBForAndroid()) {
-                this.$refs['wxc-tab-page'].bindExp(e.element)
-            }
         }
     }
 }
@@ -99,17 +94,6 @@ export default {
 .item-container {
     width: 750px;
     background-color: #f2f3f4;
-}
-
-.border-cell {
-    background-color: #f2f3f4;
-    width: 750px;
-    height: 24px;
-    align-items: center;
-    justify-content: center;
-    border-bottom-width: 1px;
-    border-style: solid;
-    border-color: #e0e0e0;
 }
 
 .navActivity {

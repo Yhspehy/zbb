@@ -30,6 +30,9 @@ export default {
     'schedule.follow': {
         url: '/pages/schedule/follow.js'
     },
+    'live': {
+        url: '/pages/live/index.js'
+    },
     'community': {
         url: '/pages/community/index.js'
     },
