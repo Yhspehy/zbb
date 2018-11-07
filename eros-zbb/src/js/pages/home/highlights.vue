@@ -2,54 +2,38 @@
     <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
         <!-- Slide -->
         <cell>
-            <slider class="slider" interval="3000" auto-play="true" :index="0" show-indicators="true">
-                <div class="frame" v-for="(img, idx) in imgList" :key="idx">
-                    <image class="image" :src="img"></image>
-                </div>
-                <indicator class="indicator"></indicator>
-            </slider>
-        </cell>
-
-        <!-- homeMatch -->
-        <cell>
-            <home-match v-if="liveTrailList" :liveTrailList="liveTrailList"></home-match>
+            <video-item
+                v-for="video in videoList"
+                :key="video.highlights_id"
+                :video="video">
+            </video-item>
         </cell>
 
     </list>
 </template>
 
 <script>
-import homeMatch from './components/homeMatch'
-
-var modal = weex.requireModule('modal')
+import videoItem from './components/videoItem'
 export default {
     components: {
-        homeMatch
+        videoItem
     },
     data () {
         return {
-            imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
-            list: 1,
-            liveTrailList: null
+            videoList: null
         }
     },
     created () {
         this.$notice.loading.show()
     },
     mounted () {
-        this.list = weex.config.eros.jsServer
         this.$fetch({
             method: 'GET',
-            url: 'http://192.168.1.7:8889/dist/mock/test/homeMatch.json'
+            url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/home/highLights/list'
         }).then(
             res => {
-                this.liveTrailList = res.data
+                this.videoList = res.data
                 this.$notice.loading.hide()
-            },
-            error => {
-                modal.alert({
-                    message: error.errorMsg
-                })
             }
         )
     },

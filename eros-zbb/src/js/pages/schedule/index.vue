@@ -37,12 +37,11 @@
 </template>
 
 <script>
-import { WxcTabPage, WxcPanItem, Utils } from 'weex-ui'
+import { WxcTabPage, Utils } from 'weex-ui'
 import statusBar from '../components/statusBar'
 import popular from './popular'
 import match from './match'
 import follow from './follow'
-const dom = weex.requireModule('dom')
 
 export default {
     components: { statusBar, WxcTabPage, popular, match, follow },

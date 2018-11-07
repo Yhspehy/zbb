@@ -54,14 +54,21 @@ export default {
                 activeBottomWidth: 120,
                 textPaddingLeft: 10,
                 textPaddingRight: 10
-            }
+            },
+            navActivity: 1
         }
     },
     created () {
         this.tabPageHeight = Utils.env.getPageHeight()
     },
+    mounted () {
+        this.$nextTick(() => {
+            this.$refs['wxc-tab-page'].setPage(this.navActivity)
+        })
+    },
     methods: {
         wxcTabPageCurrentTabSelected (e) {
+            this.navActivity = e.page
         },
         wxcPanItemPan (e) {
             if (Utils.env.supportsEBForAndroid()) {

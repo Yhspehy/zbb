@@ -22,11 +22,13 @@
         <!-- 比分预约 -->
         <div class="score">
             <div v-if="matchData.status !== '未开始'">
-                <div style="flex-direction: row">
+                <div style="flex-direction: row; justify-content: flex-end;">
                     <text :class="['teamLayout', 'margin-bottom-16', matchData.home_score > matchData.away_score?'win': '']">{{matchData.home_score}}</text>
+                    <text v-if="matchData.home_score > matchData.away_score" class="winArrow">&#xf0d9;</text>
                 </div>
-                <div style="flex-direction: row">
+                <div style="flex-direction: row; justify-content: flex-end;">
                     <text :class="['teamLayout', matchData.away_score > matchData.home_score?'win': '']">{{matchData.away_score}}</text>
+                    <text v-if="matchData.home_score < matchData.away_score" class="winArrow">&#xf0d9;</text>
                 </div>
             </div>
             <div v-else>
@@ -48,6 +50,7 @@
 
 <script>
 import { WxcIcon } from 'weex-ui'
+const domModule = weex.requireModule('dom')
 
 export default {
     nama: 'schedule_matchItem',
@@ -66,7 +69,12 @@ export default {
             return this.$moment(this.matchData.start_time).format('HH:mm')
         }
     },
-    methods: {}
+    beforeCreate () {
+        domModule.addRule('fontFace', {
+            fontFamily: 'fontAwesome',
+            src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
+        })
+    }
 }
 </script>
 
@@ -122,19 +130,16 @@ export default {
 }
 
 .win {
-    color: red;
-    position: relative;
-    /* &:after {
-        content: '';
-        position: absolute;
-        top: 6px;
-        right: -20px;
-        width: 0;
-        height: 0;
-        border: 10px solid transparent;
-        border-right-color: $red-dark;
-    } */
+    color: #f5303d;
 }
+
+.winArrow {
+    font-family: fontAwesome;
+    color: #f5303d;
+    font-size: 26px;
+    margin-left: 10px;
+}
+
 .score {
     width: 116px;
     padding-right: 20px;

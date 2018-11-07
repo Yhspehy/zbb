@@ -31,7 +31,6 @@
 import recommendItem from './components/recommentItem'
 
 const domModule = weex.requireModule('dom')
-const modal = weex.requireModule('modal')
 
 export default {
     components: { recommendItem },
@@ -70,11 +69,6 @@ export default {
                 res => {
                     this.newsList = res.data
                     this.$notice.loading.hide()
-                },
-                error => {
-                    modal.alert({
-                        message: error.errorMsg
-                    })
                 }
             )
         }

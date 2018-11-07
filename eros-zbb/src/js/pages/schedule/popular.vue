@@ -1,9 +1,14 @@
 <template>
     <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
-        <cell v-for="(val, key) in matchList" :key="key">
-            <time-bar :currentDate="key"></time-bar>
+
+        <cell v-for="(val, key) in matchList" :key="key" :style="{'position': key === '2018-09-01'? 'sticky' : 'relative'}">
+            <time-bar :currentDate="key" ></time-bar>
             <match-item v-for="(el, elIdx) in val" :key="elIdx" :matchData="el"></match-item>
         </cell>
+
+        <div class="index-list-fixed index-list-anchor" v-if="isShowFixed">
+            <time-bar :currentDate="currentDate"></time-bar>
+        </div>
     </list>
 </template>
 
@@ -19,6 +24,9 @@ export default {
     },
     data () {
         return {
+            scrollY: 0,
+            TimeBarheight: 0,
+            currentDate: '',
             keys: [],
             matchList: {}
         }
@@ -26,6 +34,11 @@ export default {
     created () {
         this.$notice.loading.show()
         this.fetchNewList()
+    },
+    computed: {
+        isShowFixed () {
+            return this.scrollY <= -this.TimeBarheight
+        }
     },
     methods: {
         onrefresh () {
@@ -66,4 +79,10 @@ export default {
 </script>
 
 <style scoped>
+.index-list-fixed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 </style>

@@ -34,8 +34,7 @@ export default {
     data () {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
-            list: 1,
-            liveTrailList: [],
+            liveTrailList: null,
             newsList: null
         }
     },
@@ -56,9 +55,6 @@ export default {
             }, 2000)
         },
         fetchHomeMatch () {
-            [1, 2, 3, 4, 5].forEach(e => {
-                this.liveTrailList.push()
-            })
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/home/recommend/liveTrail'
