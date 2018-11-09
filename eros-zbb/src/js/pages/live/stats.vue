@@ -7,7 +7,7 @@
         </cell>
 
         <!-- 比赛每节分数 -->
-        <!-- <cell>
+        <cell>
             <text class="header">赛况</text>
             <period
                 v-if="data.type === 0"
@@ -15,16 +15,16 @@
                 :home_score="data.home_score"
                 :away_score="data.away_score">
             </period>
-        </cell> -->
+        </cell>
 
         <!-- NBA球队统计 -->
-        <!-- <cell>
+        <cell>
             <text class="header">球队统计</text>
             <stats-team-nba v-if="data.team_stats"  :data="data.team_stats"></stats-team-nba>
-        </cell> -->
+        </cell>
 
         <!-- NBA球员统计 -->
-        <!-- <cell>
+        <cell>
             <text class="header">球员统计-{{data.hometeam}}</text>
             <stats-player v-if="data.player_stats.home" :data="data.player_stats.home"></stats-player>
         </cell>
@@ -32,7 +32,13 @@
         <cell>
             <text class="header">球员统计-{{data.awayteam}}</text>
             <stats-player v-if="data.player_stats.away" :data="data.player_stats.away"></stats-player>
-        </cell> -->
+        </cell>
+
+        <!-- 本场最佳 -->
+        <cell>
+            <text class="header">本场最佳</text>
+            <stats-best-player v-if="data.max_players" :data="data.max_players"></stats-best-player>
+        </cell>
 
         <!-- 交锋历史 -->
         <cell>
@@ -48,6 +54,7 @@ import matchInfo from './components/matchInfo'
 import period from './components/period'
 import statsTeamNba from './components/statsTeamNBA'
 import statsPlayer from './components/statsPlayer'
+import statsBestPlayer from './components/statsBestPlayer'
 import statsHistory from './components/statsHistory'
 export default {
     components: {
@@ -55,6 +62,7 @@ export default {
         period,
         statsTeamNba,
         statsPlayer,
+        statsBestPlayer,
         statsHistory
     },
     data () {

@@ -13,8 +13,8 @@
                 ref="wxc-tab-page"
                 :tab-styles="tabStyles"
                 :tab-titles="tabTitles"
-                :duration="0"
                 :tabPageHeight="tabPageHeight"
+                :clickAnimation="false"
                 @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected"
         >
 
@@ -138,7 +138,8 @@ export default {
                 activeBottomHeight: 6,
                 activeBottomWidth: 120,
                 textPaddingLeft: 10,
-                textPaddingRight: 10
+                textPaddingRight: 10,
+                boxShadow: 'inset 0 -1px 1px rgba(0,0,0,0.4)'
             },
             navActivity: 0,
             render: [0, 0, 0, 0, 0]

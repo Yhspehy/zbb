@@ -1,7 +1,7 @@
 ## 注意
 
 因为使用了weex-ui,并且他内置的组件还需要拓展，因为使用的时候请在下面组件中添加部分内容：
-1. eros-zbb/node_modules/weex-ui/packages/wxc-tab-page/index.vue中添加阴影的相关代码：
+eros-zbb/node_modules/weex-ui/packages/wxc-tab-page/index.vue中添加阴影的相关代码：
 
 ```js
 
@@ -33,3 +33,19 @@
         })
 
 ```
+
+根据原生动效，部分tab-page在点击bar的时候是没有animation，手势滑动的时候是有animation，所以在下面组件中添加部分内容：
+eros-zbb/node_modules/weex-ui/packages/wxc-tab-page/index.vue
+
+```js
+<div class="title-item" @click="setPage(index,v.url, clickAnimation)"></div>
+
+props: {
+    clickAnimation: {
+        type: Boolean,
+        default: true
+    }
+}
+```
+
+为方便我将改过的组件内容拷贝到了modulesChange文件中，到时候git clone项目后只要将相关文件覆盖node_modules即可。
