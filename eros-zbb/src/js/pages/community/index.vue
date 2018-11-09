@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Fit IphoneX -->
-        <status-bar></status-bar>
+        <status-bar :bg="isAndroid?'#000000':'#ffffff'"></status-bar>
 
         <wxc-tab-page
             ref="wxc-tab-page"
@@ -19,7 +19,7 @@
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <recommend></recommend>
+                <recommend :ref="$refs['wxc-tab-page']"></recommend>
             </div>
 
             <!-- 圈子 -->
@@ -47,6 +47,7 @@ export default {
     components: { statusBar, WxcTabPage, recommend, circle, activity },
     data () {
         return {
+            isAndroid: false,
             tabTitles: [
                 {
                     title: '推荐'
@@ -82,6 +83,7 @@ export default {
         }
     },
     created () {
+        this.isAndroid = Utils.env.isAndroid()
         this.tabPageHeight = Utils.env.getPageHeight()
     },
     mounted () {

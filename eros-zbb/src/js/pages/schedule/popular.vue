@@ -1,14 +1,14 @@
 <template>
     <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
 
-        <cell v-for="(val, key) in matchList" :key="key" :style="{'position': key === '2018-09-01'? 'sticky' : 'relative'}">
+        <cell v-for="(val, key) in matchList" :key="key">
             <time-bar :currentDate="key" ></time-bar>
             <match-item v-for="(el, elIdx) in val" :key="elIdx" :matchData="el"></match-item>
         </cell>
 
-        <div class="index-list-fixed index-list-anchor" v-if="isShowFixed">
+        <!-- <div class="index-list-fixed index-list-anchor" v-if="isShowFixed">
             <time-bar :currentDate="currentDate"></time-bar>
-        </div>
+        </div> -->
     </list>
 </template>
 
@@ -58,9 +58,7 @@ export default {
             }).then(
                 res => {
                     this.keys = Object.keys(res.data)
-                    this.keys.sort((a, b) => {
-                        return Date.parse(a) > Date.parse(b)
-                    })
+                    this.keys.sort((a, b) => Date.parse(a) - Date.parse(b))
                     this.keys.forEach(key => {
                         this.$set(this.matchList, key, res.data[key])
                     })

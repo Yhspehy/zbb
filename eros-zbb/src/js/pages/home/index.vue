@@ -1,18 +1,18 @@
 <template>
     <div>
         <!-- Fit IphoneX -->
-        <status-bar></status-bar>
+        <status-bar :bg="isAndroid?'#000000':'#ffffff'"></status-bar>
 
         <wxc-tab-page ref="wxc-tab-page" :tab-styles="tabStyles" :tab-titles="tabTitles" :tabPageHeight="tabPageHeight" need-slider="true" @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <recommend></recommend>
+                <recommend :ref="$refs['wxc-tab-page']"></recommend>
             </div>
 
             <!-- 集锦 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <highlights></highlights>
+                <highlights :ref="$refs['wxc-tab-page']"></highlights>
             </div>
 
         </wxc-tab-page>
@@ -29,6 +29,7 @@ export default {
     components: { statusBar, WxcTabPage, recommend, highlights },
     data () {
         return {
+            isAndroid: false,
             tabTitles: [
                 {
                     title: '推荐'
@@ -55,11 +56,17 @@ export default {
                 textPaddingLeft: 10,
                 textPaddingRight: 10
             },
-            navActivity: 1
+            navActivity: 0
         }
     },
     created () {
         this.tabPageHeight = Utils.env.getPageHeight()
+        if (Utils.env.isAndroid()) {
+            this.isAndroid = true
+            this.$navigator.setNavigationInfo({
+                statusBarStyle: 'LightContent'
+            })
+        }
     },
     mounted () {
         this.$nextTick(() => {
@@ -69,11 +76,6 @@ export default {
     methods: {
         wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
-        },
-        wxcPanItemPan (e) {
-            if (Utils.env.supportsEBForAndroid()) {
-                this.$refs['wxc-tab-page'].bindExp(e.element)
-            }
         }
     }
 }

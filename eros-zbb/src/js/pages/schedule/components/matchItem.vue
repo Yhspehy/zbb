@@ -49,12 +49,11 @@
 </template>
 
 <script>
-import { WxcIcon } from 'weex-ui'
+import { Utils } from 'weex-ui'
 const domModule = weex.requireModule('dom')
 
 export default {
     nama: 'schedule_matchItem',
-    components: { WxcIcon },
     props: {
         matchData: {
             type: Object,
@@ -94,6 +93,7 @@ export default {
     padding-top: 23px;
     padding-bottom: 23px;
     flex-direction: row;
+    align-items:center;
     border-bottom-style: solid;
     border-bottom-color: #f2f2f2;
     border-bottom-width: 1px;

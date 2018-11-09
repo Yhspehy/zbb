@@ -1,11 +1,11 @@
 <template>
     <div>
         <!-- Fit IphoneX -->
-        <status-bar></status-bar>
+        <status-bar :bg="isAndroid?'#000000':'#ffffff'"></status-bar>
 
         <wxc-tab-page
                 ref="wxc-tab-page"
-                title-use-slot="true"
+                :title-use-slot="true"
                 :tab-styles="tabStyles"
                 :tab-titles="tabTitles"
                 :tabPageHeight="tabPageHeight"
@@ -47,6 +47,7 @@ export default {
     components: { statusBar, WxcTabPage, popular, match, follow },
     data () {
         return {
+            isAndroid: false,
             tabTitles: [
                 {
                     title: '赛事'
@@ -75,6 +76,7 @@ export default {
         }
     },
     created () {
+        this.isAndroid = Utils.env.isAndroid()
         this.tabPageHeight = Utils.env.getPageHeight()
     },
     mounted () {

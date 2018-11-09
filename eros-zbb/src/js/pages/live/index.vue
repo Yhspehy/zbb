@@ -18,22 +18,37 @@
                 @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected"
         >
 
+            <!-- 回顾 -->
+            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+                <review v-if="render[0]"></review>
+            </div>
+
+            <!-- 直播室/赛况 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <live-room v-if="render[0]"></live-room>
             </div>
 
-            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <!-- 聊天室 -->
+            <div v-if="resData.status !== '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <chat-room v-if="render[1]"></chat-room>
             </div>
 
-            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <!-- 资讯 -->
+            <div v-if="resData.status !== '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <news v-if="render[2]"></news>
             </div>
 
+            <!-- 热议 -->
+            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+                <hot-comments v-if="render[2]"></hot-comments>
+            </div>
+
+            <!-- 数据 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <stats v-if="render[3]"></stats>
             </div>
 
+            <!-- 竞猜 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <quiz v-if="render[4]"></quiz>
             </div>
@@ -46,9 +61,11 @@
 import { WxcTabPage, Utils } from 'weex-ui'
 
 import statusBar from '../components/statusBar'
+import review from './review'
 import liveRoom from './liveRoom'
 import chatRoom from './chatRoom'
 import news from './news'
+import hotComments from './hotComments'
 import stats from './stats'
 import quiz from './quiz'
 
@@ -58,9 +75,11 @@ export default {
     components: {
         statusBar,
         WxcTabPage,
+        review,
         liveRoom,
         chatRoom,
         news,
+        hotComments,
         stats,
         quiz
     },
@@ -68,6 +87,8 @@ export default {
         return {
             resData: null,
             tabTitles: [
+            ],
+            firstNavType: [
                 {
                     title: '直播室'
                 },
@@ -84,8 +105,25 @@ export default {
                     title: '竞猜'
                 }
             ],
+            secondNavType: [
+                {
+                    title: '回顾'
+                },
+                {
+                    title: '赛况'
+                },
+                {
+                    title: '热议'
+                },
+                {
+                    title: '数据'
+                },
+                {
+                    title: '竞猜'
+                }
+            ],
             tabPageHeight: 1334,
-            touchBarHeight: weex.config.eros.touchBarHeight,
+            touchBarHeight: 0,
             tabStyles: {
                 bgColor: '#FFFFFF',
                 titleColor: '#666666',
@@ -102,7 +140,7 @@ export default {
                 textPaddingLeft: 10,
                 textPaddingRight: 10
             },
-            navActivity: 1,
+            navActivity: 0,
             render: [0, 0, 0, 0, 0]
         }
     },
@@ -115,17 +153,24 @@ export default {
     created () {
         this.$router.getParams().then(resData => {
             this.resData = resData
+            this.tabTitles = resData.status === '已结束' ? this.secondNavType : this.firstNavType
         })
-        this.tabPageHeight = Utils.env.getPageHeight() - 422
+        // 全部的屏幕减去video的高度和状态栏的高度
+        this.tabPageHeight = Utils.env.getScreenHeight() - 422 - weex.config.eros.statusBarHeight
+        this.$set(this.render, this.navActivity, 1)
     },
     mounted () {
         this.$nextTick(() => {
             this.$refs['wxc-tab-page'].setPage(this.navActivity)
-            this.$set(this.render, this.navActivity, 1)
         })
     },
     methods: {
         back () {
+            if (Utils.env.isIOS()) {
+                this.$navigator.setNavigationInfo({
+                    statusBarStyle: 'Default'
+                })
+            }
             this.$router.back()
         },
         wxcTabPageCurrentTabSelected (e) {
@@ -152,8 +197,12 @@ export default {
 
 .back {
     position: absolute;
-    top: 10px;
-    left: 20px;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .item-container {

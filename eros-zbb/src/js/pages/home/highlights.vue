@@ -2,22 +2,27 @@
     <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
         <!-- Slide -->
         <cell>
-            <video-item
-                v-for="video in videoList"
-                :key="video.highlights_id"
-                :video="video">
-            </video-item>
+            <wxc-pan-item @wxcPanItemPan="wxcPanItemPan">
+                 <video-item
+                    v-for="video in videoList"
+                    :key="video.highlights_id"
+                    :video="video">
+                </video-item>
+            </wxc-pan-item>
         </cell>
-
     </list>
 </template>
 
 <script>
+import { WxcPanItem, BindEnv } from 'weex-ui'
+
 import videoItem from './components/videoItem'
 export default {
     components: {
-        videoItem
+        videoItem,
+        WxcPanItem
     },
+    props: ['ref'],
     data () {
         return {
             videoList: null
@@ -47,6 +52,11 @@ export default {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
+        },
+        wxcPanItemPan (e) {
+            if (BindEnv.supportsEBForAndroid()) {
+                this.ref.bindExp(e.element)
+            }
         }
     }
 }

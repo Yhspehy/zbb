@@ -16,7 +16,9 @@
         </cell>
 
         <cell style="margin-top: 20px" v-for="(item, idx) in newsList" :key="idx">
-            <new-item :item="item" :hasBorder="idx>0"></new-item>
+             <wxc-pan-item @wxcPanItemPan="wxcPanItemPan">
+                <new-item :item="item" :hasBorder="idx>0"></new-item>
+             </wxc-pan-item>
         </cell>
     </list>
 </template>
@@ -24,13 +26,15 @@
 <script>
 import homeMatch from './components/homeMatch'
 import newItem from './components/newItem'
-
+import { WxcPanItem, BindEnv } from 'weex-ui'
 var modal = weex.requireModule('modal')
 export default {
     components: {
         homeMatch,
-        newItem
+        newItem,
+        WxcPanItem
     },
+    props: ['ref'],
     data () {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
@@ -84,6 +88,11 @@ export default {
                     })
                 }
             )
+        },
+        wxcPanItemPan (e) {
+            if (BindEnv.supportsEBForAndroid()) {
+                this.ref.bindExp(e.element)
+            }
         }
     }
 }

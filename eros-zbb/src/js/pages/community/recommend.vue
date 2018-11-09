@@ -15,7 +15,9 @@
         </cell>
 
         <cell v-for="(zone, idx) in newsList" :key="idx">
-            <recommend-item :zone="zone"></recommend-item>
+            <wxc-pan-item @wxcPanItemPan="wxcPanItemPan">
+                <recommend-item :zone="zone"></recommend-item>
+            </wxc-pan-item>
         </cell>
 
         <cell>
@@ -29,11 +31,13 @@
 
 <script>
 import recommendItem from './components/recommentItem'
+import { WxcPanItem, BindEnv } from 'weex-ui'
 
 const domModule = weex.requireModule('dom')
 
 export default {
-    components: { recommendItem },
+    components: { recommendItem, WxcPanItem },
+    props: ['ref'],
     data () {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
@@ -71,6 +75,11 @@ export default {
                     this.$notice.loading.hide()
                 }
             )
+        },
+        wxcPanItemPan (e) {
+            if (BindEnv.supportsEBForAndroid()) {
+                this.ref.bindExp(e.element)
+            }
         }
     }
 }
