@@ -27,10 +27,6 @@ export default {
         data: {
             type: Array,
             require: true
-        },
-        id: {
-            type: String,
-            require: true
         }
     },
     data () {

@@ -7,7 +7,7 @@
         </cell>
 
         <!-- 比赛每节分数 -->
-        <cell>
+        <!-- <cell>
             <text class="header">赛况</text>
             <period
                 v-if="data.type === 0"
@@ -15,18 +15,29 @@
                 :home_score="data.home_score"
                 :away_score="data.away_score">
             </period>
-        </cell>
+        </cell> -->
 
         <!-- NBA球队统计 -->
-        <cell>
+        <!-- <cell>
             <text class="header">球队统计</text>
             <stats-team-nba v-if="data.team_stats"  :data="data.team_stats"></stats-team-nba>
-        </cell>
+        </cell> -->
 
         <!-- NBA球员统计 -->
-        <cell>
+        <!-- <cell>
             <text class="header">球员统计-{{data.hometeam}}</text>
-            <stats-player v-if="data.player_stats.home" :data="data.player_stats.home" id="PlayeStatsHome"></stats-player>
+            <stats-player v-if="data.player_stats.home" :data="data.player_stats.home"></stats-player>
+        </cell>
+
+        <cell>
+            <text class="header">球员统计-{{data.awayteam}}</text>
+            <stats-player v-if="data.player_stats.away" :data="data.player_stats.away"></stats-player>
+        </cell> -->
+
+        <!-- 交锋历史 -->
+        <cell>
+            <text class="header">交锋历史</text>
+            <stats-history v-if="data.match_history" :data="data.match_history"></stats-history>
         </cell>
 
     </list>
@@ -37,12 +48,14 @@ import matchInfo from './components/matchInfo'
 import period from './components/period'
 import statsTeamNba from './components/statsTeamNBA'
 import statsPlayer from './components/statsPlayer'
+import statsHistory from './components/statsHistory'
 export default {
     components: {
         matchInfo,
         period,
         statsTeamNba,
-        statsPlayer
+        statsPlayer,
+        statsHistory
     },
     data () {
         return {
