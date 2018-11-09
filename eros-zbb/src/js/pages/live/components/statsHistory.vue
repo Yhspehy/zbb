@@ -41,6 +41,7 @@ export default {
     background-color: #ffffff;
     padding-left: 35px;
     padding-right: 35px;
+    padding-bottom: 20px;
 }
 
 .flex-row {
