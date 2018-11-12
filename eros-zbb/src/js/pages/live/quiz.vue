@@ -30,23 +30,38 @@
                 <bmpop class="modal-top">
                     <div class="quizMask">
                         <div class="maskTextRow">
-                            <text class="maskText">我的G币：{{myG}}</text>
-                            <text class="maskText">竞猜：{{chosen.option.text}}</text>
+                            <div class="flex-row-center">
+                                <text class="maskText greyText">我的G币：</text>
+                                <text class="maskText redText">{{myG}}</text>
+                            </div>
+                            <div class="flex-row-center">
+                                <text class="maskText greyText">竞猜：</text>
+                                <text class="maskText blueText">{{chosen.option.text}}</text>
+                            </div>
                         </div>
                         <div class="maskTextRow">
-                            <text class="maskText">赔率：{{chosen.option.quiz_odds}}</text>
-                            <text class="maskText">预计获得：{{gainExpect}}</text>
+                            <text class="maskText greyText">赔率：{{chosen.option.quiz_odds}}倍</text>
+                            <div class="flex-row-center">
+                                <text class="maskText greyText">预计获得：</text>
+                                <text class="maskText redText">{{earnExpected}}</text>
+                            </div>
                         </div>
                         <div class="maskTextRow">
-                            <input class="quizInput" type="number" v-model="inputValue" placeholder="请输入G币数量">
+                            <input  class="quizInput"
+                                    type="number"
+                                    v-model="inputValue"
+                                    placeholder="请输入G币数量">
                         </div>
-                        <div>
+                        <div class="maskQuizItemDiv">
                             <text class="valueItem"
                                   @click="chooseValue(item)"
                                   v-for="item in valueList"
                                   :key="item">{{item}}</text>
                         </div>
-                        <text class="closeMask" @click="closeMask">投注</text>
+                        <div class="btnDiv">
+                            <text class="closeMask" @click="closeMask">取消</text>
+                            <text class="quizBtn" @click="closeMask">投注</text>
+                        </div>
                     </div>
                 </bmpop>
             </bmmask>
@@ -67,8 +82,14 @@ export default {
             },
             valueList: [10, 100, 1000, 10000, '全部'],
             myG: 8320,
-            inputValue: '',
-            gainExpect: 0
+            inputValue: null
+        }
+    },
+    computed: {
+        earnExpected() {
+            return this.inputValue
+                ? parseInt(this.inputValue * this.chosen.option.quiz_odds)
+                : 0
         }
     },
     created () {
@@ -90,8 +111,16 @@ export default {
             this.chosen.option = option
             this.$refs['bmmask'].show()
         },
+        chooseValue(item) {
+            this.inputValue = item === '全部' ? this.myG : item;
+        },
         closeMask () {
             this.$refs['bmmask'].hide()
+        }
+    },
+    watch: {
+        inputValue(val) {
+            if (val >= this.myG) this.inputValue = this.myG;
         }
     }
 }
@@ -100,6 +129,11 @@ export default {
 <style scoped>
 .liveQuiz {
     background-color: #f3f7f9;
+}
+
+.flex-row-center {
+    flex-direction: row;
+    align-items: center;
 }
 
 .header {
@@ -211,6 +245,8 @@ export default {
     font-size: 24px;
 }
 
+
+/* mask */
 .mask {
     position: fixed;
     top: 0;
@@ -234,12 +270,23 @@ export default {
     margin-left: 75px;
     background-color: #ffffff;
     border-radius: 10px;
-    padding-top: 10px;
+    padding-top: 40px;
 }
 
 .maskText {
     font-size: 28px;
+}
+
+.greyText {
     color: #b3b3b3;
+}
+
+.redText {
+    color: #f5303d;
+}
+
+.blueText {
+    color: #0099ff;
 }
 
 .quizInput {
@@ -249,10 +296,18 @@ export default {
     background-color: #f2f2f2;
     margin-left: 20px;
     margin-right: 20px;
-    margin-bottom: 20px;
     font-size: 28px;
     color: #b3b3b3;
     text-align: center;
+}
+
+.maskQuizItemDiv {
+    flex-direction: row;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .valueItem {
@@ -260,16 +315,36 @@ export default {
     height: 66px;
     line-height: 66px;
     text-align: center;
+    border-style: solid;
+    border-color: #cccccc;
+    border-width: 1px;
+    border-radius: 10px;
+    color: #b3b3b3;
 }
 
+.btnDiv {
+    flex-direction: row;
+    border-top-color: #f2f2f2;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+.quizBtn {
+    width: 300px;
+    height: 90px;
+    border-bottom-right-radius: 10px;
+    color: #808080;
+    background-color: pink;
+    line-height: 90px;
+    text-align: center;
+}
 .closeMask {
-    width: 600px;
+    width: 300px;
     height: 90px;
     background-color: #ffffff;
     color: #808080;
     line-height: 90px;
     text-align: center;
     border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 </style>
