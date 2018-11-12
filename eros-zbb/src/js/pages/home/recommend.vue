@@ -16,9 +16,9 @@
         </cell>
 
         <cell style="margin-top: 20px" v-for="(item, idx) in newsList" :key="idx">
-             <wxc-pan-item @wxcPanItemPan="wxcPanItemPan">
+             <!-- <wxc-pan-item @wxcPanItemPan="wxcPanItemPan"> -->
                 <new-item :item="item" :hasBorder="idx>0"></new-item>
-             </wxc-pan-item>
+             <!-- </wxc-pan-item> -->
         </cell>
     </list>
 </template>

@@ -7,7 +7,7 @@
 
 
         <!-- NBA赛况 -->
-        <div v-if="data.type === 0" class="period">
+        <div v-if="data.type !== 0" class="period">
             <div class="periodTitle border-bottom-1px">赛况</div>
             <div class="periodRow periodRowTitle border-bottom-1px">
                 <div v-for="item in periodTitle" :key="item">{{item}}</div>
@@ -120,8 +120,7 @@ export default {
             this.expandObj[key] = !this.expandObj[key];
         }
     }
-};
-</script>
+};</script>
 
 <style scoped lang="scss">
 .stats {

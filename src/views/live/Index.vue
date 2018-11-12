@@ -35,7 +35,7 @@ export default {
         return {
             width: window.screen.width,
             // status <0:未开始 1:进行中 2:已结束>
-            status: 2,
+            status: 1,
             chosenNav: '',
             firstNavType: [
                 {
@@ -135,8 +135,7 @@ export default {
             }
         }
     }
-};
-</script>
+};</script>
 
 <style scoped lang="scss">
 @import '../../../public/style/video.css';
