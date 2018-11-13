@@ -17,11 +17,18 @@
             </period>
         </cell>
 
+        <!-- 本场最佳 -->
+        <cell>
+            <text class="header">本场最佳</text>
+            <stats-best-player v-if="data.max_players" :data="data.max_players"></stats-best-player>
+        </cell>
+
         <!-- NBA球队统计 -->
         <cell>
             <text class="header">球队统计</text>
             <stats-team-nba v-if="data.team_stats"  :data="data.team_stats"></stats-team-nba>
         </cell>
+
 
         <!-- NBA球员统计 -->
         <cell>
@@ -34,17 +41,13 @@
             <stats-player v-if="data.player_stats.away" :data="data.player_stats.away"></stats-player>
         </cell>
 
-        <!-- 本场最佳 -->
-        <cell>
-            <text class="header">本场最佳</text>
-            <stats-best-player v-if="data.max_players" :data="data.max_players"></stats-best-player>
-        </cell>
-
         <!-- 交锋历史 -->
         <cell>
             <text class="header">交锋历史</text>
             <stats-history v-if="data.match_history" :data="data.match_history"></stats-history>
         </cell>
+
+
 
     </list>
 </template>

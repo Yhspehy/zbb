@@ -73,12 +73,12 @@ export default {
 }
 
 .leftBottomBar {
-    background-color: #f3091a;
+    background-color: #234daa;
     height: 6px;
 }
 
 .rightBottomBar {
-    background-color: #0088ff;
+    background-color: #bd163b;
     height: 6px;
 }
 
@@ -90,12 +90,12 @@ export default {
 }
 
 .leftValue {
-    color: #f3091a;
+    color: #234daa;
     margin-right: 27px;
 }
 
 .rightValue {
-    color: #0088ff;
+    color: #bd163b;
     margin-left: 27px;
 }
 
@@ -104,10 +104,10 @@ export default {
 }
 
 .leftHistogram {
-    background-color: #f3091a;
+    background-color: #234daa;
 }
 
 .rightHistogram {
-    background-color: #0088ff;
+    background-color: #bd163b;
 }
 </style>

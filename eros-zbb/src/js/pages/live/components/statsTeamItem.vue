@@ -9,14 +9,14 @@
         <div class="lineCompare">
             <div class="line">
                 <div class="dataLine positionRight" :style="{
-                        'backgroundColor': (lineHome ? lineHome >= lineAway : home >= away) ? '#f3091a' : '#b3b3b3',
+                        'backgroundColor': (lineHome ? lineHome > lineAway : home >= away) ? '#234daa' : '#cecece',
                         'width': lineHome ? lineHome / (lineHome + lineAway) * 336 + 'px' : Number(home) / (Number(home) + (Number(away))) * 336 + 'px'
                     }">
                 </div>
             </div>
             <div class="line">
                 <div class="dataLine" :style="{
-                        'backgroundColor': (lineHome ? lineAway >= lineHome : away >= home) ? '#f3091a' : '#b3b3b3',
+                        'backgroundColor': (lineHome ? lineAway > lineHome : away >= home) ? '#bd163b' : '#cecece',
                         'width': lineHome ? lineAway / (lineHome + lineAway) * 336 + 'px' : Number(away) / (Number(home) + (Number(away))) * 336 + 'px'
                     }">
                 </div>
@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .statsTeamItem {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -82,14 +82,15 @@ export default {
 .line {
     width: 336px;
     background: #f3f7f9;
-    height: 6px;
+    height: 10px;
 }
 .dataLine {
     position: absolute;
-    height: 6px;
+    height: 10px;
 }
 
 .positionRight {
     right: 0;
 }
+
 </style>
