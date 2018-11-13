@@ -19,8 +19,10 @@
                 </div>
                 <div class="quizOption" @click="quizClick(item.quiz_id, o)" v-for="o in item.options" :key="o.option_id">
                     <text class="quizOptionText">{{o.text}}</text>
-                    <text class="quizPercent">{{o.quiz_percent}}%投注</text>
-                    <text class="quizOdds">{{o.quiz_odds}}倍</text>
+                    <div class="flex-row-center">
+                        <text class="quizPercent">{{o.quiz_percent}}%投注</text>
+                        <text class="quizOdds">{{o.quiz_odds}}倍</text>
+                    </div>
                 </div>
             </div>
         </cell>

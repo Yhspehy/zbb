@@ -34,37 +34,37 @@ module.exports = {
         'backgroundColor': '#fafafa',
         'borderColor': '#dfe1eb',
         'list': [{
-                'pagePath': '/pages/home/index.js',
-                'text': '首页',
-                'icon': 'bmlocal://assets/TabBar_Item1@2x.png',
-                'selectedIcon': 'bmlocal://assets/TabBar_Item1_Selected@2x.png',
-                'navShow': 'false',
-                'navTitle': ''
-            },
-            {
-                'pagePath': '/pages/schedule/index.js',
-                'text': '赛程',
-                'icon': 'bmlocal://assets/TabBar_Item2@2x.png',
-                'selectedIcon': 'bmlocal://assets/TabBar_Item2_Selected@2x.png',
-                'navShow': 'false',
-                'navTitle': ''
-            },
-            {
-                'pagePath': '/pages/community/index.js',
-                'text': '社区',
-                'icon': 'bmlocal://assets/TabBar_Item3@2x.png',
-                'selectedIcon': 'bmlocal://assets/TabBar_Item3_Selected@2x.png',
-                'navShow': 'false',
-                'navTitle': ''
-            },
-            {
-                'pagePath': '/pages/profile/index.js',
-                'text': '我的',
-                'icon': 'bmlocal://assets/TabBar_Item2@2x.png',
-                'selectedIcon': 'bmlocal://assets/TabBar_Item2_Selected@2x.png',
-                'navShow': 'false',
-                'navTitle': ''
-            }
+            'pagePath': '/pages/home/index.js',
+            'text': '首页',
+            'icon': 'bmlocal://assets/TabBar_Item1@2x.png',
+            'selectedIcon': 'bmlocal://assets/TabBar_Item1_Selected@2x.png',
+            'navShow': 'false',
+            'navTitle': ''
+        },
+        {
+            'pagePath': '/pages/schedule/index.js',
+            'text': '赛程',
+            'icon': 'bmlocal://assets/TabBar_Item2@2x.png',
+            'selectedIcon': 'bmlocal://assets/TabBar_Item2_Selected@2x.png',
+            'navShow': 'false',
+            'navTitle': ''
+        },
+        {
+            'pagePath': '/pages/community/index.js',
+            'text': '社区',
+            'icon': 'bmlocal://assets/TabBar_Item3@2x.png',
+            'selectedIcon': 'bmlocal://assets/TabBar_Item3_Selected@2x.png',
+            'navShow': 'false',
+            'navTitle': ''
+        },
+        {
+            'pagePath': '/pages/profile/index.js',
+            'text': '我的',
+            'icon': 'bmlocal://assets/TabBar_Item2@2x.png',
+            'selectedIcon': 'bmlocal://assets/TabBar_Item2_Selected@2x.png',
+            'navShow': 'false',
+            'navTitle': ''
+        }
         ]
     }
 }

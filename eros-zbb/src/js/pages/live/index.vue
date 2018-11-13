@@ -19,12 +19,12 @@
         >
 
             <!-- 回顾 -->
-            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
                 <review v-if="render[0]"></review>
             </div>
 
             <!-- 直播室/赛况 -->
-            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
                 <live-room v-if="render[0]"></live-room>
             </div>
 
@@ -34,22 +34,22 @@
             </div>
 
             <!-- 资讯 -->
-            <div v-if="resData.status !== '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <div v-if="resData.status !== '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
                 <news v-if="render[2]"></news>
             </div>
 
             <!-- 热议 -->
-            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
                 <hot-comments v-if="render[2]"></hot-comments>
             </div>
 
             <!-- 数据 -->
-            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
                 <stats v-if="render[3]"></stats>
             </div>
 
             <!-- 竞猜 -->
-            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+            <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
                 <quiz v-if="render[4]"></quiz>
             </div>
 
@@ -123,7 +123,7 @@ export default {
                 }
             ],
             tabPageHeight: 1334,
-            touchBarHeight: 0,
+            touchBarHeight: weex.config.eros.touchBarHeight,
             tabStyles: {
                 bgColor: '#FFFFFF',
                 titleColor: '#666666',
@@ -159,6 +159,7 @@ export default {
         // 全部的屏幕减去video的高度和状态栏的高度
         this.tabPageHeight = Utils.env.getScreenHeight() - 422 - weex.config.eros.statusBarHeight
         this.$set(this.render, this.navActivity, 1)
+        // this.$storage.setSync('liveTab', this.tabTitles[this.navActivity].title)
     },
     mounted () {
         this.$nextTick(() => {
@@ -177,6 +178,8 @@ export default {
         wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
             this.$set(this.render, e.page, 1)
+            // this.$storage.setSync('liveTab', this.tabTitles[this.navActivity].title)
+            this.$event.emit('liveTabChange', this.tabTitles[this.navActivity].title)
         }
     }
 }

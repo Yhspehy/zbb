@@ -48,7 +48,7 @@ export default {
                     this.$notice.loading.hide()
                 }
             )
-        },
+        }
     }
 }
 </script>

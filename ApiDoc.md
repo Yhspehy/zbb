@@ -1328,14 +1328,20 @@ print_background: false
      * @api {get}  live/chatRoom/:match_id
      * 
      * @params {String}  match_id
+     * @params {Boolean} isLive 是否是主持人直播说的话
      */
 
     return {
+        "status": true,
+        "msg": "...",
+        "match_status": 0,
+        "online_person": 999999,
         "data": [
             {
                 "user": "MAvis",
                 "content": "wowowowow",
-                "user_id": '111'
+                "user_id": '111',
+                "isLive": false
             }
         ]
     }

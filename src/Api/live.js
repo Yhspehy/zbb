@@ -16,6 +16,10 @@ export function getLiveRoom(id) {
     return request(`/mock/live/liveRoom/${id}`);
 }
 
+export function getChatRoom(id) {
+    return request(`/mock/live/chatRoom/${id}`);
+}
+
 export function getQuizList(id) {
     return request(`/mock/live/quizList/${id}`);
 }
