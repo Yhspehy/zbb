@@ -23,13 +23,13 @@ export default {
         matchInfo,
         newItem
     },
-    data() {
+    data () {
         return {
             review: {},
             newsList: []
         }
     },
-    created() {
+    created () {
         this.$notice.loading.show()
         Promise.all([this.getData(), this.fetchNewList()]).then(([review, news]) => {
             this.review = review.data
@@ -60,9 +60,9 @@ export default {
 }
 
 .header {
-	font-size: 28px;
-	line-height: 36px;
-	color: #4d4d4d;
+    font-size: 28px;
+    line-height: 36px;
+    color: #4d4d4d;
     padding-left: 36px;
     padding-top: 20px;
     font-weight: bold;

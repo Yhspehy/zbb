@@ -25,7 +25,7 @@
 
             <!-- 直播室/赛况 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
-                <live-room v-if="render[0]"></live-room>
+                <live-room v-if="(resData.status !== '已结束' && render[0]) || (resData.status === '已结束' && render[1])"></live-room>
             </div>
 
             <!-- 聊天室 -->
@@ -39,7 +39,7 @@
             </div>
 
             <!-- 热议 -->
-            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
+            <div v-if="resData.status === '已结束'" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
                 <hot-comments v-if="render[2]"></hot-comments>
             </div>
 

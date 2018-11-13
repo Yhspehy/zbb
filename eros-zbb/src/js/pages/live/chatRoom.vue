@@ -15,7 +15,7 @@
 
         <div v-if="showInput" class="inputCell" :style="{'height': (90 + touchBarHeight) + 'px'}">
             <input class="input" type="text" return-key-type="send" :hideDoneButton="true">
-            <text class="send">发送</text>
+            <text class="send" @click="closeKeyBoard">发送</text>
         </div>
     </div>
 </template>
@@ -50,10 +50,10 @@ export default {
                 this.chatObj = res
                 this.$notice.loading.hide()
             })
+        },
+        closeKeyBoard() {
+            this.$tools.resignKeyboard()
         }
-    },
-    watch: {
-
     }
 }
 </script>
@@ -143,9 +143,9 @@ export default {
 
 .input {
     width: 568px;
-	height: 66px;
-	background-color: #f2f2f2;
-	border-radius: 33px;
+    height: 66px;
+    background-color: #f2f2f2;
+    border-radius: 33px;
     margin-top: 12px;
     padding-left: 40px;
 }
