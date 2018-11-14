@@ -13,6 +13,7 @@ module.exports = {
         'js/pages/home/recommend.vue',
         'js/pages/home/highlights.vue',
         'js/pages/news/index.vue',
+        'js/pages/comments/index.vue',
         'js/pages/schedule/index.vue',
         'js/pages/schedule/popular.vue',
         'js/pages/schedule/match.vue',

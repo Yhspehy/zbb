@@ -292,7 +292,6 @@ print_background: false
             "title": "萌神",
             "source": "Mavis",
             "create_time": 121212,
-            "img_list": ["url"],
             "content": [
                 "北京时间7月1日中午12点，联盟自由球员市场已经正式开启，保罗、乔治、杜兰特、约基奇等多名球员签下大合同，他们的薪水比上赛季都有不小的增长",
                 "img=http://temp.im/340x220",

@@ -22,6 +22,10 @@ export default {
         title: '新闻详情',
         url: '/pages/news/index.js'
     },
+    'comments': {
+        title: '全部评论',
+        url: '/pages/comments/index.js'
+    },
     'schedule': {
         url: '/pages/schedule/index.js'
     },

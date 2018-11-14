@@ -81,7 +81,14 @@ export default {
         closeKeyBoard () {
             this.$tools.resignKeyboard()
         },
-        gotoMoreComments () {}
+        gotoMoreComments () {
+            this.$router.open({
+                name: 'comments',
+                params: {
+                    id: this.info.news_id
+                }
+            })
+        }
     }
 }
 </script>
