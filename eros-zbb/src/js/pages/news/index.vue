@@ -11,8 +11,8 @@
 
         <!-- 文章内容 -->
         <cell class="cell" v-for="(item, idx) in info.content" :key="idx">
-            <text v-if="item !== 'img'" class="content">{{item}}</text>
-            <image v-else class="img" src="http://temp.im/340x220"></image>
+            <text v-if="!/^img/.test(item)" class="content">{{item}}</text>
+            <image v-else class="img" :src="item.match(/^img=(.*)/)[1]"></image>
         </cell>
 
         <!-- 评论 -->
