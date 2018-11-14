@@ -1,5 +1,5 @@
 <template>
-    <list class="newInfoScoped">
+    <list class="newInfoScoped" v-if="info.title">
         <!-- 标题和文字信息 -->
         <cell class="cell">
             <text class="title">{{info.title}}</text>

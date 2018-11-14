@@ -12,7 +12,7 @@
         </div>
 
         <div v-else class="news-three">
-            <text class="">{{item.title}}</text>
+            <text class="title">{{item.title}}</text>
             <div class="img-group">
                 <image class="img" :src="item.img_list[0]"></image>
                 <image class="img" :src="item.img_list[1]"></image>
@@ -78,7 +78,7 @@ export default {
 
 .title {
     font-size: 28px;
-    color: #808080;
+    color: #4d4d4d;
     line-height: 36px;
 }
 .date,

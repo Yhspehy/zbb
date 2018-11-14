@@ -48,11 +48,7 @@ export default {
 </script>
 
 <style scoped>
-.profile {
-    height: 1334px;
-}
-
 .scroller {
-    padding-bottom: 170px;
+    padding-bottom: 50px;
 }
 </style>
