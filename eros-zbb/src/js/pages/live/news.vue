@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import newItem from '../home/components/newItem'
+import newItem from '../components/newItem'
 
 export default {
     name: 'live_news',

@@ -16,7 +16,7 @@
 
 <script>
 import matchInfo from './components/matchInfo'
-import newItem from '../home/components/newItem'
+import newItem from '../components/newItem'
 
 export default {
     components: {

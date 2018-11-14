@@ -25,7 +25,7 @@
 
 <script>
 import homeMatch from './components/homeMatch'
-import newItem from './components/newItem'
+import newItem from '../components/newItem'
 import { WxcPanItem, BindEnv } from 'weex-ui'
 var modal = weex.requireModule('modal')
 export default {

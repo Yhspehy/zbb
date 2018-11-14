@@ -8,7 +8,7 @@
                 <div class="flex-row-center">
                     <text class="userName">{{item.author.user_name}}</text>
                     <text class="time">{{item.index}}楼 </text>
-                    <text class="time">{{item.create_time}}</text>
+                    <text class="time">{{time}}</text>
                 </div>
                 <div class="vote flex-row-center" @click="vote(item)">
                     <text class="icon" :style="{'color': item.isVote ? '#f5303d' : '#b3b3b3'}" >&#xf164;</text>
@@ -39,6 +39,16 @@ export default {
             require: true
         }
     },
+    data () {
+        return {
+            nowDate: Date.parse(new Date()) / 1000
+        }
+    },
+    computed: {
+        time () {
+            return this.tranTime(this.item.create_time)
+        }
+    },
     beforeCreate () {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
@@ -54,6 +64,13 @@ export default {
                 item.vote_count++
                 item.isVote = true
             }
+        },
+        tranTime (timestamp) {
+            if (this.nowDate - this.$moment(timestamp).format('X') > 60 * 60 * 24) {
+                return this.$moment(timestamp).format('MM月MM日 HH:mm')
+            } else {
+                return this.$moment(timestamp).fromNow()
+            }
         }
     }
 }
@@ -68,6 +85,9 @@ export default {
     flex-direction: row;
     padding-left: 35px;
     padding-right: 35px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #f2f2f2;
 }
 
 .img {

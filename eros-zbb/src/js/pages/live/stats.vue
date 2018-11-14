@@ -29,7 +29,6 @@
             <stats-team-nba v-if="data.team_stats"  :data="data.team_stats"></stats-team-nba>
         </cell>
 
-
         <!-- NBA球员统计 -->
         <cell>
             <text class="header">球员统计-{{data.hometeam}}</text>
@@ -46,8 +45,6 @@
             <text class="header">交锋历史</text>
             <stats-history v-if="data.match_history" :data="data.match_history"></stats-history>
         </cell>
-
-
 
     </list>
 </template>

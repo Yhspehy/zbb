@@ -4,7 +4,7 @@
             <text class="commentTitle">精彩热评</text>
         </cell>
 
-        <cell v-for="item in hot" :key="item.comment_id">
+        <cell v-for="item in data.hot" :key="item.comment_id">
             <comment-item :item="item"></comment-item>
         </cell>
 
@@ -12,7 +12,7 @@
             <text class="commentTitle">全部评论</text>
         </cell>
 
-        <cell v-for="item in list" :key="item.comment_id">
+        <cell v-for="item in data.list" :key="item.comment_id">
             <comment-item :item="item"></comment-item>
         </cell>
 
@@ -27,68 +27,42 @@
 </template>
 
 <script>
-import commentItem from '../components/commentItem';
+import commentItem from '../components/commentItem'
 
 export default {
     name: 'live_hotComments',
     components: { commentItem },
-    data() {
+    data () {
         return {
-            nowDate: Date.parse(new Date()) / 1000,
             showInput: true,
             touchBarHeight: weex.config.eros.touchBarHeight,
-            data: []
-        };
-    },
-    computed: {
-        hot() {
-            const self = this;
-            if (!this.data.hot) return [];
-            return this.data.hot.map(e => {
-                e.create_time = self.tranTime(e.create_time);
-                return e;
-            });
-        },
-        list() {
-            const self = this;
-            if (!this.data.list) return [];
-            return this.data.list.map(e => {
-                e.create_time = self.tranTime(e.create_time);
-                return e;
-            });
+            data: null
         }
     },
-    created() {
-        this.$notice.loading.show();
-        this.getData();
+    created () {
+        this.$notice.loading.show()
+        this.getData()
     },
-    mounted() {
+    mounted () {
         this.$event.on('liveTabChange', params => {
-            this.showInput = params === '热议';
-        });
+            this.showInput = params === '热议'
+        })
     },
     methods: {
-        getData() {
+        getData () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/hotComments/1'
             }).then(res => {
-                this.data = res.data;
-                this.$notice.loading.hide();
-            });
+                this.data = res.data
+                this.$notice.loading.hide()
+            })
         },
-        tranTime(timestamp) {
-            if (this.nowDate - this.$moment(timestamp).format('X') > 60 * 60 * 24) {
-                return this.$moment(timestamp).format('MM月MM日 HH:mm');
-            } else {
-                return this.$moment(timestamp).fromNow();
-            }
-        },
-        closeKeyBoard() {
+        closeKeyBoard () {
             this.$tools.resignKeyboard()
         }
     }
-};
+}
 </script>
 
 <style scoped>

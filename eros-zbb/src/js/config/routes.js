@@ -18,6 +18,10 @@ export default {
     'home.highlights': {
         url: '/pages/home/highlights.js'
     },
+    'news': {
+        title: '新闻详情',
+        url: '/pages/news/index.js'
+    },
     'schedule': {
         url: '/pages/schedule/index.js'
     },

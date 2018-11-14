@@ -1,5 +1,5 @@
 <template>
-    <div :class="['news-item', hasBorder?'new-item-border':'']">
+    <div :class="['news-item', hasBorder?'new-item-border':'']" @click="goNewInfo(item)">
         <div class="news-one" v-if="item.img_count < 3">
             <image class="img" :src="item.img_list[0]"></image>
             <div class="content">
@@ -43,6 +43,16 @@ export default {
     computed: {
         time () {
             return this.$moment(this.item.create_time).format('MM-DD HH:mm')
+        }
+    },
+    methods: {
+        goNewInfo (item) {
+            this.$router.open({
+                name: 'news',
+                params: {
+                    id: item.news_id
+                }
+            })
         }
     }
 }
