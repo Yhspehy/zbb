@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import { Utils } from 'weex-ui'
 const domModule = weex.requireModule('dom')
 
 export default {

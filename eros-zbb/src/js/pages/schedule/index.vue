@@ -19,17 +19,17 @@
 
             <!-- 比赛 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <match></match>
+                <match v-if="render[0]"></match>
             </div>
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <popular></popular>
+                <popular v-if="render[1]"></popular>
             </div>
 
             <!-- 关注 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <follow></follow>
+                <follow v-if="render[2]"></follow>
             </div>
 
         </wxc-tab-page>
@@ -72,12 +72,15 @@ export default {
                 leftOffset: 140,
                 fontSize: 30
             },
-            navActivity: 1
+            navActivity: 1,
+            render: [0, 0, 0]
+
         }
     },
     created () {
         this.isAndroid = Utils.env.isAndroid()
         this.tabPageHeight = Utils.env.getPageHeight()
+        this.$set(this.render, this.navActivity, 1)
     },
     mounted () {
         this.$nextTick(() => {
@@ -87,6 +90,7 @@ export default {
     methods: {
         wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
+            this.$set(this.render, e.page, 1)
         }
     }
 }

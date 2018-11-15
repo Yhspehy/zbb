@@ -16,17 +16,17 @@
 
             <!-- 比赛 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
-                <schedule></schedule>
+                <schedule v-if="render[0]"></schedule>
             </div>
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
-                <team-rank></team-rank>
+                <team-rank v-if="render[1]"></team-rank>
             </div>
 
             <!-- 关注 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height) + 'px' }">
-                <player-rank></player-rank>
+                <player-rank v-if="render[2]"></player-rank>
             </div>
 
         </wxc-tab-page>
@@ -65,14 +65,17 @@ export default {
                 isActiveTitleBold: true,
                 width: 160,
                 height: 70,
-                leftOffset: 140
+                leftOffset: 140,
+                boxShadow: 'inset 0 -1px rgba(0,0,0,0.4)'
             },
-            navActivity: 1
+            navActivity: 0,
+            render: [0, 0, 0]
         }
     },
     created () {
         this.isAndroid = Utils.env.isAndroid()
         this.tabPageHeight = Utils.env.getPageHeight()
+        this.$set(this.render, this.navActivity, 1)
     },
     mounted () {
         this.$nextTick(() => {
@@ -82,6 +85,7 @@ export default {
     methods: {
         wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
+            this.$set(this.render, e.page, 1)
         }
     }
 }
