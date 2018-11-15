@@ -2,14 +2,25 @@
     <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh">
         <cell v-for="item in typeList" :key="item.id">
             <text class="typeName">{{item.name}}</text>
-            <div v-for="el in item.list" :key="el" class="leagueItem" @click="goLeagueMatch(el)">
+            <div
+                v-for="el in item.list"
+                :key="el" class="leagueItem"
+                @click="goLeagueMatch(el)">
+
                 <text class="leagueName">{{el}}</text>
-                <div class="count" :style="{'color': matchCountObj[el]? '#00bbff': ''}">
-                    <text v-if="matchCountObj[el]">今日共有{{matchCountObj[el]}}场比赛</text>
-                    <wxc-icon name="more" class="fa-chevron-right"></wxc-icon>
+                <div class="count" >
+                    <text
+                        class="countText"
+                        :style="{'color': matchCountObj[el]? '#00bbff': ''}"
+                        v-if="matchCountObj[el]">今日共有{{matchCountObj[el]}}场比赛</text>
+                    <wxc-icon
+                        name="more"
+                        :style="{'color': matchCountObj[el]? '#00bbff': ''}"
+                        class="fa-chevron-right"></wxc-icon>
                 </div>
             </div>
         </cell>
+
     </list>
 </template>
 
@@ -54,29 +65,28 @@ export default {
             })
         },
         getLeagueTodaMatchCount () {
-            const self = this
             const date = this.$moment().format('YYYY-MM-DD')
             let todayMatchList = {}
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/GetMonthList'
             }).then((res) => {
-                if (res[date]) {
-                    todayMatchList = res[date]
+                if (res.data[date]) {
+                    todayMatchList = res.data[date]
                     todayMatchList.match_list.forEach(e => {
-                        let l = find(self.allLeagueList, t => {
+                        let l = find(this.allLeagueList, t => {
                             return t === e.league
                         })
-                        self.matchCountObj[l] += 1
+                        this.matchCountObj[l] += 1
                     })
                 }
             })
         },
         goLeagueMatch (item) {
-            // this.$store.commit('schedule/SET_MATCHLEAGUENAME', item);
-            // this.$router.push({
-            //     path: `/schedule/league/1/match`
-            // });
+            this.$router.open({
+                name: 'schedule.league',
+                navTitle: item
+            })
         }
     }
 }
@@ -85,7 +95,6 @@ export default {
 <style scoped>
 .schedule_match {
     color: #4d4d4d;
-    overflow-y: auto;
 }
 
 .typeName {
@@ -110,6 +119,10 @@ export default {
     font-size: 28px;
 }
 .count {
+    flex-direction: row;
+    align-items: center;
+}
+.countText {
     font-size: 24px;
 }
 .fa-chevron-right {

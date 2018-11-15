@@ -38,6 +38,10 @@ export default {
     'schedule.follow': {
         url: '/pages/schedule/follow.js'
     },
+    'schedule.league': {
+        title: 'NBA',
+        url: '/pages/schedule/league/index.js'
+    },
     'live': {
         url: '/pages/live/index.js'
     },

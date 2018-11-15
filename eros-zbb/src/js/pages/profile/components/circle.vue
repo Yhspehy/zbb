@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    data() {
+    data () {
         return {
             mycircle: [
                 {
@@ -45,9 +45,9 @@ export default {
                     to: ''
                 }
             ]
-        };
+        }
     }
-};
+}
 </script>
 
 <style scoped>
