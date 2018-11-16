@@ -3,7 +3,22 @@
         <!-- Fit IphoneX -->
         <status-bar :bg="isAndroid?'#000000':'#ffffff'"></status-bar>
 
-        <wxc-tab-page ref="wxc-tab-page" :tab-styles="tabStyles" :tab-titles="tabTitles" :tabPageHeight="tabPageHeight" need-slider="true" @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
+        <wxc-tab-page
+            ref="wxc-tab-page"
+            :rightIconStyle="rightIconStyle"
+            :title-use-slot="true"
+            :tab-styles="tabStyles"
+            :tab-titles="tabTitles"
+            :tabPageHeight="tabPageHeight"
+            need-slider="true"
+            @wxcTabPageCurrentTabSelected="wxcTabPageCurrentTabSelected">
+
+            <div v-for="(nav, navIdx) in tabTitles" :slot="'tab-title-' + navIdx" :key="navIdx" style="align-items: center">
+                <text :class="[navActivity === navIdx?'navActivity': '']">{{nav.title}}</text>
+                <div v-if="navActivity === navIdx" class="navActivityLine"></div>
+            </div>
+
+            <wxc-icon slot="rightIcon" name="add" @wxcIconClicked="iconClicked"></wxc-icon>
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
@@ -20,13 +35,13 @@
 </template>
 
 <script>
-import { WxcTabPage, Utils } from 'weex-ui'
+import { WxcTabPage, Utils, WxcIcon } from 'weex-ui'
 import statusBar from '../components/statusBar'
 import recommend from './recommend'
 import highlights from './highlights'
 
 export default {
-    components: { statusBar, WxcTabPage, recommend, highlights },
+    components: { statusBar, WxcTabPage, WxcIcon, recommend, highlights },
     data () {
         return {
             isAndroid: false,
@@ -54,7 +69,12 @@ export default {
                 activeBottomHeight: 6,
                 activeBottomWidth: 120,
                 textPaddingLeft: 10,
-                textPaddingRight: 10
+                textPaddingRight: 10,
+                hasRightIcon: true,
+                rightOffset: 70
+            },
+            rightIconStyle: {
+                top: (weex.config.eros.statusBarHeight + 20) + 'px'
             },
             navActivity: 0
         }
@@ -76,6 +96,11 @@ export default {
     methods: {
         wxcTabPageCurrentTabSelected (e) {
             this.navActivity = e.page
+        },
+        iconClicked () {
+            this.$router.open({
+                name: 'home.addChannel'
+            })
         }
     }
 }
@@ -96,5 +121,17 @@ export default {
     border-bottom-width: 1px;
     border-style: solid;
     border-color: #e0e0e0;
+}
+
+.navActivity {
+    color: #0099ff;
+    font-size: 36px;
+}
+
+.navActivityLine {
+    height: 4px;
+    background-color: #0099ff;
+    width: 40px;
+    top: 14px;
 }
 </style>

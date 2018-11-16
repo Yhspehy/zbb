@@ -12,6 +12,7 @@ module.exports = {
         'js/pages/home/index.vue',
         'js/pages/home/recommend.vue',
         'js/pages/home/highlights.vue',
+        'js/pages/home/addChannel.vue',
         'js/pages/news/index.vue',
         'js/pages/comments/index.vue',
         'js/pages/schedule/index.vue',

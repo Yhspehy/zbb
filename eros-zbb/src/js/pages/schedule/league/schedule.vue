@@ -1,15 +1,19 @@
 <template>
-    <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
-
+    <!-- <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
         <cell v-for="(val, key) in matchList" :key="key">
             <time-bar :currentDate="key" ></time-bar>
             <match-item v-for="(el, elIdx) in val" :key="elIdx" :matchData="el"></match-item>
         </cell>
+    </list> -->
 
-        <!-- <div class="index-list-fixed index-list-anchor" v-if="isShowFixed">
-            <time-bar :currentDate="currentDate"></time-bar>
-        </div> -->
-    </list>
+    <scroller ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
+        <div v-for="(val, key) in matchList" :key="key">
+            <div style="position: sticky;">
+                <time-bar :currentDate="key" ></time-bar>
+            </div>
+            <match-item v-for="(el, elIdx) in val" :key="elIdx" :matchData="el"></match-item>
+        </div>
+    </scroller>
 </template>
 
 <script>
@@ -23,8 +27,6 @@ export default {
     },
     data () {
         return {
-            scrollY: 0,
-            TimeBarheight: 0,
             currentDate: '',
             keys: [],
             matchList: {}
@@ -32,12 +34,7 @@ export default {
     },
     created () {
         this.$notice.loading.show()
-        this.fetchNewList()
-    },
-    computed: {
-        isShowFixed () {
-            return this.scrollY <= -this.TimeBarheight
-        }
+        this.fetchScheduleList()
     },
     methods: {
         onrefresh () {
@@ -50,7 +47,7 @@ export default {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
         },
-        fetchNewList () {
+        fetchScheduleList () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/popularList'
@@ -70,10 +67,4 @@ export default {
 </script>
 
 <style scoped>
-.index-list-fixed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-}
 </style>

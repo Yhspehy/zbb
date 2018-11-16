@@ -18,6 +18,10 @@ export default {
     'home.highlights': {
         url: '/pages/home/highlights.js'
     },
+    'home.addChannel': {
+        title: '频道定制',
+        url: '/pages/home/addChannel.js'
+    },
     'news': {
         title: '新闻详情',
         url: '/pages/news/index.js'

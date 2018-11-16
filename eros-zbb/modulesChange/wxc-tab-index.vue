@@ -10,7 +10,7 @@
               :show-scrollbar="false"
               scroll-direction="horizontal"
               :data-spm="spmC"
-              :style="{ backgroundColor: tabStyles.bgColor, height: (tabStyles.height)+'px',paddingLeft:(tabStyles.leftOffset?tabStyles.leftOffset:0)+'px', boxShadow: tabStyles.boxShadow }">
+              :style="{ backgroundColor: tabStyles.bgColor, height: (tabStyles.height)+'px',paddingLeft:(tabStyles.leftOffset?tabStyles.leftOffset:0)+'px', boxShadow: tabStyles.boxShadow, paddingRight: tabStyles.rightOffset }">
 
       <div class="title-item"
            v-for="(v,index) in tabTitles"
@@ -37,6 +37,10 @@
              v-if="tabStyles.hasActiveBottom && !titleUseSlot"
              :style="{ width: tabStyles.activeBottomWidth+'px', left: (tabStyles.width-tabStyles.activeBottomWidth)/2+'px', height: tabStyles.activeBottomHeight+'px', backgroundColor: currentPage === index ? tabStyles.activeBottomColor : 'transparent' }"></div>
         <slot :name="`tab-title-${index}`" v-if="titleUseSlot"></slot>
+      </div>
+
+      <div v-if="tabStyles.hasRightIcon" class="rightIcon" :style="{'top': rightIconStyle.top}">
+          <slot name="rightIcon"></slot>
       </div>
     </scroller>
     <div class="tab-page-wrap"
@@ -90,6 +94,15 @@
     text-overflow: ellipsis;
   }
 
+  .rightIcon {
+      position: fixed;
+      padding-left: 20px;
+      padding-right: 20px;
+      right: 0;
+      background-color: #ffffff;
+      box-shadow: -50px 0 20px #ffffff;
+  }
+
 </style>
 
 <script>
@@ -139,7 +152,8 @@ export default {
                 textPaddingLeft: 10,
                 textPaddingRight: 10,
                 leftOffset: 0,
-                boxShadow: ''
+                boxShadow: '',
+                hasRightIcon: false
             })
         },
         titleType: {
@@ -173,6 +187,13 @@ export default {
         clickAnimation: {
             type: Boolean,
             default: true
+        },
+        rightIconStyle: {
+            type: Object,
+            default: () => ({
+                top: 0,
+                right: 0
+            })
         }
     },
     data: () => ({

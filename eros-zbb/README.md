@@ -48,4 +48,8 @@ props: {
 }
 ```
 
-为方便我将改过的组件内容拷贝到了modulesChange文件中，到时候git clone项目后只要将相关文件覆盖node_modules即可。
+根据home headerBar的右边添加频道以及左边box-shadow效果，修改了源代码，添加了rightIcon等参数，具体参考modulesChange中的代码。
+
+---
+
+## 为方便我将改过的组件内容拷贝到了modulesChange文件中，到时候git clone项目后只要将相关文件覆盖node_modules即可。

@@ -92,7 +92,7 @@ print_background: false
 
 ## 启动页
 
-### 获取所有的联赛和相关球队
+### 获取所有的联赛和联赛中的所有球队
 
 ```js
     /**
@@ -135,13 +135,24 @@ print_background: false
     return {
         "status": true,
         "msg": "获取订阅联赛列表成功!",
-        "data": [
-            {
-                "league_id": 11,
-                "league_name": "NBA"
-                "league_type": "basketball"
-            }
-        ]
+        "data": {
+            "myLeague": [
+                {
+                    "league_id": 1,
+                    "league_name": "NBA"
+                    "league_type": "basketball",
+                    "avatar_img": "url",
+                }
+            ],
+            "otherLeague": [
+                {
+                    "league_id": 11,
+                    "league_name": "NBA"
+                    "league_type": "basketball",
+                    "avatar_img": "url",
+                }
+            ]
+        }
     }
 ```
 

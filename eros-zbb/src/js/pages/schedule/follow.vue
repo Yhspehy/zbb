@@ -1,10 +1,19 @@
 <template>
-    <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
+    <!-- <list ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
         <cell v-for="(val, key) in matchList" :key="key">
             <time-bar :currentDate="key"></time-bar>
             <match-item v-for="(el, elIdx) in val" :key="elIdx" :matchData="el"></match-item>
         </cell>
-    </list>
+    </list> -->
+
+    <scroller ref="list" class="container" :showRefresh="true" @refresh="onrefresh" :showLoadMore="true" loadingMoreTitle="显示更多信息" @loadMore="loadMore">
+        <div v-for="(val, key) in matchList" :key="key">
+            <div style="position: sticky;">
+                <time-bar :currentDate="key" ></time-bar>
+            </div>
+            <match-item v-for="(el, elIdx) in val" :key="elIdx" :matchData="el"></match-item>
+        </div>
+    </scroller>
 </template>
 
 <script>
@@ -25,7 +34,7 @@ export default {
     },
     created () {
         this.$notice.loading.show()
-        this.fetchNewList()
+        this.fetchFollowList()
     },
     methods: {
         onrefresh () {
@@ -38,7 +47,7 @@ export default {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
         },
-        fetchNewList () {
+        fetchFollowList () {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/popularList'
