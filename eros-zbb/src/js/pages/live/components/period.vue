@@ -17,7 +17,7 @@
 <script>
 export default {
     props: ['period_score', 'home_score', 'away_score'],
-    data () {
+    data() {
         return {
             periodTitle: ['球队', '第1节', '第2节', '第3节', '第4节', '总分']
         }

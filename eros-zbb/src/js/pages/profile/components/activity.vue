@@ -28,7 +28,7 @@ import { WxcEpSlider } from 'weex-ui'
 
 export default {
     components: { WxcEpSlider },
-    data () {
+    data() {
         return {
             hotActivity: [
                 {
@@ -62,8 +62,8 @@ export default {
         }
     },
     methods: {
-        wxcEpSliderCurrentIndexSelected (e) {
-            const index = e.currentIndex
+        wxcEpSliderCurrentIndexSelected(e) {
+            // const index = e.currentIndex
         }
     }
 }

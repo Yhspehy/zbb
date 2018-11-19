@@ -41,7 +41,7 @@ import playerRank from './playerRank'
 
 export default {
     components: { WxcTabPage, schedule, teamRank, playerRank },
-    data () {
+    data() {
         return {
             isAndroid: false,
             tabTitles: [
@@ -72,18 +72,18 @@ export default {
             render: [0, 0, 0]
         }
     },
-    created () {
+    created() {
         this.isAndroid = Utils.env.isAndroid()
         this.tabPageHeight = Utils.env.getPageHeight()
         this.$set(this.render, this.navActivity, 1)
     },
-    mounted () {
+    mounted() {
         this.$nextTick(() => {
             this.$refs['wxc-tab-page'].setPage(this.navActivity)
         })
     },
     methods: {
-        wxcTabPageCurrentTabSelected (e) {
+        wxcTabPageCurrentTabSelected(e) {
             this.navActivity = e.page
             this.$set(this.render, e.page, 1)
         }

@@ -33,21 +33,21 @@ export default {
             require: true
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
         })
     },
     computed: {
-        updateTime () {
+        updateTime() {
             return this.$moment(this.zone.update_time)
                 .locale('zh-cn')
                 .fromNow()
         }
     },
     methods: {
-        vote (item) {
+        vote(item) {
             if (item.isVote) {
                 item.vote_count--
                 item.isVote = false

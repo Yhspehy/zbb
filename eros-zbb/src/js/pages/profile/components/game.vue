@@ -34,9 +34,9 @@ export default {
                     img: 'http://temp.im/30x30'
                 }
             ]
-        };
+        }
     }
-};
+}
 </script>
 
 <style scoped>

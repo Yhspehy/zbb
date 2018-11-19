@@ -9,7 +9,7 @@
   "author": "Yhspehy<yhspehy@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/js/pages/**/**.vue"
+    "lint": "eslint --ext .js,.vue src/js/pages"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.2",

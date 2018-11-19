@@ -16,13 +16,13 @@ export default {
         }
     },
     computed: {
-        date () {
+        date() {
             return this.$moment(this.currentDate).locale('zh-cn').format('MM月DD号')
         },
-        week () {
+        week() {
             return this.$moment(this.currentDate).locale('zh-cn').format('dddd')
         },
-        isToday () {
+        isToday() {
             return this.$moment(this.currentDate).format('YYY-MM-DD') === this.$moment().format('YYY-MM-DD')
         }
     }

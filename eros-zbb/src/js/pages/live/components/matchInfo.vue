@@ -28,12 +28,12 @@ export default {
         }
     },
     computed: {
-        status () {
+        status() {
             return this.getMatchStatus(this.data.status)
         }
     },
     methods: {
-        getMatchStatus (status) {
+        getMatchStatus(status) {
             switch (status) {
             case 0:
                 return '未开始'

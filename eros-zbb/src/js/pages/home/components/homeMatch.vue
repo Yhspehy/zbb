@@ -36,7 +36,7 @@ export default {
         }
     },
     computed: {
-        result () {
+        result() {
             let arr = this.liveTrailList.map(e => {
                 let d = new Date(e.start_time)
                 let hour = this.tranHour(d.getHours())
@@ -48,10 +48,10 @@ export default {
         }
     },
     methods: {
-        tranHour (hour) {
+        tranHour(hour) {
             return hour < 10 ? `0${hour}` : hour
         },
-        tranMins (mins) {
+        tranMins(mins) {
             return mins < 10 ? `0${mins}` : mins
         }
     }

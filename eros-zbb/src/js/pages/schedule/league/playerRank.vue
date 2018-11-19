@@ -32,7 +32,7 @@
 <script>
 export default {
     name: 'schedule_league_playerRank',
-    data () {
+    data() {
         return {
             league: 'NBA',
             chosenNav: 'points_rank',
@@ -49,16 +49,16 @@ export default {
         }
     },
     computed: {
-        listType () {
+        listType() {
             return this.chosenNav ? this.chosenNav.match(/^(.*)_.*/)[1] : ''
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchPlayerRank()
     },
     methods: {
-        fetchPlayerRank () {
+        fetchPlayerRank() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/rank/player/1'

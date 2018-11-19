@@ -70,17 +70,17 @@
 <script>
 export default {
     name: 'schedule_league_teamRank',
-    data () {
+    data() {
         return {
             NBA: {}
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchTeamRankList()
     },
     methods: {
-        fetchTeamRankList () {
+        fetchTeamRankList() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/rank/team/1'

@@ -29,14 +29,14 @@ export default {
             require: true
         }
     },
-    data () {
+    data() {
         return {
             isIOS: false,
             height: null
         }
     },
     computed: {
-        result () {
+        result() {
             let map = {}
             const head = this.data[0].row
             const stats = this.data.slice(1)
@@ -54,7 +54,7 @@ export default {
             return map
         }
     },
-    mounted () {
+    mounted() {
         this.isIOS = Utils.env.isIOS()
         dom.getComponentRect(this.$refs.name, option => {
             this.height = option.size.height

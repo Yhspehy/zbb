@@ -26,10 +26,10 @@ export default {
         }
     },
     computed: {
-        head () {
+        head() {
             return this.data[0]
         },
-        stats () {
+        stats() {
             return this.data.slice(1)
         }
     }

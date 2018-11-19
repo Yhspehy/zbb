@@ -59,22 +59,22 @@ export default {
             require: true
         }
     },
-    data () {
+    data() {
         return {}
     },
     computed: {
-        startTime () {
+        startTime() {
             return this.$moment(this.matchData.start_time).format('HH:mm')
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
         })
     },
     methods: {
-        goLive () {
+        goLive() {
             this.$router.open({
                 name: 'live',
                 params: this.matchData,

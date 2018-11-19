@@ -40,18 +40,18 @@ export default {
         }
     },
     computed: {
-        createTime () {
+        createTime() {
             return this.$moment(this.video.createTime).format('MM/DD HH:mm')
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
         })
     },
     methods: {
-        vote (item) {
+        vote(item) {
             if (item.isVote) {
                 item.vote_count--
                 item.isVote = false

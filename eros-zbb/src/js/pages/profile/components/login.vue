@@ -50,19 +50,19 @@
 </template>
 
 <script>
-const domModule = weex.requireModule('dom');
+const domModule = weex.requireModule('dom')
 
 export default {
     data() {
         return {
             isLogin: false
-        };
+        }
     },
     beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
-        });
+        })
     },
     methods: {
         jump(name) {
@@ -71,7 +71,7 @@ export default {
             })
         }
     }
-};
+}
 </script>
 
 <style scoped>
@@ -128,7 +128,6 @@ export default {
     font-size: 28px;
     color: #fff;
 }
-
 
 /* 底部 */
 .loginFooter {
