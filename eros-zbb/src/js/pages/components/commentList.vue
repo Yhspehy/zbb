@@ -16,13 +16,13 @@ export default {
             require: true
         }
     },
-    data () {
+    data() {
         return {
             nowDate: Date.parse(new Date()) / 1000
         }
     },
     computed: {
-        list () {
+        list() {
             const self = this
             if (!this.commentlist) return []
             return this.commentlist.map(e => {
@@ -32,7 +32,7 @@ export default {
         }
     },
     methods: {
-        tranTime (timestamp) {
+        tranTime(timestamp) {
             if (this.nowDate - this.$moment(timestamp).format('X') > 60 * 60 * 24) {
                 return this.$moment(timestamp).format('MM月MM日 HH:mm')
             } else {

@@ -42,14 +42,14 @@ export default {
         homeHeader,
         homeMatch
     },
-    data () {
+    data() {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             list: 1,
             liveTrailList: null
         }
     },
-    mounted () {
+    mounted() {
         this.list = weex.config.eros.jsServer
         this.$fetch({
             method: 'GET',
@@ -66,12 +66,12 @@ export default {
         )
     },
     methods: {
-        onrefresh () {
+        onrefresh() {
             setTimeout(() => {
                 this.$refs['list'].refreshEnd()
             }, 2000)
         },
-        loadMore () {
+        loadMore() {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)

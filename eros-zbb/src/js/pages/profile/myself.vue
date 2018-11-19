@@ -62,7 +62,7 @@ const picker = weex.requireModule('picker')
 const modal = weex.requireModule('modal')
 export default {
     name: 'profile_setting_myself',
-    data () {
+    data() {
         return {
             nickname: '哈哈哈',
             gender: '请选择',
@@ -74,19 +74,19 @@ export default {
         }
     },
     computed: {
-        encryptMobile () {
+        encryptMobile() {
             const type = 'xxx****xxxx'
             return type.replace(/x/g, (a, b) => this.mobile[b])
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
         })
     },
     methods: {
-        pickNickName () {
+        pickNickName() {
             modal.prompt(
                 {
                     message: '昵称设置',
@@ -101,7 +101,7 @@ export default {
                 }
             )
         },
-        pickGender () {
+        pickGender() {
             const i = this.genderList.findIndex(e => e === this.gender)
             picker.pick(
                 {
@@ -115,7 +115,7 @@ export default {
                 }
             )
         },
-        pickBirth () {
+        pickBirth() {
             const date = getFormatDate()
             picker.pickDate(
                 {
@@ -129,7 +129,7 @@ export default {
                 }
             )
         },
-        pickLocation () {
+        pickLocation() {
             modal.prompt(
                 {
                     message: '位置设置',

@@ -19,7 +19,7 @@ const domModule = weex.requireModule('dom')
 
 export default {
     name: 'profile_setting_join',
-    data () {
+    data() {
         return {
             list: [
                 {
@@ -36,27 +36,27 @@ export default {
             start: -1
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
         })
     },
     methods: {
-        onCopy (el) {
+        onCopy(el) {
             this.$tools.copyString(el).then(
                 resData => {
                     this.$notice.toast({
                         message: '复制成功'
                     })
                 },
-                err => {
+                err =>
                     resData => {
                         this.$notice.toast({
                             message: err
                         })
                     }
-                }
+
             )
         }
     }

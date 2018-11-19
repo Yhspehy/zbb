@@ -41,12 +41,12 @@ export default {
         }
     },
     computed: {
-        time () {
+        time() {
             return this.$moment(this.item.create_time).format('MM-DD HH:mm')
         }
     },
     methods: {
-        goNewInfo (item) {
+        goNewInfo(item) {
             this.$router.open({
                 name: 'news',
                 params: {

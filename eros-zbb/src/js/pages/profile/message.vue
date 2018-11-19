@@ -20,7 +20,7 @@
 <script>
 export default {
     name: 'profile_setting_message',
-    data () {
+    data() {
         return {
             list: [
                 {

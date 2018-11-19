@@ -39,24 +39,24 @@ export default {
             require: true
         }
     },
-    data () {
+    data() {
         return {
             nowDate: Date.parse(new Date()) / 1000
         }
     },
     computed: {
-        time () {
+        time() {
             return this.tranTime(this.item.create_time)
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
         })
     },
     methods: {
-        vote (item) {
+        vote(item) {
             if (item.isVote) {
                 item.vote_count--
                 item.isVote = false
@@ -65,7 +65,7 @@ export default {
                 item.isVote = true
             }
         },
-        tranTime (timestamp) {
+        tranTime(timestamp) {
             if (this.nowDate - this.$moment(timestamp).format('X') > 60 * 60 * 24) {
                 return this.$moment(timestamp).format('MM月MM日 HH:mm')
             } else {

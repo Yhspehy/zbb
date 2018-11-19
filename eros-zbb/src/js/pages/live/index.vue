@@ -83,7 +83,7 @@ export default {
         stats,
         quiz
     },
-    data () {
+    data() {
         return {
             resData: null,
             tabTitles: [
@@ -145,13 +145,13 @@ export default {
             render: [0, 0, 0, 0, 0]
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
         })
     },
-    created () {
+    created() {
         this.$router.getParams().then(resData => {
             this.resData = resData
             this.tabTitles = resData.status === '已结束' ? this.secondNavType : this.firstNavType
@@ -161,13 +161,13 @@ export default {
         this.$set(this.render, this.navActivity, 1)
         // this.$storage.setSync('liveTab', this.tabTitles[this.navActivity].title)
     },
-    mounted () {
+    mounted() {
         this.$nextTick(() => {
             this.$refs['wxc-tab-page'].setPage(this.navActivity)
         })
     },
     methods: {
-        back () {
+        back() {
             if (Utils.env.isIOS()) {
                 this.$navigator.setNavigationInfo({
                     statusBarStyle: 'Default'
@@ -175,7 +175,7 @@ export default {
             }
             this.$router.back()
         },
-        wxcTabPageCurrentTabSelected (e) {
+        wxcTabPageCurrentTabSelected(e) {
             this.navActivity = e.page
             this.$set(this.render, e.page, 1)
             // this.$storage.setSync('liveTab', this.tabTitles[this.navActivity].title)

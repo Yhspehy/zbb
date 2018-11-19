@@ -65,20 +65,20 @@ export default {
         statsBestPlayer,
         statsHistory
     },
-    data () {
+    data() {
         return {
             data: {}
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.getData()
     },
-    beforeDestroy () {
+    beforeDestroy() {
         this.$notice.loading.hide()
     },
     methods: {
-        getData () {
+        getData() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/stats/1'

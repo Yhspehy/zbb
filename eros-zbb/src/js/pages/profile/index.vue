@@ -36,12 +36,12 @@ export default {
         activity,
         game
     },
-    data () {
+    data() {
         return {
             isAndroid: false
         }
     },
-    created () {
+    created() {
         this.isAndroid = Utils.env.isAndroid()
     }
 }

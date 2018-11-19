@@ -120,7 +120,8 @@ export default {
             this.expandObj[key] = !this.expandObj[key];
         }
     }
-};</script>
+};
+</script>
 
 <style scoped lang="scss">
 .stats {

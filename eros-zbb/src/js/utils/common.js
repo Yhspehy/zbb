@@ -1,4 +1,4 @@
-export function getFormatDate () {
+export function getFormatDate() {
     const date = new Date()
     let nowMonth = date.getMonth() + 1
     let strDate = date.getDate()

@@ -27,7 +27,7 @@ new Widget({
          * options 你请求传入的所有参数和配置
          * next
          */
-        requestHandler (options, next) {
+        requestHandler(options, next) {
             console.log('request-opts', options)
             next()
         },
@@ -38,7 +38,7 @@ new Widget({
          * resolve 请求成功请resolve你得结果，这样请求的.then中的成功回调就能拿到你resolve的数据
          * reject 请求成功请resolve你得结果，这样请求的.then中的失败回调就能拿到你reject的数据
          */
-        responseHandler (options, resData, resolve, reject) {
+        responseHandler(options, resData, resolve, reject) {
             const { status, errorMsg, data } = resData
             if (status !== 200) {
                 console.log(`invoke error status: ${status}`)

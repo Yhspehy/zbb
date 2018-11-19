@@ -42,7 +42,7 @@ import { WxcIcon } from 'weex-ui'
 export default {
     name: 'home_addChannel',
     components: { WxcIcon },
-    data () {
+    data() {
         return {
             status: '编辑',
             size: null,
@@ -54,12 +54,12 @@ export default {
             otherChannelsLength: 0
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.getChannel()
     },
     methods: {
-        getChannel () {
+        getChannel() {
             const res = {
                 'status': true,
                 'msg': '获取订阅联赛列表成功!',
@@ -156,11 +156,11 @@ export default {
             this.otherChannelsLength = res.data.otherLeague.length
             this.$notice.loading.hide()
         },
-        edit () {
+        edit() {
             this.status = this.status === '编辑' ? '完成' : '编辑'
         },
-        removeChannel (idx) {
-            if (this.status !== '完成') {
+        removeChannel(idx) {
+            if (this.status === '完成') {
                 this.otherShowIdx = this.otherChannelsLength
                 this.otherChannels.push(this.myChannels.splice(idx, 1)[0])
                 this.otherChannelsLength += 1
@@ -170,7 +170,7 @@ export default {
                 })
             }
         },
-        addChannel (idx) {
+        addChannel(idx) {
             // this.hideIdx = idx
             this.myShowIdx = this.myChannelsLength
             this.myChannels.push(this.otherChannels.splice(idx, 1)[0])
@@ -179,6 +179,7 @@ export default {
             this.$nextTick(() => {
                 this.myShowIdx = null
             })
+            this.$event.emit('aa')
             // setTimeout(() => {
             //     this.hideIdx = null
             //     this.otherChannels.splice(idx, 1)

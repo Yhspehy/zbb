@@ -22,27 +22,27 @@
 
 <script>
 export default {
-    data () {
+    data() {
         return {
             chatObj: {},
             showInput: true,
             touchBarHeight: weex.config.eros.touchBarHeight
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchChatData()
     },
-    mounted () {
+    mounted() {
         this.$event.on('liveTabChange', params => {
             this.showInput = params === '聊天室'
         })
     },
-    beforeDestroy () {
+    beforeDestroy() {
         this.$notice.loading.hide()
     },
     methods: {
-        fetchChatData () {
+        fetchChatData() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/chatRoom/1'
@@ -66,9 +66,9 @@ export default {
 }
 
 .header {
-	font-size: 28px;
-	line-height: 36px;
-	color: #4d4d4d;
+    font-size: 28px;
+    line-height: 36px;
+    color: #4d4d4d;
     padding-left: 36px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -99,8 +99,8 @@ export default {
 
 .user {
     font-size: 24px;
-	line-height: 70px;
-	color: #808080;
+    line-height: 70px;
+    color: #808080;
     margin-left: 10px;
     max-width: 100px;
     lines: 1;
@@ -111,8 +111,8 @@ export default {
     /* flex: 1; */
     max-width: 500px;
     font-size: 24px;
-	line-height: 30px;
-	color: #808080;
+    line-height: 30px;
+    color: #808080;
     background-color: #ffffff;
     border-radius: 10px;
     margin-left: 16px;

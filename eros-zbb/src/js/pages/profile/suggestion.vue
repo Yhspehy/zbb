@@ -26,7 +26,7 @@ const domModule = weex.requireModule('dom')
 
 export default {
     name: 'profile_setting_suggestion',
-    data () {
+    data() {
         return {
             type: '建议优化',
             isExpand: false,
@@ -37,7 +37,7 @@ export default {
             content: ''
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
@@ -53,7 +53,7 @@ export default {
         })
     },
     methods: {
-        emitClick () {
+        emitClick() {
             if (this.isExpand) {
                 this.isSelectExist = false
                 setTimeout(() => {
@@ -66,7 +66,7 @@ export default {
                 })
             }
         },
-        choosenType (item) {
+        choosenType(item) {
             this.isSelectExist = false
             this.type = item
             setTimeout(() => {
@@ -75,7 +75,7 @@ export default {
         }
     },
     watch: {
-        content (val, old) {
+        content(val, old) {
             if (val.length > this.wordCountLimit) {
                 this.content = old
                 return

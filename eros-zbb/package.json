@@ -8,6 +8,9 @@
   ],
   "author": "Yhspehy<yhspehy@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/js/pages/**/**.vue"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.2",
     "eros-widget": "^1.0.2-beta.1",

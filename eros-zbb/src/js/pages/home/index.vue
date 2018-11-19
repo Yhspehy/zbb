@@ -42,7 +42,7 @@ import highlights from './highlights'
 
 export default {
     components: { statusBar, WxcTabPage, WxcIcon, recommend, highlights },
-    data () {
+    data() {
         return {
             isAndroid: false,
             tabTitles: [
@@ -79,7 +79,7 @@ export default {
             navActivity: 0
         }
     },
-    created () {
+    created() {
         this.tabPageHeight = Utils.env.getPageHeight()
         if (Utils.env.isAndroid()) {
             this.isAndroid = true
@@ -88,16 +88,16 @@ export default {
             })
         }
     },
-    mounted () {
+    mounted() {
         this.$nextTick(() => {
             this.$refs['wxc-tab-page'].setPage(this.navActivity)
         })
     },
     methods: {
-        wxcTabPageCurrentTabSelected (e) {
+        wxcTabPageCurrentTabSelected(e) {
             this.navActivity = e.page
         },
-        iconClicked () {
+        iconClicked() {
             this.$router.open({
                 name: 'home.addChannel'
             })

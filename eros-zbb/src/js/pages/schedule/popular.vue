@@ -26,29 +26,29 @@ export default {
         timeBar,
         matchItem
     },
-    data () {
+    data() {
         return {
             currentDate: '',
             keys: [],
             matchList: {}
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchPopularList()
     },
     methods: {
-        onrefresh () {
+        onrefresh() {
             setTimeout(() => {
                 this.$refs['list'].refreshEnd()
             }, 2000)
         },
-        loadMore () {
+        loadMore() {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
         },
-        fetchPopularList () {
+        fetchPopularList() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/schedule/popularList'

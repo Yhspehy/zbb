@@ -35,30 +35,30 @@ export default {
         WxcPanItem
     },
     props: ['ref'],
-    data () {
+    data() {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             liveTrailList: null,
             newsList: null
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchHomeMatch()
         this.fetchNewList()
     },
     methods: {
-        onrefresh () {
+        onrefresh() {
             setTimeout(() => {
                 this.$refs['list'].refreshEnd()
             }, 2000)
         },
-        loadMore () {
+        loadMore() {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
         },
-        fetchHomeMatch () {
+        fetchHomeMatch() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/home/recommend/liveTrail'
@@ -73,7 +73,7 @@ export default {
                 }
             )
         },
-        fetchNewList () {
+        fetchNewList() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/news/newsList'
@@ -89,7 +89,7 @@ export default {
                 }
             )
         },
-        wxcPanItemPan (e) {
+        wxcPanItemPan(e) {
             if (BindEnv.supportsEBForAndroid()) {
                 this.ref.bindExp(e.element)
             }

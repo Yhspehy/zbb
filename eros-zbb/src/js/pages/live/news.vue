@@ -18,27 +18,27 @@ export default {
     components: {
         newItem
     },
-    data () {
+    data() {
         return {
             newsList: null
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchNewList()
     },
     methods: {
-        onrefresh () {
+        onrefresh() {
             setTimeout(() => {
                 this.$refs['list'].refreshEnd()
             }, 2000)
         },
-        loadMore () {
+        loadMore() {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
         },
-        fetchNewList () {
+        fetchNewList() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/news/newsList'
@@ -59,9 +59,9 @@ export default {
 }
 
 .header {
-	font-size: 28px;
-	line-height: 36px;
-	color: #4d4d4d;
+    font-size: 28px;
+    line-height: 36px;
+    color: #4d4d4d;
     padding-left: 36px;
     padding-top: 20px;
     font-weight: bold;

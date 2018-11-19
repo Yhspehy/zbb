@@ -16,21 +16,21 @@
 
 <script>
 export default {
-    data () {
+    data() {
         return {
             liveList: {},
             colorList: ['#ffbb00', '#f3091a', '#0088ff']
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchLiveList()
     },
-    beforeDestroy () {
+    beforeDestroy() {
         this.$notice.loading.hide()
     },
     methods: {
-        fetchLiveList () {
+        fetchLiveList() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/liveRoom/1'

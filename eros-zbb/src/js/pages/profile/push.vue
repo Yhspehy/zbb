@@ -22,7 +22,7 @@ const domModule = weex.requireModule('dom')
 
 export default {
     name: 'profile_setting_push',
-    data () {
+    data() {
         return {
             check: {
                 importantNews: true,
@@ -68,14 +68,14 @@ export default {
             ]
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
         })
     },
     methods: {
-        triggerPush (key) {
+        triggerPush(key) {
             this.check[key] = !this.check[key]
         }
     }

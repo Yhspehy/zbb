@@ -38,34 +38,34 @@ const domModule = weex.requireModule('dom')
 export default {
     components: { recommendItem, WxcPanItem },
     props: ['ref'],
-    data () {
+    data() {
         return {
             imgList: ['https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/', 'https://fakeimg.pl/750x360/'],
             newsList: null
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fa-solid-900.ttf')"
         })
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.fetchNewList()
     },
     methods: {
-        onrefresh () {
+        onrefresh() {
             setTimeout(() => {
                 this.$refs['list'].refreshEnd()
             }, 2000)
         },
-        loadMore () {
+        loadMore() {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
         },
-        fetchNewList () {
+        fetchNewList() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/community/recommend/list'
@@ -76,7 +76,7 @@ export default {
                 }
             )
         },
-        wxcPanItemPan (e) {
+        wxcPanItemPan(e) {
             if (BindEnv.supportsEBForAndroid()) {
                 this.ref.bindExp(e.element)
             }

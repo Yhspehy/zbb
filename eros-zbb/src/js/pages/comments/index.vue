@@ -32,18 +32,18 @@ import commentItem from '../components/commentItem'
 export default {
     name: 'comments',
     components: { commentItem },
-    data () {
+    data() {
         return {
             touchBarHeight: weex.config.eros.touchBarHeight,
             data: null
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.getData()
     },
     methods: {
-        getData () {
+        getData() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/hotComments/1'
@@ -52,7 +52,7 @@ export default {
                 this.$notice.loading.hide()
             })
         },
-        closeKeyBoard () {
+        closeKeyBoard() {
             this.$tools.resignKeyboard()
         }
     }

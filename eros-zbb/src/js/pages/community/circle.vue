@@ -34,18 +34,18 @@
 export default {
     name: 'community_circle',
     components: {},
-    data () {
+    data() {
         return {
             columns: {},
             isFastSearch: false
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.getColums()
     },
     methods: {
-        getColums () {
+        getColums() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/community/circle/all'

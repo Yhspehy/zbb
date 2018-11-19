@@ -32,24 +32,24 @@ import commentItem from '../components/commentItem'
 export default {
     name: 'live_hotComments',
     components: { commentItem },
-    data () {
+    data() {
         return {
             showInput: true,
             touchBarHeight: weex.config.eros.touchBarHeight,
             data: null
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.getData()
     },
-    mounted () {
+    mounted() {
         this.$event.on('liveTabChange', params => {
             this.showInput = params === '热议'
         })
     },
     methods: {
-        getData () {
+        getData() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/hotComments/1'
@@ -58,7 +58,7 @@ export default {
                 this.$notice.loading.hide()
             })
         },
-        closeKeyBoard () {
+        closeKeyBoard() {
             this.$tools.resignKeyboard()
         }
     }

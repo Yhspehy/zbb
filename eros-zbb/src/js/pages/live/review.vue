@@ -23,13 +23,13 @@ export default {
         matchInfo,
         newItem
     },
-    data () {
+    data() {
         return {
             review: {},
             newsList: []
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         Promise.all([this.getData(), this.fetchNewList()]).then(([review, news]) => {
             this.review = review.data
@@ -38,13 +38,13 @@ export default {
         })
     },
     methods: {
-        getData () {
+        getData() {
             return this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/review/1'
             })
         },
-        fetchNewList () {
+        fetchNewList() {
             return this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/news/newsList'

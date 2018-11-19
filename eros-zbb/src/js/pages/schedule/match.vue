@@ -30,7 +30,7 @@ import { WxcIcon } from 'weex-ui'
 export default {
     name: 'schedule_match',
     components: { WxcIcon },
-    data () {
+    data() {
         return {
             typeList: [
                 {
@@ -46,25 +46,25 @@ export default {
             matchCountObj: {}
         }
     },
-    created () {
+    created() {
         this.initCount()
     },
-    mounted () {
+    mounted() {
         this.getLeagueTodaMatchCount()
     },
     methods: {
-        onrefresh () {
+        onrefresh() {
             setTimeout(() => {
                 this.$refs['list'].refreshEnd()
             }, 2000)
         },
-        initCount () {
+        initCount() {
             const self = this
             this.allLeagueList.forEach(e => {
                 if (!self.matchCountObj[e]) self.$set(self.matchCountObj, e, 0)
             })
         },
-        getLeagueTodaMatchCount () {
+        getLeagueTodaMatchCount() {
             const date = this.$moment().format('YYYY-MM-DD')
             let todayMatchList = {}
             this.$fetch({
@@ -82,7 +82,7 @@ export default {
                 }
             })
         },
-        goLeagueMatch (item) {
+        goLeagueMatch(item) {
             this.$router.open({
                 name: 'schedule.league',
                 navTitle: item

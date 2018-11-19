@@ -15,7 +15,7 @@ const domModule = weex.requireModule('dom')
 
 export default {
     name: 'profile_setting_problem',
-    data () {
+    data() {
         return {
             expandObj: {
                 playStats: false,
@@ -72,14 +72,14 @@ export default {
             ]
         }
     },
-    beforeCreate () {
+    beforeCreate() {
         domModule.addRule('fontFace', {
             fontFamily: 'fontAwesome',
             src: "url('bmlocal://iconfont/fontawesome-webfont.ttf')"
         })
     },
     methods: {
-        emitClick (key, idx) {
+        emitClick(key, idx) {
             this.expandObj[key] = !this.expandObj[key]
         }
     }

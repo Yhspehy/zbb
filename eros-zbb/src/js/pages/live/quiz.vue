@@ -74,7 +74,7 @@
 <script>
 export default {
     name: 'live_quiz',
-    data () {
+    data() {
         return {
             headerList: ['我的竞猜', 'G币抽奖', 'G币兑换', '获取G币'],
             list: [],
@@ -94,12 +94,12 @@ export default {
                 : 0
         }
     },
-    created () {
+    created() {
         this.$notice.loading.show()
         this.getData()
     },
     methods: {
-        getData () {
+        getData() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/live/quizList/1'
@@ -108,21 +108,21 @@ export default {
                 this.$notice.loading.hide()
             })
         },
-        quizClick (id, option) {
+        quizClick(id, option) {
             this.chosen.quiz_id = id
             this.chosen.option = option
             this.$refs['bmmask'].show()
         },
         chooseValue(item) {
-            this.inputValue = item === '全部' ? this.myG : item;
+            this.inputValue = item === '全部' ? this.myG : item
         },
-        closeMask () {
+        closeMask() {
             this.$refs['bmmask'].hide()
         }
     },
     watch: {
         inputValue(val) {
-            if (val >= this.myG) this.inputValue = this.myG;
+            if (val >= this.myG) this.inputValue = this.myG
         }
     }
 }
@@ -246,7 +246,6 @@ export default {
     color: #4d4d4d;
     font-size: 24px;
 }
-
 
 /* mask */
 .mask {

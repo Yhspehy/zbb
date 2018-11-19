@@ -135,7 +135,8 @@ export default {
             }
         }
     }
-};</script>
+};
+</script>
 
 <style scoped lang="scss">
 @import '../../../public/style/video.css';

@@ -107,7 +107,8 @@ export default {
             this.$dialog.confirm(content, { html: true });
         }
     }
-};</script>
+};
+</script>
 
 <style scoped lang="scss">
 .setting-index {

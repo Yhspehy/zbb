@@ -11,26 +11,26 @@ import recommendItem from './components/recommentItem'
 
 export default {
     components: { recommendItem },
-    data () {
+    data() {
         return {
             zoneList: null
         }
     },
-    created () {
+    created() {
         this.fetchNewList()
     },
     methods: {
-        onrefresh () {
+        onrefresh() {
             setTimeout(() => {
                 this.$refs['list'].refreshEnd()
             }, 2000)
         },
-        loadMore () {
+        loadMore() {
             setTimeout(() => {
                 this.$refs['list'].loadMoreEnd()
             }, 2000)
         },
-        fetchNewList () {
+        fetchNewList() {
             this.$fetch({
                 method: 'GET',
                 url: 'https://www.easy-mock.com/mock/5bc9ab30feff9e7d8b0994c7/zbb/community/recommend/list'

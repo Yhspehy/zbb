@@ -45,7 +45,7 @@ import activity from './activity'
 
 export default {
     components: { statusBar, WxcTabPage, recommend, circle, activity },
-    data () {
+    data() {
         return {
             isAndroid: false,
             tabTitles: [
@@ -82,20 +82,20 @@ export default {
             navActivity: 0
         }
     },
-    created () {
+    created() {
         this.isAndroid = Utils.env.isAndroid()
         this.tabPageHeight = Utils.env.getPageHeight()
     },
-    mounted () {
+    mounted() {
         this.$nextTick(() => {
             this.$refs['wxc-tab-page'].setPage(this.navActivity)
         })
     },
     methods: {
-        wxcTabPageCurrentTabSelected (e) {
+        wxcTabPageCurrentTabSelected(e) {
             this.navActivity = e.page
         },
-        wxcPanItemPan (e) {
+        wxcPanItemPan(e) {
             if (Utils.env.supportsEBForAndroid()) {
                 this.$refs['wxc-tab-page'].bindExp(e.element)
             }
