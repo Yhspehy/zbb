@@ -46,6 +46,10 @@ export default {
         title: 'NBA',
         url: '/pages/schedule/league/index.js'
     },
+    'schedule.calendar': {
+        title: '赛程日历',
+        url: '/pages/schedule/calendar.js'
+    },
     'live': {
         url: '/pages/live/index.js'
     },

@@ -58,7 +58,6 @@ export default {
         },
         chooseDay(obj) {
             this.chooseDayData = obj;
-            this.$C_Alert.open('aaa');
         },
         chooseMonth(obj) {
             const year = obj.year;

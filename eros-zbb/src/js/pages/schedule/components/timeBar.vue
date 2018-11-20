@@ -1,8 +1,6 @@
 <template>
-    <div class="timeBar">
-        <div v-if="isToday">
-            <text class="today-text"> 今天 </text>
-        </div>
+    <div class="timeBar" @click="goCalendar">
+        <text v-if="!isToday" class="today-text"> 今天 </text>
         <text class="date">{{date}} {{week}}</text>
     </div>
 </template>
@@ -25,6 +23,13 @@ export default {
         isToday() {
             return this.$moment(this.currentDate).format('YYY-MM-DD') === this.$moment().format('YYY-MM-DD')
         }
+    },
+    methods: {
+        goCalendar() {
+            this.$router.open({
+                name: 'schedule.calendar'
+            })
+        }
     }
 }
 </script>
@@ -36,6 +41,8 @@ export default {
     font-size: 24px;
     color: #4d4d4d;
     align-items: center;
+    flex-direction: row;
+    justify-content: center;
 }
 .fa-calendar-alt {
     font-size: 24px;
@@ -45,6 +52,8 @@ export default {
 .today-text {
     margin-right: 10px;
     margin-left: 10px;
+    font-size: 24px;
+    color: #4d4d4d;
 }
 
 .date {
