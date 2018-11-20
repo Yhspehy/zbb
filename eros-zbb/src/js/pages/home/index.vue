@@ -22,12 +22,17 @@
 
             <!-- 推荐 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <recommend :ref="$refs['wxc-tab-page']"></recommend>
+                <recommend v-if="render[0]" :ref="$refs['wxc-tab-page']"></recommend>
             </div>
 
             <!-- 集锦 -->
             <div class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
-                <highlights :ref="$refs['wxc-tab-page']"></highlights>
+                <highlights v-if="render[1]" :ref="$refs['wxc-tab-page']"></highlights>
+            </div>
+
+            <!-- 集锦 -->
+            <div v-for="item in (tabTitles.length - 2)" :key="item" class="item-container" :style="{ height: (tabPageHeight - tabStyles.height - touchBarHeight) + 'px' }">
+                <league v-if="render[item + 1]" :ref="$refs['wxc-tab-page']"></league>
             </div>
 
         </wxc-tab-page>
@@ -39,9 +44,17 @@ import { WxcTabPage, Utils, WxcIcon } from 'weex-ui'
 import statusBar from '../components/statusBar'
 import recommend from './recommend'
 import highlights from './highlights'
+import league from './league'
 
 export default {
-    components: { statusBar, WxcTabPage, WxcIcon, recommend, highlights },
+    components: {
+        statusBar,
+        WxcTabPage,
+        WxcIcon,
+        recommend,
+        highlights,
+        league
+    },
     data() {
         return {
             isAndroid: false,
@@ -51,6 +64,12 @@ export default {
                 },
                 {
                     title: '集锦'
+                },
+                {
+                    title: 'NBA'
+                },
+                {
+                    title: 'CBA'
                 }
             ],
             tabPageHeight: 1334,
@@ -71,15 +90,18 @@ export default {
                 textPaddingLeft: 10,
                 textPaddingRight: 10,
                 hasRightIcon: true,
-                rightOffset: 70
+                rightOffset: 70,
+                boxShadow: 'inset 0 -1px 1px rgba(0,0,0,0.4)'
             },
             rightIconStyle: {
                 top: (weex.config.eros.statusBarHeight + 20) + 'px'
             },
-            navActivity: 0
+            navActivity: 0,
+            render: []
         }
     },
     created() {
+        this.render = new Array(this.tabTitles.length).fill(0)
         this.tabPageHeight = Utils.env.getPageHeight()
         if (Utils.env.isAndroid()) {
             this.isAndroid = true
@@ -87,6 +109,7 @@ export default {
                 statusBarStyle: 'LightContent'
             })
         }
+        this.$set(this.render, this.navActivity, 1)
     },
     mounted() {
         this.$nextTick(() => {
@@ -96,6 +119,7 @@ export default {
     methods: {
         wxcTabPageCurrentTabSelected(e) {
             this.navActivity = e.page
+            this.$set(this.render, e.page, 1)
         },
         iconClicked() {
             this.$router.open({
