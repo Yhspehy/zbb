@@ -60,7 +60,7 @@ module.exports = {
         // https://github.com/chimurai/http-proxy-middleware#proxycontext-config
         proxy: {
             '/api': {
-                target: '<url>', // target host
+                target: 'url', // target host
                 ws: true, // proxy websockets
                 changeOrigin: true // needed for virtual hosted sites
             }

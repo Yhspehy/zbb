@@ -1,25 +1,26 @@
 <template>
-    <div class="comments">
+  <div class="comments">
 
-        <header-bar text="全部评论" :share="true"></header-bar>
+    <header-bar
+      text="全部评论"
+      :share="true"
+    ></header-bar>
 
-        <div id="commentContainer">
-            <div class="commentContainer">
-                <div class="commentTitle">精彩热评</div>
+    <div id="commentContainer">
+      <div class="commentContainer">
+        <div class="commentTitle">精彩热评</div>
 
-                <comment-list :commentlist="hot"></comment-list>
+        <comment-list :commentlist="hot"></comment-list>
 
-                <div class="commentTitle">全部评论</div>
+        <div class="commentTitle">全部评论</div>
 
-                <comment-list :commentlist="list"></comment-list>
-            </div>
-        </div>
-       
-
-        <comment-input></comment-input>
-
-
+        <comment-list :commentlist="list"></comment-list>
+      </div>
     </div>
+
+    <comment-input></comment-input>
+
+  </div>
 </template>
 
 <script>
@@ -51,17 +52,21 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.comments {
-    height: 100vh;
+xw .comments {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        padding-bottom: calc(var(--safe-area-inset-bottom));
+    }
     // overflow: hidden;
     // min-height: 100vh;
 
     // flex and bscroll
     #commentContainer {
         margin-top: 86px;
-        height: calc(100% - 176px);
+        // height: calc(100% - 176px);
         flex: 1;
         overflow: scroll;
         -webkit-overflow-scrolling: touch;

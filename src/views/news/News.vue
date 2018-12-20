@@ -1,32 +1,38 @@
 <template>
-    <div class="newInfoScoped">
-        <header-bar :share="true"></header-bar>
+  <div class="newInfoScoped">
+    <header-bar :share="true"></header-bar>
 
-        <div id="newsContainer">
-            <div class="newsContainer border-top-1px">
-                <div class="title">{{info.title}}</div>
+    <div id="newsContainer">
+      <div class="newsContainer border-top-1px">
+        <div class="title">{{info.title}}</div>
 
-                <div class="otherInfo border-bottom-1px">
-                    <span>{{info.source}}</span>
-                    <span>{{time}}</span>
-                </div>
-
-                <div class="content border-bottom-1px" v-html="info.content"></div>
-
-                <!-- 评论 -->
-                <div class="commentTitle">精彩热评</div>
-                <comment-list :commentlist="info.hot"></comment-list>
-                <div class="commentTitle">全部评论</div>
-                <comment-list :commentlist="info.comments"></comment-list>
-                <!-- 查看更多评论 -->
-                <div class="moreComments" @click="gotoMoreComments">更多评论</div>
-
-            </div>
+        <div class="otherInfo border-bottom-1px">
+          <span>{{info.source}}</span>
+          <span>{{time}}</span>
         </div>
 
-        <comment-input></comment-input>
+        <div
+          class="content border-bottom-1px"
+          v-html="info.content"
+        ></div>
 
+        <!-- 评论 -->
+        <div class="commentTitle">精彩热评</div>
+        <comment-list :commentlist="info.hot"></comment-list>
+        <div class="commentTitle">全部评论</div>
+        <comment-list :commentlist="info.comments"></comment-list>
+        <!-- 查看更多评论 -->
+        <div
+          class="moreComments"
+          @click="gotoMoreComments"
+        >更多评论</div>
+
+      </div>
     </div>
+
+    <comment-input></comment-input>
+
+  </div>
 </template>
 
 <script>
@@ -84,17 +90,25 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        padding-bottom: calc(var(--safe-area-inset-bottom));
+    }
     // min-height: 100vh;
     // overflow: hidden;
 
     // flex and bscroll
     #newsContainer {
         margin-top: 86px;
-        height: calc(100% - 176px);
+        // height: calc(100% - 176px);
         flex: 1;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         position: relative;
+        // @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        //     --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        //     height: calc(100% - 176px - var(--safe-area-inset-bottom));
+        // }
     }
     .newsContainer {
         // fixed

@@ -1,14 +1,18 @@
 <template>
-        <footer class="footer">
-            <router-link
-                v-for="el in navList"
-                :key="el.name"
-                :to="el.routePath"
-                :class="{'active': el.routePath === $store.state.home.homeFooter}">
-                <i class="fa" :class="el.icon"></i>
-                <span>{{el.name}}</span>
-            </router-link>
-        </footer>
+  <footer class="footer">
+    <router-link
+      v-for="el in navList"
+      :key="el.name"
+      :to="el.routePath"
+      :class="{'active': el.routePath === $store.state.home.homeFooter}"
+    >
+      <i
+        class="fa"
+        :class="el.icon"
+      ></i>
+      <span>{{el.name}}</span>
+    </router-link>
+  </footer>
 </template>
 
 <script>

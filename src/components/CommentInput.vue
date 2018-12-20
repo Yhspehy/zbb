@@ -1,21 +1,22 @@
 <template>
-    <div>
-        <div class="commentInput">
-            <input
-                type="text"
-                class="typeIn"
-                placeholder="我来说两句"
-                @blur="inputBlur"
-                @click="inputFocus($event)">
+  <div>
+    <div class="commentInput">
+      <input
+        type="text"
+        class="typeIn"
+        placeholder="我来说两句"
+        @blur="inputBlur"
+        @click="inputFocus($event)"
+      >
 
-            <button class="send">发送</button>
-        </div>
-
-        <transition name="mask">
-            <c-mask v-if="disScroll"></c-mask>
-        </transition>
-
+      <button class="send">发送1</button>
     </div>
+
+    <transition name="mask">
+      <c-mask v-if="disScroll"></c-mask>
+    </transition>
+
+  </div>
 </template>
 
 <script>
@@ -85,6 +86,7 @@ export default {
     // right: 0;
     // fixed
     position: relative;
+    width: 750px;
     height: 90px;
     z-index: 110;
     background: #fff;
